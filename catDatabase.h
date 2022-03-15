@@ -14,21 +14,31 @@
 
 #include "config.h"
 
-#define MAX_CAT_NAME (50)   /// This defines the size of the cat's name string
+/// The maximum size of a cat's name
+#define MAX_CAT_NAME (50)
 
+/// A gender... for educational use only.  This is not intended to be
+/// inclusive of all possible genders
 enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
+
+/// A breed of cat
 enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
+
+/// A color
 enum Color  { BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
 
+
+/// Hold all of the information about a cat
 struct Cat {
-   char               name[MAX_CAT_NAME] ;
-   enum Gender        gender ;
-   enum Breed         breed ;
-   bool               isFixed ;
-   float              weight ;
-   enum Color         collarColor1 ;
-   enum Color         collarColor2 ;
-   unsigned long long license ;
+   char               name[MAX_CAT_NAME] ;  ///< The name of the cat
+   enum Gender        gender ;              ///< The gender of the cat
+   enum Breed         breed ;               ///< The breed of the cat
+   bool               isFixed ;             ///< True if the cat is fixed
+   float              weight ;              ///< The weight of the cat.  Must
+                                            ///  be >0 or -1 if unknown.
+   enum Color         collarColor1 ;        ///< The color of the first part of the collar
+   enum Color         collarColor2 ;        ///< The color of the second part of the collar
+   unsigned long long license ;             ///< The registration number for the cat.
 } ;
 
 

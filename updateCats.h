@@ -13,9 +13,9 @@
 #include "catDatabase.h"
 
 /// All of these functions return true if they succeed
-extern bool updateCatName    ( const size_t index, const char*              name    ) ;
-extern bool fixCat           ( const size_t index                                   ) ;
-extern bool updateCatWeight  ( const size_t index, const float              weight  ) ;
-extern bool updateCatCollar1 ( const size_t index, const enum Color         color   ) ;
-extern bool updateCatCollar2 ( const size_t index, const enum Color         color   ) ;
-extern bool updateLicense    ( const size_t index, const unsigned long long license ) ;
+extern bool updateCatName    ( const size_t index, const char*              name    ) ;  ///< Give the cat a new name.  Must not be empty.  All cats deserve a name.
+extern bool fixCat           ( const size_t index                                   ) ;  ///< Fix the cat (you can't un-fix a cat).  You can, somewhat cruelly, repeatedly fix the cat.
+extern bool updateCatWeight  ( const size_t index, const float              weight  ) ;  ///< Update the cat's weight.  Must be >0 or -1 if unknown
+extern bool updateCatCollar1 ( const size_t index, const enum Color         color   ) ;  ///< Update the first part of the cat collar
+extern bool updateCatCollar2 ( const size_t index, const enum Color         color   ) ;  ///< Update the second part of the cat collar
+extern bool updateLicense    ( const size_t index, const unsigned long long license ) ;  ///< Update the license

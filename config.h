@@ -12,10 +12,14 @@
 
 #include <climits>
 
+/// A grammatically correct title for the program
 #define PROGRAM_TITLE "Animal Farm 1"
+
+/// A short-title for the program (used for error messages)
 #define PROGRAM_NAME  "animalfarm1"
 
-#define MAX_CATS (1024)   /// The maximum number of cats the database
-                          /// can hold
+/// The maximum number of cats the database can hold
+#define MAX_CATS (1024)
 
+/// A marker indicating a bad cat
 #define BAD_CAT UINT_MAX

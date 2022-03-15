@@ -17,6 +17,7 @@
 #include "updateCats.h"
 #include "reportCats.h"
 
+/// @internal Ensure the index is valid
 #define CHECK_INDEX( index ) 	if( !isIndexValid( index ) ) {                                              \
 		                           fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;  \
 		                           return false ;                                                           \

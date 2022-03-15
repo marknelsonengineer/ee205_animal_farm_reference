@@ -12,12 +12,17 @@
 
 #include "catDatabase.h"
 
+/// Print a cat.
+/// @returns true if everything worked correctly.  false if something went
+///          wrong (usually the index is invalid)
 extern bool   printCat( const size_t index ) ;
+
+/// Print all cats in the database
 extern void   printAllCats() ;
 
-extern size_t findCatByName( const char* name ) ;  /// @returns the index or BAD_CAT
-extern size_t findCatByCollars( enum Color collarColor1, enum Color collarColor2 ) ;  /// @returns the index or BAD_CAT
-extern size_t findCatByLicense( unsigned long long license ) ;  /// @returns the index or BAD_CAT
+extern size_t findCatByName( const char* name ) ;  ///< @returns the index or BAD_CAT
+extern size_t findCatByCollars( enum Color collarColor1, enum Color collarColor2 ) ;  ///< @returns the index or BAD_CAT
+extern size_t findCatByLicense( unsigned long long license ) ;  ///< @returns the index or BAD_CAT
 
 /// Return a string for the name of the gender
 extern const char* genderName( enum Gender gender ) ;

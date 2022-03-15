@@ -25,11 +25,18 @@
 #include "updateCats.h"
 #include "deleteCats.h"
 
+/// @internal Used to test the largest possible name
 #define MAX_NAME1    "1234567890123456789012345678901234567890123456789"
+
+/// @internal Used to test the largest possible name
 #define MAX_NAME2    "DIFFERENT 123456789012345678901234567890123456789"
+
+/// @internal Used to test an illegal name (because it's too large by
+///           one character
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
 
+/// The entry point for Animal Farm
 int main() {
    printf( "Starting %s\n", PROGRAM_TITLE ) ;
 
