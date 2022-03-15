@@ -94,8 +94,6 @@ const char* genderName( const enum Gender gender ) {
       case MALE:           return "Male"    ;
       case FEMALE:         return "Female"  ;
    }
-
-   assert( false ) ; // We should never get here
 }
 
 
@@ -108,7 +106,6 @@ const char* breedName( const enum Breed breed ) {
       case PERSIAN      : return "Persian"    ;
       case SPHYNX       : return "Sphynx"     ;
    }
-   assert( false ) ; // We should never get here
 }
 
 
@@ -121,5 +118,4 @@ const char* colorName ( const enum Color color ) {
       case GREEN: return "Green" ;
       case PINK : return "Pink"  ;
    }
-   assert( false ) ; // We should never get here
 }
