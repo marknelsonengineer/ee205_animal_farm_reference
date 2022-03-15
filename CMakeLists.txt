@@ -3,4 +3,4 @@ project(ee205_lab08d_animal_farm_1_to_clion)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ee205_lab08d_animal_farm_1_to_clion main.cpp)
+add_executable(ee205_lab08d_animal_farm_1_to_clion main.cpp config.h catDatabase.cpp catDatabase.h addCats.cpp addCats.h updateCats.cpp updateCats.h deleteCats.cpp deleteCats.h reportCats.cpp reportCats.h)
