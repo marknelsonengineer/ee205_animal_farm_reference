@@ -141,7 +141,7 @@ extern bool isIndexValid( const size_t index ) {
 ///
 /// Note:  It does not check for duplicate names...
 bool isNameValid( const char* name ) {
-   if( name == NULL ) {
+   if( name == nullptr ) {
       fprintf( stderr, "%s: The cat's name can't be NULL.\n", PROGRAM_NAME ) ;
       return false ;
    }

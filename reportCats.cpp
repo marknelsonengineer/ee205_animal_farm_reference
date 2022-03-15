@@ -52,7 +52,7 @@ void printAllCats() {
 
 
 size_t findCatByName( const char* name ) {
-   if( name == NULL ) {
+   if( name == nullptr ) {
       return BAD_CAT ;  // Silently return... no cat found
    }
 
@@ -96,7 +96,6 @@ const char* genderName( const enum Gender gender ) {
    }
 
    assert( false ) ; // We should never get here
-   return NULL;
 }
 
 
@@ -110,7 +109,6 @@ const char* breedName( const enum Breed breed ) {
       case SPHYNX       : return "Sphynx"     ;
    }
    assert( false ) ; // We should never get here
-   return NULL;
 }
 
 
@@ -124,5 +122,4 @@ const char* colorName ( const enum Color color ) {
       case PINK : return "Pink"  ;
    }
    assert( false ) ; // We should never get here
-   return NULL;
 }

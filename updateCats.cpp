@@ -68,7 +68,7 @@ bool fixCat( const size_t index ) {
 bool updateCatWeight( const size_t index, const float weight ) {
    CHECK_INDEX( index )
 
-   if( isWeightValid( weight ) == false ) {
+   if( !isWeightValid(weight) ) {
       return false ;
    }
 
@@ -88,7 +88,7 @@ bool updateCatWeight( const size_t index, const float weight ) {
 bool updateCatCollar1( const size_t index, const enum Color color ) {
    CHECK_INDEX( index )
 
-   if( areCatCollarsValid( color, cats[index].collarColor2 ) == false ) {
+   if( !areCatCollarsValid(color, cats[index].collarColor2) ) {
       return false ;
    }
 
@@ -108,7 +108,7 @@ bool updateCatCollar1( const size_t index, const enum Color color ) {
 bool updateCatCollar2( const size_t index, const enum Color color ) {
    CHECK_INDEX( index )
 
-   if( areCatCollarsValid( cats[index].collarColor1, color ) == false ) {
+   if( !areCatCollarsValid(cats[index].collarColor1, color) ) {
       return false ;
    }
 
