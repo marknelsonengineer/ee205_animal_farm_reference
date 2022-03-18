@@ -78,4 +78,4 @@ else (DOXYGEN_FOUND)
    message("Doxygen needs to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
 
-add_executable(ee205_lab10d_animal_farm_2 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/updateCats.cpp src/updateCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h)
+add_executable(ee205_lab10d_animal_farm_2 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/updateCats.cpp src/updateCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h)
