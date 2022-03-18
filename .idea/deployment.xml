@@ -5,7 +5,7 @@
       <paths name="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)">
         <serverdata>
           <mappings>
-            <mapping deploy="/src/src-clion/ee205-lab08d-animal-farm-1-to-clion" local="$PROJECT_DIR$" />
+            <mapping deploy="/src/src-clion/ee205_lab10d_animal_farm_2" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />

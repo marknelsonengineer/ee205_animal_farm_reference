@@ -11,12 +11,13 @@
 
 #include <cstdio>
 #include <cstring>  // For strncmp
-#include <cassert>  // For the assert function
+#include <stdexcept> // To throw if the enumName functions are bad
 
 #include "config.h"
 #include "reportCats.h"
 #include "catDatabase.h"
 
+using namespace std;
 
 bool printCat( const size_t index ) {
    if( !isIndexValid( index ) ) {
@@ -88,15 +89,18 @@ size_t findCatByLicense( unsigned long long license ) {
 }
 
 
+/// @throws logic_error if the enum is not mapped to a string.
 const char* genderName( const enum Gender gender ) {
    switch( gender ) {
       case UNKNOWN_GENDER: return "Unknown" ;
       case MALE:           return "Male"    ;
       case FEMALE:         return "Female"  ;
    }
+   throw logic_error(PROGRAM_NAME ": Gender name not mapped to a string value");
 }
 
 
+/// @throws logic_error if the enum is not mapped to a string.
 const char* breedName( const enum Breed breed ) {
    switch( breed ) {
       case UNKNOWN_BREED: return "Unknown"    ;
@@ -106,9 +110,11 @@ const char* breedName( const enum Breed breed ) {
       case PERSIAN      : return "Persian"    ;
       case SPHYNX       : return "Sphynx"     ;
    }
+   throw logic_error(PROGRAM_NAME ": Breed name not mapped to a string value");
 }
 
 
+/// @throws logic_error if the enum is not mapped to a string.
 const char* colorName ( const enum Color color ) {
    switch( color ) {
       case BLACK: return "Black" ;
@@ -118,4 +124,5 @@ const char* colorName ( const enum Color color ) {
       case GREEN: return "Green" ;
       case PINK : return "Pink"  ;
    }
+   throw logic_error(PROGRAM_NAME ": Color name not mapped to a string value");
 }

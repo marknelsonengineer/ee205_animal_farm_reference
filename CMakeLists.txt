@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ee205_lab08d_animal_farm_1_to_clion
+project(ee205_lab10d_animal_farm_2
         VERSION 2.0
         DESCRIPTION "All animals are equal"
         LANGUAGES CXX )
@@ -41,13 +41,13 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_SORT_MEMBERS_CTORS_1ST YES)
    set(DOXYGEN_IMAGE_PATH images/)
    set(DOXYGEN_OPTIMIZE_OUTPUT_FOR_C YES)
-   set(DOXYGEN_CLANG_ASSISTED_PARSING YES)
+   set(DOXYGEN_CLANG_ASSISTED_PARSING NO)
    set(DOXYGEN_EXTRACT_PRIVATE YES)
    set(DOXYGEN_EXTRACT_PRIV_VIRTUAL YES)
    set(DOXYGEN_EXTRACT_STATIC YES)
    set(DOXYGEN_EXTRACT_LOCAL_METHODS YES)
    set(DOXYGEN_INTERNAL_DOCS YES)
-   set(DOXYGEN_QUIET NO)
+   set(DOXYGEN_QUIET YES)
    set(DOXYGEN_HTML_TIMESTAMP YES)
    set(DOXYGEN_PAPER_TYPE letter)
    set(DOXYGEN_HIDE_UNDOC_RELATIONS NO)
@@ -78,4 +78,4 @@ else (DOXYGEN_FOUND)
    message("Doxygen needs to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
 
-add_executable(ee205_lab08d_animal_farm_1_to_clion src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/updateCats.cpp src/updateCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h)
+add_executable(ee205_lab10d_animal_farm_2 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/updateCats.cpp src/updateCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h)
