@@ -20,28 +20,6 @@
 using namespace std;
 
 /*
-bool printCat( const size_t index ) {
-   if( !isIndexValid( index ) ) {
-      fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-      return false ;
-   }
-
-   printf( "cat index = [%lu]  name=[%s]  gender=[%s]  breed=[%s]  amIfixed=[%d]  Weight=[%f]  color1=[%s]  color2=[%s]  license=[%llu]\n"
-           ,index
-           ,cats[index].name
-           ,genderName( cats[index].gender )
-           ,breedName( cats[index].breed )
-           ,cats[index].amIfixed
-           ,cats[index].weight
-           ,colorName( cats[index].collarColor1 )
-           ,colorName( cats[index].collarColor2 )
-           ,cats[index].license
-   ) ;
-
-   return true;
-}
-
-
 void printAllCats() {
 #ifdef DEBUG
    printf( "numCats = [%lu]\n", numCats ) ;
@@ -66,28 +44,7 @@ size_t findCatByName( const char* name ) {
 
    return BAD_CAT ; // No name matched
 }
-
-
-size_t findCatByCollars( const enum Color collarColor1, const enum Color collarColor2 ) {
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      if( cats[i].collarColor1 == collarColor1 && cats[i].collarColor2 == collarColor2 ) {  // Found a match!
-         return i ;
-      }
-   }
-
-   return BAD_CAT ; // No cat matched
-}
-
-
-size_t findCatByLicense( unsigned long long license ) {
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      if( cats[i].license == license ) {  // Found a match!
-         return i ;
-      }
-   }
-
-   return BAD_CAT ; // No cat matched
-}
+*/
 
 
 /// @throws logic_error if the enum is not mapped to a string.
@@ -128,4 +85,3 @@ const char* colorName ( const enum Color color ) {
    }
    throw logic_error(PROGRAM_NAME ": Color name not mapped to a string value");
 }
-*/

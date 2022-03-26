@@ -27,6 +27,8 @@ Cat* catDBheadPtr = nullptr ;
 
 
 /// Initialize the catabase
+///
+/// @todo Delete the old database if one exists
 void initializeDatabase() {
    if( catDBheadPtr != nullptr ) {
       throw logic_error( "@todo delete the old database...") ;
@@ -40,37 +42,6 @@ void initializeDatabase() {
 
 
 /*
-/// Zeros out a cat's information from the database
-/// No bounds checking
-void wipeCatInternal( const size_t index ) {
-   memset( &cats[index], 0, sizeof( struct CatStruct ) );
-}
-
-
-/// Zeros out a cat's information from the database
-void wipeCat( const size_t index ) {
-   assert( isIndexValid( index ) ) ;
-
-   wipeCatInternal( index ) ;
-}
-
-
-/// Return true if the database is full
-///
-/// Various modules should check if the database is full before
-/// adding data.  This function will also verify the database
-/// is healthy first.
-bool isFull() {
-   validateDatabase() ;  // Make sure things are healthy first
-
-   if( numCats >= MAX_CATS ) {  // The database is full
-      return true ;
-   }
-
-   return false ;  // The database is not full
-}
-
-
 /// Verify that the database is healthy
 extern bool validateDatabase() {
 #pragma GCC diagnostic push
@@ -126,24 +97,6 @@ extern bool validateDatabase() {
 }
 
 
-/// Verify the index is a valid value for this database
-extern bool isIndexValid( const size_t index ) {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wtype-limits"
-   if( index < 0 ) {
-      fprintf( stderr, "%s: %s(): Index is < 0\n", PROGRAM_NAME, __FUNCTION__ ) ;
-      return false ;
-   }
-#pragma GCC diagnostic pop
-
-   if( index >= numCats ) {
-      fprintf( stderr, "%s: %s(): index [%lu] is >= the number of cats in the database [%lu]\n", PROGRAM_NAME, __FUNCTION__, index, numCats ) ;
-      return false ;
-   }
-
-   return true ;
-}
-
 
 /// Verify the name is valid
 ///
@@ -162,32 +115,6 @@ bool isNameValid( const char* name ) {
    if( strlen( name ) > MAX_CAT_NAME - 1 ) { // The name is too large...
       fprintf( stderr, "%s: CatStruct name [%s] is too long.  The maximum allowed length is [%d]\n", PROGRAM_NAME, name, MAX_CAT_NAME - 1 ) ;
       return false ;
-   }
-
-   return true ;
-}
-
-
-/// Verify the Weight is valid
-bool isWeightValid( const float weight ) {
-   if( weight <= 0 ) {
-      fprintf( stderr, "%s: CatStruct's Weight is [%f].  It must be > 0\n", PROGRAM_NAME, weight ) ;
-      return false ;
-   }
-
-   return true ;
-}
-
-
-bool areCatCollarsValid(enum Color collarColor1, enum Color collarColor2 ) {
-   if(collarColor1 == collarColor2 ) {
-      fprintf( stderr, "%s: The two colors on a cat's collar can't be the same\n", PROGRAM_NAME ) ;
-      return false ;
-   }
-
-   if( findCatByCollars( collarColor1, collarColor2 ) != BAD_CAT ) {
-      fprintf( stderr, "%s: Two cats can't have the same collar color\n", PROGRAM_NAME ) ;
-      return false;
    }
 
    return true ;

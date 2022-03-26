@@ -26,7 +26,10 @@
 /// In the real world, it's impossible to change the breed of a cat, however,
 /// in actual databases, there are times when a breed is mis-entered and
 /// needs to be corrected.
-
+///
+/// @todo Refactor name to string type and implement space-trimming.
+/// @todo Refactor Weight to its own class
+/// @todo Refactor Gender and Breed to enum classes
 class Cat {
 protected:  ///////////////////////// Member Variables /////////////////////////
    char        name[MAX_CAT_NAME] ;  ///< The name of the cat
@@ -38,12 +41,16 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 
    Cat*        nextCat ;             ///< The next pointer for a linked list
 
+   void zeroOutMemberData();         ///< Initialize / zero out all member data
+
 public:  //////////////////////////// Constructors /////////////////////////////
    Cat();            ///< Create a cat with all default values.  For now, this
                      ///< is a necessary evil.
 
    /// Create a cat with the minimum fields necessary to have a valid cat
    Cat( const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
+
+   virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
    const char *getName() const;  ///< Get the Cat's name
@@ -65,7 +72,7 @@ public:
    void setBreed(Breed newBreed);  ///< Set the cat's breed
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void print() const;   ///< Print out a cat
+   bool print() const;   ///< Print a cat
    bool validate() const noexcept;  ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////

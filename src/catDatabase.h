@@ -23,26 +23,8 @@ extern Cat* catDBheadPtr ;
 extern void initializeDatabase() ;
 
 /*
-/// Return true if the database is full
-extern bool isFull() ;
-
 /// Verify that the database is healthy
 extern bool validateDatabase() ;
-
-/// Verify the index is a valid value for this database
-extern bool isIndexValid( const size_t index ) ;
-
-/// Verify the name is valid
-extern bool isNameValid( const char* name ) ;
-
-/// Verify the Weight is valid
-extern bool isWeightValid( const float weight ) ;
-
-/// Verify the cat collars are valid
-extern bool areCatCollarsValid(const enum Color collarColor1, const enum Color collarColor2 ) ;
-
-/// Zeros out a cat's information from the database
-extern void wipeCat( const size_t index ) ;
 
 /// Swap the cats in the indexes
 extern bool swapCat( const size_t a, const size_t b ) ;

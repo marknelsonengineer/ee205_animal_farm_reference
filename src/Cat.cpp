@@ -15,10 +15,11 @@
 #include <iomanip>
 
 #include "Cat.h"
+#include "reportCats.h"
 
 using namespace std ;
 
-Cat::Cat() {
+void Cat::zeroOutMemberData() {
    memset( name, 0, MAX_CAT_NAME );
    gender = UNKNOWN_GENDER ;
    breed = UNKNOWN_BREED ;
@@ -27,12 +28,25 @@ Cat::Cat() {
    nextCat = nullptr ;
 }
 
+Cat::Cat() {
+   zeroOutMemberData() ;
+}
+
 Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight) : Cat() {
    setName( newName ) ;
    setGender( newGender ) ;
    setBreed( newBreed ) ;
    setWeight( newWeight ) ;
 }
+
+
+/// Zero out all of the member data (it's super secret!)
+///
+/// @todo Consider consolidating this with the constructor
+Cat::~Cat() {
+   zeroOutMemberData() ;
+}
+
 
 const char *Cat::getName() const {
    return name;
@@ -65,16 +79,20 @@ Weight Cat::getWeight() const {
 /// Format a line for printing the members of a class
 #define FORMAT_LINE( className, member ) cout << setw(8) << className << setw(20) << member << setw(52)
 
-void Cat::print() const {
-   cout << setw(80) << setfill( '=' ) << "" << endl;
+/// @returns true if everything worked correctly.  false if something goes
+///          wrong
+bool Cat::print() const {
+   cout << setw(80) << setfill( '=' ) << "" << endl ;
    cout << setfill( ' ' ) ;
-   cout << left;
-   FORMAT_LINE( "Cat", "name" )         << getName() << endl ;
-   FORMAT_LINE( "Cat", "gender" )       << getGender() << endl ;
-   FORMAT_LINE( "Cat", "gender" )       << getGender() << endl ;
-   FORMAT_LINE( "Cat", "breed" )        << getBreed() << endl ;
-   FORMAT_LINE( "Cat", "isFixed" )      << isFixed() << endl ;
+   cout << left ;
+   cout << boolalpha ;
+   FORMAT_LINE( "Cat", "name" )         << getName()   << endl ;
+   FORMAT_LINE( "Cat", "gender" )       << genderName( getGender() ) << endl ;
+   FORMAT_LINE( "Cat", "breed" )        << breedName( getBreed() )   << endl ;
+   FORMAT_LINE( "Cat", "isFixed" )      << isFixed()   << endl ;
    FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
+
+   return true ;
 }
 
 /// This method checks the Cat object.  If something is not right, it will
