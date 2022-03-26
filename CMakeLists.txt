@@ -9,7 +9,7 @@ message( STATUS "CMAKE_SOURCE_DIR = [${CMAKE_SOURCE_DIR}]" )
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(CMAKE_VERBOSE_MAKEFILE on)
+set(CMAKE_VERBOSE_MAKEFILE off)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
@@ -17,13 +17,10 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
 set(DOC_BUILD_DIR "${PROJECT_BINARY_DIR}/generated_docs")
 
-# @todo Add mscgen and dia to Doxygen
-#find_package(Doxygen
-#        REQUIRED dot
-#        OPTIONAL_COMPONENTS mscgen dia)
 find_package(Doxygen
         REQUIRED dot
         OPTIONAL_COMPONENTS mscgen dia)
+
 if (DOXYGEN_FOUND)
    message(STATUS "Generating documentation using Doxygen")
 
@@ -44,27 +41,29 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_CLANG_ASSISTED_PARSING NO)
    set(DOXYGEN_EXTRACT_PRIVATE YES)
    set(DOXYGEN_EXTRACT_PRIV_VIRTUAL YES)
+   set(DOXYGEN_EXTRACT_PACKAGE YES)
    set(DOXYGEN_EXTRACT_STATIC YES)
    set(DOXYGEN_EXTRACT_LOCAL_METHODS YES)
    set(DOXYGEN_INTERNAL_DOCS YES)
    set(DOXYGEN_QUIET YES)
    set(DOXYGEN_HTML_TIMESTAMP YES)
    set(DOXYGEN_PAPER_TYPE letter)
-   set(DOXYGEN_HIDE_UNDOC_RELATIONS NO)
-   set(DOXYGEN_CALLER_GRAPH YES)
+   set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
    set(DOXYGEN_HAVE_DOT YES)
    set(DOXYGEN_UML_LOOK YES)
-   set(DOXYGEN_UML_LIMIT_NUM_FIELDS 50)
-   set(DOXYGEN_TEMPLATE_RELATIONS YES)
-   set(DOXYGEN_DOT_IMAGE_FORMAT svg)
-   set(DOXYGEN_INTERACTIVE_SVG YES)
-   set(DOXYGEN_DOT_GRAPH_MAX_NODES 100)
+   set(DOXYGEN_UML_LIMIT_NUM_FIELDS 100)
    set(DOXYGEN_DOT_UML_DETAILS YES)
+   set(DOXYGEN_DOT_WRAP_THRESHOLD 80)
+   set(DOXYGEN_TEMPLATE_RELATIONS YES)
+   set(DOXYGEN_DOT_GRAPH_MAX_NODES 100)
    set(DOXYGEN_DOT_TRANSPARENT YES)
    set(DOXYGEN_CALL_GRAPH YES)
+   set(DOXYGEN_CALLER_GRAPH YES)
+   set(DOXYGEN_DOT_IMAGE_FORMAT svg)
+   set(DOXYGEN_INTERACTIVE_SVG YES)
+   set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/generated_docs)
 
-   message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
    message(STATUS "DOXYGEN_OUTPUT_DIRECTORY = [${DOXYGEN_OUTPUT_DIRECTORY}]")
 
    doxygen_add_docs(doc
@@ -74,8 +73,12 @@ if (DOXYGEN_FOUND)
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )
 
+   file(COPY images DESTINATION ${DOXYGEN_OUTPUT_DIRECTORY}/html)
+
 else (DOXYGEN_FOUND)
    message("Doxygen needs to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
+
+message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
 add_executable(ee205_lab10d_animal_farm_2 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/updateCats.cpp src/updateCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h)
