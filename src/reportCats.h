@@ -10,7 +10,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "catDatabase.h"
+#include "config.h"
+#include "Cat.h"
 
 /// Print all cats in the database
 extern bool   printAllCats() ;
@@ -24,5 +25,5 @@ extern const char* genderName( enum Gender gender ) ;
 /// Return a string for the name of the breed
 extern const char* breedName( enum Breed breed ) ;
 
-/// Return a string for the name of the color
-extern const char* colorName ( enum Color color ) ;
+// Return a string for the name of the color
+// extern const char* colorName ( enum Color color ) ;

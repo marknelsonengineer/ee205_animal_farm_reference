@@ -9,7 +9,6 @@
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstdio>
 #include <cstring>  // For strncmp
 #include <stdexcept> // To throw if the enumName functions are bad
 #include <iostream>
@@ -22,9 +21,14 @@
 
 using namespace std;
 
+
+/// @todo When this becomes a collection class, make sure it's `const noexcept`
+///
 /// @returns true if it was successful
 bool printAllCats() {
    int numCats = 0 ;
+
+   assert( validateDatabase() ) ;
 
    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       iCat->print() ;
@@ -33,12 +37,21 @@ bool printAllCats() {
 #ifdef DEBUG
    cout << "numCats = [" << numCats << "]" << endl ;
 #endif
+
+   assert( validateDatabase() ) ;
+
    return true;
 }
 
+
+/// @todo When this becomes a collection class, make sure it's `const noexcept`
+///
+/// @param name A name to search
 /// @return The Cat or nullptr if the cat can't be found
 Cat* findCatByName( const char* name ) {
    assert( Cat().validateName( name ) );
+
+   // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
 
    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       if( strcmp( name, iCat->getName() ) == 0 ) {
@@ -46,11 +59,16 @@ Cat* findCatByName( const char* name ) {
       }
    }
 
+   // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
+
    return nullptr ; // No name matched
 }
 
 
-/// @throws logic_error if the enum is not mapped to a string.
+/// @todo When this becomes a class, make sure it's `const`
+///
+/// @param gender The gender `enum` to lookup
+/// @throws logic_error If the enum is not mapped to a string.
 const char* genderName( const enum Gender gender ) {
    switch( gender ) {
       case UNKNOWN_GENDER: return "Unknown" ;
@@ -61,7 +79,10 @@ const char* genderName( const enum Gender gender ) {
 }
 
 
-/// @throws logic_error if the enum is not mapped to a string.
+/// @todo When this becomes a class, make sure it's `const`
+///
+/// @param breed The `enum` breed to lookup
+/// @throws logic_error If the `enum` is not mapped to a string.
 const char* breedName( const enum Breed breed ) {
    switch( breed ) {
       case UNKNOWN_BREED: return "Unknown"    ;
@@ -75,7 +96,11 @@ const char* breedName( const enum Breed breed ) {
 }
 
 
-/// @throws logic_error if the enum is not mapped to a string.
+/*
+/// @todo When this becomes a class, make sure it's `const`
+///
+/// @param color The `enum` color to lookup.
+/// @throws logic_error If the enum is not mapped to a string.
 const char* colorName ( const enum Color color ) {
    switch( color ) {
       case UNKNOWN_COLOR: return "Unknown color" ;
@@ -88,3 +113,4 @@ const char* colorName ( const enum Color color ) {
    }
    throw logic_error(PROGRAM_NAME ": Color name not mapped to a string value");
 }
+*/

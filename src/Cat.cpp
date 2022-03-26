@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <iomanip>
+#include <cassert>
 
 #include "Cat.h"
 #include "reportCats.h"
@@ -23,14 +24,13 @@ void Cat::zeroOutMemberData() {
    memset( name, 0, MAX_CAT_NAME );
    gender = UNKNOWN_GENDER ;
    breed = UNKNOWN_BREED ;
-   amIfixed = false ;
+   isCatFixed = false ;
    weight = UNKNOWN_WEIGHT ;
    next = nullptr ;
 }
 
 Cat::Cat() {
    zeroOutMemberData() ;
-   numberOfCats++;
 }
 
 Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight) : Cat() {
@@ -38,19 +38,18 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
    setGender( newGender ) ;
    setBreed( newBreed ) ;
    setWeight( newWeight ) ;
+
+   assert( validate() ) ;
 }
 
 
 /// Zero out all of the member data (it's super secret!)
-///
-/// @todo Consider consolidating this with the constructor
 Cat::~Cat() {
    zeroOutMemberData() ;
-   numberOfCats--;
 }
 
 
-const char *Cat::getName() const {
+const char *Cat::getName() const noexcept {
    return name;
 }
 
@@ -62,28 +61,30 @@ void Cat::setName(const char *newName) {
    strcpy( name, newName );
 }
 
-Gender Cat::getGender() const {
+Gender Cat::getGender() const noexcept {
    return gender;
 }
 
-Breed Cat::getBreed() const {
+Breed Cat::getBreed() const noexcept {
    return breed;
 }
 
-bool Cat::isFixed() const {
-   return amIfixed;
+bool Cat::isFixed() const noexcept {
+   return isCatFixed;
 }
 
-Weight Cat::getWeight() const {
+Weight Cat::getWeight() const noexcept {
    return weight;
 }
 
 /// Format a line for printing the members of a class
-#define FORMAT_LINE( className, member ) cout << setw(8) << className << setw(20) << member << setw(52)
+#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
 
 /// @returns true if everything worked correctly.  false if something goes
 ///          wrong
-bool Cat::print() const {
+bool Cat::print() const noexcept {
+   assert( validate() ) ;
+
    cout << setw(80) << setfill( '=' ) << "" << endl ;
    cout << setfill( ' ' ) ;
    cout << left ;
@@ -183,7 +184,7 @@ bool Cat::validateWeight(const Weight newWeight) {
 
 /// Once the cat is fixed, it can never be un-fixed.
 void Cat::fixCat() noexcept {
-   Cat::amIfixed = true;
+   Cat::isCatFixed = true;
 }
 
 /// The newWeight must be > 0.

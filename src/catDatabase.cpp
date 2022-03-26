@@ -11,6 +11,7 @@
 
 #include <stdexcept>  // For logic_error
 #include <iostream>
+#include <cassert>
 
 #include "config.h"
 #include "catDatabase.h"
@@ -33,6 +34,8 @@ void initializeDatabase() {
       throw logic_error( PROGRAM_NAME ": Delete the old database first") ;
    }
 
+   assert( validateDatabase() ) ;
+
    #ifdef DEBUG
       cout << PROGRAM_NAME << ": Database initialized" << endl ;
    #endif
@@ -42,14 +45,20 @@ void initializeDatabase() {
 /// Scan the database looking for a cat.
 ///
 /// @todo When this becomes a collection class, make sure it's `const noexcept`
-/// @param aCat The cat to search for
+/// @param aCat The cat to search for.  Can't be `nullptr`.
 /// @return True if aCat was found.  False if not.
-bool isCatInDatabase( Cat* aCat ) {
+bool isCatInDatabase( const Cat* aCat ) {
+   assert( aCat != nullptr ) ;
+
+   assert( validateDatabase() ) ;
+
    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       if( iCat == aCat ) {
          return true ;
       }
    }
+
+   assert( validateDatabase() ) ;
 
    return false ;  // The cat wasn't found
 }

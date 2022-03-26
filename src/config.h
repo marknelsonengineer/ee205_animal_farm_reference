@@ -10,8 +10,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <climits>
-
 /// A grammatically correct title for the program
 #define PROGRAM_TITLE "Animal Farm 2"
 
@@ -25,8 +23,8 @@ enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
 /// A breed of cat
 enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
 
-/// A color.  Can be used in many places.
-enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
+// A color.  Can be used in many places.
+// enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
 
 /// The Weight of an animal
 typedef float Weight ;

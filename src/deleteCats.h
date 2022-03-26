@@ -10,16 +10,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <cstdlib>
-
 #include "Cat.h"
 
 /// Delete all of the cats in the database.
-/// @returns true if the cats were successfully deleted.
-///          false if something bad happened
 extern bool deleteAllCats() ;
 
 /// Delete a cat in the database.
-/// @returns true if the cat was successfully deleted.
-///          false if something bad happened
 extern bool deleteCat( Cat* deleteThisCat ) ;

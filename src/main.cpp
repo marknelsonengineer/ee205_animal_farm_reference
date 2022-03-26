@@ -10,15 +10,17 @@
 /// @file main.cpp
 /// @version 2.0
 ///
+/// @todo Integrate CONTRIBUTE.md into Doxygen
+///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstdio>
 #include <cstdlib>  // For EXIT_SUCCESS / EXIT_FAILURE
 #include <cassert>  // For assert()
 #include <cstring>  // For strcmp()
 #include <exception>  // For try/catch blocks
+#include <iostream>
 
 #include "config.h"
 #include "Cat.h"
@@ -32,17 +34,14 @@ using namespace std ;
 /// @internal Used to test the largest possible name
 #define MAX_NAME1    "1234567890123456789012345678901234567890123456789"
 
-/// @internal Used to test the largest possible name
-#define MAX_NAME2    "DIFFERENT 123456789012345678901234567890123456789"
-
 /// @internal Used to test an illegal name (because it's too large by
-///           one character
+///           one character)
 #define ILLEGAL_NAME "12345678901234567890123456789012345678901234567890"
 
 
 /// The entry point for Animal Farm
 int main() {
-   printf( "Starting %s\n", PROGRAM_TITLE ) ;
+   cout << "Starting " << PROGRAM_TITLE << endl ;
 
    initializeDatabase() ;
 
@@ -50,7 +49,7 @@ int main() {
    {
       // Verify that a cat's default values are set
       Cat testCat = Cat();
-      assert(testCat.getName() != NULL);
+      assert(testCat.getName() != nullptr );
       assert(strcmp(testCat.getName(), "") == 0);
       assert(testCat.getGender() == UNKNOWN_GENDER);
       assert(testCat.getBreed() == UNKNOWN_BREED);
@@ -63,13 +62,13 @@ int main() {
       try {
          testCat.setName(nullptr);
          assert(false); // We should never get here
-      } catch (exception const &e) {};
+      } catch (exception const &e) {}
 
       // Test for empty name
       try {
          testCat.setName("");
          assert(false); // We should never get here
-      } catch (exception const &e) {};
+      } catch (exception const &e) {}
 
       // Test valid names
       testCat.setName("A");       // A 1 character name is valid
@@ -79,7 +78,7 @@ int main() {
       try {
          testCat.setName(ILLEGAL_NAME);
          assert(false); // We should never get here
-      } catch (exception const &e) {};
+      } catch (exception const &e) {}
 
       testCat.setGender(FEMALE);
 
@@ -108,37 +107,43 @@ int main() {
       assert(testCat.getWeight() == 1.0 / 1024);
 
       assert(testCat.validate());  // The cat should now be valid
-      testCat.print();
+      testCat.print() ;
 
-      assert(!isCatInDatabase(&testCat));
+      assert(!isCatInDatabase(&testCat)) ;
    }
    #endif
 
    bool result ;
    result = addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 )) ;
    assert( result ) ;
-   addCat( new Cat( "Milo", MALE, MANX , 1.1 )) ;
+   if( !result ) throw logic_error (PROGRAM_NAME ": addCat() failed" ) ;
+   result = addCat( new Cat( "Milo", MALE, MANX , 1.1 )) ;
    assert( result ) ;
-   addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 )) ;
+   result = addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 )) ;
    assert( result ) ;
-   addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 )) ;
+   result = addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 )) ;
    assert( result ) ;
-   addCat( new Cat( "Trin", FEMALE, MANX, 1.4 )) ;
+   result = addCat( new Cat( "Trin", FEMALE, MANX, 1.4 )) ;
    assert( result ) ;
-   addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 )) ;
+   result = addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 )) ;
    assert( result ) ;
 
    #ifdef DEBUG
+   {
       // Test finding a cat...
-      Cat* bella = findCatByName( "Bella" ) ;
-      assert( bella != nullptr ) ;
+      Cat *bella = findCatByName("Bella");
+      assert(bella != nullptr);
       // Test not finding a cat
-      assert( findCatByName( "Bella's not here" ) == nullptr ) ;
+      assert(findCatByName("Bella's not here") == nullptr);
 
       // Test deleting a cat...
-      assert( deleteCat( bella ) == true ) ;
-      assert( deleteCat( bella ) == false ) ; // Verify that Bella's not there
+      assert(deleteCat(bella) == true);
+      try {
+         deleteCat(bella); // Verify that Bella's not there
+      } catch (exception const &e) {}
+
       bella = nullptr;
+   }
    #endif
 
    printAllCats() ;
@@ -147,7 +152,7 @@ int main() {
 
    printAllCats() ;
 
-   printf( "Done with %s\n", PROGRAM_TITLE ) ;
+   cout << "Done with " << PROGRAM_TITLE ;
 
    return( EXIT_SUCCESS ) ;
 }

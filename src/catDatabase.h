@@ -12,7 +12,6 @@
 
 #include <cstddef>   // For the size_t datatype
 
-#include "config.h"
 #include "Cat.h"
 
 
@@ -27,7 +26,7 @@ extern int numberOfCats ;
 extern void initializeDatabase() ;
 
 /// Return true if aCat is in the database
-extern bool isCatInDatabase( Cat* aCat ) ;
+extern bool isCatInDatabase( const Cat* aCat ) ;
 
 /// Verify that the database is healthy
 extern bool validateDatabase() ;

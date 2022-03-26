@@ -10,7 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "catDatabase.h"
+#include "Cat.h"
 
 /// Insert a cat at the beginning of the database
 /// @todo Implement appendCat

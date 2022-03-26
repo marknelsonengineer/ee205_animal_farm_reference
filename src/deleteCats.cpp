@@ -9,27 +9,31 @@
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstdio>
 #include <cassert>
 #include <iostream>
+#include <stdexcept>
 
 #include "config.h"
 #include "deleteCats.h"
 #include "catDatabase.h"
+#include "Cat.h"
 
 using namespace std ;
 
-/// \param deleteThisCat The cat to delete.  Must not be `nullptr`.
-/// \return
+/// @param deleteThisCat The cat to delete.  Must not be `nullptr`.
+/// @return True if the delete is successful.
+/// @throws invalid_argument if the cat is not in the database
 bool deleteCat( Cat* deleteThisCat ) {
    assert( deleteThisCat != nullptr ) ;
 
    assert( validateDatabase() ) ;
 
    // Handle the special case first...
-   if(deleteThisCat == catDatabaseHeadPointer ) {
+   if( deleteThisCat == catDatabaseHeadPointer ) {
       catDatabaseHeadPointer = catDatabaseHeadPointer->next ;
       delete deleteThisCat ;
+      numberOfCats--;
+
       assert( validateDatabase() ) ;
       return true ;
    }
@@ -40,6 +44,7 @@ bool deleteCat( Cat* deleteThisCat ) {
       if( iCat->next == deleteThisCat ) {
          iCat->next = deleteThisCat->next ;
          delete deleteThisCat ;
+         numberOfCats--;
 
          assert( validateDatabase() ) ;
 
@@ -50,10 +55,12 @@ bool deleteCat( Cat* deleteThisCat ) {
 
    assert( validateDatabase() ) ;
 
-   return false ;  // We never found deleteThisCat!
+   throw invalid_argument( PROGRAM_NAME ": Unable to delete cat.  Not in database" );
 }
 
 
+/// @returns true if the cats were successfully deleted.
+///          false if something bad happened
 bool deleteAllCats() {
    // Keep deleting cats until there are no more cats...
    while(catDatabaseHeadPointer != nullptr ) {
@@ -63,7 +70,7 @@ bool deleteAllCats() {
 //	numCats = 0 ;            // ...and just like that...
 
 #ifdef DEBUG
-   cout << PROGRAM_NAME << ": All cats have beel deleted" << endl ;
+   cout << PROGRAM_NAME << ": All cats have been deleted" << endl ;
 #endif
 
    return true ;

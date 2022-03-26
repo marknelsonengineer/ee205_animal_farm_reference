@@ -35,14 +35,14 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    char        name[MAX_CAT_NAME] ;  ///< The name of the cat
    enum Gender gender ;              ///< The gender of the cat
    enum Breed  breed ;               ///< The breed of the cat
-   bool        amIfixed ;            ///< True if the cat is fixed
+   bool        isCatFixed ;            ///< True if the cat is fixed
    Weight      weight ;              ///< The Weight of the cat.  Must
                                      ///  be >0 or -1 if unknown.
 
 public:  /////////////////////// Public Member Variables ///////////////////////
    Cat*        next ;                ///< The next pointer for a linked list
                                      ///< This is very bad form, but we'll use
-                                     ///< it for now.
+                                     ///< it for now.  @todo FIX public next pointer!
 
 private:  /////////////////////////// Private Methods //////////////////////////
    void zeroOutMemberData();         ///< Initialize / zero out all member data
@@ -57,16 +57,16 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   const char *getName() const;  ///< Get the Cat's name
+   const char *getName() const noexcept ;  ///< Get the Cat's name
    void setName( const char* newName );  ///< Set the Cat's name.  The name
                                          ///< must not be empty and it must
                                          ///< be <= MAX_CAT_NAME in length.
 
-   Gender getGender() const;  ///< Get the Cat's gender
-   Breed getBreed() const;    ///< Get the Cat's breed
-   bool isFixed() const;      ///< Return true if the cat is fixed
-   Weight getWeight() const;  ///< The weight of the cat or -1 if unknown
-   void setWeight(Weight newWeight);  ///< Set the newWeight of the cat
+   Gender getGender() const noexcept ;  ///< Get the Cat's gender
+   Breed getBreed() const noexcept ;    ///< Get the Cat's breed
+   bool isFixed() const noexcept ;      ///< Return true if the cat is fixed
+   Weight getWeight() const noexcept ;  ///< The weight of the cat or -1 if unknown
+   void setWeight(Weight newWeight) ;  ///< Set the newWeight of the cat
    void fixCat() noexcept ;   ///< Spay or neuter the cat
 
 
@@ -76,10 +76,11 @@ public:
    void setBreed(Breed newBreed);  ///< Set the cat's breed
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool print() const;   ///< Print a cat
+   bool print() const noexcept ;    ///< Print a cat
    bool validate() const noexcept;  ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
+   // Static methods must be `const`
    static bool validateName( const char* newName ) ;  ///< Check if `newName` is valid
    static bool validateGender( const Gender newGender ) ; ///< Check if `newGender` is valid
    static bool validateBreed( const Breed newBreed ) ; ///< Check if 'newBreed` is valid
