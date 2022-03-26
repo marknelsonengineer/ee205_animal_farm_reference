@@ -12,13 +12,8 @@
 
 #include "catDatabase.h"
 
-/// Add a cat to the database
-extern unsigned int addCat( const char*              name
-        ,const enum Gender        gender
-        ,const enum Breed         breed
-        ,const bool               isFixed
-        ,const float              weight
-        ,const enum Color         collarColor1
-        ,const enum Color         collarColor2
-        ,const unsigned long long license
-) ;
+/// Insert a cat at the beginning of the database
+/// @todo Implement appendCat
+/// @todo Implement getLastMammal
+/// @todo Implement getFirstMammal
+extern bool addCat( Cat* newCat ) ;

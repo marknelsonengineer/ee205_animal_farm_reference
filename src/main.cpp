@@ -21,6 +21,7 @@
 #include <exception>  // For try/catch blocks
 
 #include "config.h"
+#include "Cat.h"
 #include "catDatabase.h"
 #include "addCats.h"
 #include "reportCats.h"
@@ -67,7 +68,7 @@ int main() {
          assert( false ) ; // We should never get here
       } catch (exception const& e) {} ;
 
-      testCat.setName( "Boo") ;
+      testCat.setName( "Test Cat") ;
 
       testCat.setGender( FEMALE ) ;
 
@@ -91,14 +92,17 @@ int main() {
 
       assert( testCat.validate() ) ;  // The cat should now be valid
       testCat.print() ;
+
+      assert( !isCatInDatabase( &testCat ) );
    #endif
+
+   assert( addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 ))) ;
+   assert( addCat( new Cat( "Milo", MALE, MANX , 1.1 ))) ;
+   assert( addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 ))) ;
+   assert( addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 ))) ;
+   assert( addCat( new Cat( "Trin", FEMALE, MANX, 1.4 ))) ;
+   assert( addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 ))) ;
 /*
-   assert( addCat( "Loki",  MALE,           PERSIAN,    true,   8.5, BLACK, WHITE, 101 ) != BAD_CAT ) ;
-   assert( addCat( "Milo",  MALE,           MANX,       true,   7.0, BLACK, RED,   102 ) != BAD_CAT ) ;
-   assert( addCat( "Bella", FEMALE,         MAINE_COON, true,  18.2, BLACK, BLUE,  103 ) != BAD_CAT ) ;
-   assert( addCat( "Kali",  FEMALE,         SHORTHAIR,  false,  9.2, BLACK, GREEN, 104 ) != BAD_CAT ) ;
-   assert( addCat( "Trin",  FEMALE,         MANX,       true,  12.2, BLACK, PINK,  105 ) != BAD_CAT ) ;
-   assert( addCat( "Chili", UNKNOWN_GENDER, SHORTHAIR,  false, 19.0, WHITE, BLACK, 106 ) != BAD_CAT ) ;
 
 #ifdef DEBUG
    // Test for NULL name
@@ -158,26 +162,29 @@ int main() {
       assert( updateLicense( testCat, 101 ) == false ) ;
 #endif
 
+*/
    printAllCats() ;
 
-   size_t kali = findCatByName( "Kali" ) ;
-   assert( kali != BAD_CAT );
+   Cat* kali = findCatByName( "Kali" ) ;
+   assert( kali != nullptr );
+/*
    assert( updateCatName( kali, "Chili" ) == false ) ; // duplicate cat name should fail
    assert( printCat( kali )) ;
-   assert( updateCatName( kali, "Capulet" ) == true ) ;
-   assert( updateCatWeight( kali, 9.9 ) == true ) ;
+*/
+   kali->setName( "Capulet" ) ;
+   kali->setWeight( 9.9 ) ;
+/*
    assert( fixCat( kali ) == true ) ;
-   assert( updateCatCollar1( kali, WHITE ) == true ) ;
-   assert( updateCatCollar2( kali, PINK ) == true ) ;
-   assert( updateLicense( kali, 201 ) == true ) ;
 
    assert( printCat( kali )) ;
 
    printAllCats() ;
 
    deleteAllCats() ;
+
    printAllCats() ;
 */
+
    printf( "Done with %s\n", PROGRAM_TITLE ) ;
 
    return( EXIT_SUCCESS ) ;

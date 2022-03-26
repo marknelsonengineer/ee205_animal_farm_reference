@@ -13,9 +13,10 @@
 #include "catDatabase.h"
 
 /// Print all cats in the database
-extern void   printAllCats() ;
+extern bool   printAllCats() ;
 
-extern size_t findCatByName( const char* name ) ;  ///< @returns the index or BAD_CAT
+/// Find a cat
+extern Cat* findCatByName( const char* name ) ;
 
 /// Return a string for the name of the gender
 extern const char* genderName( enum Gender gender ) ;

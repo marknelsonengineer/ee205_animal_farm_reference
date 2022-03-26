@@ -40,6 +40,22 @@ void initializeDatabase() {
 }
 
 
+/// Scan the database looking for the cat.
+///
+/// @param aCat The cat to search for
+/// @return True if aCat was found.  False if not.
+bool isCatInDatabase( Cat* aCat ) {
+   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+      if( iCat == aCat ) {
+         return true ;
+      }
+   }
+
+   return false ;  // The cat wasn't found
+}
+
+
+
 
 /*
 /// Verify that the database is healthy

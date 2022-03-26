@@ -21,6 +21,8 @@ extern Cat* catDBheadPtr ;
 
 /// Initializes the cat database
 extern void initializeDatabase() ;
+extern bool isCatInDatabase( Cat* aCat ) ;
+
 
 /*
 /// Verify that the database is healthy

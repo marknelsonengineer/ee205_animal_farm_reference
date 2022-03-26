@@ -39,8 +39,12 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    Weight      weight ;              ///< The Weight of the cat.  Must
                                      ///  be >0 or -1 if unknown.
 
-   Cat*        nextCat ;             ///< The next pointer for a linked list
+public:  /////////////////////// Public Member Variables ///////////////////////
+   Cat*        next ;                ///< The next pointer for a linked list
+                                     ///< This is very bad form, but we'll use
+                                     ///< it for now.
 
+private:  /////////////////////////// Private Methods //////////////////////////
    void zeroOutMemberData();         ///< Initialize / zero out all member data
 
 public:  //////////////////////////// Constructors /////////////////////////////

@@ -25,7 +25,7 @@ void Cat::zeroOutMemberData() {
    breed = UNKNOWN_BREED ;
    amIfixed = false ;
    weight = UNKNOWN_WEIGHT ;
-   nextCat = nullptr ;
+   next = nullptr ;
 }
 
 Cat::Cat() {

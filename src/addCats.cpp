@@ -16,18 +16,18 @@
 #include "config.h"
 #include "catDatabase.h"
 #include "reportCats.h"
+#include "addCats.h"
+
+
+bool addCat(Cat* newCat) {
+   newCat->validate() ;
+
+   newCat->next = catDBheadPtr ;
+   catDBheadPtr = newCat ;
+   return true;
+}
 
 /*
-/// Scan the database looking for the cat.  If it's there, return true.
-bool isCatInDatabase( const char* name ) {
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      if( strncmp( cats[i].name, name, MAX_CAT_NAME ) == 0 ) {
-         return true ;
-      }
-   }
-
-   return false ;  // The cat's name wasn't found
-}
 
 
 /// Add a cat to the database

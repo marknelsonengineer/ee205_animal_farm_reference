@@ -12,39 +12,42 @@
 #include <cstdio>
 #include <cstring>  // For strncmp
 #include <stdexcept> // To throw if the enumName functions are bad
+#include <iostream>
+#include <cassert>
 
 #include "config.h"
 #include "reportCats.h"
 #include "catDatabase.h"
+#include "Cat.h"
 
 using namespace std;
 
-/*
-void printAllCats() {
-#ifdef DEBUG
-   printf( "numCats = [%lu]\n", numCats ) ;
-#endif
+/// @returns true if it was successful
+bool printAllCats() {
+   int numCats = 0 ;
 
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      printCat( i ) ;
+   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+      iCat->print() ;
+      numCats++ ;
    }
+#ifdef DEBUG
+   cout << "numCats = [" << numCats << "]" << endl ;
+#endif
+   return true;
 }
 
+/// @return The Cat or nullptr if the cat can't be found
+Cat* findCatByName( const char* name ) {
+   assert( Cat().validateName( name ) );
 
-size_t findCatByName( const char* name ) {
-   if( name == nullptr ) {
-      return BAD_CAT ;  // Silently return... no cat found
-   }
-
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      if( strncmp( name, cats[i].name, MAX_CAT_NAME ) == 0 ) {  // Found a match!
-         return i ;
+   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+      if( strcmp( name, iCat->getName() ) == 0 ) {
+         return iCat ;
       }
    }
 
-   return BAD_CAT ; // No name matched
+   return nullptr ; // No name matched
 }
-*/
 
 
 /// @throws logic_error if the enum is not mapped to a string.
