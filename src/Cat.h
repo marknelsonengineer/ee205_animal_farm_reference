@@ -43,7 +43,7 @@ public:  //////////////////////////// Constructors /////////////////////////////
                      ///< is a necessary evil.
 
    /// Create a cat with the minimum fields necessary to have a valid cat
-   Cat( const char *newName, const Gender newGender, const Breed newBreed );
+   Cat( const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
    const char *getName() const;  ///< Get the Cat's name
@@ -55,14 +55,22 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
    Breed getBreed() const;    ///< Get the Cat's breed
    bool isFixed() const;      ///< Return true if the cat is fixed
    Weight getWeight() const;  ///< The weight of the cat or -1 if unknown
+   void setWeight(Weight newWeight);  ///< Set the newWeight of the cat
+   void fixCat() noexcept ;   ///< Spay or neuter the cat
+
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
+public:
+   void setGender(Gender newGender);  ///< Set the cat's gender
+   void setBreed(Breed newBreed);  ///< Set the cat's breed
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    void print() const;   ///< Print out a cat
    bool validate() const noexcept;  ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
-   static bool validateName( const char* newName ) ;  ///< Check to see if the Cat's name is valid
-
+   static bool validateName( const char* newName ) ;  ///< Check if `newName` is valid
+   static bool validateGender( const Gender newGender ) ; ///< Check if `newGender` is valid
+   static bool validateBreed( const Breed newBreed ) ; ///< Check if 'newBreed` is valid
+   static bool validateWeight( const Weight newWeight ) ; ///< Check if `newWeight` is valid
 };

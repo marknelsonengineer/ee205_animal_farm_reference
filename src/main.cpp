@@ -18,6 +18,7 @@
 #include <cstdlib>  // For EXIT_SUCCESS / EXIT_FAILURE
 #include <cassert>  // For assert()
 #include <cstring>  // For strcmp()
+#include <exception>  // For try/catch blocks
 
 #include "config.h"
 #include "catDatabase.h"
@@ -25,6 +26,8 @@
 #include "reportCats.h"
 #include "updateCats.h"
 #include "deleteCats.h"
+
+using namespace std ;
 
 /// @internal Used to test the largest possible name
 #define MAX_NAME1    "1234567890123456789012345678901234567890123456789"
@@ -52,9 +55,43 @@ int main() {
       assert( testCat.getBreed() == UNKNOWN_BREED ) ;
       assert( testCat.isFixed() == false ) ;
       assert( testCat.getWeight() == UNKNOWN_WEIGHT ) ;
-
-      testCat.print() ;
+      assert( !testCat.isFixed() ) ;
       assert( !testCat.validate() ) ;  // The default cat is invalid
+
+      try {
+         testCat.setName( nullptr );
+         assert( false ); // We should never get here
+      } catch (exception const& e) {} ;
+
+      try {
+         testCat.setName( "" ) ;
+         assert( false ) ; // We should never get here
+      } catch (exception const& e) {} ;
+
+      testCat.setName( "Boo") ;
+
+      testCat.setGender( FEMALE ) ;
+
+      try {
+         testCat.setGender( MALE );
+         assert( false ) ; // We should never get here
+      } catch( exception const& e) {}
+
+      testCat.setBreed( MAINE_COON ) ;
+
+      try {
+         testCat.setBreed( MANX ) ;
+         assert( false ) ; // We should never get here
+      } catch( exception const& e) {}
+
+      testCat.fixCat() ;
+      assert( testCat.isFixed() ) ;
+
+      testCat.setWeight( 5 ) ;
+      assert( testCat.getWeight() == 5 ) ;
+
+      assert( testCat.validate() ) ;  // The cat should now be valid
+      testCat.print() ;
    #endif
 /*
    assert( addCat( "Loki",  MALE,           PERSIAN,    true,   8.5, BLACK, WHITE, 101 ) != BAD_CAT ) ;
