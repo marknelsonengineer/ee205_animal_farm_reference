@@ -35,9 +35,6 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    bool        amIfixed ;            ///< True if the cat is fixed
    Weight      weight ;              ///< The Weight of the cat.  Must
                                      ///  be >0 or -1 if unknown.
-   enum Color  collarColor1 ;        ///< The color of the first part of the collar
-   enum Color  collarColor2 ;        ///< The color of the second part of the collar
-   License     license ;             ///< The registration number for the cat.  0 if unknown
 
    Cat*        nextCat ;             ///< The next pointer for a linked list
 
@@ -58,9 +55,6 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
    Breed getBreed() const;    ///< Get the Cat's breed
    bool isFixed() const;      ///< Return true if the cat is fixed
    Weight getWeight() const;  ///< The weight of the cat or -1 if unknown
-   Color getCollarColor1() const;  ///< The 1st collar color
-   Color getCollarColor2() const;  ///< The 2nd collar color
-   License getLicense() const;     ///< The registered license for the cat or 0 if unknown
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
 

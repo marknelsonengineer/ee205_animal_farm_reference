@@ -24,9 +24,6 @@ Cat::Cat() {
    breed = UNKNOWN_BREED ;
    amIfixed = false ;
    weight = UNKNOWN_WEIGHT ;
-   collarColor1 = UNKNOWN_COLOR ;
-   collarColor2 = UNKNOWN_COLOR ;
-   license = UNKNOWN_LICENSE ;
    nextCat = nullptr ;
 }
 
@@ -64,18 +61,6 @@ Weight Cat::getWeight() const {
    return weight;
 }
 
-Color Cat::getCollarColor1() const {
-   return collarColor1;
-}
-
-Color Cat::getCollarColor2() const {
-   return collarColor2;
-}
-
-License Cat::getLicense() const {
-   return license;
-}
-
 /// Format a line for printing the members of a class
 #define FORMAT_LINE( className, member ) cout << setw(8) << className << setw(20) << member << setw(52)
 
@@ -89,9 +74,6 @@ void Cat::print() const {
    FORMAT_LINE( "Cat", "breed" )        << getBreed() << endl ;
    FORMAT_LINE( "Cat", "isFixed" )      << isFixed() << endl ;
    FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
-   FORMAT_LINE( "Cat", "collarColor1" ) << getCollarColor1() << endl ;
-   FORMAT_LINE( "Cat", "collarColor2" ) << getCollarColor2() << endl ;
-   FORMAT_LINE( "Cat", "license" )      << getLicense() << endl ;
 }
 
 /// This method checks the Cat object.  If something is not right, it will
@@ -117,21 +99,6 @@ bool Cat::validate() const noexcept {
 
    if( weight <= 0 ) {
       cout << PROGRAM_NAME << ": The weight is <= 0" << endl ;
-      return false ;
-   }
-
-   if( collarColor1 == UNKNOWN_COLOR || collarColor2 == UNKNOWN_COLOR ) {
-      cout << PROGRAM_NAME << ": One of the collar colors is unknown" << endl ;
-      return false ;
-   }
-
-   if( collarColor1 == collarColor2 ) {
-      cout << PROGRAM_NAME << ": The collar colors are equal" << endl ;
-      return false ;
-   }
-
-   if( license == UNKNOWN_LICENSE ) {
-      cout << PROGRAM_NAME << ": The license is unknown" << endl ;
       return false ;
    }
 

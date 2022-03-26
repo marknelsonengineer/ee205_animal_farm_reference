@@ -52,9 +52,6 @@ int main() {
       assert( testCat.getBreed() == UNKNOWN_BREED ) ;
       assert( testCat.isFixed() == false ) ;
       assert( testCat.getWeight() == UNKNOWN_WEIGHT ) ;
-      assert( testCat.getCollarColor1() == UNKNOWN_COLOR ) ;
-      assert( testCat.getCollarColor2() == UNKNOWN_COLOR ) ;
-      assert( testCat.getLicense() == UNKNOWN_LICENSE ) ;
 
       testCat.print() ;
       assert( !testCat.validate() ) ;  // The default cat is invalid
