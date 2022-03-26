@@ -10,8 +10,6 @@
 /// @file main.cpp
 /// @version 2.0
 ///
-/// @todo Integrate CONTRIBUTE.md into Doxygen
-///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////

@@ -69,6 +69,7 @@ if (DOXYGEN_FOUND)
    doxygen_add_docs(doc
            ${CMAKE_SOURCE_DIR}/src
            ${CMAKE_SOURCE_DIR}/README.md
+           ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
            ALL
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )
