@@ -21,13 +21,14 @@ extern Cat* catDBheadPtr ;
 
 /// Initializes the cat database
 extern void initializeDatabase() ;
+
+/// Return true if aCat is in the database
 extern bool isCatInDatabase( Cat* aCat ) ;
 
-
-/*
 /// Verify that the database is healthy
 extern bool validateDatabase() ;
 
+/*
 /// Swap the cats in the indexes
 extern bool swapCat( const size_t a, const size_t b ) ;
 */

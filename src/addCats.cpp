@@ -19,7 +19,10 @@
 #include "addCats.h"
 
 
+/// \param newCat The cat to add.  Must not be `nullptr`
+/// \return True if successful.  False if someting bad happens.
 bool addCat(Cat* newCat) {
+   assert( newCat != nullptr ) ;
    newCat->validate() ;
 
    newCat->next = catDBheadPtr ;

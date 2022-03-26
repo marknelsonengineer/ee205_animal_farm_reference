@@ -11,56 +11,60 @@
 
 #include <cstdio>
 #include <cassert>
+#include <iostream>
 
 #include "config.h"
 #include "deleteCats.h"
 #include "catDatabase.h"
 
-/*
-bool deleteCat( const size_t index ) {
-   if( !isIndexValid( index ) ) {
-      fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-      return false ;
+using namespace std ;
+
+/// \param deleteThisCat The cat to delete.  Must not be `nullptr`.
+/// \return
+bool deleteCat( Cat* deleteThisCat ) {
+   assert( deleteThisCat != nullptr ) ;
+
+   assert( validateDatabase() ) ;
+
+   // Handle the special case first...
+   if( deleteThisCat == catDBheadPtr ) {
+      catDBheadPtr = catDBheadPtr->next ;
+      delete deleteThisCat ;
+      assert( validateDatabase() ) ;
+      return true ;
    }
 
-   // Just double check that the array is not empty...
-   if( numCats == 0 ) {
-      return true ;  // We're all good... the array is already empty.
+   // If it's not the first cat, then let's go find it
+   Cat* iCat = catDBheadPtr ;
+   while( iCat != nullptr ) {
+      if( iCat->next == deleteThisCat ) {
+         iCat->next = deleteThisCat->next ;
+         delete deleteThisCat ;
+
+         assert( validateDatabase() ) ;
+
+         return true ;
+      }
+      iCat = iCat->next ;
    }
 
-   assert( validateDatabase() == true ) ;  // Validate the database is healthy
-   // before deleting anything
+   assert( validateDatabase() ) ;
 
-   swapCat( index, numCats-1 ) ; // Swap the cat we are deleting with the last
-   // cat in the array
-
-   wipeCat( numCats-1 ) ;        // Now, wipe the last cat in the array
-
-   numCats -= 1 ;  // We have 1 fewer cat now
-
-   assert( validateDatabase() == true ) ;  // Validate the database is healthy
-   // after deleting
-
-#ifdef DEBUG
-   printf( "%s: %s: CatStruct [%lu] has been deleted.  There are [%lu] in the database.\n", PROGRAM_NAME, __FUNCTION__, index, numCats ) ;
-#endif
-
-   return true ;
+   return false ;  // We never found deleteThisCat!
 }
 
 
 bool deleteAllCats() {
    // Keep deleting cats until there are no more cats...
-   while( numCats != 0 ) {
-      deleteCat( 0 ) ;
+   while( catDBheadPtr != nullptr ) {
+      deleteCat( catDBheadPtr ) ;
    }
 
 //	numCats = 0 ;            // ...and just like that...
 
 #ifdef DEBUG
-   printf( "%s: %s: All cats have been deleted\n", PROGRAM_NAME, __FUNCTION__ ) ;
+   cout << PROGRAM_NAME << ": All cats have beel deleted" << endl ;
 #endif
 
    return true ;
 }
-*/

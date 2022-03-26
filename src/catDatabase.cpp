@@ -56,10 +56,9 @@ bool isCatInDatabase( Cat* aCat ) {
 
 
 
-
-/*
 /// Verify that the database is healthy
 extern bool validateDatabase() {
+/*
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wtype-limits"
    assert( numCats >= 0 ) ;  // Make sure numCats isn't corrupt (negative)
@@ -108,35 +107,13 @@ extern bool validateDatabase() {
    }
 
    // printf( "%s: The database is valid.\n", PROGRAM_NAME ) ;
-
+*/
    return true ;  // The database is healthy
 }
 
 
 
-/// Verify the name is valid
-///
-/// Note:  It does not check for duplicate names...
-bool isNameValid( const char* name ) {
-   if( name == nullptr ) {
-      fprintf( stderr, "%s: The cat's name can't be NULL.\n", PROGRAM_NAME ) ;
-      return false ;
-   }
-
-   if( strlen( name ) <= 0 ) { // The name is empty...
-      fprintf( stderr, "%s: The cat's name can't be empty.\n", PROGRAM_NAME ) ;
-      return false ;
-   }
-
-   if( strlen( name ) > MAX_CAT_NAME - 1 ) { // The name is too large...
-      fprintf( stderr, "%s: CatStruct name [%s] is too long.  The maximum allowed length is [%d]\n", PROGRAM_NAME, name, MAX_CAT_NAME - 1 ) ;
-      return false ;
-   }
-
-   return true ;
-}
-
-
+/*
 /// Swap the cats in the indexes
 /// Return true if successful
 bool swapCat( const size_t a, const size_t b ) {
