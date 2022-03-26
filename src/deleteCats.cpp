@@ -27,15 +27,15 @@ bool deleteCat( Cat* deleteThisCat ) {
    assert( validateDatabase() ) ;
 
    // Handle the special case first...
-   if( deleteThisCat == catDBheadPtr ) {
-      catDBheadPtr = catDBheadPtr->next ;
+   if(deleteThisCat == catDatabaseHeadPointer ) {
+      catDatabaseHeadPointer = catDatabaseHeadPointer->next ;
       delete deleteThisCat ;
       assert( validateDatabase() ) ;
       return true ;
    }
 
    // If it's not the first cat, then let's go find it
-   Cat* iCat = catDBheadPtr ;
+   Cat* iCat = catDatabaseHeadPointer ;
    while( iCat != nullptr ) {
       if( iCat->next == deleteThisCat ) {
          iCat->next = deleteThisCat->next ;
@@ -56,8 +56,8 @@ bool deleteCat( Cat* deleteThisCat ) {
 
 bool deleteAllCats() {
    // Keep deleting cats until there are no more cats...
-   while( catDBheadPtr != nullptr ) {
-      deleteCat( catDBheadPtr ) ;
+   while(catDatabaseHeadPointer != nullptr ) {
+      deleteCat(catDatabaseHeadPointer ) ;
    }
 
 //	numCats = 0 ;            // ...and just like that...

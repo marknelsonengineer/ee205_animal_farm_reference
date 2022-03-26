@@ -25,8 +25,8 @@ bool addCat(Cat* newCat) {
    assert( newCat != nullptr ) ;
    newCat->validate() ;
 
-   newCat->next = catDBheadPtr ;
-   catDBheadPtr = newCat ;
+   newCat->next = catDatabaseHeadPointer ;
+   catDatabaseHeadPointer = newCat ;
    return true;
 }
 

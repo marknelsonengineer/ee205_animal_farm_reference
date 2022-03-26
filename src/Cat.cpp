@@ -30,6 +30,7 @@ void Cat::zeroOutMemberData() {
 
 Cat::Cat() {
    zeroOutMemberData() ;
+   numberOfCats++;
 }
 
 Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight) : Cat() {
@@ -45,6 +46,7 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
 /// @todo Consider consolidating this with the constructor
 Cat::~Cat() {
    zeroOutMemberData() ;
+   numberOfCats--;
 }
 
 

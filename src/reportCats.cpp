@@ -26,7 +26,7 @@ using namespace std;
 bool printAllCats() {
    int numCats = 0 ;
 
-   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       iCat->print() ;
       numCats++ ;
    }
@@ -40,7 +40,7 @@ bool printAllCats() {
 Cat* findCatByName( const char* name ) {
    assert( Cat().validateName( name ) );
 
-   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       if( strcmp( name, iCat->getName() ) == 0 ) {
          return iCat ;
       }

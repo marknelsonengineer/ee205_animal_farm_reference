@@ -47,69 +47,71 @@ int main() {
    initializeDatabase() ;
 
    #ifdef DEBUG
+   {
       // Verify that a cat's default values are set
       Cat testCat = Cat();
-      assert( testCat.getName() != NULL ) ;
-      assert( strcmp( testCat.getName(), "" ) == 0 ) ;
-      assert( testCat.getGender() == UNKNOWN_GENDER ) ;
-      assert( testCat.getBreed() == UNKNOWN_BREED ) ;
-      assert( testCat.isFixed() == false ) ;
-      assert( testCat.getWeight() == UNKNOWN_WEIGHT ) ;
-      assert( !testCat.isFixed() ) ;
-      assert( !testCat.validate() ) ;  // The default cat is invalid
+      assert(testCat.getName() != NULL);
+      assert(strcmp(testCat.getName(), "") == 0);
+      assert(testCat.getGender() == UNKNOWN_GENDER);
+      assert(testCat.getBreed() == UNKNOWN_BREED);
+      assert(testCat.isFixed() == false);
+      assert(testCat.getWeight() == UNKNOWN_WEIGHT);
+      assert(!testCat.isFixed());
+      assert(!testCat.validate());  // The default cat is invalid
 
       // Test for NULL name
       try {
-         testCat.setName( nullptr );
-         assert( false ); // We should never get here
-      } catch( exception const& e ) {} ;
+         testCat.setName(nullptr);
+         assert(false); // We should never get here
+      } catch (exception const &e) {};
 
       // Test for empty name
       try {
-         testCat.setName( "" ) ;
-         assert( false ) ; // We should never get here
-      } catch( exception const& e ) {} ;
+         testCat.setName("");
+         assert(false); // We should never get here
+      } catch (exception const &e) {};
 
       // Test valid names
-      testCat.setName( "A" ) ;       // A 1 character name is valid
-      testCat.setName( MAX_NAME1 ) ; // A MAX_NAME1 name is valid
+      testCat.setName("A");       // A 1 character name is valid
+      testCat.setName(MAX_NAME1); // A MAX_NAME1 name is valid
 
       // Test for name too large
       try {
-         testCat.setName( ILLEGAL_NAME ) ;
-         assert( false ) ; // We should never get here
-      } catch( exception const& e ) {} ;
+         testCat.setName(ILLEGAL_NAME);
+         assert(false); // We should never get here
+      } catch (exception const &e) {};
 
-      testCat.setGender( FEMALE ) ;
-
-      try {
-         testCat.setGender( MALE );
-         assert( false ) ; // We should never get here
-      } catch( exception const& e) {}
-
-      testCat.setBreed( MAINE_COON ) ;
+      testCat.setGender(FEMALE);
 
       try {
-         testCat.setBreed( MANX ) ;
-         assert( false ) ; // We should never get here
-      } catch( exception const& e) {}
+         testCat.setGender(MALE);
+         assert(false); // We should never get here
+      } catch (exception const &e) {}
 
-      testCat.fixCat() ;
-      assert( testCat.isFixed() ) ;
+      testCat.setBreed(MAINE_COON);
+
+      try {
+         testCat.setBreed(MANX);
+         assert(false); // We should never get here
+      } catch (exception const &e) {}
+
+      testCat.fixCat();
+      assert(testCat.isFixed());
 
       // Test for Weight <= 0
       try {
-         testCat.setWeight( 0 );
-         assert( false ) ; // We should never get here
-      } catch( exception const& e) {}
+         testCat.setWeight(0);
+         assert(false); // We should never get here
+      } catch (exception const &e) {}
 
-      testCat.setWeight( 1.0/1024 ) ;
-      assert( testCat.getWeight() == 1.0/1024 ) ;
+      testCat.setWeight(1.0 / 1024);
+      assert(testCat.getWeight() == 1.0 / 1024);
 
-      assert( testCat.validate() ) ;  // The cat should now be valid
-      testCat.print() ;
+      assert(testCat.validate());  // The cat should now be valid
+      testCat.print();
 
-      assert( !isCatInDatabase( &testCat ) );
+      assert(!isCatInDatabase(&testCat));
+   }
    #endif
 
    bool result ;

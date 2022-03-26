@@ -9,9 +9,6 @@
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstring>    // For memset
-#include <cassert>    // For the assert function
-#include <cstdio>
 #include <stdexcept>  // For logic_error
 #include <iostream>
 
@@ -23,15 +20,17 @@
 using namespace std;
 
 /// The head pointer to a linked list of cats
-Cat* catDBheadPtr = nullptr ;
+Cat* catDatabaseHeadPointer = nullptr ;
+
+int numberOfCats = 0 ;
 
 
 /// Initialize the catabase
 ///
-/// @todo Delete the old database if one exists
+/// @throws logic_error If the old database isn't empty
 void initializeDatabase() {
-   if( catDBheadPtr != nullptr ) {
-      throw logic_error( "@todo delete the old database...") ;
+   if(catDatabaseHeadPointer != nullptr ) {
+      throw logic_error( PROGRAM_NAME ": Delete the old database first") ;
    }
 
    #ifdef DEBUG
@@ -40,12 +39,13 @@ void initializeDatabase() {
 }
 
 
-/// Scan the database looking for the cat.
+/// Scan the database looking for a cat.
 ///
+/// @todo When this becomes a collection class, make sure it's `const noexcept`
 /// @param aCat The cat to search for
 /// @return True if aCat was found.  False if not.
 bool isCatInDatabase( Cat* aCat ) {
-   for( Cat* iCat = catDBheadPtr ; iCat != nullptr ; iCat = iCat->next ) {
+   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
       if( iCat == aCat ) {
          return true ;
       }
@@ -55,89 +55,38 @@ bool isCatInDatabase( Cat* aCat ) {
 }
 
 
-
-/// Verify that the database is healthy
+/// If the database is valid, this should be silent.  If the database is not
+/// valid, it should print a message as to why and then return false.  It
+/// should not throw an exception.
+///
+/// @todo When this becomes a collection class, make sure it's `const noexcept`
+///
+/// @return True if the database is healthy
 extern bool validateDatabase() {
-/*
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wtype-limits"
-   assert( numCats >= 0 ) ;  // Make sure numCats isn't corrupt (negative)
-#pragma GCC diagnostic pop
+   int validCats = 0 ;
 
-   for( size_t i = 0 ; i < numCats ; i++ ) {
-      size_t foundCat ;
-
-      if( !isIndexValid( i )) {
-         // isIndexValid() prints an error message
+   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
+      if( !iCat->validate() ) {
          return false ;
       }
 
-      if( !isNameValid( cats[i].name )) {
-         // isNameValid() prints an error message
-         return false ;
+      Cat* foundCat = findCatByName( iCat->getName() ) ;
+      if( foundCat != iCat ) {
+         cout << PROGRAM_NAME ": Warning:  Found a duplicate cat name [" << iCat->getName() << "]" << endl ;
       }
 
-      foundCat = findCatByName( cats[i].name ) ;
-      if( foundCat != i ) {
-         fprintf( stderr, "%s: Found a duplicate cat name [%s] at indexes [%zu] and [%zu].\n", PROGRAM_NAME, cats[i].name, i, foundCat ) ;
-         return false ;
-      }
-
-      foundCat = findCatByCollars( cats[i].collarColor1, cats[i].collarColor2 ) ;
-      if( foundCat != i ) {
-         fprintf( stderr, "%s: Found a duplicate cat collar [%s] and [%s] at indexes [%zu] and [%zu].\n", PROGRAM_NAME, colorName( cats[i].collarColor1 ), colorName( cats[i].collarColor2), i, foundCat ) ;
-         return false ;
-      }
-
-      foundCat = findCatByLicense( cats[i].license ) ;
-      if( foundCat != i ) {
-         fprintf( stderr, "%s: Found a duplicate cat license [%llu] at indexes [%zu] and [%zu].\n", PROGRAM_NAME, cats[i].license, i, foundCat ) ;
-         return false ;
-      }
-
-      if( cats[i].collarColor1 == cats[i].collarColor2 ) {
-         fprintf( stderr, "%s: Found a cat with a bad collar.\n", PROGRAM_NAME ) ;
-         return false;
-      }
-
-      if( !isWeightValid( cats[i].weight )) {
-         // isWeightValid() prints the error message
-         return false;
-      }
+      validCats++ ;
    }
 
-   // printf( "%s: The database is valid.\n", PROGRAM_NAME ) ;
-*/
+   if( validCats != numberOfCats ) {
+      cout << PROGRAM_NAME << ": Error:  numberOfCats [" << numberOfCats
+           << "] does not equal [" << validCats << "]" << endl ;
+      return false ;
+   }
+
+   #ifdef DEBUG
+      cout << PROGRAM_NAME << ": The database is valid." << endl ;
+   #endif
+
    return true ;  // The database is healthy
 }
-
-
-
-/*
-/// Swap the cats in the indexes
-/// Return true if successful
-bool swapCat( const size_t a, const size_t b ) {
-   if( !isIndexValid( a ) ) {
-      fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-      return false ;
-   }
-
-   if( !isIndexValid( b ) ) {
-      fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
-      return false ;
-   }
-
-   if( a == b ) {
-      return true ; // a and b are the same... so a swap is successful (and does nothing)
-   }
-
-   // Swap a and b
-   struct CatStruct oldCat ;
-
-   memcpy( &oldCat,  &cats[a], sizeof( struct CatStruct ) );
-   memcpy( &cats[a], &cats[b], sizeof( struct CatStruct ) );
-   memcpy( &cats[b], &oldCat,  sizeof( struct CatStruct ) );
-
-   return true ;
-}
-*/

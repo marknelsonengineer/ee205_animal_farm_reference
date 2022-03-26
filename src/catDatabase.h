@@ -17,7 +17,11 @@
 
 
 /// The head pointer to a linked list of cats
-extern Cat* catDBheadPtr ;
+extern Cat* catDatabaseHeadPointer ;
+
+/// This is temporary and only for debugging
+/// @todo Remove when we have a proper container class
+extern int numberOfCats ;
 
 /// Initializes the cat database
 extern void initializeDatabase() ;
@@ -27,8 +31,3 @@ extern bool isCatInDatabase( Cat* aCat ) ;
 
 /// Verify that the database is healthy
 extern bool validateDatabase() ;
-
-/*
-/// Swap the cats in the indexes
-extern bool swapCat( const size_t a, const size_t b ) ;
-*/
