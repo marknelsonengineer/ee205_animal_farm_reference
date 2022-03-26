@@ -12,6 +12,7 @@
 
 #include "catDatabase.h"
 
+/// Add a cat to the database
 extern unsigned int addCat( const char*              name
         ,const enum Gender        gender
         ,const enum Breed         breed

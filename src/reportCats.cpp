@@ -19,18 +19,19 @@
 
 using namespace std;
 
+/*
 bool printCat( const size_t index ) {
    if( !isIndexValid( index ) ) {
       fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
       return false ;
    }
 
-   printf( "cat index = [%lu]  name=[%s]  gender=[%s]  breed=[%s]  isFixed=[%d]  weight=[%f]  color1=[%s]  color2=[%s]  license=[%llu]\n"
+   printf( "cat index = [%lu]  name=[%s]  gender=[%s]  breed=[%s]  amIfixed=[%d]  Weight=[%f]  color1=[%s]  color2=[%s]  license=[%llu]\n"
            ,index
            ,cats[index].name
            ,genderName( cats[index].gender )
            ,breedName( cats[index].breed )
-           ,cats[index].isFixed
+           ,cats[index].amIfixed
            ,cats[index].weight
            ,colorName( cats[index].collarColor1 )
            ,colorName( cats[index].collarColor2 )
@@ -117,12 +118,14 @@ const char* breedName( const enum Breed breed ) {
 /// @throws logic_error if the enum is not mapped to a string.
 const char* colorName ( const enum Color color ) {
    switch( color ) {
-      case BLACK: return "Black" ;
-      case WHITE: return "White" ;
-      case RED  : return "Red"   ;
-      case BLUE : return "Blue"  ;
-      case GREEN: return "Green" ;
-      case PINK : return "Pink"  ;
+      case UNKNOWN_COLOR: return "Unknown color" ;
+      case BLACK        : return "Black" ;
+      case WHITE        : return "White" ;
+      case RED          : return "Red"   ;
+      case BLUE         : return "Blue"  ;
+      case GREEN        : return "Green" ;
+      case PINK         : return "Pink"  ;
    }
    throw logic_error(PROGRAM_NAME ": Color name not mapped to a string value");
 }
+*/

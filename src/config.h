@@ -13,16 +13,10 @@
 #include <climits>
 
 /// A grammatically correct title for the program
-#define PROGRAM_TITLE "Animal Farm 1"
+#define PROGRAM_TITLE "Animal Farm 2"
 
-/// A short-title for the program (used for error messages)
-#define PROGRAM_NAME  "animalfarm1"
-
-/// The maximum number of cats the database can hold
-#define MAX_CATS (1024)
-
-/// A marker indicating a bad cat
-#define BAD_CAT UINT_MAX
+/// A short-title for the program (used for console messages)
+#define PROGRAM_NAME  "animalfarm2"
 
 /// A gender... for educational use only.  This is not intended to be
 /// inclusive of all possible genders
@@ -40,4 +34,7 @@ const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
 
 /// The license number for an animal
 typedef unsigned long long License ;
-const License UNKNOWN_LICENSE = 0 ;  /// Set when the license number is unknown
+const License UNKNOWN_LICENSE = 0 ;  ///< Set when the license number is unknown
+
+/// The datatype for the number of cats in the database
+typedef size_t NumCats ;

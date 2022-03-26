@@ -24,7 +24,7 @@
 	                           }
 
 
-
+/*
 bool updateCatName( const size_t index, const char* name ) {
    CHECK_INDEX( index )
 
@@ -57,7 +57,7 @@ bool fixCat( const size_t index ) {
    // before we tinker with it
 
    // Do the deed
-   cats[index].isFixed = true ;
+   cats[index].amIfixed = true ;
 
    assert( validateDatabase() == true ) ;  // Verify database is healthy
    // after we tinker with it
@@ -145,3 +145,4 @@ bool updateLicense( const size_t index, const unsigned long long license ) {
 
    return true ;
 }
+*/

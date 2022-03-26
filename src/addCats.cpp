@@ -17,7 +17,7 @@
 #include "catDatabase.h"
 #include "reportCats.h"
 
-
+/*
 /// Scan the database looking for the cat.  If it's there, return true.
 bool isCatInDatabase( const char* name ) {
    for( size_t i = 0 ; i < numCats ; i++ ) {
@@ -36,7 +36,7 @@ bool isCatInDatabase( const char* name ) {
 unsigned int addCat( const char*              name
         ,const enum Gender        gender
         ,const enum Breed         breed
-        ,const bool               isFixed
+        ,const bool               amIfixed
         ,const float              weight
         ,const enum Color         collarColor1
         ,const enum Color         collarColor2
@@ -53,7 +53,7 @@ unsigned int addCat( const char*              name
    }
 
    if( isCatInDatabase( name ) ) {
-      fprintf( stderr, "%s: Cat name [%s] is already in the database.\n", PROGRAM_NAME, name ) ;
+      fprintf( stderr, "%s: CatStruct name [%s] is already in the database.\n", PROGRAM_NAME, name ) ;
       return BAD_CAT ;
    }
 
@@ -78,7 +78,7 @@ unsigned int addCat( const char*              name
    strncpy( cats[catIndex].name, name, MAX_CAT_NAME ) ;
    cats[catIndex].gender       = gender  ;
    cats[catIndex].breed        = breed   ;
-   cats[catIndex].isFixed      = isFixed ;
+   cats[catIndex].amIfixed      = amIfixed ;
    cats[catIndex].weight       = weight  ;
    cats[catIndex].collarColor1 = collarColor1 ;
    cats[catIndex].collarColor2 = collarColor2 ;
@@ -96,3 +96,5 @@ unsigned int addCat( const char*              name
 
    return catIndex ;
 }
+
+*/

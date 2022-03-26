@@ -13,45 +13,16 @@
 #include <cstddef>   // For the size_t datatype
 
 #include "config.h"
-
-/// The maximum size of a cat's name
-#define MAX_CAT_NAME (50)
-
-/// A gender... for educational use only.  This is not intended to be
-/// inclusive of all possible genders
-enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
-
-/// A breed of cat
-enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
-
-/// A color.  Can be used in many places.
-enum Color  { BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
+#include "Cat.h"
 
 
-/// Hold all of the information about a cat
-struct Cat {
-   char               name[MAX_CAT_NAME] ;  ///< The name of the cat
-   enum Gender        gender ;              ///< The gender of the cat
-   enum Breed         breed ;               ///< The breed of the cat
-   bool               isFixed ;             ///< True if the cat is fixed
-   float              weight ;              ///< The weight of the cat.  Must
-                                            ///  be >0 or -1 if unknown.
-   enum Color         collarColor1 ;        ///< The color of the first part of the collar
-   enum Color         collarColor2 ;        ///< The color of the second part of the collar
-   unsigned long long license ;             ///< The registration number for the cat.
-} ;
-
-
-/// The array that holds all of our cats
-extern struct Cat cats[MAX_CATS] ;
-
-extern size_t numCats ;  /// This points to the next available cat we can add
-/// to the database.
-
+/// The head pointer to a linked list of cats
+extern Cat* catDBheadPtr ;
 
 /// Initializes the cat database
 extern void initializeDatabase() ;
 
+/*
 /// Return true if the database is full
 extern bool isFull() ;
 
@@ -64,7 +35,7 @@ extern bool isIndexValid( const size_t index ) ;
 /// Verify the name is valid
 extern bool isNameValid( const char* name ) ;
 
-/// Verify the weight is valid
+/// Verify the Weight is valid
 extern bool isWeightValid( const float weight ) ;
 
 /// Verify the cat collars are valid
@@ -75,3 +46,4 @@ extern void wipeCat( const size_t index ) ;
 
 /// Swap the cats in the indexes
 extern bool swapCat( const size_t a, const size_t b ) ;
+*/

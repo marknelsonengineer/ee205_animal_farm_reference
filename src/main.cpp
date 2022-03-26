@@ -3,9 +3,9 @@
 /// @brief  ee205_lab08d_animal_farm_1_to_clion - EE 205 - Spr 2022
 ///
 /// Orchestrates the entire program:
-///    Starting Animal Farm 1
+///    Starting Animal Farm 2
 /// ...and end by printing
-///    Done with Animal Farm 1
+///    Done with Animal Farm 2
 ///
 /// @file main.cpp
 /// @version 1.0
@@ -17,6 +17,7 @@
 #include <cstdio>
 #include <cstdlib>  // For EXIT_SUCCESS / EXIT_FAILURE
 #include <cassert>  // For assert()
+#include <cstring>  // For strcmp()
 
 #include "config.h"
 #include "catDatabase.h"
@@ -42,6 +43,23 @@ int main() {
 
    initializeDatabase() ;
 
+   #ifdef DEBUG
+      // Verify that a cat's default values are set
+      Cat testCat = Cat();
+      assert( testCat.getName() != NULL ) ;
+      assert( strcmp( testCat.getName(), "" ) == 0 ) ;
+      assert( testCat.getGender() == UNKNOWN_GENDER ) ;
+      assert( testCat.getBreed() == UNKNOWN_BREED ) ;
+      assert( testCat.isFixed() == false ) ;
+      assert( testCat.getWeight() == UNKNOWN_WEIGHT ) ;
+      assert( testCat.getCollarColor1() == UNKNOWN_COLOR ) ;
+      assert( testCat.getCollarColor2() == UNKNOWN_COLOR ) ;
+      assert( testCat.getLicense() == UNKNOWN_LICENSE ) ;
+
+      testCat.print() ;
+      assert( !testCat.validate() ) ;  // The default cat is invalid
+   #endif
+/*
    assert( addCat( "Loki",  MALE,           PERSIAN,    true,   8.5, BLACK, WHITE, 101 ) != BAD_CAT ) ;
    assert( addCat( "Milo",  MALE,           MANX,       true,   7.0, BLACK, RED,   102 ) != BAD_CAT ) ;
    assert( addCat( "Bella", FEMALE,         MAINE_COON, true,  18.2, BLACK, BLUE,  103 ) != BAD_CAT ) ;
@@ -60,7 +78,7 @@ int main() {
 		assert( addCat( ILLEGAL_NAME, UNKNOWN_GENDER, SHORTHAIR,  false, 19.0, WHITE, BLUE, 108 ) == BAD_CAT ) ;
 		// Test for duplicate cat name
 		assert( addCat( "Chili", UNKNOWN_GENDER, SHORTHAIR,  false, 0, WHITE, GREEN, 109 ) == BAD_CAT ) ;
-		// Test for weight <= 0
+		// Test for Weight <= 0
 		assert( addCat( "Neo", UNKNOWN_GENDER, SHORTHAIR,  false, 0, WHITE, PINK, 110 ) == BAD_CAT ) ;
 		// Test same collar colors
       assert( addCat( "Neo", UNKNOWN_GENDER, SHORTHAIR,  false, 3, WHITE, WHITE, 111 ) == BAD_CAT ) ;
@@ -88,7 +106,7 @@ int main() {
 		assert( updateCatName( testCat, ILLEGAL_NAME ) == false ) ;
 		assert( printCat( testCat )) ;
 
-		// Test setting an illegal cat weight
+		// Test setting an illegal cat Weight
 		assert( updateCatWeight( testCat, -1 ) == false ) ;
 
 		// Test setting an illegal cat collar (both colors are the same)
@@ -126,7 +144,7 @@ int main() {
 
    deleteAllCats() ;
    printAllCats() ;
-
+*/
    printf( "Done with %s\n", PROGRAM_TITLE ) ;
 
    return( EXIT_SUCCESS ) ;

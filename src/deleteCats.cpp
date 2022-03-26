@@ -16,7 +16,7 @@
 #include "deleteCats.h"
 #include "catDatabase.h"
 
-
+/*
 bool deleteCat( const size_t index ) {
    if( !isIndexValid( index ) ) {
       fprintf( stderr, "%s: %s(): Bad cat!\n", PROGRAM_NAME, __FUNCTION__ ) ;
@@ -42,7 +42,7 @@ bool deleteCat( const size_t index ) {
    // after deleting
 
 #ifdef DEBUG
-   printf( "%s: %s: Cat [%lu] has been deleted.  There are [%lu] in the database.\n", PROGRAM_NAME, __FUNCTION__, index, numCats ) ;
+   printf( "%s: %s: CatStruct [%lu] has been deleted.  There are [%lu] in the database.\n", PROGRAM_NAME, __FUNCTION__, index, numCats ) ;
 #endif
 
    return true ;
@@ -63,3 +63,4 @@ bool deleteAllCats() {
 
    return true ;
 }
+*/

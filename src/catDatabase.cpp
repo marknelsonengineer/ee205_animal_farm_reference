@@ -9,25 +9,41 @@
 /// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstring>   // For memset
-#include <cassert>   // For the assert function
+#include <cstring>    // For memset
+#include <cassert>    // For the assert function
 #include <cstdio>
+#include <stdexcept>  // For logic_error
+#include <iostream>
 
 #include "config.h"
 #include "catDatabase.h"
+#include "Cat.h"
 #include "reportCats.h"
 
+using namespace std;
 
-/// The array that holds all of our cats
-struct Cat cats[MAX_CATS];
-
-size_t numCats = 0 ;  ///< This is top of the cat array
+/// The head pointer to a linked list of cats
+Cat* catDBheadPtr = nullptr ;
 
 
+/// Initialize the catabase
+void initializeDatabase() {
+   if( catDBheadPtr != nullptr ) {
+      throw logic_error( "@todo delete the old database...") ;
+   }
+
+   #ifdef DEBUG
+      cout << PROGRAM_NAME << ": Database initialized" << endl ;
+   #endif
+}
+
+
+
+/*
 /// Zeros out a cat's information from the database
 /// No bounds checking
 void wipeCatInternal( const size_t index ) {
-   memset( &cats[index], 0, sizeof( struct Cat ) );
+   memset( &cats[index], 0, sizeof( struct CatStruct ) );
 }
 
 
@@ -36,14 +52,6 @@ void wipeCat( const size_t index ) {
    assert( isIndexValid( index ) ) ;
 
    wipeCatInternal( index ) ;
-}
-
-
-/// Initialize the catabase
-void initializeDatabase() {
-   numCats = 0 ;  // Zero out the cats in the database
-
-   memset( &cats, 0, sizeof( cats ) ) ;
 }
 
 
@@ -152,7 +160,7 @@ bool isNameValid( const char* name ) {
    }
 
    if( strlen( name ) > MAX_CAT_NAME - 1 ) { // The name is too large...
-      fprintf( stderr, "%s: Cat name [%s] is too long.  The maximum allowed length is [%d]\n", PROGRAM_NAME, name, MAX_CAT_NAME - 1 ) ;
+      fprintf( stderr, "%s: CatStruct name [%s] is too long.  The maximum allowed length is [%d]\n", PROGRAM_NAME, name, MAX_CAT_NAME - 1 ) ;
       return false ;
    }
 
@@ -160,10 +168,10 @@ bool isNameValid( const char* name ) {
 }
 
 
-/// Verify the weight is valid
+/// Verify the Weight is valid
 bool isWeightValid( const float weight ) {
    if( weight <= 0 ) {
-      fprintf( stderr, "%s: Cat's weight is [%f].  It must be > 0\n", PROGRAM_NAME, weight ) ;
+      fprintf( stderr, "%s: CatStruct's Weight is [%f].  It must be > 0\n", PROGRAM_NAME, weight ) ;
       return false ;
    }
 
@@ -204,11 +212,12 @@ bool swapCat( const size_t a, const size_t b ) {
    }
 
    // Swap a and b
-   struct Cat oldCat ;
+   struct CatStruct oldCat ;
 
-   memcpy( &oldCat,  &cats[a], sizeof( struct Cat ) );
-   memcpy( &cats[a], &cats[b], sizeof( struct Cat ) );
-   memcpy( &cats[b], &oldCat,  sizeof( struct Cat ) );
+   memcpy( &oldCat,  &cats[a], sizeof( struct CatStruct ) );
+   memcpy( &cats[a], &cats[b], sizeof( struct CatStruct ) );
+   memcpy( &cats[b], &oldCat,  sizeof( struct CatStruct ) );
 
    return true ;
 }
+*/
