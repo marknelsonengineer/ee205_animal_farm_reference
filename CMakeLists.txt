@@ -73,7 +73,10 @@ if (DOXYGEN_FOUND)
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )
 
-   file(COPY images DESTINATION ${DOXYGEN_OUTPUT_DIRECTORY}/html)
+   add_custom_command(TARGET doc
+           POST_BUILD
+           COMMAND rsync --recursive --mkpath --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
+           )
 
 else (DOXYGEN_FOUND)
    message("Doxygen needs to be installed to generate the doxygen documentation")
