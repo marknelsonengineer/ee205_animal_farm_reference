@@ -8,7 +8,7 @@
 ///    Done with Animal Farm 2
 ///
 /// @file main.cpp
-/// @version 1.0
+/// @version 2.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   14_Mar_2022
