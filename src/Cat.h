@@ -54,20 +54,21 @@ public:  //////////////////////////// Constructors /////////////////////////////
    /// Create a cat with the minimum fields necessary to have a valid cat
    Cat( const char *newName, const Gender newGender, const Breed newBreed, const Weight newWeight );
 
+   /// Zero out all of the member data (it's super secret!)
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   const char *getName() const noexcept ;  ///< Get the Cat's name
-   void setName( const char* newName );  ///< Set the Cat's name.  The name
-                                         ///< must not be empty and it must
-                                         ///< be <= MAX_CAT_NAME in length.
+   const char *getName() const noexcept ; ///< Get the Cat's name
+   void setName( const char* newName );   ///< Set the Cat's name.  The name
+                                          ///< must not be empty and it must
+                                          ///< be <= MAX_CAT_NAME in length.
 
    Gender getGender() const noexcept ;  ///< Get the Cat's gender
    Breed getBreed() const noexcept ;    ///< Get the Cat's breed
    bool isFixed() const noexcept ;      ///< Return true if the cat is fixed
+   void fixCat() noexcept ;             ///< Spay or neuter the cat
    Weight getWeight() const noexcept ;  ///< The weight of the cat or -1 if unknown
-   void setWeight(Weight newWeight) ;  ///< Set the newWeight of the cat
-   void fixCat() noexcept ;   ///< Spay or neuter the cat
+   void setWeight(Weight newWeight) ;   ///< Set the newWeight of the cat
 
 
 protected:  ////////////////////// Protected Methods ///////////////////////////

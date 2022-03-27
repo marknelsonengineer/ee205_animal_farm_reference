@@ -77,7 +77,7 @@ if (DOXYGEN_FOUND)
    add_custom_command(TARGET doc
            POST_BUILD
            COMMAND rsync --recursive --mkpath --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
-           COMMAND rsync --recursive --update --delete --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/animalFarm
+           COMMAND rsync --recursive --update --delete --checksum --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/animalFarm
            COMMENT "Push files to UHUnix"
            )
 

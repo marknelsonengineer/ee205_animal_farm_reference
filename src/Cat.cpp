@@ -42,8 +42,6 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
    assert( validate() ) ;
 }
 
-
-/// Zero out all of the member data (it's super secret!)
 Cat::~Cat() {
    zeroOutMemberData() ;
 }
