@@ -2,7 +2,7 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab10d_animal_farm_3 - EE 205 - Spr 2022
 ///
-/// @file Node.h
+/// @file SinglyLinkedList.h
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
@@ -10,19 +10,23 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include "Node.h"
 
-class Node {
-   friend class SinglyLinkedList;
-   friend class DoublyLinkedList;
-
-
+class SinglyLinkedList {
 protected:
-   Node* next = nullptr;
-   Node* prev = nullptr;
-
-   bool compareByAddress ( const Node* node1, const Node* node2 ) ;
+   Node* head = nullptr;
+   unsigned int count = 0;
 
 public:
-   void dump() const;
-   virtual bool operator>(const Node& rightSide);
-}; // class Node
+   const bool empty() const ;
+   void push_front( Node* newNode );
+   Node* pop_front() ;
+   unsigned int size() const;
+
+   Node* get_first() const;
+   Node* get_next( const Node* currentNode ) const ;
+
+}; // class SingleLinkedList
+
+
+

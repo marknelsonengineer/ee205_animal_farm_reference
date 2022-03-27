@@ -11,6 +11,7 @@
 #pragma once
 
 #include "config.h"
+#include "Node.h"
 
 
 /// The maximum size of a cat's name
@@ -30,7 +31,7 @@
 /// @todo Refactor name to string type and implement space-trimming.
 /// @todo Refactor Weight to its own class
 /// @todo Refactor Gender and Breed to enum classes
-class Cat {
+class Cat : public Node {
 protected:  ///////////////////////// Member Variables /////////////////////////
    char        name[MAX_CAT_NAME] ;  ///< The name of the cat
    enum Gender gender ;              ///< The gender of the cat
