@@ -11,10 +11,10 @@
 #pragma once
 
 /// A grammatically correct title for the program
-#define PROGRAM_TITLE "Animal Farm 2"
+#define PROGRAM_TITLE "Animal Farm 3"
 
 /// A short-title for the program (used for console messages)
-#define PROGRAM_NAME  "animalfarm2"
+#define PROGRAM_NAME  "animalfarm3"
 
 /// A gender... for educational use only.  This is not intended to be
 /// inclusive of all possible genders
