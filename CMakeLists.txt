@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ee205_lab10d_animal_farm_2
-        VERSION 2.0
+project(ee205_lab10d_animal_farm_3
+        VERSION 3.0
         DESCRIPTION "All animals are equal"
         LANGUAGES CXX )
 
@@ -24,7 +24,7 @@ find_package(Doxygen
 if (DOXYGEN_FOUND)
    message(STATUS "Generating documentation using Doxygen")
 
-   set(DOXYGEN_PROJECT_NUMBER "2.0")
+   set(DOXYGEN_PROJECT_NUMBER "3.0")
    set(DOXYGEN_PROJECT_BRIEF "All animals are equal")
    set(DOXYGEN_GENERATE_HTML YES)
    set(DOXYGEN_PROJECT_LOGO "images/animal_farm_logo.jpg")
@@ -77,7 +77,7 @@ if (DOXYGEN_FOUND)
    add_custom_command(TARGET doc
            POST_BUILD
            COMMAND rsync --recursive --mkpath --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
-           COMMAND rsync --recursive --update --delete --checksum --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/animalFarm
+           COMMAND rsync --recursive --update --delete --checksum --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
            COMMENT "Push files to UHUnix"
            )
 
@@ -87,4 +87,4 @@ endif (DOXYGEN_FOUND)
 
 message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
-add_executable(ee205_lab10d_animal_farm_2 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h)
+add_executable(ee205_lab10d_animal_farm_3 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h)
