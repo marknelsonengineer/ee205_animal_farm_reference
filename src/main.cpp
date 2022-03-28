@@ -26,6 +26,7 @@
 #include "addCats.h"
 #include "reportCats.h"
 #include "deleteCats.h"
+#include "SinglyLinkedList.h"
 
 using namespace std ;
 
@@ -42,6 +43,7 @@ int main() {
    cout << "Starting " << PROGRAM_TITLE << endl ;
 
    initializeDatabase() ;
+   SinglyLinkedList catDB ;
 
    #ifdef DEBUG
    {
@@ -111,21 +113,14 @@ int main() {
    }
    #endif
 
-   bool result ;
-   result = addCat( new Cat( "Loki", MALE, PERSIAN, 1.0 )) ;
-   assert( result ) ;
-   if( !result ) throw logic_error (PROGRAM_NAME ": addCat() failed" ) ;
-   result = addCat( new Cat( "Milo", MALE, MANX , 1.1 )) ;
-   assert( result ) ;
-   result = addCat( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 )) ;
-   assert( result ) ;
-   result = addCat( new Cat( "Kali", FEMALE, SHORTHAIR, 1.3 )) ;
-   assert( result ) ;
-   result = addCat( new Cat( "Trin", FEMALE, MANX, 1.4 )) ;
-   assert( result ) ;
-   result = addCat( new Cat( "Chili", MALE, SHORTHAIR, 1.5 )) ;
-   assert( result ) ;
+   catDB.push_front( new Cat( "Loki", MALE, PERSIAN,       1.0 ) ) ;
+   catDB.push_front( new Cat( "Milo", MALE, MANX,          1.1 ) ) ;
+   catDB.push_front( new Cat( "Bella", FEMALE, MAINE_COON, 1.2 ) ) ;
+   catDB.push_front( new Cat( "Kali", FEMALE, SHORTHAIR,   1.3 ) ) ;
+   catDB.push_front( new Cat( "Trin", FEMALE, MANX,        1.4 ) ) ;
+   catDB.push_front( new Cat( "Chili", MALE, SHORTHAIR,    1.5 ) ) ;
 
+   /*
    #ifdef DEBUG
    {
       // Test finding a cat...
@@ -143,12 +138,14 @@ int main() {
       bella = nullptr;
    }
    #endif
+   */
 
-   printAllCats() ;
+   catDB.validate() ;
+   catDB.dump() ;
 
-   deleteAllCats() ;
+   // deleteAllCats() ;
 
-   printAllCats() ;
+   // printAllCats() ;
 
    cout << "Done with " << PROGRAM_TITLE ;
 
