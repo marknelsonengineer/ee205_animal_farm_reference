@@ -53,7 +53,7 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    bool compareByAddress ( const Node* node1, const Node* node2 ) ;
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool dump() const;  ///< Output the contents of this object
+   virtual bool dump() const;  ///< Output the contents of this object
 
    /// Compare two nodes.
    virtual bool operator>(const Node& rightSide);
