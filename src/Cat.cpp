@@ -12,7 +12,6 @@
 #include <cstring>
 #include <stdexcept>
 #include <iostream>
-#include <iomanip>
 #include <cassert>
 
 #include "Cat.h"
@@ -75,29 +74,33 @@ Weight Cat::getWeight() const noexcept {
    return weight;
 }
 
-/// Format a line for printing the members of a class
-#define FORMAT_LINE( className, member ) cout << setw(8) << (className) << setw(20) << (member) << setw(52)
-
-/// @returns true if everything worked correctly.  false if something goes
+/// @returns true if everything worked correctly.  false if something went
 ///          wrong
-bool Cat::print() const noexcept {
+///
+/// #### Sample Output
+///
+///     Cat     name                Kali
+///     Cat     gender              Female
+///     Cat     breed               Shorthair
+///     Cat     isFixed             false
+///     Cat     weight              1.3
+///
+bool Cat::dump() const noexcept {
    assert( validate() ) ;
 
-   cout << setw(80) << setfill( '=' ) << "" << endl ;
-   cout << setfill( ' ' ) ;
-   cout << left ;
-   cout << boolalpha ;
-   FORMAT_LINE( "Cat", "name" )         << getName()   << endl ;
-   FORMAT_LINE( "Cat", "gender" )       << genderName( getGender() ) << endl ;
-   FORMAT_LINE( "Cat", "breed" )        << breedName( getBreed() )   << endl ;
-   FORMAT_LINE( "Cat", "isFixed" )      << isFixed()   << endl ;
-   FORMAT_LINE( "Cat", "weight" )       << getWeight() << endl ;
+   Node::dump() ;
+
+   FORMAT_LINE( "Cat", "name" )    << getName()                 << endl ;
+   FORMAT_LINE( "Cat", "gender" )  << genderName( getGender() ) << endl ;
+   FORMAT_LINE( "Cat", "breed" )   << breedName( getBreed() )   << endl ;
+   FORMAT_LINE( "Cat", "isFixed" ) << isFixed()                 << endl ;
+   FORMAT_LINE( "Cat", "weight" )  << getWeight()               << endl ;
 
    return true ;
 }
 
 /// This method checks the Cat object.  If something is not right, it will
-/// print out a message and stop the validation.  It will not throw an
+/// dump out a message and stop the validation.  It will not throw an
 /// exception.
 bool Cat::validate() const noexcept {
    try {

@@ -13,12 +13,12 @@ The project's home page (hosted by GitHub) is [here](https://github.com/marknels
 The documentation for the source code (hosted by UH) is [here](http://www2.hawaii.edu/~marknels/ee205/animalFarm/index.html)
 
 #### Roadmap
-| Animal Farm Version | Description                                                                                 |
-|---------------------|---------------------------------------------------------------------------------------------|
-| Animal Farm 0       | An array-based database of cats, where each attribute is an array.                          |
-| Animal Farm 1       | An array-based database of cats, where each a cat's attributes are collected in a `struct`. |
-| Animal Farm 2       | A singly linked-list database of cats, where each cat is an object.                         |
-| Animal Farm 3       | A database of mammals...                                                                    |
-| Animal Farm 4       | Create class factories                                                                      |
-| Animal Farm 5       | A database of animals                                                                       |
-| Animal Farm 6       | A full zoo of animals                                                                       |
+| Animal Farm Version | Description                                                                                    |
+|---------------------|------------------------------------------------------------------------------------------------|
+| Animal Farm 0       | An array-based database of cats, where each attribute is an array.                             |
+| Animal Farm 1       | An array-based database of cats, where each a cat's attributes are collected in a `struct`.    |
+| Animal Farm 2       | A procedural singly linked-list database of cats, where each cat is an object.                 |
+| Animal Farm 3       | A collection class that implements a singly linked database of cats.                           |
+| Animal Farm 4       | A collection class that implements a doubly linked list of cats.  Enhance the class factories. |
+| Animal Farm 5       | A database of animals                                                                          |
+| Animal Farm 6       | A full zoo of animals                                                                          |

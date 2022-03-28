@@ -87,4 +87,4 @@ endif (DOXYGEN_FOUND)
 
 message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
-add_executable(ee205_lab10d_animal_farm_3 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h src/Node.h src/DoublyLinkedList.cpp src/DoublyLinkedList.h SinglyLinkedList.cpp SinglyLinkedList.h src/Node.cpp src/Node.h)
+add_executable(ee205_lab10d_animal_farm_3 src/main.cpp src/config.h src/catDatabase.cpp src/catDatabase.h src/addCats.cpp src/addCats.h src/deleteCats.cpp src/deleteCats.h src/reportCats.cpp src/reportCats.h src/Cat.cpp src/Cat.h src/Node.h src/DoublyLinkedList.cpp src/DoublyLinkedList.h src/SinglyLinkedList.cpp src/SinglyLinkedList.h src/Node.cpp src/Node.h)

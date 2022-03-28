@@ -2,6 +2,8 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab10d_animal_farm_3 - EE 205 - Spr 2022
 ///
+/// A generic SinglyLinkedList collection class.
+///
 /// @file SinglyLinkedList.h
 /// @version 1.0
 ///
@@ -12,19 +14,30 @@
 
 #include "Node.h"
 
+/// A generic SinglyLinkedList collection class.
+///
 class SinglyLinkedList {
-protected:
-   Node* head = nullptr;
-   unsigned int count = 0;
+protected:  ////////////////////// Protected Members ///////////////////////////
+   Node* head = nullptr ;     ///< The head pointer for the list
+   unsigned int count = 0 ;   ///< Maintain a count of the number of Nodes in the list
 
-public:
-   const bool empty() const ;
-   void push_front( Node* newNode );
-   Node* pop_front() ;
-   unsigned int size() const;
+public:  /////////////////////////// Public Methods ////////////////////////////
+   bool empty() const noexcept ;         ///< `true` if the list is empty
+   unsigned int size() const noexcept ;  ///< Return the number of Nodes in the list
 
-   Node* get_first() const;
-   Node* get_next( const Node* currentNode ) const ;
+   void  push_front( Node* newNode ) noexcept ;  ///< Insert `newNode` to the beginning of the list
+   Node* pop_front() noexcept ;                  ///< Remove and return the first Node in the list
+
+   void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
+
+   bool isIn( Node* aNode ) const noexcept ; ///< `true` if `aNode` is in the list
+   bool isSorted() const noexcept ;          ///< `true` if the list is sorted
+
+   Node* get_first() const noexcept ;  ///< Get the first Node in the list
+   static Node* get_next( const Node* currentNode ) noexcept ;  ///< Get the next Node in the list
+
+   void dump() const noexcept ;      ///< Output the contents of this container
+   bool validate() const noexcept ;  ///< Check to see if the container is valid
 
 }; // class SingleLinkedList
 

@@ -31,7 +31,7 @@ bool printAllCats() {
    assert( validateDatabase() ) ;
 
    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
-      iCat->print() ;
+      iCat->dump() ;
       numCats++ ;
    }
 #ifdef DEBUG

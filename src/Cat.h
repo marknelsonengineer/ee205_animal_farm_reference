@@ -73,12 +73,12 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
-public:
+   friend int main();                 // The tests need to use these
    void setGender(Gender newGender);  ///< Set the cat's gender
-   void setBreed(Breed newBreed);  ///< Set the cat's breed
+   void setBreed(Breed newBreed);     ///< Set the cat's breed
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool print() const noexcept ;    ///< Print a cat
+   bool dump() const noexcept ;     ///< Output the contents of this object (and its parents)
    bool validate() const noexcept;  ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////

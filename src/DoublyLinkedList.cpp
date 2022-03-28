@@ -14,27 +14,28 @@
 #include <cassert>
 #include <iostream>
 
+#include "config.h"
 #include "DoublyLinkedList.h"
 
 using namespace std;
 
-bool DoublyLinkedList::empty() const {
-   return (head == nullptr);
+/// @return `true` if the list is empty.  `false` if the list has Nodes in it.
+bool DoublyLinkedList::empty() const noexcept {
+   return (head == nullptr) ;
+}
+
+/// @return The number of Nodes in the list
+unsigned int DoublyLinkedList::size() const noexcept {
+   return count ;
 }
 
 
-// Replaced by an inline function in list.hpp
-//
-//unsigned int DoublyLinkedList::size() const {
-//	return count;
-//}
-
-
-void DoublyLinkedList::push_front(Node *newNode) {
+/// @param newNode The node to add to the list
+void DoublyLinkedList::push_front(Node *newNode) noexcept {
    if( newNode == nullptr )
-      return;  /// If newNode is nothing, then quietly return
+      return;  /// If newNode is `nullptr`, then quietly return
 
-   validate();
+   assert( validate() );
 
    // GENERAL CASE:  The list is not empty
    if( head != nullptr ) {
@@ -50,15 +51,16 @@ void DoublyLinkedList::push_front(Node *newNode) {
    }
 
    count++;
-   validate();
-}
+   assert( validate() );
+} // push_front
 
 
-void DoublyLinkedList::push_back(Node *newNode) {
+/// @param newNode The node to add to the list
+void DoublyLinkedList::push_back(Node *newNode) noexcept {
    if( newNode == nullptr )
-      return;  /// If newNode is nothing, then quietly return
+      return;  /// If newNode is `nullptr`, then quietly return
 
-   validate();
+   assert( validate() );
 
    // GENERAL CASE:  The list is not empty
    if( tail != nullptr ) {
@@ -74,15 +76,16 @@ void DoublyLinkedList::push_back(Node *newNode) {
    }
 
    count++;
-   validate();
-}
+   assert( validate() );
+} // push_back
 
 
-Node *DoublyLinkedList::pop_front() {
+/// @return The first Node in the list or `nullptr` if the list is empty
+Node *DoublyLinkedList::pop_front() noexcept {
    if( head == nullptr )  // SPECIAL CASE:  The list is empty
       return nullptr;
 
-   validate();
+   assert( validate() );
 
    Node* returnValue = head;
 
@@ -95,21 +98,22 @@ Node *DoublyLinkedList::pop_front() {
       tail = nullptr;
    }
 
-   returnValue->next = nullptr;
-   returnValue->prev = nullptr;
+   returnValue->next = nullptr;    // Unlink the next pointer
+   returnValue->prev = nullptr;    // Unlink the prev pointer
 
    count--;
-   validate();
+   assert( validate() );
 
    return returnValue;
-}
+} // pop_front
 
 
-Node *DoublyLinkedList::pop_back() {
+/// @return The last Node in the list or `nullptr` if the list is empty
+Node *DoublyLinkedList::pop_back() noexcept {
    if( tail == nullptr )  // SPECIAL CASE:  The list is empty
       return nullptr;
 
-   validate();
+   assert( validate() );
 
    Node* returnValue = tail;
 
@@ -126,29 +130,30 @@ Node *DoublyLinkedList::pop_back() {
    returnValue->prev = nullptr;
 
    count--;
-   validate();
+   assert( validate() );
 
    return returnValue;
-}
+} // pop_back
 
 
+/// @param currentNode Insert `newNode` after this node.  If it's `nullptr` and
+///                    the list is empty, call `push_front( newNode )`
+/// @param newNode The node to add to the list.  This can not be `nullptr`
 void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    // SPECIAL CASE:  The list is empty
    if( currentNode == nullptr && head == nullptr ) {
-      push_front( newNode );
+      push_front( newNode );   // We already know how to do this...
       return;
    }
 
-   //  LOGIC ERROR:  Can't have a currentNode if the list is empty!
-   /// @todo consider throwing an exception
+   /// @throws invalid_argument If `currentNode` is not null and the list is empty
    if( currentNode != nullptr && head == nullptr) {
-      assert( false );
+      throw( invalid_argument( PROGRAM_NAME ": Can't have a currentNode if the list is empty!" ));
    }
 
-   //  LOGIC ERROR:  Something's not right
-   /// @todo consider throwing an exception
+   /// @throws invalid_argument If `currentNode` is `nullptr` and the list is not empty
    if( currentNode == nullptr && head != nullptr ) {
-      assert( false ) ;
+      throw( invalid_argument( PROGRAM_NAME ": Need to supply a currentNode for a non-empty list" ));
    }
 
    // At this point, currentNode != null && head != null
@@ -157,10 +162,13 @@ void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    // Now, make sure that currentNode is in the list
    assert( isIn( currentNode ));
 
+   // Make sure newNode is not null
+   assert( newNode != nullptr );
+
    // And make sure that newNode is not in the list
    assert( !isIn( newNode ));
 
-   validate();
+   assert( validate() );
 
    // GENERAL CASE:  Not inserting at the end of the list
    if( tail != currentNode ) {
@@ -172,27 +180,28 @@ void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
       push_back( newNode );
    }
 
-   validate();
-}
+   assert( validate() );
+} // insert_after
 
 
+/// @param currentNode Insert `newNode` before this node.  If it's `nullptr` and
+///                    the list is empty, call `push_front( newNode )`
+/// @param newNode The node to add to the list.  This can not be `nullptr`
 void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
    // SPECIAL CASE:  The list is empty
    if( currentNode == nullptr && head == nullptr ) {
-      push_front( newNode );
+      push_front( newNode );  // We already know how to do this...
       return;
    }
 
-   //  LOGIC ERROR:  Can't have a currentNode if the list is empty!
-   /// @todo consider throwing an exception
+   /// @throws invalid_argument If `currentNode` is not null and the list is empty
    if( currentNode != nullptr && head == nullptr) {
-      assert( false );
+      throw( invalid_argument( PROGRAM_NAME ": Can't have a currentNode if the list is empty!" ));
    }
 
-   //  LOGIC ERROR:  Something's not right
-   /// @todo consider throwing an exception
+   /// @throws invalid_argument If `currentNode` is `nullptr` and the list is not empty
    if( currentNode == nullptr && head != nullptr ) {
-      assert( false ) ;
+      throw( invalid_argument( PROGRAM_NAME ": Need to supply a currentNode for a non-empty list" ));
    }
 
    // At this point, currentNode != null && head != null
@@ -201,10 +210,13 @@ void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
    // Now, make sure that currentNode is in the list
    assert( isIn( currentNode ));
 
+   // Make sure newNode is not null
+   assert( newNode != nullptr );
+
    // And make sure that newNode is not in the list
    assert( !isIn( newNode ));
 
-   validate();
+   assert( validate() );
 
    // GENERAL CASE:  Not inserting at the beginning of the list
    if( head != currentNode ) {
@@ -216,11 +228,13 @@ void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
       push_front( newNode );
    }
 
-   validate();
-}
+   assert( validate() );
+} // insert_before
 
 
-bool DoublyLinkedList::isIn(Node *aNode) const {
+/// @param aNode Check this node to see if it's in the list
+/// @return `true` if `aNode` is in the list.  `false` if it's not.
+bool DoublyLinkedList::isIn(Node *aNode) const noexcept {
    Node* currentNode = head;
 
    while( currentNode != nullptr ) {
@@ -232,7 +246,25 @@ bool DoublyLinkedList::isIn(Node *aNode) const {
    return false;  // Never found aNode in the list
 }
 
-void DoublyLinkedList::swap(Node *node1, Node *node2) {
+
+/// This method depends on Node's > operator.
+/// @return `true` if the list is sorted.  `false` if it's not.
+bool DoublyLinkedList::isSorted() const noexcept {
+   if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
+      return true;
+
+   for( Node* i = head ; i->next != nullptr ; i = i->next ) {
+      if( *i > *i->next )  // If the previous is greater than the next
+         return false;     // ...then the list is *not* sorted
+   }
+
+   return true;  // Everything looks kosher
+}
+
+
+/// @param node1 Must not be `nullptr` and must be in the list
+/// @param node2 Must not be `nullptr` and must be in the list
+void DoublyLinkedList::swap( Node *node1, Node *node2 ) noexcept {
    assert( !empty() );
 
    assert( node1 != nullptr );
@@ -241,15 +273,16 @@ void DoublyLinkedList::swap(Node *node1, Node *node2) {
    assert( isIn( node1 ));
    assert( isIn( node2 ));
 
-   validate();
+   assert( validate() );
 
-   if( node1 == node2 ) { /// If they are the same, do nothing
+   if( node1 == node2 ) { /// If `node1` and `node2` are the same, do nothing
       return;
    }
 
-   /// @todo In the list, we need to make sure that node1 is to the left of node2
+   /// @todo In the list, we need to make sure that node1 is to the left of node2.
+   ///       If they aren't, we may be in for some unpredictable behavior.
 
-   /// @internal We will divide this into 4 separate operations... each with a general & special case
+   /// @internal We will divide this into 4 separate operations... each with a general & special case.
    Node* node1_left  = node1->prev;
    Node* node1_right = node1->next;
    Node* node2_left  = node2->prev;
@@ -291,26 +324,18 @@ void DoublyLinkedList::swap(Node *node1, Node *node2) {
       node2_left->next = node1;
    }
 
-   validate();
+   assert( validate() );
 } // swap
 
 
-/// This function depends on Node's < operator
-bool DoublyLinkedList::isSorted() const {
-   if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
-      return true;
-
-   for( Node* i = head ; i->next != nullptr ; i = i->next ) {
-      if( *i > *i->next )  // If the previous is greater than the next
-         return false;     // ...then the list is *not* sorted
-   }
-
-   return true;  // Everything looks kosher
-}
-
-
-void DoublyLinkedList::insertionSort() {
-   validate();
+/// @see https://en.wikipedia.org/wiki/Insertion_sort
+///
+/// @post `isSorted()` is `true`
+///
+/// This method depends on Node's > operator.
+///
+void DoublyLinkedList::insertionSort() noexcept {
+   assert( validate() );
 
    if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
       return;
@@ -332,31 +357,40 @@ void DoublyLinkedList::insertionSort() {
       // dump();
    }
 
-   validate();
+   assert( isSorted() ) ;
+
+   assert( validate() );
 }
 
 
-Node *DoublyLinkedList::get_first() const {
+/// @return The first node in the list.  If the list is empty, return `nullptr`.
+Node *DoublyLinkedList::get_first() const noexcept {
    return head;
 }
 
-
-Node *DoublyLinkedList::get_last() const {
+/// @return The last node in the list.  If the list is empty, return `nullptr`.
+Node *DoublyLinkedList::get_last() const noexcept {
    return tail;
 }
 
 
-Node *DoublyLinkedList::get_next(const Node *currentNode) const {
+/// @param currentNode Start here
+/// @return Return the Node that follows `currentNode` in the list
+Node *DoublyLinkedList::get_next(const Node *currentNode) noexcept {
+   assert( currentNode != nullptr ) ;
    return currentNode->next;
 }
 
 
-Node *DoublyLinkedList::get_prev(const Node *currentNode) const {
+/// @param currentNode Start here
+/// @return Return the Node that's before `currentNode` in the list
+Node *DoublyLinkedList::get_prev(const Node *currentNode) noexcept {
+   assert( currentNode != nullptr ) ;
    return currentNode->prev;
 }
 
 
-void DoublyLinkedList::dump() const {
+void DoublyLinkedList::dump() const noexcept {
    cout << "DoubleLinkedList:  head=[" << head << "]   tail=[" << tail << "]" << endl;
    for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
       cout << "  ";
@@ -365,7 +399,14 @@ void DoublyLinkedList::dump() const {
 }
 
 
-bool DoublyLinkedList::validate() const {
+/// This method checks the list.  If something is not right, it will
+/// dump out a message and stop the validation.  It will not throw an
+/// exception.
+///
+/// @note This method does not call validate() on its Nodes.
+///
+/// @return `true` if the list is healthy.  `false` if otherwise.
+bool DoublyLinkedList::validate() const noexcept {
    if( head == nullptr ) {
       assert( tail == nullptr );
       assert( count == 0 );
@@ -414,7 +455,7 @@ bool DoublyLinkedList::validate() const {
    }
    assert( count == backwardCount );
 
-   // cout << "List is valid" << endl;
+   // cout << PROGRAM_NAME ": List is valid" << endl;
 
    return true;
-}
+} // validate()

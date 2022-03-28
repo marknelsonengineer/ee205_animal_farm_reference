@@ -105,7 +105,7 @@ int main() {
       assert(testCat.getWeight() == 1.0 / 1024);
 
       assert(testCat.validate());  // The cat should now be valid
-      testCat.print() ;
+      testCat.dump() ;
 
       assert(!isCatInDatabase(&testCat)) ;
    }
