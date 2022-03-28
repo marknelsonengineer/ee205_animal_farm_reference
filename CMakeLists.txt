@@ -75,8 +75,18 @@ if (DOXYGEN_FOUND)
            )
 
    add_custom_command(TARGET doc
+           PRE_BUILD
+           COMMAND rsync --recursive --mkpath --checksum --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
+           COMMENT "Update images directory"
+           )
+
+#   set_property(DIRECTORY ${DOXYGEN_OUTPUT_DIRECTORY}
+#          APPEND
+#          PROPERTY ADDITIONAL_CLEAN_FILES
+#          )
+
+   add_custom_command(TARGET doc
            POST_BUILD
-           COMMAND rsync --recursive --mkpath --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
            COMMAND rsync --recursive --update --delete --checksum --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
            COMMENT "Push files to UHUnix"
            )
