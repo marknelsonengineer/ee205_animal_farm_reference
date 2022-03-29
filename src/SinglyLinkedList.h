@@ -25,16 +25,16 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    bool empty() const noexcept ;         ///< `true` if the list is empty
    unsigned int size() const noexcept ;  ///< Return the number of Nodes in the list
 
-   void  push_front( Node* newNode ) noexcept ;  ///< Insert `newNode` to the beginning of the list
-   Node* pop_front() noexcept ;                  ///< Remove and return the first Node in the list
+   void  push_front( Node* newNode ) ;  ///< Insert `newNode` to the beginning of the list
+   Node* pop_front() noexcept ;         ///< Remove and return the first Node in the list
 
    void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
 
-   bool isIn( Node* aNode ) const noexcept ; ///< `true` if `aNode` is in the list
-   bool isSorted() const noexcept ;          ///< `true` if the list is sorted
+   bool isIn( Node* aNode ) const ; ///< `true` if `aNode` is in the list
+   bool isSorted() const noexcept ; ///< `true` if the list is sorted
 
    Node* get_first() const noexcept ;  ///< Get the first Node in the list
-   static Node* get_next( const Node* currentNode ) noexcept ;  ///< Get the next Node in the list
+   static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the list
 
    void dump() const noexcept ;      ///< Output the contents of this container
    bool validate() const noexcept ;  ///< Check to see if the container is valid
