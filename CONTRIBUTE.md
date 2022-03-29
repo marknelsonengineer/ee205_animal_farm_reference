@@ -6,7 +6,7 @@ Contribute to Animal Farm
 - `using namespace std` in `.h` files is **NOT** OK
 - Most methods should return a `bool` to indicate success or failure.  This makes it easier to `assert()`.
 - Use `assert()` for things that should never happen and we don't really want to catch
-- Use `throw` for issues that we may want to catch, not warnings
+- Use `throw` for issues that we may want to catch, not warnings.  See [When to use assertions and when to use exceptions?](https://softwareengineering.stackexchange.com/questions/15515/when-to-use-assertions-and-when-to-use-exceptions)
 - Put 2 or 3 blank lines between methods
 - We are using `cout` now, not `printf()`
 - Messages and exceptions should be pre-pended with `PROGRAM_NAME`
