@@ -54,6 +54,7 @@ protected:  ////////////////////// Protected Members ///////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    virtual bool dump() const;  ///< Output the contents of this object
+   virtual bool validate() const noexcept;  ///< Check the Node
 
    /// Compare two nodes.
    virtual bool operator>(const Node& rightSide);

@@ -62,3 +62,12 @@ bool Node::operator>(const Node &rightSide) {
 
    return compareByAddress( this, &(Node&)rightSide );
 }
+
+/// This method checks the Node.  If something is not right, it will
+/// dump out a message and stop the validation.  It will not throw an
+/// exception.
+bool Node::validate() const noexcept {
+   ///  Nothing to validate right now.
+   ///  @todo Consider how we might validate `next` and `prev`.
+   return true;
+}
