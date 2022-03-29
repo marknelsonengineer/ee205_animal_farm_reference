@@ -29,3 +29,27 @@ enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
 /// The Weight of an animal
 typedef float Weight ;
 const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
+
+
+// Set to trace the flow of execution through this code
+// #define TRACE
+
+#ifdef TRACE
+
+/// If TRACE is defined, print a message that `functionName` is doing `operation`.
+///
+/// #### Sample Output
+/// `animalfarm3: Start push_front`
+///
+/// @param operation "Start", "End", "Throws", etc.
+/// @param functionName The name of the function
+static void TRACE_OUT( const std::string operation, const std::string functionName ) {
+   std::cout << PROGRAM_NAME << ": " << operation << " " << functionName << std::endl ;
+}
+
+   #define TRACE_START TRACE_OUT( "Start", __FUNCTION__ ) ;  ///< Print `Start` of some function
+   #define TRACE_END   TRACE_OUT( "End", __FUNCTION__ ) ;    ///< Print `End` of some function
+#else
+   #define TRACE_START  ///< If TRACE is defined, print `Start` of some function
+   #define TRACE_END    ///< If TRACE is defined, print `End` of some function
+#endif
