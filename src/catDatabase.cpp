@@ -23,45 +23,11 @@ using namespace std;
 /// The head pointer to a linked list of cats
 Cat* catDatabaseHeadPointer = nullptr ;
 
-int numberOfCats = 0 ;
 
 
-/// Initialize the catabase
-///
-/// @throws logic_error If the old database isn't empty
-void initializeDatabase() {
-   if(catDatabaseHeadPointer != nullptr ) {
-      throw logic_error( PROGRAM_NAME ": Delete the old database first") ;
-   }
-
-   assert( validateDatabase() ) ;
-
-   #ifdef DEBUG
-      cout << PROGRAM_NAME << ": Database initialized" << endl ;
-   #endif
-}
 
 
-/// Scan the database looking for a cat.
-///
-/// @todo When this becomes a collection class, make sure it's `const noexcept`
-/// @param aCat The cat to search for.  Can't be `nullptr`.
-/// @return True if aCat was found.  False if not.
-bool isCatInDatabase( const Cat* aCat ) {
-   assert( aCat != nullptr ) ;
 
-   assert( validateDatabase() ) ;
-
-   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
-      if( iCat == aCat ) {
-         return true ;
-      }
-   }
-
-   assert( validateDatabase() ) ;
-
-   return false ;  // The cat wasn't found
-}
 
 
 /// If the database is valid, this should be silent.  If the database is not
@@ -71,6 +37,7 @@ bool isCatInDatabase( const Cat* aCat ) {
 /// @todo When this becomes a collection class, make sure it's `const noexcept`
 ///
 /// @return True if the database is healthy
+/*
 extern bool validateDatabase() {
    int validCats = 0 ;
 
@@ -99,3 +66,4 @@ extern bool validateDatabase() {
 
    return true ;  // The database is healthy
 }
+*/

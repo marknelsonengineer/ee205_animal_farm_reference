@@ -23,6 +23,15 @@
 using namespace std;
 
 
+SinglyLinkedList::SinglyLinkedList() {
+   assert( validate() );
+
+   #ifdef DEBUG
+      cout << PROGRAM_NAME << ": " << __FUNCTION__ << ": initialized" << endl ;
+   #endif
+}
+
+
 /// @return `true` if the list is empty.  `false` if the list has Nodes in it.
 bool SinglyLinkedList::empty() const noexcept {
    return (head == nullptr);
@@ -264,7 +273,9 @@ bool SinglyLinkedList::validate() const noexcept {
    }
    assert( count == forwardCount );
 
-   // cout << PROGRAM_NAME ": List is valid" << endl;
+   #ifdef DEBUG
+      cout << PROGRAM_NAME ": List is valid" << endl;
+   #endif
 
    return true;
 } // validate()

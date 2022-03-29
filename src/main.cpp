@@ -42,7 +42,6 @@ using namespace std ;
 int main() {
    cout << "Starting " << PROGRAM_TITLE << endl ;
 
-   initializeDatabase() ;
    SinglyLinkedList catDB ;
 
    #ifdef DEBUG
@@ -109,7 +108,7 @@ int main() {
       assert(testCat.validate());  // The cat should now be valid
       testCat.dump() ;
 
-      assert(!isCatInDatabase(&testCat)) ;
+      // assert(!isCatInDatabase(&testCat)) ;
    }
    #endif
 

@@ -24,6 +24,7 @@ using namespace std ;
 /// @return True if the delete is successful.
 /// @throws invalid_argument if the cat is not in the database
 bool deleteCat( Cat* deleteThisCat ) {
+/*
    assert( deleteThisCat != nullptr ) ;
 
    assert( validateDatabase() ) ;
@@ -56,12 +57,15 @@ bool deleteCat( Cat* deleteThisCat ) {
    assert( validateDatabase() ) ;
 
    throw invalid_argument( PROGRAM_NAME ": Unable to delete cat.  Not in database" );
+   */
+return true;
 }
 
 
 /// @returns true if the cats were successfully deleted.
 ///          false if something bad happened
 bool deleteAllCats() {
+   /*
    // Keep deleting cats until there are no more cats...
    while(catDatabaseHeadPointer != nullptr ) {
       deleteCat(catDatabaseHeadPointer ) ;
@@ -72,6 +76,6 @@ bool deleteAllCats() {
 #ifdef DEBUG
    cout << PROGRAM_NAME << ": All cats have been deleted" << endl ;
 #endif
-
+*/
    return true ;
 }

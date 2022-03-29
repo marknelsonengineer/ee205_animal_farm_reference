@@ -15,18 +15,13 @@
 #include "Cat.h"
 
 
-/// The head pointer to a linked list of cats
-extern Cat* catDatabaseHeadPointer ;
 
-/// This is temporary and only for debugging
-/// @todo Remove when we have a proper container class
-extern int numberOfCats ;
+
+
 
 /// Initializes the cat database
 extern void initializeDatabase() ;
 
-/// Return true if aCat is in the database
-extern bool isCatInDatabase( const Cat* aCat ) ;
 
 /// Verify that the database is healthy
 extern bool validateDatabase() ;

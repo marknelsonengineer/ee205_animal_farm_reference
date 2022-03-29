@@ -21,6 +21,9 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    Node* head = nullptr ;     ///< The head pointer for the list
    unsigned int count = 0 ;   ///< Maintain a count of the number of Nodes in the list
 
+public:  ///////////////////////// Public Constructors /////////////////////////
+   SinglyLinkedList();        ///< Make a new SinglyLinkedList
+
 public:  /////////////////////////// Public Methods ////////////////////////////
    bool empty() const noexcept ;         ///< `true` if the list is empty
    unsigned int size() const noexcept ;  ///< Return the number of Nodes in the list

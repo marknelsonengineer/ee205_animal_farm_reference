@@ -22,6 +22,9 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    Node* tail = nullptr ;     ///< The tail pointer for the list
    unsigned int count = 0 ;   ///< Maintain a count of the number of Nodes in the list
 
+public:  ///////////////////////// Public Constructors /////////////////////////
+   DoublyLinkedList();        ///< Make a new DoublyLinkedList
+
 public:  /////////////////////////// Public Methods ////////////////////////////
    bool empty() const noexcept ;         ///< `true` if the list is empty
    unsigned int size() const noexcept ;  ///< Return the number of Node objects in the list

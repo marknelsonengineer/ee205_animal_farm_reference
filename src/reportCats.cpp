@@ -26,6 +26,7 @@ using namespace std;
 ///
 /// @returns true if it was successful
 bool printAllCats() {
+   /*
    int numCats = 0 ;
 
    assert( validateDatabase() ) ;
@@ -39,8 +40,9 @@ bool printAllCats() {
 #endif
 
    assert( validateDatabase() ) ;
-
+*/
    return true;
+
 }
 
 
@@ -49,8 +51,9 @@ bool printAllCats() {
 /// @param name A name to search
 /// @return The Cat or nullptr if the cat can't be found
 Cat* findCatByName( const char* name ) {
-   assert( Cat().validateName( name ) );
 
+   assert( Cat().validateName( name ) );
+/*
    // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
 
    for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
@@ -60,7 +63,7 @@ Cat* findCatByName( const char* name ) {
    }
 
    // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
-
+*/
    return nullptr ; // No name matched
 }
 
