@@ -28,6 +28,7 @@
 /// May be used as a base class for a number of data
 /// structures.  Not all of the fields/methods need to be used.
 class Node {
+   friend class List;
    friend class SinglyLinkedList;
    friend class DoublyLinkedList;
 

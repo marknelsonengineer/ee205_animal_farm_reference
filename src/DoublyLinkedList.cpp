@@ -32,19 +32,7 @@ DoublyLinkedList::DoublyLinkedList() {
 }
 
 
-/// @return `true` if the list is empty.  `false` if the list has Nodes in it.
-bool DoublyLinkedList::empty() const noexcept {
-   return (head == nullptr) ;
-}
-
-
-/// @return The number of Nodes in the list
-unsigned int DoublyLinkedList::size() const noexcept {
-   return count ;
-}
-
-
-/// @param newNode The Node to add to the list.  It must be a valid Node.
+/// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
 void DoublyLinkedList::push_front( Node *newNode ) {
    TRACE_START
@@ -66,13 +54,13 @@ void DoublyLinkedList::push_front( Node *newNode ) {
 
    assert( validate() );
 
-   // GENERAL CASE:  The list is not empty
+   // GENERAL CASE:  The List is not empty
    if( head != nullptr ) {
       newNode->next = head;
       newNode->prev = nullptr;
       head->prev = newNode;
       head = newNode;
-   } else {	 // SPECIAL CASE:  The list is empty.
+   } else {	 // SPECIAL CASE:  The List is empty.
       newNode->next = nullptr;
       newNode->prev = nullptr;
       head = newNode;
@@ -91,7 +79,7 @@ void DoublyLinkedList::push_front( Node *newNode ) {
 } // push_front
 
 
-/// @param newNode The Node to add to the list.  It must be a valid Node.
+/// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
 void DoublyLinkedList::push_back(Node *newNode) {
    TRACE_START
@@ -113,13 +101,13 @@ void DoublyLinkedList::push_back(Node *newNode) {
 
    assert( validate() );
 
-   // GENERAL CASE:  The list is not empty
+   // GENERAL CASE:  The List is not empty
    if( tail != nullptr ) {
       newNode->next = nullptr;
       newNode->prev = tail;
       tail->next = newNode;
       tail = newNode;
-   } else {	 // SPECIAL CASE:  The list is empty.
+   } else {	 // SPECIAL CASE:  The List is empty.
       newNode->next = nullptr;
       newNode->prev = nullptr;
       head = newNode;
@@ -138,22 +126,22 @@ void DoublyLinkedList::push_back(Node *newNode) {
 } // push_back
 
 
-/// @return The first Node in the list or `nullptr` if the list is empty
+/// @return The first Node in the List or `nullptr` if the List is empty
 Node *DoublyLinkedList::pop_front() noexcept {
    TRACE_START
 
-   if( head == nullptr )  // SPECIAL CASE:  The list is empty
+   if( head == nullptr )  // SPECIAL CASE:  The List is empty
       return nullptr;
 
    assert( validate() );
 
    Node* returnValue = head;
 
-   // GENERAL CASE:  The list has 2 or more nodes
+   // GENERAL CASE:  The List has 2 or more nodes
    if( head != tail ) {
       head->next->prev = nullptr;
       head = head->next;
-   } else {  // SPECIAL CASE:  This is the last node in the list
+   } else {  // SPECIAL CASE:  This is the last node in the List
       head = nullptr;
       tail = nullptr;
    }
@@ -171,22 +159,22 @@ Node *DoublyLinkedList::pop_front() noexcept {
 } // pop_front
 
 
-/// @return The last Node in the list or `nullptr` if the list is empty
+/// @return The last Node in the List or `nullptr` if the List is empty
 Node *DoublyLinkedList::pop_back() noexcept {
    TRACE_START
 
-   if( tail == nullptr )  // SPECIAL CASE:  The list is empty
+   if( tail == nullptr )  // SPECIAL CASE:  The List is empty
       return nullptr;
 
    assert( validate() );
 
    Node* returnValue = tail;
 
-   // GENERAL CASE:  The list has 2 or more nodes
+   // GENERAL CASE:  The List has 2 or more nodes
    if( head != tail ) {
       tail->prev->next = nullptr;
       tail = tail->prev;
-   } else {  // SPECIAL CASE:  This is the last node in the list
+   } else {  // SPECIAL CASE:  This is the last node in the List
       head = nullptr;
       tail = nullptr;
    }
@@ -204,18 +192,18 @@ Node *DoublyLinkedList::pop_back() noexcept {
 } // pop_back
 
 
-/// Use push_front() to add to an empty list.
+/// Use push_front() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` after this Node.  Must not be `nullptr`.
-///                    Must be in the list.
-/// @param newNode The Node to add to the list.  Must not be `nullptr`.
-///                Must not be in the list.
+///                    Must be in the List.
+/// @param newNode The Node to add to the List.  Must not be `nullptr`.
+///                Must not be in the List.
 void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    TRACE_START
 
-   /// @throws logic_error If the list is empty
+   /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty list." );
+      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -223,9 +211,9 @@ void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
    }
 
-   /// @throws logic_error If currentNode is not in the list.
+   /// @throws logic_error If currentNode is not in the List.
    if( !isIn( currentNode )) {
-      throw logic_error( PROGRAM_NAME ": currentNode must be in the list." );
+      throw logic_error( PROGRAM_NAME ": currentNode must be in the List." );
    }
 
    /// @throws invalid_argument If `newNode` is `nullptr`
@@ -238,20 +226,20 @@ void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the list.
+   /// @throws logic_error If `newNode` is already in the List.
    if( isIn( newNode )) {
-      throw logic_error( PROGRAM_NAME ": newNode is already in the list." );
+      throw logic_error( PROGRAM_NAME ": newNode is already in the List." );
    }
 
    assert( validate() );
 
-   // GENERAL CASE:  Not inserting at the end of the list
+   // GENERAL CASE:  Not inserting at the end of the List
    if( tail != currentNode ) {
       newNode->next = currentNode->next;
       currentNode->next = newNode;
       newNode->prev = currentNode;
       newNode->next->prev = newNode;
-   } else {	 // SPECIAL CASE:  Insert at the end of the list... we already know how to do that!
+   } else {	 // SPECIAL CASE:  Insert at the end of the List... we already know how to do that!
       push_back( newNode );
    }
 
@@ -266,18 +254,18 @@ void DoublyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 } // insert_after
 
 
-/// Use push_front() to add to an empty list.
+/// Use push_front() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` before this Node.  Must not be `nullptr`.
-///                    Must be in the list.
-/// @param newNode The Node to add to the list.  Must not be `nullptr`.
-///                Must not be in the list.
+///                    Must be in the List.
+/// @param newNode The Node to add to the List.  Must not be `nullptr`.
+///                Must not be in the List.
 void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
    TRACE_START
 
-   /// @throws logic_error If the list is empty
+   /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_before() with an empty list." );
+      throw logic_error( PROGRAM_NAME ": Can't insert_before() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -285,9 +273,9 @@ void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
    }
 
-   /// @throws logic_error If currentNode is not in the list.
+   /// @throws logic_error If currentNode is not in the List.
    if( !isIn( currentNode )) {
-      throw logic_error( PROGRAM_NAME ": currentNode must be in the list." );
+      throw logic_error( PROGRAM_NAME ": currentNode must be in the List." );
    }
 
    /// @throws invalid_argument If `newNode` is `nullptr`
@@ -300,20 +288,20 @@ void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the list.
+   /// @throws logic_error If `newNode` is already in the List.
    if( isIn( newNode )) {
-      throw logic_error( PROGRAM_NAME ": newNode is already in the list." );
+      throw logic_error( PROGRAM_NAME ": newNode is already in the List." );
    }
 
    assert( validate() );
 
-   // GENERAL CASE:  Not inserting at the beginning of the list
+   // GENERAL CASE:  Not inserting at the beginning of the List
    if( head != currentNode ) {
       newNode->prev = currentNode->prev;
       currentNode->prev = newNode;
       newNode->next = currentNode;
       newNode->prev->next = newNode;
-   } else {	 // SPECIAL CASE:  Insert at the beginning of the list... we already know how to do that!
+   } else {	 // SPECIAL CASE:  Insert at the beginning of the List... we already know how to do that!
       push_front( newNode );
    }
 
@@ -328,48 +316,8 @@ void DoublyLinkedList::insert_before(Node *currentNode, Node *newNode) {
 } // insert_before
 
 
-/// @param aNode Check this Node to see if it's in the list
-///
-/// @return `true` if `aNode` is in the list.  `false` if it's not.
-bool DoublyLinkedList::isIn(Node *aNode) const {
-
-   /// @throws invalid_argument If `aNode` is `nullptr`
-   if( aNode == nullptr ) {
-      throw invalid_argument( PROGRAM_NAME ": aNode must have a value." );
-   }
-
-   Node* currentNode = head;
-
-   while( currentNode != nullptr ) {
-      if( aNode == currentNode )
-         return true;
-      currentNode = currentNode->next;
-   }
-
-   return false;  // Never found aNode in the list
-}
-
-
-/// This method depends on the Node's > operator.
-///
-/// @return `true` if the list is sorted.  `false` if it's not.
-bool DoublyLinkedList::isSorted() const noexcept {
-   assert( validate() );
-
-   if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
-      return true;
-
-   for( Node* i = head ; i->next != nullptr ; i = i->next ) {
-      if( *i > *i->next )  // If the previous is greater than the next
-         return false;     // ...then the list is *not* sorted
-   }
-
-   return true;  // Everything looks kosher
-}
-
-
-/// @param node1 Must not be `nullptr` and must be in the list
-/// @param node2 Must not be `nullptr` and must be in the list
+/// @param node1 Must not be `nullptr` and must be in the List
+/// @param node2 Must not be `nullptr` and must be in the List
 void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
    assert( !empty() );
 
@@ -378,9 +326,9 @@ void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
       throw invalid_argument( PROGRAM_NAME ": Either node1 or node2 is nullptr." );
    }
 
-   /// @throws logic_error If either `node1` or `node2` are not in the list.
+   /// @throws logic_error If either `node1` or `node2` are not in the List.
    if( !isIn( node1 ) || !isIn( node2 ) ) {
-      throw logic_error( PROGRAM_NAME ": Both node1 and node2 must be in the list." );
+      throw logic_error( PROGRAM_NAME ": Both node1 and node2 must be in the List." );
    }
 
    assert( validate() );
@@ -389,7 +337,7 @@ void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
       return;
    }
 
-   /// @todo In the list, we need to make sure that node1 is to the left of node2.
+   /// @todo In the List, we need to make sure that node1 is to the left of node2.
    ///       If they aren't, we may be in for some unpredictable behavior.
 
    /// @internal We will divide this into 4 separate operations... each with a general & special case.
@@ -406,10 +354,10 @@ void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
    else                // SPECIAL CASE: The two nodes are next to each other
       node1->prev = node2;
 
-   if( node1 != head ) {  // GENERAL CASE: node1 is not the first in the list
+   if( node1 != head ) {  // GENERAL CASE: node1 is not the first in the List
       node1_left->next = node2;
       node2->prev = node1_left;
-   } else {               // SPECIAL CASE: node1 is the first in the list
+   } else {               // SPECIAL CASE: node1 is the first in the List
       head = node2;
       node2->prev = nullptr;
    }
@@ -420,10 +368,10 @@ void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
    else                // SPECIAL CASE:  The two nodes are next to each other
       node2->next = node1;
 
-   if( node2 != tail ) { // GENERAL CASE: node2 is not the last in the list
+   if( node2 != tail ) { // GENERAL CASE: node2 is not the last in the List
       node2_right->prev = node1;
       node1->next = node2_right;
-   } else {              // SPECIAL CASE: node2 is the last in the list
+   } else {              // SPECIAL CASE: node2 is the last in the List
       tail = node1;
       node1->next = nullptr;
    }
@@ -447,7 +395,7 @@ void DoublyLinkedList::swap( Node *node1, Node *node2 ) {
 void DoublyLinkedList::insertionSort() noexcept {
    assert( validate() );
 
-   if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
+   if( count <= 1 ) // SPECIAL CASE:  The List is empty or only has one item...
       return;
 
    // dump();
@@ -473,12 +421,7 @@ void DoublyLinkedList::insertionSort() noexcept {
 }
 
 
-/// @return The first Node in the list.  If the list is empty, return `nullptr`.
-Node *DoublyLinkedList::get_first() const noexcept {
-   return head;
-}
-
-/// @return The last Node in the list.  If the list is empty, return `nullptr`.
+/// @return The last Node in the List.  If the List is empty, return `nullptr`.
 Node *DoublyLinkedList::get_last() const noexcept {
    return tail;
 }
@@ -486,20 +429,7 @@ Node *DoublyLinkedList::get_last() const noexcept {
 
 /// @param currentNode Start here
 ///
-/// @return Return the Node that follows `currentNode` in the list
-Node *DoublyLinkedList::get_next( const Node *currentNode ) {
-   /// @throws invalid_argument If `currentNode` is `nullptr`
-   if( currentNode == nullptr ) {
-      throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
-   }
-
-   return currentNode->next;
-}
-
-
-/// @param currentNode Start here
-
-/// @return Return the Node that's before `currentNode` in the list
+/// @return Return the Node that's before `currentNode` in the DoublyLinkedList
 Node *DoublyLinkedList::get_prev(const Node *currentNode) {
    /// @throws invalid_argument If `currentNode` is `nullptr`
    if( currentNode == nullptr ) {
@@ -524,7 +454,7 @@ void DoublyLinkedList::dump() const noexcept {
 ///
 /// @note This method calls `validate()` on each Node.
 ///
-/// @return `true` if the list is healthy.  `false` if otherwise.
+/// @return `true` if the List is healthy.  `false` if otherwise.
 bool DoublyLinkedList::validate() const noexcept {
    if( head == nullptr ) {
       assert( tail == nullptr );
@@ -552,7 +482,7 @@ bool DoublyLinkedList::validate() const noexcept {
 
    unsigned int forwardCount = 0;
    Node* currentNode = head;
-   // Count forward through the list
+   // Count forward through the List
    while( currentNode != nullptr ) {
       assert( currentNode->validate() ) ;
       forwardCount++;
@@ -563,7 +493,7 @@ bool DoublyLinkedList::validate() const noexcept {
    }
    assert( count == forwardCount );
 
-   // Count backward through the list
+   // Count backward through the List
    unsigned int backwardCount = 0;
    currentNode = tail;
    while( currentNode != nullptr ) {

@@ -32,19 +32,7 @@ SinglyLinkedList::SinglyLinkedList() {
 }
 
 
-/// @return `true` if the list is empty.  `false` if the list has Nodes in it.
-bool SinglyLinkedList::empty() const noexcept {
-   return (head == nullptr);
-}
-
-
-/// @return The number of Nodes in the list
-unsigned int SinglyLinkedList::size() const noexcept {
-   return count ;
-}
-
-
-/// @param newNode The Node to add to the list.  It must be a valid Node.
+/// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
 void SinglyLinkedList::push_front(Node *newNode) {
    TRACE_START
@@ -66,11 +54,11 @@ void SinglyLinkedList::push_front(Node *newNode) {
 
    assert( validate() );
 
-   // GENERAL CASE:  The list is not empty
+   // GENERAL CASE:  The List is not empty
    if( head != nullptr ) {
       newNode->next = head;
       head = newNode;
-   } else {	 // SPECIAL CASE:  The list is empty.
+   } else {	 // SPECIAL CASE:  The List is empty.
       newNode->next = nullptr;
       head = newNode;
    }
@@ -87,11 +75,11 @@ void SinglyLinkedList::push_front(Node *newNode) {
 } // push_front
 
 
-/// @return The first Node in the list or `nullptr` if the list is empty
+/// @return The first Node in the List or `nullptr` if the List is empty
 Node *SinglyLinkedList::pop_front() noexcept {
    TRACE_START
 
-   if( head == nullptr )  // SPECIAL CASE:  The list is empty
+   if( head == nullptr )  // SPECIAL CASE:  The List is empty
       return nullptr;
 
    assert( validate() );
@@ -117,18 +105,18 @@ Node *SinglyLinkedList::pop_front() noexcept {
 } // pop_front
 
 
-/// Use push_front() to add to an empty list.
+/// Use push_front() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` after this Node.  Must not be `nullptr`.
-///                    Must be in the list.
-/// @param newNode The Node to add to the list.  Must not be `nullptr`.
-///                Must not be in the list.
+///                    Must be in the List.
+/// @param newNode The Node to add to the List.  Must not be `nullptr`.
+///                Must not be in the List.
 void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    TRACE_START
 
-   /// @throws logic_error If the list is empty
+   /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty list." );
+      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -136,9 +124,9 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
    }
 
-   /// @throws logic_error If currentNode is not in the list.
+   /// @throws logic_error If currentNode is not in the List.
    if( !isIn( currentNode )) {
-      throw logic_error( PROGRAM_NAME ": currentNode must be in the list." );
+      throw logic_error( PROGRAM_NAME ": currentNode must be in the List." );
    }
 
    /// @throws invalid_argument If `newNode` is `nullptr`
@@ -151,9 +139,9 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the list.
+   /// @throws logic_error If `newNode` is already in the List.
    if( isIn( newNode )) {
-      throw logic_error( PROGRAM_NAME ": newNode is already in the list." );
+      throw logic_error( PROGRAM_NAME ": newNode is already in the List." );
    }
 
    assert( validate() );
@@ -174,65 +162,6 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 } // insert_after
 
 
-
-/// @param aNode Check this Node to see if it's in the list
-///
-/// @return `true` if `aNode` is in the list.  `false` if it's not.
-bool SinglyLinkedList::isIn(Node *aNode) const {
-
-   /// @throws invalid_argument If `aNode` is `nullptr`
-   if( aNode == nullptr ) {
-      throw invalid_argument( PROGRAM_NAME ": aNode must have a value." );
-   }
-
-   Node* currentNode = head;
-
-   while( currentNode != nullptr ) {
-      if( aNode == currentNode )
-         return true;
-      currentNode = currentNode->next;
-   }
-
-   return false;  // Never found aNode in the list
-}
-
-
-/// This method depends on the Node's > operator.
-///
-/// @return `true` if the list is sorted.  `false` if it's not.
-bool SinglyLinkedList::isSorted() const noexcept {
-   assert( validate() );
-
-   if( count <= 1 ) // SPECIAL CASE:  The list is empty or only has one item...
-      return true;
-
-   for( Node* i = head ; i->next != nullptr ; i = i->next ) {
-      if( *i > *i->next )  // If the previous is greater than the next
-         return false;     // ...then the list is *not* sorted
-   }
-
-   return true;  // Everything looks kosher
-}
-
-
-/// @return The first Node in the list.  If the list is empty, return `nullptr`.
-Node *SinglyLinkedList::get_first() const noexcept {
-   return head;
-}
-
-
-/// @param currentNode Start here
-///
-/// @return Return the Node that follows `currentNode` in the list
-Node *SinglyLinkedList::get_next(const Node *currentNode) {
-   /// @throws invalid_argument If `currentNode` is `nullptr`
-   if( currentNode == nullptr ) {
-      throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
-   }
-
-   return currentNode->next;
-}
-
 void SinglyLinkedList::dump() const noexcept {
    cout << "SinglyLinkedList:  head=[" << head << "]" << endl;
    for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
@@ -247,7 +176,7 @@ void SinglyLinkedList::dump() const noexcept {
 ///
 /// @note This method calls `validate()` on each Node.
 ///
-/// @return `true` if the list is healthy.  `false` if otherwise.
+/// @return `true` if the List is healthy.  `false` if otherwise.
 bool SinglyLinkedList::validate() const noexcept {
    if( head == nullptr ) {
       assert( count == 0 );
@@ -265,7 +194,7 @@ bool SinglyLinkedList::validate() const noexcept {
 
    unsigned int forwardCount = 0;
    Node* currentNode = head;
-   // Count forward through the list
+   // Count forward through the List
    while( currentNode != nullptr ) {
       assert( currentNode->validate() ) ;
       forwardCount++;
