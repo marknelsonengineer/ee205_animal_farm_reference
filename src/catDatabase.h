@@ -13,15 +13,3 @@
 #include <cstddef>   // For the size_t datatype
 
 #include "Cat.h"
-
-
-
-
-
-
-/// Initializes the cat database
-extern void initializeDatabase() ;
-
-
-/// Verify that the database is healthy
-extern bool validateDatabase() ;

@@ -21,12 +21,7 @@
 using namespace std;
 
 /// The head pointer to a linked list of cats
-Cat* catDatabaseHeadPointer = nullptr ;
-
-
-
-
-
+//Cat* catDatabaseHeadPointer = nullptr ;
 
 
 
