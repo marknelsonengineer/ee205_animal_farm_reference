@@ -29,8 +29,8 @@ public:  ///////////////////////// Public Constructors /////////////////////////
 public:  /////////////////////////// Public Methods ////////////////////////////
    void  push_front( NodeWithPrev* newNode ) ; ///< Insert `newNode` to the beginning of the List
    void  push_back( NodeWithPrev* newNode )  ; ///< Append `newNode` to the end of the List
-   NodeWithPrev* pop_front() noexcept ;        ///< Remove and return the first NodeWithPrev in the List
-   NodeWithPrev* pop_back() noexcept ;         ///< Remove and return the last NodeWithPrev in the List
+   NodeWithPrev* pop_front() noexcept override ;  ///< Remove and return the first NodeWithPrev in the List
+   NodeWithPrev* pop_back() noexcept ;            ///< Remove and return the last NodeWithPrev in the List
 
    void insert_after( NodeWithPrev* currentNode, NodeWithPrev* newNode ) ;  ///< Insert `newNode` after `currentNode`
    void insert_before( NodeWithPrev* currentNode, NodeWithPrev* newNode ) ; ///< Insert `newNode` before `currentNode`
