@@ -38,14 +38,9 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    char        name[MAX_CAT_NAME] ;  ///< The name of the cat
    enum Gender gender ;              ///< The gender of the cat
    enum Breed  breed ;               ///< The breed of the cat
-   bool        isCatFixed ;            ///< True if the cat is fixed
+   bool        isCatFixed ;          ///< True if the cat is fixed
    Weight      weight ;              ///< The Weight of the cat.  Must
                                      ///  be >0 or -1 if unknown.
-
-public:  /////////////////////// Public Member Variables ///////////////////////
-   Cat*        next ;                ///< The next pointer for a linked list
-                                     ///< This is very bad form, but we'll use
-                                     ///< it for now.  @todo FIX public next pointer!
 
 private:  /////////////////////////// Private Methods //////////////////////////
    void zeroOutMemberData();         ///< Initialize / zero out all member data
@@ -80,8 +75,8 @@ protected:  ////////////////////// Protected Methods ///////////////////////////
    void setBreed(Breed newBreed);     ///< Set the cat's breed
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool dump() const noexcept ;     ///< Output the contents of this object (and its parents)
-   bool validate() const noexcept;  ///< Check to see if the Cat object is valid
+   bool dump() const noexcept override;     ///< Output the contents of this object (and its parents)
+   bool validate() const noexcept override; ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods must be `const`

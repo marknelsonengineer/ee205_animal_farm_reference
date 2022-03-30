@@ -13,17 +13,6 @@
 #include <iostream>
 #include <cassert>
 
-#include "config.h"
-#include "catDatabase.h"
-#include "Cat.h"
-#include "reportCats.h"
-
-using namespace std;
-
-/// The head pointer to a linked list of cats
-//Cat* catDatabaseHeadPointer = nullptr ;
-
-
 
 /// If the database is valid, this should be silent.  If the database is not
 /// valid, it should print a message as to why and then return false.  It

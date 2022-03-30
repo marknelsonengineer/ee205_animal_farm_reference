@@ -17,7 +17,7 @@
 /// A Node with a previous member.
 ///
 /// This can be used with a DoublyLinkedList.
-class NodeWithPrev : Node {
+class NodeWithPrev : public Node {
    friend class DoublyLinkedList;
 
 protected:  ////////////////////// Protected Members ///////////////////////////

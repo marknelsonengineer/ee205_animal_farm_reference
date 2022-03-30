@@ -37,7 +37,7 @@ Cat::Cat(const char *newName, const Gender newGender, const Breed newBreed, cons
    setBreed( newBreed ) ;
    setWeight( newWeight ) ;
 
-   assert( validate() ) ;
+   assert( Cat::validate() ) ;
 }
 
 Cat::~Cat() {

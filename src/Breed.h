@@ -28,7 +28,7 @@ enum class Breed {
 } ;
 
 
-/// @param gender The breed `enum` to lookup
+/// @param breed The breed `enum` to lookup
 inline std::string breedToString( Breed breed ) {
    switch( breed ) {
       case Breed::UNKNOWN_BREED: return "Unknown"    ;

@@ -22,9 +22,6 @@
 
 #include "config.h"
 #include "Cat.h"
-#include "catDatabase.h"
-
-#include "reportCats.h"
 #include "SinglyLinkedList.h"
 
 using namespace std ;
@@ -141,9 +138,9 @@ int main() {
    catDB.validate() ;
    catDB.dump() ;
 
-   // deleteAllCats() ;
+   catDB.deleteAllNodes();
 
-   // printAllCats() ;
+   catDB.dump() ;
 
    cout << "Done with " << PROGRAM_TITLE ;
 

@@ -18,7 +18,7 @@
 
 /// A generic DoublyLinkedList collection class.
 ///
-class DoublyLinkedList : List {
+class DoublyLinkedList : public List {
 protected:  ////////////////////// Protected Members ///////////////////////////
    NodeWithPrev* head = nullptr ;     ///< The head pointer for the collection
    NodeWithPrev* tail = nullptr ;     ///< The tail pointer for the List
