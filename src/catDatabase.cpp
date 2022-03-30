@@ -18,8 +18,6 @@
 /// valid, it should print a message as to why and then return false.  It
 /// should not throw an exception.
 ///
-/// @todo When this becomes a collection class, make sure it's `const noexcept`
-///
 /// @return True if the database is healthy
 /*
 extern bool validateDatabase() {
