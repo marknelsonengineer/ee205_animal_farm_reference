@@ -1,5 +1,5 @@
-EE205 Lab08d Animal Farm
-========================
+EE205 Animal Farm
+=================
 
 <img src="images/animal_farm_full.jpg" width="300" align="left" hspace="10" vspace="10" alt="Animal farm"/>
 
@@ -13,12 +13,11 @@ The project's home page (hosted by GitHub) is [here](https://github.com/marknels
 The documentation for the source code (hosted by UH) is [here](http://www2.hawaii.edu/~marknels/ee205/animalFarm/index.html)
 
 #### Roadmap
-| Animal Farm Version | Description                                                                                    |
-|---------------------|------------------------------------------------------------------------------------------------|
-| Animal Farm 0       | An array-based database of cats, where each attribute is an array.                             |
-| Animal Farm 1       | An array-based database of cats, where each a cat's attributes are collected in a `struct`.    |
-| Animal Farm 2       | A procedural singly linked-list database of cats, where each cat is an object.                 |
-| Animal Farm 3       | A collection class that implements a singly linked database of cats.                           |
-| Animal Farm 4       | A collection class that implements a doubly linked list of cats.  Enhance the class factories. |
-| Animal Farm 5       | A database of animals                                                                          |
-| Animal Farm 6       | A full zoo of animals                                                                          |
+| Animal Farm Version | Description                                                                                                                                                     |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Animal Farm 0       | An array-based database of cats, where each attribute is an array.                                                                                              |
+| Animal Farm 1       | An array-based database of cats, where each a cat's attributes are collected in a `struct`.                                                                     |
+| Animal Farm 2       | A procedural singly linked-list database of cats, where each cat is an object.                                                                                  |
+| Animal Farm 3       | A collection class that implements a singly linked database of cats.  <br/>Build a Cat class factory.  <br/>Add Mammal to the object model.                     |
+| Animal Farm 4       | A collection class that implements a doubly linked list of Mammals.  <br/>Add Dog to the object model w/ a class factory.  <br/>Add Animal to the object model. |
+| Animal Farm 5       | Refactor the collection class into a Binary Search Tree.  <br/>Add Birds and Fish to the object model.                                                          |
