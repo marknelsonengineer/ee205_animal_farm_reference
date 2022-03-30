@@ -13,12 +13,6 @@
 #include "config.h"
 #include "Cat.h"
 
-/// Print all cats in the database
-extern bool   printAllCats() ;
-
-/// Find a cat
-extern Cat* findCatByName( const char* name ) ;
-
 /// Return a string for the name of the gender
 extern const char* genderName( enum Gender gender ) ;
 

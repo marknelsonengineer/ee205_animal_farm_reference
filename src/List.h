@@ -9,6 +9,7 @@
 /// @todo Implement void put ( index, thing ) // Replace an existing value
 /// @todo Implement void put ( thing ) // Replace an existing value
 /// @todo Implement thing find( criteria ) // Find a thing (or NULL)
+/// @todo Implement Cat* findCatByName( const char* name ) ;
 /// @todo Implement iterator getIterator() // Loop over a bunch of things
 /// @todo Implement void delete ( index )  // Delete an index…
 /// @todo Implement void delete ( key )    // by key

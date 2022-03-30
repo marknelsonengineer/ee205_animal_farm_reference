@@ -22,51 +22,6 @@
 using namespace std;
 
 
-/// @todo When this becomes a collection class, make sure it's `const noexcept`
-///
-/// @returns true if it was successful
-bool printAllCats() {
-   /*
-   int numCats = 0 ;
-
-   assert( validateDatabase() ) ;
-
-   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
-      iCat->dump() ;
-      numCats++ ;
-   }
-#ifdef DEBUG
-   cout << "numCats = [" << numCats << "]" << endl ;
-#endif
-
-   assert( validateDatabase() ) ;
-*/
-   return true;
-
-}
-
-
-/// @todo When this becomes a collection class, make sure it's `const noexcept`
-///
-/// @param name A name to search
-/// @return The Cat or nullptr if the cat can't be found
-Cat* findCatByName( const char* name ) {
-
-   assert( Cat().validateName( name ) );
-/*
-   // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
-
-   for(Cat* iCat = catDatabaseHeadPointer ; iCat != nullptr ; iCat = iCat->next ) {
-      if( strcmp( name, iCat->getName() ) == 0 ) {
-         return iCat ;
-      }
-   }
-
-   // assert( validateDatabase() ) ;  // Will recurse... this is called by validateDatabase()
-*/
-   return nullptr ; // No name matched
-}
-
 
 /// @todo When this becomes a class, make sure it's `const`
 ///
