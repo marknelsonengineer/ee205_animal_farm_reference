@@ -21,7 +21,7 @@ using namespace std ;
 
 void Cat::zeroOutMemberData() {
    memset( name, 0, MAX_CAT_NAME );
-   gender = UNKNOWN_GENDER ;
+   gender = Gender::UNKNOWN_GENDER ;
    breed = UNKNOWN_BREED ;
    isCatFixed = false ;
    weight = UNKNOWN_WEIGHT ;
@@ -91,7 +91,7 @@ bool Cat::dump() const noexcept {
    Node::dump() ;
 
    FORMAT_LINE( "Cat", "name" )    << getName()                 << endl ;
-   FORMAT_LINE( "Cat", "gender" )  << genderName( getGender() ) << endl ;
+   FORMAT_LINE( "Cat", "gender" )  << genderToString( getGender() ) << endl ;
    FORMAT_LINE( "Cat", "breed" )   << breedName( getBreed() )   << endl ;
    FORMAT_LINE( "Cat", "isFixed" ) << isFixed()                 << endl ;
    FORMAT_LINE( "Cat", "weight" )  << getWeight()               << endl ;
@@ -146,7 +146,7 @@ bool Cat::validateName(const char *newName) {
 /// @return True if `newGender` is not UNKNOWN_GENDER
 /// @throws invalid_argument if `newGender` is UNKNOWN_GENDER
 bool Cat::validateGender(const Gender newGender) {
-   if( newGender == UNKNOWN_GENDER ) {
+   if( newGender == Gender::UNKNOWN_GENDER ) {
       throw invalid_argument( PROGRAM_NAME ": Gender must be known") ;
    }
 
@@ -204,7 +204,7 @@ void Cat::setWeight(Weight newWeight) {
 /// @param newGender The new gender
 /// @throws logic_error If you try to change the gender of a cat
 void Cat::setGender(Gender newGender) {
-   if( gender != UNKNOWN_GENDER ) {
+   if( gender != Gender::UNKNOWN_GENDER ) {
       throw logic_error( PROGRAM_NAME ": The gender is already set, you can't change it" ) ;
    }
 

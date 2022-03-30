@@ -2,6 +2,8 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab08d_animal_farm_1_to_clion - EE 205 - Spr 2022
 ///
+/// Global configuration definitions for Animal Farm
+///
 /// @file config.h
 /// @version 2.0
 ///
@@ -15,10 +17,6 @@
 
 /// A short-title for the program (used for console messages)
 #define PROGRAM_NAME  "animalfarm3"
-
-/// A gender... for educational use only.  This is not intended to be
-/// inclusive of all possible genders
-enum Gender { UNKNOWN_GENDER=0, MALE, FEMALE } ;
 
 /// A breed of cat
 enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;

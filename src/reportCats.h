@@ -14,7 +14,7 @@
 #include "Cat.h"
 
 /// Return a string for the name of the gender
-extern const char* genderName( enum Gender gender ) ;
+// extern const char* genderName( enum Gender gender ) ;
 
 /// Return a string for the name of the breed
 extern const char* breedName( enum Breed breed ) ;

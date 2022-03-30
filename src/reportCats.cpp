@@ -27,6 +27,7 @@ using namespace std;
 ///
 /// @param gender The gender `enum` to lookup
 /// @throws logic_error If the enum is not mapped to a string.
+/*
 const char* genderName( const enum Gender gender ) {
    switch( gender ) {
       case UNKNOWN_GENDER: return "Unknown" ;
@@ -35,7 +36,7 @@ const char* genderName( const enum Gender gender ) {
    }
    throw logic_error(PROGRAM_NAME ": Gender name not mapped to a string value");
 }
-
+*/
 
 /// @todo When this becomes a class, make sure it's `const`
 ///
