@@ -9,6 +9,7 @@
 /// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "config.h"
 #include "NodeWithPrev.h"
 
 using namespace std;
@@ -34,4 +35,29 @@ bool NodeWithPrev::dump() const {
    FORMAT_LINE( "NodeWithPrev", "prev" ) << prev << endl ;
 
    return true ;
+}
+
+
+/// This method checks the Node.  If something is not right,
+/// print out a message and stop the validation.  It will not throw an
+/// exception.
+///
+/// @return True if the Node is healthy
+bool NodeWithPrev::validate() const noexcept {
+   Node::validate();
+
+   if( prev == nullptr ) {
+      return true;  /// `nullptr` is a valid value for the previous pointer.
+   }
+
+   /// @internal Perform a rudimentary recursive loop test and ensure
+   ///           the prev pointer does not refer back to itself.
+   ///           This also has the benefit of dereferencing the
+   ///           pointer and ensuring it points to a valid address.
+   if( prev == prev->prev ) {
+      cout << PROGRAM_NAME << ": Recursive loop detected:  prev points to itself!" ;
+      return false;
+   }
+
+   return true;
 }

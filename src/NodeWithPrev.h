@@ -29,5 +29,6 @@ protected:  ////////////////////// Protected Members ///////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    bool dump() const override;  ///< Output the contents of this object
+   bool validate() const noexcept override;  ///< Check the Node
 
 };

@@ -102,6 +102,8 @@ bool Cat::dump() const noexcept {
 /// dump out a message and stop the validation.  It will not throw an
 /// exception.
 bool Cat::validate() const noexcept {
+   Node::validate() ;
+
    try {
       validateName( name ) ;
       validateGender( gender ) ;

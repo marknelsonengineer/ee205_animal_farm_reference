@@ -12,6 +12,7 @@
 /// @date   27_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "config.h"
 #include "Node.h"
 
 using namespace std;
@@ -66,16 +67,24 @@ bool Node::operator>(const Node &rightSide) {
 }
 
 
-/// This method checks the Node.  If something is not right, it will
-/// dump out a message and stop the validation.  It will not throw an
+/// This method checks the Node.  If something is not right,
+/// print out a message and stop the validation.  It will not throw an
 /// exception.
-///
-/// @internal There's really no validation for `next` or `prev`.  Both
-///
 ///
 /// @return True if the Node is healthy
 bool Node::validate() const noexcept {
-   ///  Nothing to validate right now.
-   ///  @todo Consider how we might validate `next` and `prev`.
+   if( next == nullptr ) {
+      return true;  /// `nullptr` is a valid value for the next pointer.
+   }
+
+   /// @internal Perform a rudimentary recursive loop test and ensure
+   ///           the next pointer does not refer back to itself.
+   ///           This also has the benefit of dereferencing the
+   ///           next pointer and ensuring it points to a valid address.
+   if( next == next->next ) {
+      cout << PROGRAM_NAME << ": Recursive loop detected:  next points to itself!" ;
+      return false;
+   }
+
    return true;
 }

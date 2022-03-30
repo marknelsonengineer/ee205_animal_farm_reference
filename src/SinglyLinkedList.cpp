@@ -199,7 +199,7 @@ bool SinglyLinkedList::validate() const noexcept {
       forwardCount++;
       currentNode = currentNode->next;
    }
-   assert( count == forwardCount );
+   assert( size() == forwardCount );
 
    #ifdef DEBUG
       cout << PROGRAM_NAME ": List is valid" << endl;

@@ -490,7 +490,7 @@ bool DoublyLinkedList::validate() const noexcept {
       }
       currentNode = currentNode->next;
    }
-   assert( count == forwardCount );
+   assert( size() == forwardCount );
 
    // Count backward through the List
    unsigned int backwardCount = 0;
@@ -503,7 +503,7 @@ bool DoublyLinkedList::validate() const noexcept {
       }
       currentNode = currentNode->prev;
    }
-   assert( count == backwardCount );
+   assert( size() == backwardCount );
 
    #ifdef DEBUG
       cout << PROGRAM_NAME ": List is valid" << endl;
