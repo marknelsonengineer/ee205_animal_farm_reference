@@ -50,7 +50,7 @@ int main() {
       assert(testCat.getName() != nullptr );
       assert(strcmp(testCat.getName(), "") == 0);
       assert(testCat.getGender() == Gender::UNKNOWN_GENDER);
-      assert(testCat.getBreed() == UNKNOWN_BREED);
+      assert(testCat.getBreed() == Breed::UNKNOWN_BREED);
       assert(testCat.isFixed() == false);
       assert(testCat.getWeight() == UNKNOWN_WEIGHT);
       assert(!testCat.isFixed());
@@ -85,10 +85,10 @@ int main() {
          assert(false); // We should never get here
       } catch (exception const &e) {}
 
-      testCat.setBreed(MAINE_COON);
+      testCat.setBreed(Breed::MAINE_COON);
 
       try {
-         testCat.setBreed(MANX);
+         testCat.setBreed(Breed::MANX);
          assert(false); // We should never get here
       } catch (exception const &e) {}
 
@@ -111,12 +111,12 @@ int main() {
    }
    #endif
 
-   catDB.push_front( new Cat( "Loki", Gender::MALE, PERSIAN,       1.0 ) ) ;
-   catDB.push_front( new Cat( "Milo", Gender::MALE, MANX,          1.1 ) ) ;
-   catDB.push_front( new Cat( "Bella", Gender::FEMALE, MAINE_COON, 1.2 ) ) ;
-   catDB.push_front( new Cat( "Kali", Gender::FEMALE, SHORTHAIR,   1.3 ) ) ;
-   catDB.push_front( new Cat( "Trin", Gender::FEMALE, MANX,        1.4 ) ) ;
-   catDB.push_front( new Cat( "Chili", Gender::MALE, SHORTHAIR,    1.5 ) ) ;
+   catDB.push_front( new Cat( "Loki",  Gender::MALE,   Breed::PERSIAN,    1.0 ) ) ;
+   catDB.push_front( new Cat( "Milo",  Gender::MALE,   Breed::MANX,       1.1 ) ) ;
+   catDB.push_front( new Cat( "Bella", Gender::FEMALE, Breed::MAINE_COON, 1.2 ) ) ;
+   catDB.push_front( new Cat( "Kali",  Gender::FEMALE, Breed::SHORTHAIR,  1.3 ) ) ;
+   catDB.push_front( new Cat( "Trin",  Gender::FEMALE, Breed::MANX,       1.4 ) ) ;
+   catDB.push_front( new Cat( "Chili", Gender::MALE,   Breed::SHORTHAIR,  1.5 ) ) ;
 
    /*
    #ifdef DEBUG

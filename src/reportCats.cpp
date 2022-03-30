@@ -42,6 +42,7 @@ const char* genderName( const enum Gender gender ) {
 ///
 /// @param breed The `enum` breed to lookup
 /// @throws logic_error If the `enum` is not mapped to a string.
+/*
 const char* breedName( const enum Breed breed ) {
    switch( breed ) {
       case UNKNOWN_BREED: return "Unknown"    ;
@@ -53,7 +54,7 @@ const char* breedName( const enum Breed breed ) {
    }
    throw logic_error(PROGRAM_NAME ": Breed name not mapped to a string value");
 }
-
+*/
 
 /*
 /// @todo When this becomes a class, make sure it's `const`

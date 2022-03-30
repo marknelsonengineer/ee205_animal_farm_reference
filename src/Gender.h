@@ -27,8 +27,6 @@ enum class Gender {
 };
 
 
-/// @todo When this becomes a class, make sure it's `const`
-///
 /// @param gender The gender `enum` to lookup
 inline std::string genderToString( Gender gender ) {
    switch( gender ) {

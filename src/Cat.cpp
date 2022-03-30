@@ -15,14 +15,13 @@
 #include <cassert>
 
 #include "Cat.h"
-#include "reportCats.h"
 
 using namespace std ;
 
 void Cat::zeroOutMemberData() {
    memset( name, 0, MAX_CAT_NAME );
    gender = Gender::UNKNOWN_GENDER ;
-   breed = UNKNOWN_BREED ;
+   breed = Breed::UNKNOWN_BREED ;
    isCatFixed = false ;
    weight = UNKNOWN_WEIGHT ;
    next = nullptr ;
@@ -90,11 +89,11 @@ bool Cat::dump() const noexcept {
 
    Node::dump() ;
 
-   FORMAT_LINE( "Cat", "name" )    << getName()                 << endl ;
+   FORMAT_LINE( "Cat", "name" )    << getName()                     << endl ;
    FORMAT_LINE( "Cat", "gender" )  << genderToString( getGender() ) << endl ;
-   FORMAT_LINE( "Cat", "breed" )   << breedName( getBreed() )   << endl ;
-   FORMAT_LINE( "Cat", "isFixed" ) << isFixed()                 << endl ;
-   FORMAT_LINE( "Cat", "weight" )  << getWeight()               << endl ;
+   FORMAT_LINE( "Cat", "breed" )   << breedToString( getBreed() )   << endl ;
+   FORMAT_LINE( "Cat", "isFixed" ) << isFixed()                     << endl ;
+   FORMAT_LINE( "Cat", "weight" )  << getWeight()                   << endl ;
 
    return true ;
 }
@@ -161,7 +160,7 @@ bool Cat::validateGender(const Gender newGender) {
 /// @return True if `newBreed` is not UNKNOWN_BREED
 /// @throws invalid_argument if `newBreed` is UNKNOWN_BREED
 bool Cat::validateBreed(const Breed newBreed) {
-   if( newBreed == UNKNOWN_BREED ) {
+   if( newBreed == Breed::UNKNOWN_BREED ) {
       throw invalid_argument( PROGRAM_NAME ": Breed must be known" ) ;
    }
 
@@ -221,7 +220,7 @@ void Cat::setGender(Gender newGender) {
 /// @param newBreed The new breed
 /// @throws logic_error If you try to change the breed of a cat
 void Cat::setBreed(Breed newBreed) {
-   if( breed != UNKNOWN_BREED ) {
+   if( breed != Breed::UNKNOWN_BREED ) {
       throw logic_error( PROGRAM_NAME ": The breed is already set, you can't change it" ) ;
    }
 

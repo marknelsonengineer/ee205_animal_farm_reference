@@ -13,6 +13,7 @@
 #include "config.h"
 #include "Node.h"
 #include "Gender.h"
+#include "Breed.h"
 
 
 /// The maximum size of a cat's name

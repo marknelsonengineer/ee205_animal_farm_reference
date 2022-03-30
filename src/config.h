@@ -18,9 +18,6 @@
 /// A short-title for the program (used for console messages)
 #define PROGRAM_NAME  "animalfarm3"
 
-/// A breed of cat
-enum Breed  { UNKNOWN_BREED=0, MAINE_COON, MANX, SHORTHAIR, PERSIAN, SPHYNX } ;
-
 // A color.  Can be used in many places.
 // enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
 
