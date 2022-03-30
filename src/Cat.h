@@ -32,7 +32,6 @@
 ///
 /// @todo Refactor name to string type and implement space-trimming.
 /// @todo Refactor Weight to its own class
-/// @todo Refactor Gender and Breed to enum classes
 class Cat : public Node {
 protected:  ///////////////////////// Member Variables /////////////////////////
    char        name[MAX_CAT_NAME] ;  ///< The name of the cat
