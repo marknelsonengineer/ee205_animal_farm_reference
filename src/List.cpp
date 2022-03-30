@@ -88,3 +88,18 @@ Node* List::get_next(const Node *currentNode) {
 
    return currentNode->next;
 }
+
+
+void List::deleteAllNodes() noexcept {
+   assert( validate() );
+
+   while( head != nullptr ) {
+      pop_front();
+   }
+
+   #ifdef DEBUG
+      cout << PROGRAM_NAME << ": All Nodes have been deleted" << endl ;
+   #endif
+
+   assert( validate() );
+}

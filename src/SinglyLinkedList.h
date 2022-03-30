@@ -23,7 +23,7 @@ public:  ///////////////////////// Public Constructors /////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    void  push_front( Node* newNode ) ;  ///< Insert `newNode` to the beginning of the List
-   Node* pop_front() noexcept ;         ///< Remove and return the first Node in the List
+   Node* pop_front() noexcept override; ///< Remove and return the first Node in the List
 
    void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
 
