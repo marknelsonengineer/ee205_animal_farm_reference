@@ -14,6 +14,25 @@
 
 #include "Node.h"
 
+/*
+bool isEmpty()       // true if Collection is empty
+void add( thing )    // Insert into the beginning
+void append( thing ) // Add to the end
+void addAt( index, thing )  // Add at a location
+int size()   // Number of items in the collection
+thing get( index ) // Get via index
+thing get( key )   // Get via key
+void put ( index, thing ) // Replace an existing value
+void put ( thing ) // Replace an existing value
+thing find( criteria ) // Find a thing (or NULL)
+iterator getIterator() // Loop over a bunch of things
+void delete ( index )  // Delete an index…
+void delete ( key )    // by key
+void delete ( thing )  // Delete the thing
+ */
+
+
+
 /// A generic DoublyLinkedList collection class.
 ///
 class DoublyLinkedList {
