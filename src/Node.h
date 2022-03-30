@@ -3,7 +3,7 @@
 /// @brief  ee205_lab10d_animal_farm_3 - EE 205 - Spr 2022
 ///
 /// A generic Node class.  May be used as a base class for a number of data
-/// structures.  Not all of the fields need to be used.
+/// structures.
 ///
 /// @file Node.h
 /// @version 1.0
@@ -26,20 +26,16 @@
 /// A generic Node class.
 ///
 /// May be used as a base class for a number of data
-/// structures.  Not all of the fields/methods need to be used.
+/// structures.
 class Node {
    friend class List;
    friend class SinglyLinkedList;
-   friend class DoublyLinkedList;
-
 
 protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* next = nullptr;  ///< Point to the next node in the list or `nullptr`
+   Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
                           ///< if it's the last Node in the list.
-   Node* prev = nullptr;  ///< Point to the previous node in the list or
-                          ///< `nullptr` if it's the first Node in the list.
-                          ///< This may not always be used
 
+protected:  //////////////////////// Static Methods ////////////////////////////
    /// Compare two nodes by their address in memory.
    ///
    /// Functions (like sorting) may want to compare two nodes.
@@ -51,7 +47,7 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    /// We can code an algorithm to operate on a virtual Node > operator and
    /// allow the descendants of Node to override `>` and implement their own
    /// ordering.
-   bool compareByAddress ( const Node* node1, const Node* node2 ) ;
+   static bool compareByAddress ( const Node* node1, const Node* node2 ) ;
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    virtual bool dump() const;  ///< Output the contents of this object

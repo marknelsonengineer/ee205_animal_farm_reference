@@ -18,7 +18,6 @@
 /// A generic SinglyLinkedList collection class.
 ///
 class SinglyLinkedList : List {
-
 public:  ///////////////////////// Public Constructors /////////////////////////
    SinglyLinkedList();        ///< Make a new SinglyLinkedList
 

@@ -16,6 +16,7 @@
 
 using namespace std;
 
+
 /// @returns `true` if everything worked correctly.  `false` if something went
 ///          wrong
 ///
@@ -39,10 +40,10 @@ bool Node::dump() const {
 
    FORMAT_LINE( "Node", "this" ) << this << endl ;
    FORMAT_LINE( "Node", "next" ) << next << endl ;
-   FORMAT_LINE( "Node", "prev" ) << prev << endl ;
 
    return true ;
 }
+
 
 /// A generic comparison based on the memory address of the object.
 ///
@@ -53,6 +54,7 @@ bool Node::compareByAddress ( const Node* node1, const Node* node2 ) {
    return false;
 }
 
+
 /// @param rightSide The `this` member is the left side of the `>` operator.
 ///                  `rightSide` is the right side of the `>` operator.
 /// @return `true` if `leftSide > rightSide`
@@ -62,6 +64,7 @@ bool Node::operator>(const Node &rightSide) {
 
    return compareByAddress( this, &(Node&)rightSide );
 }
+
 
 /// This method checks the Node.  If something is not right, it will
 /// dump out a message and stop the validation.  It will not throw an

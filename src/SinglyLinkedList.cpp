@@ -24,7 +24,7 @@ using namespace std;
 
 
 SinglyLinkedList::SinglyLinkedList() {
-   assert( validate() );
+   assert( SinglyLinkedList::validate() );
 
    #ifdef DEBUG
       cout << PROGRAM_NAME << ": " << __FUNCTION__ << ": initialized" << endl ;
@@ -165,7 +165,6 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 void SinglyLinkedList::dump() const noexcept {
    cout << "SinglyLinkedList:  head=[" << head << "]" << endl;
    for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
-      cout << "  ";
       currentNode->dump();
    }
 }

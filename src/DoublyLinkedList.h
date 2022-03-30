@@ -12,7 +12,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "Node.h"
+#include "NodeWithPrev.h"
 #include "List.h"
 
 /*
@@ -38,26 +38,27 @@ void delete ( thing )  // Delete the thing
 ///
 class DoublyLinkedList : List {
 protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* tail = nullptr ;     ///< The tail pointer for the List
+   NodeWithPrev* head = nullptr ;     ///< The head pointer for the collection
+   NodeWithPrev* tail = nullptr ;     ///< The tail pointer for the List
 
 public:  ///////////////////////// Public Constructors /////////////////////////
    DoublyLinkedList();        ///< Make a new DoublyLinkedList
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void  push_front( Node* newNode ) ; ///< Insert `newNode` to the beginning of the List
-   void  push_back( Node* newNode )  ; ///< Append `newNode` to the end of the List
-   Node* pop_front() noexcept ;                 ///< Remove and return the first Node in the List
-   Node* pop_back() noexcept ;                  ///< Remove and return the last Node in the List
+   void  push_front( NodeWithPrev* newNode ) ; ///< Insert `newNode` to the beginning of the List
+   void  push_back( NodeWithPrev* newNode )  ; ///< Append `newNode` to the end of the List
+   NodeWithPrev* pop_front() noexcept ;        ///< Remove and return the first NodeWithPrev in the List
+   NodeWithPrev* pop_back() noexcept ;         ///< Remove and return the last NodeWithPrev in the List
 
-   void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
-   void insert_before( Node* currentNode, Node* newNode ) ; ///< Insert `newNode` before `currentNode`
+   void insert_after( NodeWithPrev* currentNode, NodeWithPrev* newNode ) ;  ///< Insert `newNode` after `currentNode`
+   void insert_before( NodeWithPrev* currentNode, NodeWithPrev* newNode ) ; ///< Insert `newNode` before `currentNode`
 
-   void swap( Node* node1, Node* node2 ) ;  ///< Swap `node1` and `node2`
+   void swap( NodeWithPrev* node1, NodeWithPrev* node2 ) ;  ///< Swap `node1` and `node2`
 
    void insertionSort() noexcept ;  ///< Runs the insertion sort algorithm on the List
 
-   Node* get_last() const noexcept ;                   ///< Get the last Node in the List
-   static Node* get_prev( const Node* currentNode ) ;  ///< Get the previous Node in the List
+   NodeWithPrev* get_last() const noexcept ;                   ///< Get the last NodeWithPrev in the List
+   static NodeWithPrev* get_prev( const NodeWithPrev* currentNode ) ;  ///< Get the previous NodeWithPrev in the List
 
    void dump() const noexcept override ;      ///< Output the contents of this container
    bool validate() const noexcept override ;  ///< Check to see if the container is valid
