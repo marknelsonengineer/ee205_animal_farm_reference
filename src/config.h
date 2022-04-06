@@ -21,11 +21,6 @@
 // A color.  Can be used in many places.
 // enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
 
-/// The Weight of an animal
-typedef float Weight ;
-const Weight UNKNOWN_WEIGHT = -1 ;  ///< Set when the Weight is unknown
-
-
 // Set to trace the flow of execution through this code
 // #define TRACE
 
