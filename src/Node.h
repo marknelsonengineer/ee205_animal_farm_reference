@@ -16,12 +16,7 @@
 #include <iostream>   // For cout
 #include <iomanip>    // For setw() & setfill()
 
-/// Format a line for dumping the members of a class to the console
-#define FORMAT_LINE( className, member ) std::cout \
-                                      << std::setw(8) << (className) \
-                                      << std::setw(20) << (member)   \
-                                      << std::setw(52)  /* (data) */
-
+#include "config.h"
 
 /// A generic Node class.
 ///
@@ -53,6 +48,6 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    virtual bool dump() const;  ///< Output the contents of this object
    virtual bool validate() const noexcept;  ///< Check the Node
 
-   /// Compare two nodes.
+   /// Compare two nodes:  Is the left greater than the right?
    virtual bool operator>(const Node& rightSide);
 }; // class Node

@@ -33,14 +33,10 @@ using namespace std;
 /// @todo update this output
 ///
 bool Node::dump() const {
-   // Print ===================================================================
-   cout << setw(80) << setfill( '=' ) << "" << endl ;
-   cout << setfill( ' ' ) ;   // Space pad
-   cout << left ;             // Left justify
-   cout << boolalpha ;        // Print `true` and `false` for `bool`s
+   PRINT_HEADING_FOR_DUMP ;
 
-   FORMAT_LINE( "Node", "this" ) << this << endl ;
-   FORMAT_LINE( "Node", "next" ) << next << endl ;
+   FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << endl ;
+   FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << endl ;
 
    return true ;
 }

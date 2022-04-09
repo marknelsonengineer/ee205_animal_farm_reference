@@ -43,3 +43,23 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
    #define TRACE_START  ///< If TRACE is defined, print `Start` of some function
    #define TRACE_END    ///< If TRACE is defined, print `End` of some function
 #endif
+
+
+/// Format the heading for dumping members of a class to the console
+///
+/// Print =====================
+/// Then, setup the fields for printing (space pad, left justify, etc.)
+#define PRINT_HEADING_FOR_DUMP                                                \
+    /* Print =========================================================== */   \
+    std::cout << setw(80) << setfill( '=' ) << "" << endl ;                   \
+                                                                              \
+    std::cout << setfill( ' ' ) ; /* Space pad    */                          \
+    std::cout << left ;           /* Left justify */                          \
+    std::cout << boolalpha ;      /* Print `true` and `false` for `bool`s */
+
+
+/// Format a line for dumping the members of a class to the console
+#define FORMAT_LINE_FOR_DUMP( className, member )  \
+    std::cout << std::setw(8)  << (className)      \
+              << std::setw(20) << (member)         \
+              << std::setw(52)  /* (data) */

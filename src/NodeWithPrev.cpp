@@ -32,7 +32,7 @@ using namespace std;
 bool NodeWithPrev::dump() const {
 
    Node::dump();
-   FORMAT_LINE( "NodeWithPrev", "prev" ) << prev << endl ;
+   FORMAT_LINE_FOR_DUMP( "NodeWithPrev", "prev" ) << prev << endl ;
 
    return true ;
 }
