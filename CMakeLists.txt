@@ -8,11 +8,9 @@ project(ee205_lab10d_animal_farm_3
 message( STATUS "CMAKE_SOURCE_DIR = [${CMAKE_SOURCE_DIR}]" )
 
 set(CMAKE_CXX_STANDARD 14)
-
 set(CMAKE_VERBOSE_MAKEFILE off)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
 set(DOC_BUILD_DIR "${PROJECT_BINARY_DIR}/generated_docs")
@@ -24,8 +22,8 @@ find_package(Doxygen
 if (DOXYGEN_FOUND)
    message(STATUS "Generating documentation using Doxygen")
 
-   set(DOXYGEN_PROJECT_NUMBER "3.0")
-   set(DOXYGEN_PROJECT_BRIEF "All animals are equal")
+   set(DOXYGEN_PROJECT_NUMBER ${CMAKE_PROJECT_VERSION})
+   set(DOXYGEN_PROJECT_BRIEF ${PROJECT_DESCRIPTION})
    set(DOXYGEN_GENERATE_HTML YES)
    set(DOXYGEN_PROJECT_LOGO "images/animal_farm_logo.jpg")
    set(DOXYGEN_GENERATE_TREEVIEW YES)
@@ -62,6 +60,9 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_DOT_IMAGE_FORMAT svg)
    set(DOXYGEN_INTERACTIVE_SVG YES)
    set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
+   set(DOXYGEN_STRIP_CODE_COMMENTS NO)
+   set(DOXYGEN_SOURCE_BROWSER YES)
+   set(DOXYGEN_VERBATIM_HEADERS YES)
    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/generated_docs)
 
    message(STATUS "DOXYGEN_OUTPUT_DIRECTORY = [${DOXYGEN_OUTPUT_DIRECTORY}]")
@@ -97,4 +98,6 @@ endif (DOXYGEN_FOUND)
 
 message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
-add_executable(ee205_lab11d_animal_farm_3 src/main.cpp src/config.h src/Cat.cpp src/Cat.h src/Node.h src/DoublyLinkedList.cpp src/DoublyLinkedList.h src/SinglyLinkedList.cpp src/SinglyLinkedList.h src/Node.cpp src/Node.h src/List.cpp src/List.h src/NodeWithPrev.cpp src/NodeWithPrev.h src/Gender.h src/Breed.h)
+add_subdirectory(tests)
+
+add_executable(ee205_lab11d_animal_farm_3 src/main.cpp src/config.h src/Cat.cpp src/Cat.h src/Node.h src/DoublyLinkedList.cpp src/DoublyLinkedList.h src/SinglyLinkedList.cpp src/SinglyLinkedList.h src/Node.cpp src/Node.h src/List.cpp src/List.h src/NodeWithPrev.cpp src/NodeWithPrev.h src/Gender.h src/Breed.h src/Animal.cpp src/Animal.h src/Weight.cpp src/Weight.h tests/test_Gender.cpp)
