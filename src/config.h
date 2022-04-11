@@ -12,14 +12,13 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include <iomanip>    // For setw() & setfill()
+
 /// A grammatically correct title for the program
 #define PROGRAM_TITLE "Animal Farm 3"
 
 /// A short-title for the program (used for console messages)
 #define PROGRAM_NAME  "animalfarm3"
-
-// A color.  Can be used in many places.
-// enum Color  { UNKNOWN_COLOR=-1, BLACK=0, WHITE, RED, BLUE, GREEN, PINK } ;
 
 // Set to trace the flow of execution through this code
 // #define TRACE
