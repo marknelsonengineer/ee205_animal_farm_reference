@@ -47,7 +47,7 @@ protected:  //////////////////////// Static Methods ////////////////////////////
    static bool compareByAddress ( const Node* node1, const Node* node2 ) ;
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   virtual bool dump() const;  ///< Output the contents of this object
+   virtual void dump() const;  ///< Output the contents of this object
    virtual bool validate() const noexcept;  ///< Check the Node
 
    /// Compare two nodes:  Is the left greater than the right?

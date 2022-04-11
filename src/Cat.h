@@ -19,7 +19,7 @@
 
 /// Felis Catus
 ///
-class Cat : public Node, Mammal {
+class Cat : public Node, public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string      SPECIES_NAME;  ///< The scientific name for this species
    static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for this species
@@ -69,7 +69,7 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string speak() const noexcept override;  ///< Say `Meow`.
-   bool dump() const noexcept override;          ///< Print the contents of this object (and its parents)
+   virtual void dump() const noexcept override;          ///< Print the contents of this object (and its parents)
    bool validate() const noexcept override;      ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////

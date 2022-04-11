@@ -29,12 +29,10 @@ using namespace std;
 /// @endcode
 /// @todo update this output
 ///
-bool NodeWithPrev::dump() const {
+void NodeWithPrev::dump() const {
 
    Node::dump();
    FORMAT_LINE_FOR_DUMP( "NodeWithPrev", "prev" ) << prev << endl ;
-
-   return true ;
 }
 
 

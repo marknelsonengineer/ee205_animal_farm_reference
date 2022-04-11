@@ -21,12 +21,10 @@ using namespace std;
 const std::string Mammal::MAMMAL_NAME = "Mammilian";
 
 
-bool Mammal::dump() const noexcept {
+void Mammal::dump() const noexcept {
    assert( validate() ) ;
 
    Animal::dump() ;
 
    FORMAT_LINE_FOR_DUMP( "Mammal", "color" ) << color << endl ;
-
-   return true ;
 }

@@ -28,7 +28,7 @@ protected:  ////////////////////// Protected Members ///////////////////////////
                                   ///< `nullptr` if it's the first Node in the list.
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool dump() const override;  ///< Output the contents of this object
+   void dump() const override;  ///< Output the contents of this object
    bool validate() const noexcept override;  ///< Check the Node
 
 };

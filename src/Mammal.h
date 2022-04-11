@@ -22,7 +22,7 @@ public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string MAMMAL_NAME;  ///< The scientific name for Mammals
 
 protected:  ///////////////////////// Member Variables /////////////////////////
-   Color color;
+   Color color = Color::UNKNOWN_COLOR;
 
 public:   /////////////////////// Constructors ////////////////////////////////
    /// Create a Mammal with the *minimum* required fields
@@ -37,7 +37,7 @@ public:   /////////////////////// Constructors ////////////////////////////////
           ,const Weight::t_weight newMaxWeight
           ,const std::string&     newSpecies
    ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
-      color = newColor ;
+      setColor( newColor );
    };
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
@@ -45,6 +45,6 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
    void setColor( const Color newColor ) noexcept { color = newColor; }  ///< Set the color
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool dump() const noexcept;          ///< Print the contents of this object (and its parents)
+   virtual void dump() const noexcept;          ///< Print the contents of this object (and its parents)
 
 };

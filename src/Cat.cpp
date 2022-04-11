@@ -57,7 +57,7 @@ void Cat::fixCat() noexcept {
 ///     Cat     name                Kali
 ///     Cat     isFixed             false
 ///
-bool Cat::dump() const noexcept {
+void Cat::dump() const noexcept {
    assert( validate() ) ;
 
    Node::dump() ;
@@ -65,8 +65,6 @@ bool Cat::dump() const noexcept {
 
    FORMAT_LINE_FOR_DUMP( "Cat", "name" )    << getName() << endl ;
    FORMAT_LINE_FOR_DUMP( "Cat", "isFixed" ) << isFixed() << endl ;
-
-   return true ;
 }
 
 
