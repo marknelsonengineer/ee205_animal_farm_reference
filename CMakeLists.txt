@@ -100,4 +100,4 @@ message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
 add_subdirectory(tests)
 
-add_executable(ee205_lab11d_animal_farm_3 src/config.h src/main.cpp src/Node.h src/Node.cpp src/NodeWithPrev.h src/NodeWithPrev.cpp src/List.h src/List.cpp src/SinglyLinkedList.h src/SinglyLinkedList.cpp src/DoublyLinkedList.h src/DoublyLinkedList.cpp src/Gender.h src/Breed.h src/Color.h src/Weight.h src/Weight.cpp src/Animal.h src/Animal.cpp src/Mammal.h src/Mammal.cpp src/Cat.h src/Cat.cpp)
+add_executable(ee205_lab11d_animal_farm_3 src/config.h src/main.cpp src/Node.h src/Node.cpp src/NodeWithPrev.h src/NodeWithPrev.cpp src/List.h src/List.cpp src/SinglyLinkedList.h src/SinglyLinkedList.cpp src/DoublyLinkedList.h src/DoublyLinkedList.cpp src/Gender.h src/Color.h src/Weight.h src/Weight.cpp src/Animal.h src/Animal.cpp src/Mammal.h src/Mammal.cpp src/Cat.h src/Cat.cpp)
