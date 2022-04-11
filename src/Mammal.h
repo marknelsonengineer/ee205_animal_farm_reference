@@ -13,11 +13,16 @@
 #pragma once
 
 #include "Animal.h"
+#include "Color.h"
+
 
 /// Mammals have more fun
 class Mammal : public Animal {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string MAMMAL_NAME;  ///< The scientific name for Mammals
+
+protected:  ///////////////////////// Member Variables /////////////////////////
+   Color color;
 
 public:   /////////////////////// Constructors ////////////////////////////////
    /// Create a Mammal with the *minimum* required fields
@@ -26,9 +31,20 @@ public:   /////////////////////// Constructors ////////////////////////////////
    ) : Animal( newMaxWeight, MAMMAL_NAME, newSpecies ) {};
 
    /// Create a Mammal, populating *all* of the member variables
-   Mammal( const Gender           newGender
+   Mammal( const Color            newColor
+          ,const Gender           newGender
           ,const Weight::t_weight newWeight
           ,const Weight::t_weight newMaxWeight
           ,const std::string&     newSpecies
-   ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {};
+   ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies ) {
+      color = newColor ;
+   };
+
+public:  ////////////////////////// Getters & Setters //////////////////////////
+   Color getColor() const noexcept { return color; }  ///< Get the color
+   void setColor( const Color newColor ) noexcept { color = newColor; }  ///< Set the color
+
+public:  /////////////////////////// Public Methods ////////////////////////////
+   bool dump() const noexcept;          ///< Print the contents of this object (and its parents)
+
 };
