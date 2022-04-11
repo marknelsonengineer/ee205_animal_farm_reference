@@ -15,9 +15,6 @@
 using namespace std;
 
 
-/// @returns `true` if everything worked correctly.  `false` if something went
-///          wrong
-///
 /// #### Sample Output
 /// @code
 ///     ==============================================

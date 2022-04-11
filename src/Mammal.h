@@ -22,7 +22,7 @@ public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string MAMMAL_NAME;  ///< The scientific name for Mammals
 
 protected:  ///////////////////////// Member Variables /////////////////////////
-   Color color = Color::UNKNOWN_COLOR;
+   Color color = Color::UNKNOWN_COLOR;  ///< The primary color of the Mammal
 
 public:   /////////////////////// Constructors ////////////////////////////////
    /// Create a Mammal with the *minimum* required fields

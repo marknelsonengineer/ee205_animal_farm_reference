@@ -49,9 +49,6 @@ void Cat::fixCat() noexcept {
 }
 
 
-/// @returns true if everything worked correctly.  false if something went
-///          wrong
-///
 /// #### Sample Output
 ///
 ///     Cat     name                Kali

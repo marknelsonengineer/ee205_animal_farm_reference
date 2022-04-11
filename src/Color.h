@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-
+/// Color class enumeration
 enum class Color {
    UNKNOWN_COLOR=0
   ,BLACK
