@@ -20,7 +20,7 @@ using namespace std ;
 
 
 const std::string Cat::SPECIES_NAME = "Felis Catus";
-const Weight::t_weight Cat::MAX_WEIGHT = 30;   ///< @todo LOOK THIS UP
+const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 
 string Cat::getName() const noexcept {
