@@ -15,7 +15,6 @@
 #include <boost/test/tools/output_test_stream.hpp>
 
 #include <stdexcept>
-#include <iostream>
 
 #include "../src/Animal.h"
 

@@ -92,6 +92,7 @@ private:   ///////////////////// Private Methods ///////////////////////////////
    void setMaxWeight( t_weight newMaxWeight );  ///< Set the maximum weight
 
 public:   /////////////////////// Static Methods ///////////////////////////////
+   // Static methods are `const` by default
    static float fromKilogramToPound( t_weight kilogram ) noexcept;  ///< Convert kilo to pound
    static float fromPoundToKilogram( t_weight pound ) noexcept;     ///< Convert pound to kilo
    static float fromSlugToPound( t_weight slug ) noexcept;          ///< Convert slug to pound

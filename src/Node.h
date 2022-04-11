@@ -22,6 +22,8 @@
 ///
 /// May be used as a base class for a number of data
 /// structures.
+///
+/// @todo Consider making a destructor that sets node = nullptr;
 class Node {
    friend class List;
    friend class SinglyLinkedList;
