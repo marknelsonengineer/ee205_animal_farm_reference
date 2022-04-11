@@ -30,8 +30,6 @@ using namespace std;
 /// @todo update this output
 ///
 void Node::dump() const {
-   PRINT_HEADING_FOR_DUMP ;
-
    FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << endl ;
 }

@@ -168,8 +168,6 @@ bool Animal::validateSpecies( const std::string& checkSpecies ) noexcept {
 void Animal::dump() const noexcept {
    assert( validate() ) ;
 
-   PRINT_HEADING_FOR_DUMP ;
-
    FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << endl ;

@@ -57,6 +57,8 @@ void Cat::fixCat() noexcept {
 void Cat::dump() const noexcept {
    assert( validate() ) ;
 
+   PRINT_HEADING_FOR_DUMP ;
+
    Node::dump() ;
    Mammal::dump() ;
 

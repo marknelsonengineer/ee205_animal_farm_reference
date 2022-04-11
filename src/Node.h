@@ -14,7 +14,6 @@
 #pragma once
 
 #include <iostream>   // For cout
-#include <iomanip>    // For setw() & setfill()
 
 #include "config.h"
 

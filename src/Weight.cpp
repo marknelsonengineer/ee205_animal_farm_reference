@@ -289,12 +289,6 @@ Weight::t_weight Weight::convertWeight( const Weight::t_weight fromWeight
 /// @endcode
 ///
 void Weight::dump() const noexcept {
-   // Print ===================================================================
-   cout << setw(80) << setfill( '=' ) << "" << endl ;
-   cout << setfill( ' ' ) ;   // Space pad
-   cout << left ;             // Left justify
-   cout << boolalpha ;        // Print `true` and `false` for `bool`s
-
    FORMAT_LINE_FOR_DUMP( "Weight", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Weight", "isKnown" ) << bIsKnown << endl ;
    FORMAT_LINE_FOR_DUMP( "Weight", "weight" ) << weight << endl ;
