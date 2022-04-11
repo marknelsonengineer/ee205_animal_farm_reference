@@ -46,5 +46,4 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    virtual void dump() const noexcept;          ///< Print the contents of this object (and its parents)
-
 };
