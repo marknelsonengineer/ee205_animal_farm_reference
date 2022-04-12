@@ -21,13 +21,9 @@ using namespace std;
 /// #### Sample Output
 /// @code
 ///     ==============================================
-///     Cat     name                Kali
-///     Cat     gender              Female
-///     Cat     breed               Shorthair
-///     Cat     isFixed             false
-///     Cat     weight              1.3
+///     Node    this                0x7ffeeaa7e580
+///     Node    next                0
 /// @endcode
-/// @todo update this output
 ///
 void Node::dump() const {
    FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << endl ;
