@@ -30,7 +30,7 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:  //////////////////////////// Constructors /////////////////////////////
    /// Create a Cat with the minimum fields necessary to have a valid Cat
    /// @todo Why can't this be defined in the .cpp file??
-   Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
+   explicit Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
       if( !validateName( newName) ) {
          /// @throws out_of_range If the Cat doesn't have a name
          throw std::out_of_range( "Cats must have a name" );
@@ -38,7 +38,7 @@ public:  //////////////////////////// Constructors /////////////////////////////
       name = newName;
       isCatFixed = false;
 
-      validate();
+      Cat::validate();
    }
 
    /// Create a Cat, populating *all* of the member variables
@@ -55,7 +55,7 @@ public:  //////////////////////////// Constructors /////////////////////////////
       name = newName;
       isCatFixed = newIsFixed;
 
-      validate();
+      Cat::validate();
    }
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
@@ -68,7 +68,7 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string speak() const noexcept override;  ///< Say `Meow`.
-   virtual void dump() const noexcept override;  ///< Print the contents of this object (and its parents)
+   void dump() const noexcept override;          ///< Print the contents of this object (and its parents)
    bool validate() const noexcept override;      ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////

@@ -9,7 +9,6 @@
 /// @date   17_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cstring>
 #include <stdexcept>
 #include <iostream>
 #include <cassert>

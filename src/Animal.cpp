@@ -40,7 +40,7 @@ Animal::Animal( const Weight::t_weight newMaxWeight
    }
    species = newSpecies;
 
-   validate();
+   Animal::validate();
 }
 
 
@@ -66,7 +66,7 @@ Animal::Animal( const Gender newGender
    species = newSpecies;
 
    setGender( newGender );
-   validate();
+   Animal::validate();
 }
 
 
