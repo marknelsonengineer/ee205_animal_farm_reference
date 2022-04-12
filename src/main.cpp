@@ -39,12 +39,9 @@ int main() {
    catDB.push_front( new Cat( "Trin",  Color::WHITE, true,  Gender::FEMALE, 1.4 ) ) ;
    catDB.push_front( new Cat( "Chili", Color::GINGER, true, Gender::MALE,   1.5 ) ) ;
 
-   Animal* pAnimal = (Animal*) catDB.get_first() ;
+   for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {
       cout << pAnimal->speak() << endl;
-
-//   for( Node* pAnimal = catDB.get_first() ; pAnimal != nullptr ; pAnimal = List::get_next( pAnimal ) ) {
-//      cout << ((Animal* )pAnimal)->speak() << endl;
-//   }
+   }
 
    catDB.validate() ;
    catDB.dump() ;
