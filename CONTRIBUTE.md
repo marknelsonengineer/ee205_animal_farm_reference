@@ -26,6 +26,7 @@ Contribute to Animal Farm
   - Public methods
   - Protected methods
   - Private methods
+  - Abstract methods
   - Overrides
 
 ### Pre-commit Checklist

@@ -65,16 +65,18 @@ public:   ///////////////////// Getters & Setters /////////////////////////////
    Weight::t_weight getWeight() const noexcept;         ///< Get the Animal's Weight
    void setWeight( const Weight::t_weight newWeight );  ///< Set the Animal's Weight
 
-protected:  ////////////////////// Protected Methods ///////////////////////////
-   void setGender( const Gender newGender);   ///< Set the Animal's Gender
-
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static bool validateClassification( const std::string& checkClassification ) noexcept;  ///< Verify the biological classification is valid
    static bool validateSpecies( const std::string& checkSpecies ) noexcept;                ///< Verify the biological species is valid
 
-public:   ////////////////////////// Methods //////////////////////////////////
+protected:  ////////////////////// Protected Methods ///////////////////////////
+   void setGender( const Gender newGender);   ///< Set the Animal's Gender
+
+public:   ////////////////////// Abstract Methods //////////////////////////////
    virtual std::string speak() const noexcept = 0;  ///< Ask the Animal to say something.  This method is virtual and abstract.
+
+public:   ////////////////////////// Methods //////////////////////////////////
    virtual void dump() const noexcept;       ///< Output the contents of this object
    bool validate() const noexcept;   ///< Check to see if the Animal object is valid
 };
