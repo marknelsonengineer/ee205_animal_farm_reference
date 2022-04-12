@@ -31,7 +31,6 @@ string Cat::getName() const noexcept {
 void Cat::setName( const string& newName ) {
    if( !validateName( newName )) {
       /// @throw invalid_argument Cats should have a name
-      /// @todo Go back and make sure the Mammal and Animal classes throw consistent exceptions
       throw invalid_argument( "Cats should have a good name" );
    }
    name = newName ;

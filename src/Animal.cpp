@@ -29,14 +29,14 @@ Animal::Animal( const Weight::t_weight newMaxWeight
                ,const std::string& newClassification
                ,const std::string& newSpecies ) : Node(), weight( Weight::POUND, newMaxWeight ) {
    if( !validateClassification( newClassification ) ) {
-      /// @throws out_of_range When the classification is invalid
-      throw out_of_range( "The classification is invalid" );
+      /// @throws invalid_argument When the classification is invalid
+      throw invalid_argument( "The classification is invalid" );
    }
    classification = newClassification;
 
    if( !validateSpecies( newSpecies ) ) {
-      /// @throws out_of_range When the species is invalid
-      throw out_of_range( "The species is invalid" );
+      /// @throws invalid_argument When the species is invalid
+      throw invalid_argument( "The species is invalid" );
    }
    species = newSpecies;
 
@@ -54,14 +54,14 @@ Animal::Animal( const Gender newGender
    ///       code below.
 
    if( !validateClassification( newClassification ) ) {
-      /// @throws out_of_range When the classification is invalid
-      throw out_of_range( "The classification is invalid" );
+      /// @throws invalid_argument When the classification is invalid
+      throw invalid_argument( "The classification is invalid" );
    }
    classification = newClassification;
 
    if( !validateSpecies( newSpecies ) ) {
-      /// @throws out_of_range When the species is invalid
-      throw out_of_range( "The species is invalid" );
+      /// @throws invalid_argument When the species is invalid
+      throw invalid_argument( "The species is invalid" );
    }
    species = newSpecies;
 
