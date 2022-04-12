@@ -22,7 +22,6 @@
 #pragma once
 
 #include "Node.h"
-#include "List.h"
 
 /// A generic list-based collection class.
 ///
