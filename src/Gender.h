@@ -29,8 +29,12 @@ enum class Gender {
 
 /// Output Gender as a formatted string
 ///
-/// @param lhs_stream The output stream to write to (usually `cout`).  `lhs` stands for Left Hand Side and means the left side of the `<<` operator.
-/// @param rhs_Gender The Gender to output.  `rhs` stands for Right Hand Side and means the right side of the `<<` operator.
+/// @param lhs_stream The output stream to write to (usually `cout`).
+///                   `lhs` stands for Left Hand Side and means the left side
+///                   of the `<<` operator.
+/// @param rhs_Gender The Gender to output.
+///                   `rhs` stands for Right Hand Side and means the right
+///                   side of the `<<` operator.
 /// @return `Unknown gender`, `Female` or `Male`.
 inline std::ostream& operator<<( std::ostream& lhs_stream, const Gender& rhs_Gender ) {
    switch( rhs_Gender ) {
