@@ -57,9 +57,6 @@ void Cat::fixCat() noexcept {
 void Cat::dump() const noexcept {
    assert( validate() ) ;
 
-   PRINT_HEADING_FOR_DUMP ;
-
-   Node::dump() ;
    Mammal::dump() ;
 
    FORMAT_LINE_FOR_DUMP( "Cat", "name" )    << getName() << endl ;
@@ -69,7 +66,6 @@ void Cat::dump() const noexcept {
 
 /// Check the Cat object.
 bool Cat::validate() const noexcept {
-   Node::validate() ;
    Mammal::validate() ;
 
    assert( validateName( getName() ));

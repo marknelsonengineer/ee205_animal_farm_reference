@@ -27,7 +27,7 @@ const std::string Animal::KINGDOM_NAME = "Animalia";
 
 Animal::Animal( const Weight::t_weight newMaxWeight
                ,const std::string& newClassification
-               ,const std::string& newSpecies ) : weight( Weight::POUND, newMaxWeight ) {
+               ,const std::string& newSpecies ) : Node(), weight( Weight::POUND, newMaxWeight ) {
    if( !validateClassification( newClassification ) ) {
       /// @throws out_of_range When the classification is invalid
       throw out_of_range( "The classification is invalid" );
@@ -48,7 +48,7 @@ Animal::Animal( const Gender newGender
                ,const Weight::t_weight newWeight
                ,const Weight::t_weight newMaxWeight
                ,const string& newClassification
-               ,const string& newSpecies ) : weight( newWeight, newMaxWeight ) {
+               ,const string& newSpecies ) : Node(), weight( newWeight, newMaxWeight ) {
 
    /// @todo Research delegating constructors and then replace the redundant
    ///       code below.
@@ -168,6 +168,10 @@ bool Animal::validateSpecies( const std::string& checkSpecies ) noexcept {
 void Animal::dump() const noexcept {
    assert( validate() ) ;
 
+   PRINT_HEADING_FOR_DUMP ;
+
+   Node::dump();
+
    FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << endl ;
@@ -178,6 +182,8 @@ void Animal::dump() const noexcept {
 
 
 bool Animal::validate() const noexcept {
+   assert( Node::validate() );
+
    assert( !getKingdom().empty() );
    assert( validateClassification(getClassification()) );
    assert( validateSpecies( getSpecies() ));

@@ -13,13 +13,12 @@
 #include <string>
 
 #include "config.h"
-#include "Node.h"
 #include "Mammal.h"
 
 
 /// Felis Catus
 ///
-class Cat : public Node, public Mammal {
+class Cat : public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string      SPECIES_NAME;  ///< The scientific name for this species
    static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for this species
@@ -31,7 +30,7 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:  //////////////////////////// Constructors /////////////////////////////
    /// Create a Cat with the minimum fields necessary to have a valid Cat
    /// @todo Why can't this be defined in the .cpp file??
-   Cat( const std::string& newName ) : Node(), Mammal( MAX_WEIGHT, SPECIES_NAME ) {
+   Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
       if( !validateName( newName) ) {
          /// @throws out_of_range If the Cat doesn't have a name
          throw std::out_of_range( "Cats must have a name" );
@@ -68,7 +67,7 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
    void fixCat() noexcept ;             ///< Spay or neuter the cat
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   virtual std::string speak() const noexcept override;  ///< Say `Meow`.
+   std::string speak() const noexcept override;  ///< Say `Meow`.
    virtual void dump() const noexcept override;  ///< Print the contents of this object (and its parents)
    bool validate() const noexcept override;      ///< Check to see if the Cat object is valid
 

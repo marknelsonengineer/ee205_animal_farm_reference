@@ -15,6 +15,7 @@
 #include <string>
 
 #include "config.h"
+#include "Node.h"
 #include "Gender.h"
 #include "Weight.h"
 
@@ -29,7 +30,7 @@
 ///
 /// @see https://en.wikipedia.org/wiki/Animal
 /// @see https://en.wikipedia.org/wiki/Taxonomy_(biology)
-class Animal {
+class Animal : public Node {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string KINGDOM_NAME;  ///< The scientific name of the Animal Kingdom.
 
