@@ -320,30 +320,32 @@ void Weight::dump() const noexcept {
 ///     | `Weight weight( Weight::KILO, 1 )`      | `Unknown out of 1 Kilo` |
 ///
 std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) {
+   stringstream stringBuffer;
+
    if( !rhs_Weight.isWeightKnown() && !rhs_Weight.hasMaxWeight() ) {
       lhs_stream << "Unknown" ;
       return lhs_stream;
    }
    else if( rhs_Weight.isWeightKnown() ) {
-      lhs_stream << rhs_Weight.getWeight();
+      stringBuffer << rhs_Weight.getWeight();
    } else {
-      lhs_stream << "Unknown";
+      stringBuffer << "Unknown";
    }
 
    if( rhs_Weight.hasMaxWeight() ) {
-      lhs_stream << " out of " << rhs_Weight.getMaxWeight();
+      stringBuffer << " out of " << rhs_Weight.getMaxWeight();
    }
 
-   lhs_stream << " " << rhs_Weight.getWeightUnit() ;
+   stringBuffer << " " << rhs_Weight.getWeightUnit() ;
 
    /// If the numeric weight is 1, use the singular form of the unit.
    /// If the numeric weight is not 1, use the plural form of the unit.
    if(    ( !rhs_Weight.hasMaxWeight() && rhs_Weight.getWeight() > 1 )
           || ( rhs_Weight.hasMaxWeight() && rhs_Weight.getMaxWeight() > 1 ) ) {
-      lhs_stream << "s";
+      stringBuffer << "s";
    }
 
-   return lhs_stream;
+   return lhs_stream << stringBuffer.str();
 }
 
 
