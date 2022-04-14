@@ -74,4 +74,5 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
+   static Cat generateCat() ;  ///< Generate a new, random Cat
 };

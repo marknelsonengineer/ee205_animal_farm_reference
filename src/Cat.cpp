@@ -12,10 +12,15 @@
 #include <stdexcept>
 #include <iostream>
 #include <cassert>
+#include <random>
+#include <fstream>
+
 
 #include "Cat.h"
 
 using namespace std ;
+
+#define CAT_NAMES_FILE "../../data/names.txt"
 
 
 const std::string Cat::SPECIES_NAME = "Felis Catus";
@@ -86,4 +91,35 @@ bool Cat::validateName( const std::string& newName ) {
 
 std::string Cat::speak() const noexcept {
    return "Meow" ;
+}
+
+
+static std::vector<std::string> names;
+
+
+/// @internal This function will use `new` to create a Cat on the heap
+///           Be sure to `delete` the cat when it's no longer needed
+Cat Cat::generateCat() {
+   if( names.empty() ) {
+      cout << "Loading... ";
+
+      ifstream file( CAT_NAMES_FILE );
+      string line;
+      while (getline(file, line)) names.push_back(line);
+
+      cout << to_string( names.size() ) << " names." << endl;
+   }
+
+   random_device RNG;        // Seed with a real random value, if available
+   uniform_int_distribution<> nameRNG( 0, names.size()-1 );
+   uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
+   bernoulli_distribution isFixedRNG(0.85); // 85% of cats are neutered
+   uniform_int_distribution<> colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
+   uniform_int_distribution<> genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
+
+   Cat* aCat = new Cat( names[nameRNG( RNG )], (Color) colorRNG( RNG ), isFixedRNG( RNG ), (Gender) genderRNG( RNG ), (float) weightRNG( RNG ) );
+
+   aCat->dump();
+
+   return *aCat;
 }
