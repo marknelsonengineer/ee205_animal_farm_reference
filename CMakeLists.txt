@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ee205_lab10d_animal_farm_3
-        VERSION 3.0
-        DESCRIPTION "All animals are equal"
+project(ee205_lab14a_animal_farm_4
+        VERSION 4.0
+        DESCRIPTION "All animals are equal, but some animals are more equal than others"
         LANGUAGES CXX )
 
 message( STATUS "CMAKE_SOURCE_DIR = [${CMAKE_SOURCE_DIR}]" )
@@ -61,7 +61,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_INTERACTIVE_SVG YES)
    set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
    set(DOXYGEN_STRIP_CODE_COMMENTS NO)
-   set(DOXYGEN_SOURCE_BROWSER YES)
+   set(DOXYGEN_SOURCE_BROWSER NO)
    set(DOXYGEN_VERBATIM_HEADERS YES)
    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/generated_docs)
 
@@ -100,4 +100,4 @@ message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
 add_subdirectory(tests)
 
-add_executable(ee205_lab11d_animal_farm_3 src/config.h src/main.cpp src/Node.h src/Node.cpp src/NodeWithPrev.h src/NodeWithPrev.cpp src/List.h src/List.cpp src/SinglyLinkedList.h src/SinglyLinkedList.cpp src/DoublyLinkedList.h src/DoublyLinkedList.cpp src/Gender.h src/Color.h src/Weight.h src/Weight.cpp src/Animal.h src/Animal.cpp src/Mammal.h src/Mammal.cpp src/Cat.h src/Cat.cpp)
+add_executable(ee205_lab14a_animal_farm_4 src/config.h src/main.cpp src/Node.h src/Node.cpp src/NodeWithPrev.h src/NodeWithPrev.cpp src/List.h src/List.cpp src/SinglyLinkedList.h src/SinglyLinkedList.cpp src/DoublyLinkedList.h src/DoublyLinkedList.cpp src/Gender.h src/Color.h src/Weight.h src/Weight.cpp src/Animal.h src/Animal.cpp src/Mammal.h src/Mammal.cpp src/Cat.h src/Cat.cpp)
