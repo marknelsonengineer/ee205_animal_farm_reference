@@ -15,6 +15,7 @@
 #include <boost/test/tools/output_test_stream.hpp>
 
 #include <stdexcept>
+#include <random>
 
 #include "../src/Cat.h"
 
@@ -80,4 +81,13 @@ BOOST_AUTO_TEST_CASE( test_Cat_methods ) {
    BOOST_CHECK_EQUAL( aCat.getWeight(), 40 );
 
    BOOST_CHECK( aCat.validate() );
+}
+
+
+BOOST_AUTO_TEST_CASE( test_Cat_generator ) {
+   for( int i = 0 ; i < 50 ; i++ ) {
+      Cat::generateCat();
+   }
+   BOOST_CHECK( true );
+
 }
