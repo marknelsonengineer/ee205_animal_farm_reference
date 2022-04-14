@@ -151,6 +151,7 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    newNode->next = currentNode->next;
    currentNode->next = newNode;
 
+   count++;
    assert( validate() );
 
    #ifdef DEBUG
