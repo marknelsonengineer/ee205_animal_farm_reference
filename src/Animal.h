@@ -69,6 +69,7 @@ public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static bool validateClassification( const std::string& checkClassification ) noexcept;  ///< Verify the biological classification is valid
    static bool validateSpecies( const std::string& checkSpecies ) noexcept;                ///< Verify the biological species is valid
+   static Animal& generateAnimal() ;  ///< Generate a new, random Animal
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void setGender( const Gender newGender);   ///< Set the Animal's Gender

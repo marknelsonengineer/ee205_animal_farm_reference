@@ -66,3 +66,11 @@ BOOST_AUTO_TEST_CASE( test_Animal_Max_Constructor ) {
    #endif
    BOOST_CHECK_EQUAL( anAnimal.validate(), true );
 }
+
+
+BOOST_AUTO_TEST_CASE( test_Animal_Generator ) {
+   for( int i = 0 ; i < 50 ; i++ ) {
+      Animal::generateAnimal();
+   }
+   BOOST_CHECK( true );
+}

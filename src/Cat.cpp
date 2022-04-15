@@ -20,7 +20,7 @@
 
 using namespace std ;
 
-#define CAT_NAMES_FILE "../../data/names.txt"
+#define CAT_NAMES_FILE "../../data/catNames.txt"
 
 
 const std::string Cat::SPECIES_NAME = "Felis Catus";
@@ -99,7 +99,7 @@ static std::vector<std::string> names;
 
 /// @internal This function will use `new` to create a Cat on the heap
 ///           Be sure to `delete` the cat when it's no longer needed
-Cat Cat::generateCat() {
+Cat& Cat::generateCat() {
    if( names.empty() ) {
       cout << "Loading... ";
 
@@ -111,7 +111,7 @@ Cat Cat::generateCat() {
    }
 
    random_device RNG;        // Seed with a real random value, if available
-   uniform_int_distribution<> nameRNG( 0, names.size()-1 );
+   uniform_int_distribution<> nameRNG( 0, (int) names.size()-1 );
    uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
    bernoulli_distribution isFixedRNG(0.85); // 85% of cats are neutered
    uniform_int_distribution<> colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
@@ -119,7 +119,9 @@ Cat Cat::generateCat() {
 
    Cat* aCat = new Cat( names[nameRNG( RNG )], (Color) colorRNG( RNG ), isFixedRNG( RNG ), (Gender) genderRNG( RNG ), (float) weightRNG( RNG ) );
 
-   aCat->dump();
+   // aCat->dump();
+
+   assert( aCat != nullptr );
 
    return *aCat;
 }

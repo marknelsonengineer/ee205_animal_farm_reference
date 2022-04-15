@@ -15,9 +15,12 @@
 #include <iostream>   // For cout
 #include <stdexcept>  // For out_of_range
 #include <iomanip>    // For setw() & setfill()
+#include <random>
+
 
 #include "config.h"
 #include "Animal.h"
+#include "Cat.h"
 
 using namespace std;
 
@@ -190,4 +193,20 @@ bool Animal::validate() const noexcept {
    /// Nothing to validate for Gender
    assert( weight.validate() );
    return true;
+}
+
+
+/// @internal This function will use `new` to create a Cat on the heap
+///           Be sure to `delete` the cat when it's no longer needed
+Animal& Animal::generateAnimal() {
+   random_device RNG;        // Seed with a real random value, if available
+   uniform_int_distribution<> animalRNG( 0, 0 );
+
+   Animal* newAnimal;
+
+   switch( animalRNG( RNG ) ) {
+      case 0: newAnimal = &(Cat::generateCat()) ;
+   }
+
+   return *newAnimal;
 }
