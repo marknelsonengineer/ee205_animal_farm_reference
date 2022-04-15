@@ -15,10 +15,10 @@
 #include <iomanip>    // For setw() & setfill()
 
 /// A grammatically correct title for the program
-#define PROGRAM_TITLE "Animal Farm 3"
+#define PROGRAM_TITLE "Animal Farm 4"
 
 /// A short-title for the program (used for console messages)
-#define PROGRAM_NAME  "animalfarm3"
+#define PROGRAM_NAME  "animalfarm4"
 
 // Set to trace the flow of execution through this code
 // #define TRACE
