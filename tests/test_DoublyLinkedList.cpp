@@ -178,3 +178,73 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_multi_insert_and_delete ) {
    BOOST_CHECK_NO_THROW( list.deleteAllNodes()); // This does a lot of work
    BOOST_CHECK( list.validate());
 }
+
+
+BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_insert_before_and_after ) {
+   DoublyLinkedList list;  // Instantiate a DoublyLinkedList
+   Node nodeFirst;         // Instantiate a node
+   list.push_front( &nodeFirst ) ;
+
+   BOOST_CHECK( list.validate() );
+
+   for( int i = 0 ; i < 100 ; i++ ) {  // Test insert_after() 100 times
+      Node* node = new Node();  // This is the node we are going to insert
+
+      int position = rand() % list.size();
+      Node* insertAt = list.get_first();
+      for( int j = 0 ; j < position ; j++ ) {
+         insertAt = list.get_next( insertAt );
+      }
+
+      BOOST_CHECK_NO_THROW( list.insert_after( insertAt, node ) );
+      BOOST_CHECK_THROW( list.insert_after( insertAt, node ), logic_error );  // Can't insert a node that's already in the list
+      BOOST_CHECK_THROW( list.insert_after( node, node ), logic_error );  // Can't insert a node that's already in the list
+
+      BOOST_CHECK_EQUAL( list.size(), i+2 );
+      BOOST_CHECK_EQUAL( list.empty(), false );
+      BOOST_CHECK_EQUAL( list.isIn( node ), true );
+      BOOST_CHECK( list.validate() );
+   }
+
+   {
+      Node* node = new Node();  // This is the node we are going to insert
+
+      BOOST_CHECK_NO_THROW( list.insert_after( list.get_last(), node ));  // Try an insert_after at the end of the list
+   }
+
+   BOOST_CHECK( list.validate() );
+
+   for( int i = 0 ; i < 100 ; i++ ) {  // Test insert_before() 100 times
+      Node* node = new Node();  // This is the node we are going to insert
+
+      int position = rand() % list.size();
+      Node* insertAt = list.get_last();
+      for( int j = 0 ; j < position ; j++ ) {
+         insertAt = list.get_prev( insertAt );
+      }
+
+      BOOST_CHECK_NO_THROW( list.insert_before( insertAt, node ) );
+      BOOST_CHECK_THROW( list.insert_before( insertAt, node ), logic_error );  // Can't insert a node that's already in the list
+      BOOST_CHECK_THROW( list.insert_before( node, node ), logic_error );  // Can't insert a node that's already in the list
+
+      BOOST_CHECK_EQUAL( list.size(), i+103 );  // Initial node + 100 new nodes + 1 node at the end + this node
+      BOOST_CHECK_EQUAL( list.empty(), false );
+      BOOST_CHECK_EQUAL( list.isIn( node ), true );
+      BOOST_CHECK( list.validate() );
+   }
+
+   {
+      Node* node = new Node();  // This is the node we are going to insert
+
+      BOOST_CHECK_NO_THROW( list.insert_before( list.get_first(), node ));  // Try an insert_before at the beginning of the list
+   }
+
+   BOOST_CHECK_NO_THROW( list.deleteAllNodes() ); // This does a lot of work
+
+   BOOST_CHECK_EQUAL( list.empty(), true );
+   BOOST_CHECK_EQUAL( list.size(), 0 );
+   BOOST_CHECK_EQUAL( list.isSorted(), true );  // An empty list should be sorted
+   BOOST_CHECK_EQUAL( list.get_first(), nullptr );
+   BOOST_CHECK_NO_THROW( list.dump() );
+   BOOST_CHECK( list.validate() );
+}

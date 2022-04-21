@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_insert_after ) {
 
    BOOST_CHECK( list.validate() );
 
-   for( int i = 0 ; i < 100 ; i++ ) {
+   for( int i = 0 ; i < 100 ; i++ ) {  // Test insert_after() 100 times
       Node* node = new Node();  // This is the node we are going to insert
 
       int position = rand() % list.size();
@@ -122,6 +122,8 @@ BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_insert_after ) {
       }
 
       BOOST_CHECK_NO_THROW( list.insert_after( insertAt, node ) );
+      BOOST_CHECK_THROW( list.insert_after( insertAt, node ), logic_error );  // Can't insert a node that's already in the list
+      BOOST_CHECK_THROW( list.insert_after( node, node ), logic_error );  // Can't insert a node that's already in the list
 
       BOOST_CHECK_EQUAL( list.size(), i+2 );
       BOOST_CHECK_EQUAL( list.empty(), false );
