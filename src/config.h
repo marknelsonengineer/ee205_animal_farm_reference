@@ -36,8 +36,8 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
    std::cout << PROGRAM_NAME << ": " << operation << " " << functionName << std::endl ;
 }
 
-   #define TRACE_START TRACE_OUT( "Start", __FUNCTION__ ) ;  ///< Print `Start` of some function
-   #define TRACE_END   TRACE_OUT( "End", __FUNCTION__ ) ;    ///< Print `End` of some function
+   #define TRACE_START TRACE_OUT( "Start", __PRETTY_FUNCTION__ ) ;  ///< Print `Start` of some function
+   #define TRACE_END   TRACE_OUT( "End", __PRETTY_FUNCTION__ ) ;    ///< Print `End` of some function
 #else
    #define TRACE_START  ///< If TRACE is defined, print `Start` of some function
    #define TRACE_END    ///< If TRACE is defined, print `End` of some function

@@ -15,7 +15,7 @@
 #include <iostream>
 
 // Set to trace the flow of execution through this code
-// #define TRACE
+#define TRACE
 
 #include "config.h"
 #include "DoublyLinkedList.h"
@@ -34,7 +34,7 @@ DoublyLinkedList::DoublyLinkedList() {
 
 /// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
-void DoublyLinkedList::push_front( NodeWithPrev *newNode ) {
+void DoublyLinkedList::push_front( Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -71,7 +71,7 @@ void DoublyLinkedList::push_front( NodeWithPrev *newNode ) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
+      cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
       newNode->dump();
    #endif
 
@@ -81,7 +81,7 @@ void DoublyLinkedList::push_front( NodeWithPrev *newNode ) {
 
 /// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
-void DoublyLinkedList::push_back(NodeWithPrev *newNode) {
+void DoublyLinkedList::push_back( Node* newNode) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -127,7 +127,7 @@ void DoublyLinkedList::push_back(NodeWithPrev *newNode) {
 
 
 /// @return The first Node in the List or `nullptr` if the List is empty
-NodeWithPrev *DoublyLinkedList::pop_front() noexcept {
+Node* DoublyLinkedList::pop_front() noexcept {
    TRACE_START
 
    if( head == nullptr )  // SPECIAL CASE:  The List is empty
@@ -135,7 +135,7 @@ NodeWithPrev *DoublyLinkedList::pop_front() noexcept {
 
    assert( validate() );
 
-   NodeWithPrev* returnValue = head;
+   Node* returnValue = head;
 
    // GENERAL CASE:  The List has 2 or more nodes
    if( head != tail ) {
@@ -160,7 +160,7 @@ NodeWithPrev *DoublyLinkedList::pop_front() noexcept {
 
 
 /// @return The last Node in the List or `nullptr` if the List is empty
-NodeWithPrev *DoublyLinkedList::pop_back() noexcept {
+Node* DoublyLinkedList::pop_back() noexcept {
    TRACE_START
 
    if( tail == nullptr )  // SPECIAL CASE:  The List is empty
@@ -168,7 +168,7 @@ NodeWithPrev *DoublyLinkedList::pop_back() noexcept {
 
    assert( validate() );
 
-   NodeWithPrev* returnValue = tail;
+   Node* returnValue = tail;
 
    // GENERAL CASE:  The List has 2 or more nodes
    if( head != tail ) {
@@ -198,7 +198,7 @@ NodeWithPrev *DoublyLinkedList::pop_back() noexcept {
 ///                    Must be in the List.
 /// @param newNode The Node to add to the List.  Must not be `nullptr`.
 ///                Must not be in the List.
-void DoublyLinkedList::insert_after(NodeWithPrev *currentNode, NodeWithPrev *newNode) {
+void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
    TRACE_START
 
    /// @throws logic_error If the List is empty
@@ -260,7 +260,7 @@ void DoublyLinkedList::insert_after(NodeWithPrev *currentNode, NodeWithPrev *new
 ///                    Must be in the List.
 /// @param newNode The Node to add to the List.  Must not be `nullptr`.
 ///                Must not be in the List.
-void DoublyLinkedList::insert_before(NodeWithPrev *currentNode, NodeWithPrev *newNode) {
+void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
    TRACE_START
 
    /// @throws logic_error If the List is empty
@@ -318,7 +318,7 @@ void DoublyLinkedList::insert_before(NodeWithPrev *currentNode, NodeWithPrev *ne
 
 /// @param node1 Must not be `nullptr` and must be in the List
 /// @param node2 Must not be `nullptr` and must be in the List
-void DoublyLinkedList::swap( NodeWithPrev *node1, NodeWithPrev *node2 ) {
+void DoublyLinkedList::swap( Node* node1, Node* node2 ) {
    assert( !empty() );
 
    /// @throws invalid_argument If either `node1` or `node2` is `nullptr`
@@ -341,10 +341,10 @@ void DoublyLinkedList::swap( NodeWithPrev *node1, NodeWithPrev *node2 ) {
    ///       If they aren't, we may be in for some unpredictable behavior.
 
    /// @internal We will divide this into 4 separate operations... each with a general & special case.
-   NodeWithPrev* node1_left  = node1->prev;
-   NodeWithPrev* node1_right = node1->next;
-   NodeWithPrev* node2_left  = node2->prev;
-   NodeWithPrev* node2_right = node2->next;
+   Node* node1_left  = node1->prev;
+   Node* node1_right = node1->next;
+   Node* node2_left  = node2->prev;
+   Node* node2_right = node2->next;
 
    bool isAdjoining = (node1_right == node2);
 
@@ -400,10 +400,10 @@ void DoublyLinkedList::insertionSort() noexcept {
 
    // dump();
 
-   for( NodeWithPrev* i = head ; i->next != nullptr ; i = i->next ) {  // Outer loop
-      NodeWithPrev* minNode = i;
+   for( Node* i = head ; i->next != nullptr ; i = i->next ) {  // Outer loop
+      Node* minNode = i;
 
-      for( NodeWithPrev* j = i->next ; j != nullptr ; j = j->next ) {  // Inner loop
+      for( Node* j = i->next ; j != nullptr ; j = j->next ) {  // Inner loop
          if( *minNode > *j )
             minNode = j;
       }
@@ -422,7 +422,7 @@ void DoublyLinkedList::insertionSort() noexcept {
 
 
 /// @return The last Node in the List.  If the List is empty, return `nullptr`.
-NodeWithPrev *DoublyLinkedList::get_last() const noexcept {
+Node *DoublyLinkedList::get_last() const noexcept {
    return tail;
 }
 
@@ -430,7 +430,7 @@ NodeWithPrev *DoublyLinkedList::get_last() const noexcept {
 /// @param currentNode Start here
 ///
 /// @return Return the Node that's before `currentNode` in the DoublyLinkedList
-NodeWithPrev *DoublyLinkedList::get_prev(const NodeWithPrev *currentNode) {
+Node* DoublyLinkedList::get_prev( const Node* currentNode) {
    /// @throws invalid_argument If `currentNode` is `nullptr`
    if( currentNode == nullptr ) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
@@ -442,7 +442,7 @@ NodeWithPrev *DoublyLinkedList::get_prev(const NodeWithPrev *currentNode) {
 
 void DoublyLinkedList::dump() const noexcept {
    cout << "DoublyLinkedList:  head=[" << head << "]   tail=[" << tail << "]" << endl;
-   for( NodeWithPrev* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
+   for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
       currentNode->dump();
    }
 }
@@ -480,7 +480,7 @@ bool DoublyLinkedList::validate() const noexcept {
    }
 
    unsigned int forwardCount = 0;
-   NodeWithPrev* currentNode = head;
+   Node* currentNode = head;
    // Count forward through the List
    while( currentNode != nullptr ) {
       assert( currentNode->validate() ) ;

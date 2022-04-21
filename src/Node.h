@@ -28,10 +28,16 @@
 class Node {
    friend class List;
    friend class SinglyLinkedList;
+   friend class DoublyLinkedList;
 
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
                           ///< if it's the last Node in the list.
+
+   Node* prev = nullptr;  ///< Point to the previous Node in the list or
+                          ///< `nullptr` if it's the first Node in the list.
+                          ///<
+                          ///< This member may not always be used.
 
 protected:  //////////////////////// Static Methods ////////////////////////////
    /// A generic comparison based on the memory address of the object.
@@ -55,18 +61,21 @@ protected:  //////////////////////// Static Methods ////////////////////////////
 
 
 public:  /////////////////////////// Public Methods ////////////////////////////
+
    /// Output the contents of this object
    ///
    /// #### Sample Output
    /// @code
    ///     ==============================================
-   ///     Node    this                0x7ffeeaa7e580
-   ///     Node    next                0
+   ///     Node    this                0xa38d10
+   ///     Node    next                0xa39f50
+   ///     Node    prev                0
    /// @endcode
    ///
    virtual void dump() const {
-      FORMAT_LINE_FOR_DUMP( "Node", "this" ) << this << std::endl ;
-      FORMAT_LINE_FOR_DUMP( "Node", "next" ) << next << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "this" )      << this      << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "next" )      << next      << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "prev" )      << prev      << std::endl ;
    }
 
 
@@ -78,17 +87,30 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    ///
    /// @return True if the Node is healthy
    virtual bool validate() const noexcept {
-      if( next == nullptr ) {
-         return true;  /// `nullptr` is a valid value for the next pointer.
+      /// @internal Iterate along the next (and prev) pointers and verify that
+      ///           they does not refer back to themselves.  This also has the
+      ///           benefit of dereferencing all of the downstream next/prev
+      ///           pointers and ensuring they point to valid addresses.
+      if( next != nullptr ) {
+         Node* currentPointer = next->next;
+         while( currentPointer != nullptr ) {
+            if( next == currentPointer ) {
+               std::cout << PROGRAM_NAME << ": Recursive loop detected along next!";
+               return false;
+            }
+            currentPointer = currentPointer->next;
+         }
       }
 
-      /// @internal Perform a rudimentary recursive loop test and ensure
-      ///           the next pointer does not refer back to itself.
-      ///           This also has the benefit of dereferencing the
-      ///           next pointer and ensuring it points to a valid address.
-      if( next == next->next ) {
-         std::cout << PROGRAM_NAME << ": Recursive loop detected:  next points to itself!" ;
-         return false;
+      if( prev != nullptr ) {
+         Node* currentPointer = prev->prev;
+         while( currentPointer != nullptr ) {
+            if( prev == currentPointer ) {
+               std::cout << PROGRAM_NAME << ": Recursive loop detected along prev!";
+               return false;
+            }
+            currentPointer = currentPointer->prev;
+         }
       }
 
       return true;
@@ -104,6 +126,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
       // `this` is the leftSide of the operator, so compare:
       // leftSide > rightSide
 
+      /// By default, we will compare two Nodes by their address.
       return compareByAddress( this, &(Node&)rightSide );
    }
 
