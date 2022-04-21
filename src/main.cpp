@@ -19,7 +19,7 @@
 
 #include "config.h"
 #include "Cat.h"
-#include "SinglyLinkedList.h"
+#include "DoublyLinkedList.h"
 
 using namespace std ;
 
@@ -28,7 +28,7 @@ using namespace std ;
 int main() {
    cout << "Starting " << PROGRAM_TITLE << endl ;
 
-   SinglyLinkedList catDB ;
+   DoublyLinkedList catDB ;
 
    catDB.push_front( new Cat( "Loki",  Color::CREAM,  true, Gender::MALE,   1.0 ) ) ;
    catDB.push_front( new Cat( "Milo",  Color::BLACK,  true, Gender::MALE,   1.1 ) ) ;
