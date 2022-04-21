@@ -19,7 +19,6 @@
 ///
 class DoublyLinkedList : public List {
 protected:  ////////////////////// Protected Members ///////////////////////////
-   // NodeWithPrev* head = nullptr ;     ///< The head pointer for the collection
    Node* tail = nullptr ;     ///< The tail pointer for the List
 
 public:  ///////////////////////// Public Constructors /////////////////////////
