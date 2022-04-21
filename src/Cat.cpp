@@ -20,6 +20,7 @@
 
 using namespace std ;
 
+/// Data file that holds a list of cat names
 #define CAT_NAMES_FILE "../../data/catNames.txt"
 
 
@@ -94,6 +95,8 @@ std::string Cat::speak() const noexcept {
 }
 
 
+/// Holds a list of cat names.  This is static, so the list will be built
+/// once (on first use) and then remain available for the future.
 static std::vector<std::string> names;
 
 
