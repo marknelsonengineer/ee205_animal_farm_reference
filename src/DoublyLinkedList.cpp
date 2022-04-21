@@ -239,11 +239,11 @@ void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
       currentNode->next = newNode;
       newNode->prev = currentNode;
       newNode->next->prev = newNode;
+      count++;
    } else {	 // SPECIAL CASE:  Insert at the end of the List... we already know how to do that!
       push_back( newNode );
    }
 
-   count++;
    assert( validate() );
 
    #ifdef DEBUG
@@ -302,10 +302,10 @@ void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
       currentNode->prev = newNode;
       newNode->next = currentNode;
       newNode->prev->next = newNode;
+      count++;
    } else {	 // SPECIAL CASE:  Insert at the beginning of the List... we already know how to do that!
       push_front( newNode );
    }
-   count--;
    assert( validate() );
 
    #ifdef DEBUG
