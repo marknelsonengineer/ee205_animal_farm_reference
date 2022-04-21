@@ -18,8 +18,10 @@ Contribute to Animal Farm
 - Usually, I document the narrative of a function or member in the `.h` file.  Then, I document the details `@param`, `@returns`, `@throws`, `@todo` and Sample Output in the `.cpp` file.
 - If there's a code-block that's longer than a page, I'll usually comment the `}` with an indication of what it's closing.  Ex. `} // validate()` 
 - When declaring a class, I'll usually put the declarations in the following order:
+  - Friend declarations
   - Enumerations
   - Constants
+  - Private, Protected & Public member variables
   - Constructors
   - Public Getters & setters
   - Static methods
