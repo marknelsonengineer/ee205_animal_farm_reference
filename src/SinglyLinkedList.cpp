@@ -27,7 +27,7 @@ SinglyLinkedList::SinglyLinkedList() {
    assert( SinglyLinkedList::validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << ": initialized" << endl ;
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << ": initialized" << endl ;
    #endif
 }
 
@@ -67,8 +67,8 @@ void SinglyLinkedList::push_front(Node *newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -155,8 +155,8 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -203,7 +203,7 @@ bool SinglyLinkedList::validate() const noexcept {
    assert( size() == forwardCount );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME ": List is valid" << endl;
+      // cout << PROGRAM_NAME ": List is valid" << endl;
    #endif
 
    return true;

@@ -15,7 +15,7 @@
 #include <iostream>
 
 // Set to trace the flow of execution through this code
-#define TRACE
+// #define TRACE
 
 #include "config.h"
 #include "DoublyLinkedList.h"
@@ -27,7 +27,7 @@ DoublyLinkedList::DoublyLinkedList() {
    assert( DoublyLinkedList::validate() );
 
    #ifdef DEBUG
-   cout << PROGRAM_NAME << ": " << __FUNCTION__ << ": initialized" << endl ;
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << ": initialized" << endl ;
    #endif
 }
 
@@ -71,8 +71,8 @@ void DoublyLinkedList::push_front( Node* newNode ) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -118,8 +118,8 @@ void DoublyLinkedList::push_back( Node* newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -247,8 +247,8 @@ void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -309,8 +309,8 @@ void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
-      newNode->dump();
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // newNode->dump();
    #endif
 
    TRACE_END
@@ -507,7 +507,7 @@ bool DoublyLinkedList::validate() const noexcept {
    assert( size() == backwardCount );
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME ": List is valid" << endl;
+      // cout << PROGRAM_NAME ": List is valid" << endl;
    #endif
 
    return true;
