@@ -67,7 +67,7 @@ void SinglyLinkedList::push_front(Node *newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      // cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
       // newNode->dump();
    #endif
 
@@ -155,7 +155,7 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    assert( validate() );
 
    #ifdef DEBUG
-      // cout << PROGRAM_NAME << ": " << __FUNCTION__ << endl;
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
       // newNode->dump();
    #endif
 
