@@ -58,6 +58,10 @@ public:  //////////////////////////// Constructors /////////////////////////////
       Cat::validate();
    }
 
+
+   /// Delete a Cat object
+   virtual ~Cat();
+
 public:  ////////////////////////// Getters & Setters //////////////////////////
    std::string getName() const noexcept ;  ///< Get the Cat's name
    void setName( const std::string& newName );   ///< Set the Cat's name.  The name

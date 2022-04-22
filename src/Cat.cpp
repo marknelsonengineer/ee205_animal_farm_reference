@@ -128,3 +128,8 @@ Cat& Cat::generateCat() {
 
    return *aCat;
 }
+
+
+/// This is required to safely use `delete` on a Cat object
+Cat::~Cat() {
+}
