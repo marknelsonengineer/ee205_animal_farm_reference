@@ -19,18 +19,6 @@
 using namespace std;
 
 
-/// @return `true` if the List is empty.  `false` if the List has Nodes in it.
-bool List::empty() const noexcept {
-   return (head == nullptr);
-}
-
-
-/// @return The number of Nodes in the List
-unsigned int List::size() const noexcept {
-   return count ;
-}
-
-
 /// @param aNode Check this Node to see if it's in the List
 ///
 /// @return `true` if `aNode` is in the List.  `false` if it's not.
@@ -103,3 +91,61 @@ void List::deleteAllNodes() noexcept {
 
    assert( validate() );
 }
+
+
+void List::dump() const noexcept {
+   Container::dump();
+
+   FORMAT_LINE_FOR_DUMP( "List", "head" )  << this  << std::endl ;
+
+   PRINT_HEADING_FOR_DUMP ;
+
+   cout << "List:  head=[" << head << "]" << endl;
+   for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
+      currentNode->dump();
+   }
+}
+
+
+/// If something is not right, print a message and stop the validation.
+/// It will not throw an exception.
+///
+/// @note This method calls `validate()` on each Node.
+///
+/// @return `true` if the List is healthy.  `false` if otherwise.
+bool List::validate() const noexcept {
+   Container::validate();
+
+   /// If `head` is `nullptr`, then `count == 0`.
+   if( head == nullptr ) {
+      assert( count == 0 );
+      assert( empty() );
+   } else {
+      assert( count != 0 );
+      assert( !empty() );
+   }
+
+   /// If the list only has 1 Node, ensure the count == 1.
+   if( head != nullptr ) {
+      if( head->next == nullptr ) {
+         assert( count == 1 );
+      }
+   }
+
+   /// Count the number of nodes and ensure `count` is correct.
+   unsigned int forwardCount = 0;
+   Node* currentNode = head;
+   // Count forward through the List
+   while( currentNode != nullptr ) {
+      assert( currentNode->validate() ) ;  /// Validate every node in the list.
+      forwardCount++;
+      currentNode = currentNode->next;
+   }
+   assert( size() == forwardCount );
+
+   #ifdef DEBUG
+   // cout << PROGRAM_NAME ": List is valid" << endl;
+   #endif
+
+   return true;
+} // validate()

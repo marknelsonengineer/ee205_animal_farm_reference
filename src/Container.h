@@ -26,5 +26,5 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    virtual unsigned int size()     const noexcept ;  ///< Return the number of Nodes in the Container
 
    virtual void         dump()     const noexcept ;  ///< Output the member variables in this object
-   virtual bool         validate() const noexcept ;  ///< Check to see if the container is valid
+   virtual bool         validate() const noexcept ;  ///< Ensure the object is valid
 };

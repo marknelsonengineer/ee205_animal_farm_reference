@@ -12,7 +12,9 @@
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   06_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+#define BOOST_TEST_MAIN  // in only one cpp file
 #define BOOST_TEST_DYN_LINK
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/tools/output_test_stream.hpp>
 

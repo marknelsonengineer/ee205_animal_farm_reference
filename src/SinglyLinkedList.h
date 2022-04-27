@@ -27,7 +27,4 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
    void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
 
-   void dump() const noexcept override ;     ///< Output the contents of this container
-   bool validate() const noexcept override ; ///< Check to see if the container is valid
-
-}; // class SingleLinkedList
+}; // class SinglyLinkedList

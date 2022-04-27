@@ -7,6 +7,8 @@
 ///
 /// This class is defined as a header-only class.
 ///
+/// @todo Add a reset method
+///
 /// @file Node.h
 /// @version 1.0
 ///
@@ -28,7 +30,7 @@
 class Node {
    friend class List;
    friend class SinglyLinkedList;
-   friend class DoublyLinkedList;
+   friend class Tree;
 
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
@@ -38,6 +40,10 @@ protected:  ////////////////////// Protected Members ///////////////////////////
                           ///< `nullptr` if it's the first Node in the list.
                           ///<
                           ///< This member may not always be used.
+
+   Node* left = nullptr;  ///< Point to the left Node in the tree or `nullptr`
+
+   Node* right = nullptr; ///< Point to the right Node in the tree or `nullptr`
 
 protected:  //////////////////////// Static Methods ////////////////////////////
    /// A generic comparison based on the memory address of the object.
@@ -76,6 +82,8 @@ public:  /////////////////////////// Public Methods ////////////////////////////
       FORMAT_LINE_FOR_DUMP( "Node", "this" )      << this      << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "next" )      << next      << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "prev" )      << prev      << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "left" )      << left      << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "right" )     << right     << std::endl ;
    }
 
 
@@ -111,6 +119,10 @@ public:  /////////////////////////// Public Methods ////////////////////////////
             }
             currentPointer = currentPointer->prev;
          }
+      }
+
+      if( left != nullptr ) {
+         /// @todo Recursively check the left & right sides
       }
 
       return true;
