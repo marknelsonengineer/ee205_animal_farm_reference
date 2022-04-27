@@ -58,6 +58,6 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
     std::cout << std::setfill( ' ' )  /* Space pad    */  \
               << std::left            /* Left justify */  \
               << std::boolalpha  /* Print `true` or `false` for `bool`s */ \
-              << std::setw( 8) << (className)             \
+              << std::setw(10) << (className)             \
               << std::setw(20) << (member)                \
-              << std::setw(52)  /* (data) */
+              << std::setw(50)  /* (data) */
