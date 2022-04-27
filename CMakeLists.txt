@@ -48,6 +48,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_PAPER_TYPE letter)
    set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
    set(DOXYGEN_HAVE_DOT YES)
+   set(DOXYGEN_DOT_NUM_THREADS 1)
    set(DOXYGEN_UML_LOOK YES)
    set(DOXYGEN_UML_LIMIT_NUM_FIELDS 100)
    set(DOXYGEN_DOT_UML_DETAILS YES)
@@ -77,19 +78,14 @@ if (DOXYGEN_FOUND)
 
    add_custom_command(TARGET doc
            PRE_BUILD
-           COMMAND rsync --recursive --mkpath --checksum --update --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
-           COMMENT "Update images directory"
+           COMMAND rsync --recursive --mkpath --checksum --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
+           COMMENT "Updating images directory"
            )
-
-#   set_property(DIRECTORY ${DOXYGEN_OUTPUT_DIRECTORY}
-#          APPEND
-#          PROPERTY ADDITIONAL_CLEAN_FILES
-#          )
 
    add_custom_command(TARGET doc
            POST_BUILD
-           COMMAND rsync --recursive --update --delete --checksum --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
-           COMMENT "Push files to UHUnix"
+           COMMAND rsync --recursive --checksum --delete --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
+           COMMENT "Pushing files to UHUnix"
            )
 
 else (DOXYGEN_FOUND)
