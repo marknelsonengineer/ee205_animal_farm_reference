@@ -4,6 +4,9 @@
 ///
 /// Global configuration definitions for Animal Farm
 ///
+/// @todo Think about adding a namespace
+/// @todo Sweep through all of the headers and make the project just Animal Farm
+///
 /// @file config.h
 /// @version 2.0
 ///
@@ -58,6 +61,6 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
     std::cout << std::setfill( ' ' )  /* Space pad    */  \
               << std::left            /* Left justify */  \
               << std::boolalpha  /* Print `true` or `false` for `bool`s */ \
-              << std::setw(10) << (className)             \
+              << std::setw(20) << (className)             \
               << std::setw(20) << (member)                \
-              << std::setw(50)  /* (data) */
+              << std::setw(40)  /* (data) */

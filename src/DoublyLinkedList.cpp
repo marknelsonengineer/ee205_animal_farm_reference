@@ -441,21 +441,29 @@ Node* DoublyLinkedList::get_prev( const Node* currentNode) {
 }
 
 
+/// @todo add better documentation
 void DoublyLinkedList::dump() const noexcept {
-   cout << "DoublyLinkedList:  head=[" << head << "]   tail=[" << tail << "]" << endl;
+   List::dump();
+
+   FORMAT_LINE_FOR_DUMP( "DoublyLinkedList", "tail" )  << tail  << std::endl ;
+
+   PRINT_HEADING_FOR_DUMP ;
+
    for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
       currentNode->dump();
    }
 }
 
 
-/// If something is not right, it will print a message and stop the validation.
-/// It will not throw an exception, but it may violate an assert().
+/// If something is not right, print a message and stop the validation.
+/// It will not throw an exception.
 ///
 /// @note This method calls `validate()` on each Node.
 ///
 /// @return `true` if the List is healthy.  `false` if otherwise.
 bool DoublyLinkedList::validate() const noexcept {
+   assert( List::validate() );
+
    if( head == nullptr ) {
       assert( tail == nullptr );
       assert( count == 0 );

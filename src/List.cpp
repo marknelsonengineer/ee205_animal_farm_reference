@@ -92,18 +92,11 @@ void List::deleteAllNodes() noexcept {
    assert( validate() );
 }
 
-
+/// @todo Add better documentation
 void List::dump() const noexcept {
    Container::dump();
 
    FORMAT_LINE_FOR_DUMP( "List", "head" )  << this  << std::endl ;
-
-   PRINT_HEADING_FOR_DUMP ;
-
-   cout << "List:  head=[" << head << "]" << endl;
-   for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
-      currentNode->dump();
-   }
 }
 
 
@@ -114,7 +107,7 @@ void List::dump() const noexcept {
 ///
 /// @return `true` if the List is healthy.  `false` if otherwise.
 bool List::validate() const noexcept {
-   Container::validate();
+   assert( Container::validate() );
 
    /// If `head` is `nullptr`, then `count == 0`.
    if( head == nullptr ) {

@@ -27,4 +27,5 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
    void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
 
+   void dump() const noexcept override;      ///< Output the member variables in this object
 }; // class SinglyLinkedList

@@ -26,9 +26,9 @@ public:  ///////////////////////// Public Constructors /////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    void  push_front( Node* newNode ) override; ///< Insert `newNode` to the beginning of the List
-   void  push_back( Node* newNode )  ; ///< Append `newNode` to the end of the List
-   Node* pop_front() noexcept override ;  ///< Remove and return the first NodeWithPrev in the List
-   Node* pop_back() noexcept ;            ///< Remove and return the last NodeWithPrev in the List
+   void  push_back( Node* newNode )  ;         ///< Append `newNode` to the end of the List
+   Node* pop_front() noexcept override ;       ///< Remove and return the first NodeWithPrev in the List
+   Node* pop_back() noexcept ;                 ///< Remove and return the last NodeWithPrev in the List
 
    void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
    void insert_before( Node* currentNode, Node* newNode ) ; ///< Insert `newNode` before `currentNode`
@@ -40,6 +40,6 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    Node* get_last() const noexcept ;                   ///< Get the last NodeWithPrev in the List
    static Node* get_prev( const Node* currentNode ) ;  ///< Get the previous NodeWithPrev in the List
 
-   void dump() const noexcept override ;      ///< Output the contents of this container
-   bool validate() const noexcept override ;  ///< Check to see if the container is valid
+   void dump() const noexcept override ;      ///< Output the member variables in this object
+   bool validate() const noexcept override ;  ///< Ensure the object is valid
 } ;  // class DoubleLinkedList

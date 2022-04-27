@@ -35,12 +35,10 @@ int main() {
    newCat.dump();
    cout << "========" << endl;
 
-   DoublyLinkedList list = DoublyLinkedList();
-
    // Put 16 cats in my list
    for( int i = 0 ; i < 8 ; i++ ) {
-      list.push_front( &Cat::generateCat() );
-      list.push_back( &Cat::generateCat() );
+      catDB.push_front( &Cat::generateCat() );
+      catDB.push_back( &Cat::generateCat() );
    }
 
    for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {

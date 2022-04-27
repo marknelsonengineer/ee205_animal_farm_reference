@@ -160,4 +160,17 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
    #endif
 
    TRACE_END
-} // insert_after
+}
+
+
+/// @todo Add better documentation
+void SinglyLinkedList::dump() const noexcept {
+   List::dump();
+
+   PRINT_HEADING_FOR_DUMP ;
+
+   for( Node* currentNode = head ; currentNode != nullptr ; currentNode = currentNode->next ) {
+      currentNode->dump();
+   }
+}
+// insert_after

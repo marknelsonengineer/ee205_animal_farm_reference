@@ -21,7 +21,7 @@
 using namespace std ;
 
 /// Data file that holds a list of cat names
-#define CAT_NAMES_FILE "../../data/catNames.txt"
+#define CAT_NAMES_FILE "../data/catNames.txt"
 
 
 const std::string Cat::SPECIES_NAME = "Felis Catus";
