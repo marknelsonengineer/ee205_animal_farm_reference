@@ -18,16 +18,16 @@
 /// Holds Node classes in a Binary Search Tree
 class Tree : public List {
 protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* rootNode = nullptr;
+   Node* rootNode = nullptr;  ///< The root for the binary search tree
 
 public:
    void insert( Node* newNode );  ///< Add a Node to the Tree
 
 private:
-   void insert( Node* atNode, Node* newNode );  // Add a Node starting at atNode
+   void insert( Node* atNode, Node* newNode );  ///< Add a Node starting at atNode
 
-   void dfsInorderReverse( Node* atCat, int depth ) const;
-   void dfsInorder( Node* atCat ) const;
-   void catTail( Node* atCat, Tree* tailList ) const;
-   void dfsPreorder( Node* atCat ) const;
+// void dfsInorderReverse( Node* atCat, int depth ) const;  ///< Depth First Search - Inorder reverse search
+// void dfsInorder( Node* atCat ) const;                    ///< Depth First Search - Inorder search
+// void catTail( Node* atCat, Tree* tailList ) const;
+// void dfsPreorder( Node* atCat ) const;
 };

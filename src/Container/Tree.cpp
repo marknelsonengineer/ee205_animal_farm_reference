@@ -97,23 +97,3 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 
    TRACE_END
 }
-
-
-void Tree::dfsInorderReverse( Node* atCat, int depth ) const {
-
-}
-
-
-void Tree::dfsInorder( Node* atCat ) const {
-
-}
-
-
-void Tree::catTail( Node* atCat, Tree* tailList ) const {
-
-}
-
-
-void Tree::dfsPreorder( Node* atCat ) const {
-
-}

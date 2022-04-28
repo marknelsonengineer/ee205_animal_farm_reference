@@ -7,7 +7,7 @@
 /// ...and end by printing
 ///    Done with Animal Farm 2
 ///
-/// @file main.cpp
+/// @file main_DoublyLinkedList.cpp
 /// @version 2.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
