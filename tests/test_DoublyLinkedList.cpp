@@ -26,12 +26,10 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
-/// All of the tests will use this one test_list, which must always remain valid
-/// All tests should leave this test_list empty when they finish.
-static DoublyLinkedList test_list;
 
-
-/// Delete all nodes before and after each of the test cases in this module
+/// All of the tests will use this one test_list, which must always remain valid.
+///
+/// Delete all nodes before and after each of the test cases in this module.
 struct DoublyLinkedListTestFixture {
    DoublyLinkedListTestFixture()   {
       test_list.deleteAllNodes();
@@ -41,6 +39,8 @@ struct DoublyLinkedListTestFixture {
       test_list.deleteAllNodes();
       BOOST_TEST_MESSAGE( "teardown fixture" );
    }
+
+   DoublyLinkedList test_list;
 } ;
 
 
