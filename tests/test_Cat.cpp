@@ -21,6 +21,8 @@
 
 using namespace std;
 
+BOOST_AUTO_TEST_SUITE( test_Cat )
+
 BOOST_AUTO_TEST_CASE( test_Cat_min_constructor ) {
    Cat aCat( "Kali" );
    BOOST_CHECK_EQUAL( aCat.getName(), "Kali" );
@@ -91,3 +93,5 @@ BOOST_AUTO_TEST_CASE( test_Cat_generator ) {
    BOOST_CHECK( true );
 
 }
+
+BOOST_AUTO_TEST_SUITE_END()

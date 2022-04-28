@@ -24,11 +24,27 @@
 
 using namespace std;
 
+BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
+
 /// All of the tests will use this one test_list, which must always remain valid
 /// All tests should leave this test_list empty when they finish.
 static DoublyLinkedList test_list;
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front ) {
+
+/// Delete all nodes before and after each of the test cases in this module
+struct DoublyLinkedListTestFixture {
+   DoublyLinkedListTestFixture()   {
+      test_list.deleteAllNodes();
+      BOOST_TEST_MESSAGE( "setup fixture" );
+   }
+   ~DoublyLinkedListTestFixture()  {
+      test_list.deleteAllNodes();
+      BOOST_TEST_MESSAGE( "teardown fixture" );
+   }
+} ;
+
+
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front, DoublyLinkedListTestFixture ) {
    Node node1;             // Instantiate a node
 
    BOOST_CHECK_EQUAL( test_list.empty(), true );
@@ -65,7 +81,7 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back ) {
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back, DoublyLinkedListTestFixture ) {
    Node node1;             // Instantiate a node
 
    BOOST_CHECK_EQUAL( test_list.empty(), true );
@@ -105,7 +121,7 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_multi_insert_and_delete ) {
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_multi_insert_and_delete, DoublyLinkedListTestFixture ) {
    BOOST_CHECK( test_list.validate());
 
    for( int i = 0 ; i < 20 ; i++ ) {  // Test push_front() 20 times
@@ -181,7 +197,7 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_multi_insert_and_delete ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_insert_before_and_after ) {
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_insert_before_and_after, DoublyLinkedListTestFixture ) {
    Node nodeFirst;         // Instantiate a node
    test_list.push_front( &nodeFirst ) ;
 
@@ -253,7 +269,7 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_insert_before_and_after ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_swap ) {
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_swap, DoublyLinkedListTestFixture ) {
    Node* cat1 = new Node();
    Node* cat2 = new Node();
    Node* cat3 = new Node();
@@ -329,7 +345,7 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_swap ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_insertion_sort ) {
+BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_insertion_sort, DoublyLinkedListTestFixture ) {
    Node* cat1 = new Node();
    Node* cat2 = new Node();
    Node* cat3 = new Node();
@@ -389,3 +405,5 @@ BOOST_AUTO_TEST_CASE( test_DoublyLinkedList_insertion_sort ) {
    }
    cout << endl;
 }
+
+BOOST_AUTO_TEST_SUITE_END()

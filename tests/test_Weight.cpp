@@ -19,6 +19,8 @@
 
 using namespace std;
 
+BOOST_AUTO_TEST_SUITE( test_Weight )
+
 BOOST_AUTO_TEST_CASE( test_Weight_Constructor1 ) {
 // Weight w1 = Weight();
    Weight w1;
@@ -279,3 +281,5 @@ BOOST_AUTO_TEST_CASE( test_Add_To ) {
    BOOST_CHECK_EQUAL( w3.getWeight(), 2 );
    BOOST_CHECK_THROW( w3 += 1, out_of_range );
 }
+
+BOOST_AUTO_TEST_SUITE_END()

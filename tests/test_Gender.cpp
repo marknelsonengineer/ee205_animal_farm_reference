@@ -12,7 +12,6 @@
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   06_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-#define BOOST_TEST_MAIN  // in only one cpp file
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
@@ -24,6 +23,8 @@
 #include "../src/Utility/Gender.h"
 
 using namespace std;
+
+BOOST_AUTO_TEST_SUITE( test_Gender )
 
 struct cout_redirect {
         cout_redirect( std::streambuf * new_buffer )
@@ -52,3 +53,5 @@ BOOST_AUTO_TEST_CASE( test_Gender ) {
    }
    BOOST_CHECK( output.is_equal("Unknown gender")  ) ;
 }
+
+BOOST_AUTO_TEST_SUITE_END()

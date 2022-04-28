@@ -10,6 +10,7 @@
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+#define BOOST_TEST_MODULE Animal Farm Test Suite
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
 #include <boost/test/tools/output_test_stream.hpp>
@@ -19,6 +20,8 @@
 #include "../src/Animal/Animal.h"
 
 using namespace std;
+
+BOOST_AUTO_TEST_SUITE( test_Animal )
 
 // To instantiate Animal, we need a class that defines the pure virtual speak() method
 class AnimalTest : public Animal {
@@ -74,3 +77,5 @@ BOOST_AUTO_TEST_CASE( test_Animal_Generator ) {
    }
    BOOST_CHECK( true );
 }
+
+BOOST_AUTO_TEST_SUITE_END()

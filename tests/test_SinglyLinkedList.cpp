@@ -21,12 +21,27 @@
 
 using namespace std;
 
+BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
+
 /// All of the tests will use this one test_list, which must always remain valid
 /// All tests should leave this test_list empty when they finish.
 SinglyLinkedList test_list;  // Instantiate a SinglyLinkedList
 
 
-BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete ) {
+/// Delete all nodes before and after each of the test cases in this module
+struct SinglyLinkedListTestFixture {
+   SinglyLinkedListTestFixture()   {
+      test_list.deleteAllNodes();
+      BOOST_TEST_MESSAGE( "setup fixture" );
+   }
+   ~SinglyLinkedListTestFixture()  {
+      test_list.deleteAllNodes();
+      BOOST_TEST_MESSAGE( "teardown fixture" );
+   }
+} ;
+
+
+BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete, SinglyLinkedListTestFixture ) {
    Node node1;             // Instantiate a node
 
    BOOST_CHECK_EQUAL( test_list.empty(), true );
@@ -64,7 +79,7 @@ BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_multi_insert_and_delete ) {
+BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_multi_insert_and_delete, SinglyLinkedListTestFixture ) {
    BOOST_CHECK( test_list.validate() );
 
    for( int i = 0 ; i < 100 ; i++ ) {
@@ -109,7 +124,7 @@ BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_multi_insert_and_delete ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_insert_after ) {
+BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_insert_after, SinglyLinkedListTestFixture ) {
    Node nodeFirst;         // Instantiate a node
    test_list.push_front( &nodeFirst ) ;
 
@@ -143,3 +158,5 @@ BOOST_AUTO_TEST_CASE( test_SinglyLinkedList_insert_after ) {
    BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 }
+
+BOOST_AUTO_TEST_SUITE_END()
