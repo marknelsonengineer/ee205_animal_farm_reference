@@ -2,6 +2,8 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab15a_animal_farm_4 - EE 205 - Spr 2022
 ///
+/// A generic Binary Search Tree
+///
 /// @file Tree.h
 /// @version 1.0
 ///
@@ -11,26 +13,18 @@
 #pragma once
 
 #include "Node.h"
+#include "List.h"
 
 /// Holds Node classes in a Binary Search Tree
-class Tree {
-private:
-   Node* topCat = nullptr;
+class Tree : public List {
+protected:  ////////////////////// Protected Members ///////////////////////////
+   Node* rootNode = nullptr;
 
 public:
-   bool empty() { return topCat == nullptr; }  ///< Return true if empty
-
-public:
-   void addCat( Node* newCat );  ///< Add a cat starting at the root
-
-   void catFamilyTree() const;
-   void catList() const;
-   void catTail( Tree* tailList ) const;
-   void catBegat() const;
-   void catGenerations() const;
+   void insert( Node* newNode );  ///< Add a Node to the Tree
 
 private:
-   void addCat( Node* atCat, Node* newCat );  // Add a cat starting at atCat
+   void insert( Node* atNode, Node* newNode );  // Add a Node starting at atNode
 
    void dfsInorderReverse( Node* atCat, int depth ) const;
    void dfsInorder( Node* atCat ) const;

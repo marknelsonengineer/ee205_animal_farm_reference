@@ -17,95 +17,90 @@
 using namespace std;
 
 
-void Tree::addCat( Node* newCat ) {
-   assert( newCat != nullptr );
+void Tree::insert( Node* newNode ) {
+   TRACE_START
 
-   newCat->left  = nullptr;    // These should already be null, but I'd like to make sure
-   newCat->right = nullptr;
-
-   if( topCat == nullptr ) {  // If the BST is empty, then...
-      topCat = newCat;
-
-      return;
+   /// @throws invalid_argument If `newNode` is `nullptr`.
+   if( newNode == nullptr ) {
+      throw invalid_argument( PROGRAM_NAME ": newNode can't be nullptr" );
    }
 
-   addCat( topCat, newCat );
-}
-
-
-void Tree::catFamilyTree() const {
-   if( topCat == nullptr ) {
-      cout << PROGRAM_NAME ": No cats!" << endl;
-      return;
+   /// @throws domain_error If `newNode` is not valid.
+   if( !newNode->validate() ) {
+      throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   dfsInorderReverse( topCat, 1 );
+   /// @throws logic_error If `newNode` is already in the container.
+   if( isIn( newNode ) ) {
+      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+   }
+
+   assert( validate() );
+
+   newNode->left  = nullptr;    // These should already be null, but I'd like to make sure
+   newNode->right = nullptr;    /// @todo call newNode->reset();
+
+   if( rootNode == nullptr ) {  // If the BST is empty, then...
+      rootNode = newNode;
+   } else {
+      insert( rootNode, newNode );
+   }
+
+   count++;
+   assert( validate() );
+
+   #ifdef DEBUG
+   // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+   // newNode->dump();
+   #endif
+
+   TRACE_END
 }
 
 
-void Tree::catList() const {
+/// This method assumes that this is called by `insert( Node* newNode )`and its
+/// validations will run on it.
+void Tree::insert( Node* atNode, Node* newNode ) {
+   TRACE_START
 
-}
+   /// @throws invalid_argument If `atNode` is `nullptr`.
+   if( atNode == nullptr ) {
+      throw invalid_argument( PROGRAM_NAME ": atNode can't be nullptr" );
+   }
 
+   assert( atNode->validate() );
 
-void Tree::catTail( Tree* tailList ) const {
+   /// @throws logic_error If `newNode` is already in the container.
+   if( isIn( newNode ) ) {
+      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+   }
 
-}
-
-
-void Tree::catBegat() const {
-
-}
-
-
-void Tree::catGenerations() const {
-
-}
-
-
-void Tree::addCat( Node* atCat, Node* newCat ) {
-   assert( atCat != nullptr );
-   assert( newCat != nullptr );
-
-   if( atCat > newCat ) {
-      if( atCat->left == nullptr ) {
-         atCat->left = newCat;
+   if( atNode > newNode ) {
+      if( atNode->left == nullptr ) {
+         atNode->left = newNode;
       } else {
-         addCat( atCat->left, newCat );
+         insert( atNode->left, newNode );
       }
    }
 
-   if( newCat > atCat ) {
-      if( atCat->right == nullptr ) {
-         atCat->right = newCat;
+   if( newNode > atNode ) {
+      if( atNode->right == nullptr ) {
+         atNode->right = newNode;
       } else {
-         addCat( atCat->right, newCat );
+         insert( atNode->right, newNode );
       }
    }
+   #ifdef DEBUG
+      // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // newNode->dump();
+   #endif
+
+   TRACE_END
 }
 
 
 void Tree::dfsInorderReverse( Node* atCat, int depth ) const {
-   assert( atCat != nullptr );
-   const int nameLen = 6;
 
-   if( atCat->right != nullptr )
-      dfsInorderReverse( atCat->right, depth + 1 );
-
-   /// @todo Fix this with C++
-   cout << string( (depth-1) * nameLen, ' ' ) << atCat->speak();
-
-   if( atCat->left == nullptr && atCat->right == nullptr )
-      cout << endl;
-   if( atCat->left != nullptr && atCat->right != nullptr )
-      cout << '<' << endl;
-   if( atCat->left != nullptr && atCat->right == nullptr )
-      cout << '\\' << endl;
-   if( atCat->left == nullptr && atCat->right != nullptr )
-      cout << '/' << endl;
-
-   if( atCat->left != nullptr )
-      dfsInorderReverse( atCat->left, depth + 1 );
 }
 
 
