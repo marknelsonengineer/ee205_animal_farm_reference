@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include <random>
 
-#include "../src/Cat.h"
+#include "../src/Animal/Cat.h"
 
 using namespace std;
 

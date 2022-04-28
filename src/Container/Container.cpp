@@ -13,7 +13,7 @@
 
 #include <cassert>
 
-#include "config.h"
+#include "../config.h"
 #include "Container.h"
 
 using namespace std;

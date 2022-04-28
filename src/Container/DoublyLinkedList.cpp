@@ -17,7 +17,7 @@
 // Set to trace the flow of execution through this code
 // #define TRACE
 
-#include "config.h"
+#include "../config.h"
 #include "DoublyLinkedList.h"
 
 using namespace std;

@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 
-#include "config.h"
+#include "../config.h"
 
 /// A gender... for educational use only.  This is not intended to be
 /// inclusive of all possible genders

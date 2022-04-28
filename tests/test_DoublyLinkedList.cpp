@@ -17,9 +17,9 @@
 
 #include <stdexcept>  // For logic_error
 
-#include "../src/DoublyLinkedList.h"
-#include "../src/Animal.h"
-#include "../src/Cat.h"
+#include "../src/Container/DoublyLinkedList.h"
+#include "../src/Animal/Animal.h"
+#include "../src/Animal/Cat.h"
 
 
 using namespace std;

@@ -18,8 +18,8 @@
 #include <iostream>
 
 #include "config.h"
-#include "Cat.h"
-#include "DoublyLinkedList.h"
+#include "Animal/Cat.h"
+#include "Container/DoublyLinkedList.h"
 
 using namespace std ;
 

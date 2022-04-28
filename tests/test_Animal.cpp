@@ -16,7 +16,7 @@
 
 #include <stdexcept>
 
-#include "../src/Animal.h"
+#include "../src/Animal/Animal.h"
 
 using namespace std;
 

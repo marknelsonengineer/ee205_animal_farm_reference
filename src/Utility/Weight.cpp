@@ -14,7 +14,7 @@
 #include <stdexcept>  // For out_of_range
 #include <iomanip>    // For setw() & setfill()
 
-#include "config.h"
+#include "../config.h"
 #include "Weight.h"
 
 using namespace std;

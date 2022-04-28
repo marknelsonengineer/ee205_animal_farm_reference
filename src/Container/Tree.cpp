@@ -11,7 +11,7 @@
 
 #include <cassert>
 
-#include "config.h"
+#include "../config.h"
 #include "Tree.h"
 
 using namespace std;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Wiliki (185b3e64-273f-47b0-b123-4bdb7de4519a)" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)">
         <serverdata>

@@ -19,7 +19,7 @@
 
 #include <iostream>   // For cout
 
-#include "config.h"
+#include "../config.h"
 
 /// A generic Node class.
 ///

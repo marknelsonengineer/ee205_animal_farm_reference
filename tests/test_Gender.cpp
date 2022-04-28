@@ -21,7 +21,7 @@
 #include <stdexcept>
 #include <iostream>
 
-#include "../src/Gender.h"
+#include "../src/Utility/Gender.h"
 
 using namespace std;
 

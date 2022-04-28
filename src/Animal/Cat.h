@@ -12,7 +12,7 @@
 
 #include <string>
 
-#include "config.h"
+#include "../config.h"
 #include "Mammal.h"
 
 

@@ -18,7 +18,7 @@
 #include <random>
 
 
-#include "config.h"
+#include "../config.h"
 #include "Animal.h"
 #include "Cat.h"
 

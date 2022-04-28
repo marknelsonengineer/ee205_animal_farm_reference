@@ -14,10 +14,10 @@
 
 #include <string>
 
-#include "config.h"
-#include "Node.h"
-#include "Gender.h"
-#include "Weight.h"
+#include "../config.h"
+#include "../Container/Node.h"
+#include "../Utility/Gender.h"
+#include "../Utility/Weight.h"
 
 
 /// A class that encompasses all Animals on the farm.

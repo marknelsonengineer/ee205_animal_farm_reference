@@ -13,7 +13,7 @@
 #pragma once
 
 #include "Animal.h"
-#include "Color.h"
+#include "../Utility/Color.h"
 
 
 /// Mammals have more fun

@@ -96,4 +96,4 @@ message(STATUS "PROJECT_BINARY_DIR = [${PROJECT_BINARY_DIR}]")
 
 add_subdirectory(tests)
 
-add_executable(main_DoublyLinkedList src/config.h src/main_DoublyLinkedList.cpp src/Node.h src/List.h src/List.cpp src/SinglyLinkedList.h src/SinglyLinkedList.cpp src/DoublyLinkedList.h src/DoublyLinkedList.cpp src/Gender.h src/Color.h src/Weight.h src/Weight.cpp src/Animal.h src/Animal.cpp src/Mammal.h src/Mammal.cpp src/Cat.h src/Cat.cpp src/Container.cpp src/Container.h src/Tree.cpp src/Tree.h)
+add_executable(main_DoublyLinkedList src/config.h src/main_DoublyLinkedList.cpp src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h)

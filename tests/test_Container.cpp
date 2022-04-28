@@ -16,7 +16,7 @@
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>
 
-#include "../src/Container.h"
+#include "../src/Container/Container.h"
 
 using namespace std;
 

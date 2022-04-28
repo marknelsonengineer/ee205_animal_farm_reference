@@ -15,7 +15,7 @@
 #include <boost/test/unit_test.hpp>
 #include <stdexcept>
 
-#include "../src/Weight.h"
+#include "../src/Utility/Weight.h"
 
 using namespace std;
 

@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 
-#include "config.h"
+#include "../config.h"
 
 /// Color class enumeration
 enum class Color {
