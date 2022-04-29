@@ -28,7 +28,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
 
 /// All of the tests will use this one test_list, which must always remain valid.
-///
+static DoublyLinkedList test_list;
+
 /// Delete all nodes before and after each of the test cases in this module.
 struct DoublyLinkedListTestFixture {
    DoublyLinkedListTestFixture()   {
@@ -39,8 +40,6 @@ struct DoublyLinkedListTestFixture {
       test_list.deleteAllNodes();
       BOOST_TEST_MESSAGE( "teardown fixture" );
    }
-
-   DoublyLinkedList test_list;
 } ;
 
 

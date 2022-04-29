@@ -23,9 +23,9 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
 
-
 /// All of the tests will use this one test_list, which must always remain valid.
-///
+static SinglyLinkedList test_list;
+
 /// Delete all nodes before and after each of the test cases in this module.
 struct SinglyLinkedListTestFixture {
    SinglyLinkedListTestFixture()   {
@@ -36,8 +36,6 @@ struct SinglyLinkedListTestFixture {
       test_list.deleteAllNodes();
       BOOST_TEST_MESSAGE( "teardown fixture" );
    }
-
-   SinglyLinkedList test_list;  // Instantiate a SinglyLinkedList
 } ;
 
 
