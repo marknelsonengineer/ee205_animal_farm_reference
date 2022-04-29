@@ -24,7 +24,9 @@
 #include "Node.h"
 #include "Container.h"
 
-/// A generic list-based collection class.
+/// A generic list-based collection class.  This is a type of container that
+/// has a `head` Node and `get_first()` and `get_next()` methods -- which
+/// can be used to traverse a list.
 ///
 class List : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
@@ -34,8 +36,8 @@ public:  /////////////////////////// Static Methods ////////////////////////////
    static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the List
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool isIn( Node* aNode ) const ;      ///< `true` if `aNode` is in the List
-   bool isSorted() const noexcept ;      ///< `true` if the List is sorted
+   virtual bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
+   bool isSorted() const noexcept ;          ///< `true` if the List is sorted
 
    Node* get_first() const noexcept ;    ///< Get the first Node in the List
 

@@ -24,9 +24,8 @@ using namespace std;
 /// @return `true` if `aNode` is in the List.  `false` if it's not.
 bool List::isIn(Node *aNode) const {
 
-   /// @throws invalid_argument If `aNode` is `nullptr`
-   if( aNode == nullptr ) {
-      throw invalid_argument( PROGRAM_NAME ": aNode must have a value." );
+   if( !Container::isIn( aNode ) ) {
+      return false;
    }
 
    Node* currentNode = head;

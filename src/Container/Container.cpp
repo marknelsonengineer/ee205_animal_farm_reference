@@ -31,6 +31,21 @@ unsigned int Container::size() const noexcept {
 }
 
 
+/// @param aNode Check this Node to see if it's in the List
+///
+/// @return `true` if `aNode` is in the List.  `false` if it's not.
+bool Container::isIn( Node* aNode ) const {
+   /// @throws invalid_argument If `aNode` is `nullptr`
+   if( aNode == nullptr ) {
+      throw invalid_argument( PROGRAM_NAME ": aNode must have a value." );
+   }
+
+   assert( aNode->validate() );
+
+   return false;  /// For the most generic container (with no way to put things in it), it's always false.
+}
+
+
 void Container::dump() const noexcept {
    FORMAT_LINE_FOR_DUMP( "Container", "this" )  << this  << std::endl ;
    FORMAT_LINE_FOR_DUMP( "Container", "count" ) << count << std::endl ;
