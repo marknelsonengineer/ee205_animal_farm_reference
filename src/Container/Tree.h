@@ -16,14 +16,16 @@
 #include "List.h"
 
 /// Holds Node classes in a Binary Search Tree
-class Tree : public List {
+class Tree : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* rootNode = nullptr;  ///< The root for the binary search tree
 
 public:
-   void insert( Node* newNode );  ///< Add a Node to the Tree
+   void insert( Node* newNode );    ///< Add a Node to the Tree
 
 private:
+   bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
+
    void insert( Node* atNode, Node* newNode );  ///< Add a Node starting at atNode
 
 // void dfsInorderReverse( Node* atCat, int depth ) const;  ///< Depth First Search - Inorder reverse search

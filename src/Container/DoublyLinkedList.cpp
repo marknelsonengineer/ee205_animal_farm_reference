@@ -146,8 +146,7 @@ Node* DoublyLinkedList::pop_front() noexcept {
       tail = nullptr;
    }
 
-   returnValue->next = nullptr;    // Unlink the next pointer
-   returnValue->prev = nullptr;    // Unlink the prev pointer
+   returnValue->reset();  // Unlink the pointers in Node
 
    count--;
    assert( validate() );
@@ -179,8 +178,7 @@ Node* DoublyLinkedList::pop_back() noexcept {
       tail = nullptr;
    }
 
-   returnValue->next = nullptr;
-   returnValue->prev = nullptr;
+   returnValue->reset();  // Unlink the pointers in Node
 
    count--;
    assert( validate() );

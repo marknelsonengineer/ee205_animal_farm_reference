@@ -68,6 +68,7 @@ void SinglyLinkedList::push_front(Node *newNode) {
 
    #ifdef DEBUG
       // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+      // dump();
       // newNode->dump();
    #endif
 
@@ -93,7 +94,7 @@ Node *SinglyLinkedList::pop_front() noexcept {
       head = nullptr;
    }
 
-   returnValue->next = nullptr;  // Unlink the next pointer
+   returnValue->reset();  // Unlink all pointers in the Node
 
    count--;
    assert( validate() );

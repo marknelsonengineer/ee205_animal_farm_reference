@@ -36,7 +36,7 @@ public:  /////////////////////////// Static Methods ////////////////////////////
    static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the List
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   virtual bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
+   bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
    bool isSorted() const noexcept ;          ///< `true` if the List is sorted
 
    Node* get_first() const noexcept ;    ///< Get the first Node in the List

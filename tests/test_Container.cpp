@@ -17,18 +17,47 @@
 #include <stdexcept>
 
 #include "../src/Container/Container.h"
+#include "../src/Container/Node.h"
 
 using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_Container )
 
-BOOST_AUTO_TEST_CASE( test_Container ) {
-   Container testContainer;
+   BOOST_AUTO_TEST_CASE( test_Node ) {
+      Node aNode;
+      BOOST_CHECK_EQUAL( aNode.next, nullptr );
+      BOOST_CHECK_EQUAL( aNode.prev, nullptr );
+      BOOST_CHECK_EQUAL( aNode.left, nullptr );
+      BOOST_CHECK_EQUAL( aNode.right, nullptr );
 
-   BOOST_CHECK_EQUAL( testContainer.empty(), true );
-   BOOST_CHECK_EQUAL( testContainer.size(), 0 );
-   BOOST_CHECK_EQUAL( testContainer.validate(), true );
-   BOOST_CHECK_NO_THROW( testContainer.dump() );
-}
+      aNode.next = &aNode;
+      aNode.prev = &aNode;
+      aNode.left = &aNode;
+      aNode.right = &aNode;
+
+      BOOST_CHECK_EQUAL( aNode.next, &aNode );
+      BOOST_CHECK_EQUAL( aNode.prev, &aNode );
+      BOOST_CHECK_EQUAL( aNode.left, &aNode );
+      BOOST_CHECK_EQUAL( aNode.right, &aNode );
+
+      aNode.reset();
+
+      BOOST_CHECK_EQUAL( aNode.next, nullptr );
+      BOOST_CHECK_EQUAL( aNode.prev, nullptr );
+      BOOST_CHECK_EQUAL( aNode.left, nullptr );
+      BOOST_CHECK_EQUAL( aNode.right, nullptr );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_Container ) {
+      Container testContainer;
+      Node aNode;
+
+      BOOST_CHECK_EQUAL( testContainer.empty(), true );
+      BOOST_CHECK_EQUAL( testContainer.size(), 0 );
+      BOOST_CHECK_EQUAL( testContainer.isIn( &aNode ), false );
+      BOOST_CHECK_THROW( testContainer.isIn( nullptr ), invalid_argument );
+      BOOST_CHECK_EQUAL( testContainer.validate(), true );
+      BOOST_CHECK_NO_THROW( testContainer.dump() );
+   }
 
 BOOST_AUTO_TEST_SUITE_END()

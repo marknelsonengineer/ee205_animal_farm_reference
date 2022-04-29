@@ -21,17 +21,20 @@
 
 #include "../config.h"
 
+namespace test_Container { struct test_Node; } // Forward declaration for friending & testing
+
 /// A generic Node class.
 ///
-/// May be used as a base class for a number of data
-/// structures.
-///
-/// @todo Consider making a destructor that sets node = nullptr;
+/// May be used as a base class for a number of data structures.
 class Node {
    friend class List;
    friend class SinglyLinkedList;
    friend class DoublyLinkedList;
    friend class Tree;
+   friend struct test_Container::test_Node;  // This is a test case
+
+public:   ///////////////////// Constructors & Destructors /////////////////////
+   virtual ~Node() { Node::reset(); };  ///< Zero out the Node before destroying it
 
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
@@ -69,6 +72,15 @@ protected:  //////////////////////// Static Methods ////////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
 
+   /// Reset the Node... as if it's never been in a Container or it's just
+   /// been removed from a Container.
+   virtual void reset() noexcept {
+      next = nullptr;
+      prev = nullptr;
+      left = nullptr;
+      right = nullptr;
+   }
+
    /// Output the contents of this object
    ///
    /// #### Sample Output
@@ -97,7 +109,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    /// @return True if the Node is healthy
    virtual bool validate() const noexcept {
       /// @internal Iterate along the next (and prev) pointers and verify that
-      ///           they does not refer back to themselves.  This also has the
+      ///           they do not refer back to themselves.  This also has the
       ///           benefit of dereferencing all of the downstream next/prev
       ///           pointers and ensuring they point to valid addresses.
       if( next != nullptr ) {
@@ -142,5 +154,4 @@ public:  /////////////////////////// Public Methods ////////////////////////////
       /// By default, we will compare two Nodes by their address.
       return compareByAddress( this, &(Node&)rightSide );
    }
-
-}; // class Node
+} ; // class Node

@@ -97,3 +97,8 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 
    TRACE_END
 }
+
+
+bool Tree::isIn( Node* aNode ) const {
+   return aNode == nullptr ;  /// @todo Complete this implementation
+}
