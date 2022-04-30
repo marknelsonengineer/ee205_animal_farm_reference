@@ -31,6 +31,7 @@
 class List : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* head = nullptr ;     ///< The head pointer for the collection
+   /// @todo consider renamining to headNode or head_node
 
 public:  /////////////////////////// Static Methods ////////////////////////////
    static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the List

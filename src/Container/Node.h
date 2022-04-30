@@ -7,8 +7,6 @@
 ///
 /// This class is defined as a header-only class.
 ///
-/// @todo Add a reset method
-///
 /// @file Node.h
 /// @version 1.0
 ///
@@ -39,11 +37,15 @@ public:   ///////////////////// Constructors & Destructors /////////////////////
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
                           ///< if it's the last Node in the list.
+                          ///<
+                          ///< If it's used in a Tree... it can be used to iterate
+                          ///< through the tree.
 
    Node* prev = nullptr;  ///< Point to the previous Node in the list or
                           ///< `nullptr` if it's the first Node in the list.
                           ///<
-                          ///< This member may not always be used.
+                          ///< If it's used in a Tree... it can be used to iterate
+                          ///< through the tree.
 
    Node* left = nullptr;  ///< Point to the left Node in the tree or `nullptr`
 
