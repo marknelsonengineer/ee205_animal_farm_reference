@@ -215,7 +215,6 @@ void Tree::erase( Node* nodeToRemove ) {
 
    Node* parent = nullptr;
    Node* currentLocation = rootNode;
-   // bool found = false;
 
    while( true ) {
       if( currentLocation > nodeToRemove ) { // Descend left
