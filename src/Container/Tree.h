@@ -20,13 +20,17 @@ class Tree : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* rootNode = nullptr;  ///< The root for the binary search tree
 
-public:
-   void insert( Node* newNode );    ///< Add a Node to the Tree
-
-private:
+public:  /////////////////////////// Public Methods ////////////////////////////
+   void insert( Node* newNode );              ///< Add a Node to the Tree
    bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
+   void dump() const noexcept override;       ///< Output the member variables in this object
+   bool validate() const noexcept override;   ///< Ensure the object is valid
 
-   void insert( Node* atNode, Node* newNode );  ///< Add a Node starting at atNode
+protected:  ////////////////////// Protected Methods ///////////////////////////
+   void insert( Node* atNode, Node* newNode );    ///< Add a Node starting at atNode
+   bool isIn( Node* atNode, Node* aNode ) const;  ///< `true` if `aNode` is in the Tree
+   void dump( Node* atNode ) const noexcept;      ///< Output the member variables in this object
+   bool validate( Node* atNode ) const noexcept;  ///< Ensure the object is valid
 
 // void dfsInorderReverse( Node* atCat, int depth ) const;  ///< Depth First Search - Inorder reverse search
 // void dfsInorder( Node* atCat ) const;                    ///< Depth First Search - Inorder search

@@ -32,20 +32,23 @@ BOOST_AUTO_TEST_CASE( test_empty_Tree ) {
    BOOST_CHECK_NO_THROW( testTree.dump());
 }
 
+
 BOOST_AUTO_TEST_CASE( test_insert_Tree ) {
    Tree testTree;
 
    BOOST_CHECK_THROW( testTree.insert( nullptr ), invalid_argument );
 
    for( int i = 0 ; i < 100 ; i++ ) {
-      Cat aCat = Cat::generateCat();
+      Cat& aCat = Cat::generateCat();
       BOOST_CHECK_NO_THROW( testTree.insert( &aCat ));
-//    BOOST_CHECK_THROW( testTree.insert( &aCat ), logic_error );
+      BOOST_CHECK_THROW( testTree.insert( &aCat ), logic_error );
       BOOST_CHECK_EQUAL( testTree.empty(), false );
       BOOST_CHECK_EQUAL( testTree.size(), i+1 );
-//      BOOST_CHECK_EQUAL( testTree.isIn( aCat ), true );
+      BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), true );
       BOOST_CHECK_EQUAL( testTree.validate(), true );
    }
+
+   // testTree.dump();
 }
 
 BOOST_AUTO_TEST_SUITE_END()
