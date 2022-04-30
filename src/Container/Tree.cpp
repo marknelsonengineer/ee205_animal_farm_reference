@@ -188,6 +188,10 @@ bool Tree::validate( Node* atNode ) const noexcept {
 
 
 /// Removes the Node from the Tree, but does not `delete` the node from memory.
+///
+/// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
+///      by Larry Nyhoff page 684.  I inlined the `search2` function, but
+///      otherwise, this is implemented verbatim.
 void Tree::erase( Node* nodeToRemove ) {
    TRACE_START
 
