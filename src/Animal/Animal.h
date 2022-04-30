@@ -74,10 +74,10 @@ public:  /////////////////////// Static Public Methods /////////////////////////
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void setGender( const Gender newGender);   ///< Set the Animal's Gender
 
-public:   ////////////////////// Abstract Methods //////////////////////////////
+public:   ////////////////////////// Abstract Methods //////////////////////////
    virtual std::string speak() const noexcept = 0;  ///< Ask the Animal to say something.  This method is virtual and abstract.
 
-public:   ////////////////////////// Methods //////////////////////////////////
+public:   /////////////////////////// Public Methods ///////////////////////////
    void dump() const noexcept override;       ///< Output the contents of this object
    bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
 };

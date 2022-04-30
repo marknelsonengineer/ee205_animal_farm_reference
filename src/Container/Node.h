@@ -29,6 +29,7 @@ class Node {
    friend class SinglyLinkedList;
    friend class DoublyLinkedList;
    friend class Tree;
+   friend class CatEmpire;
    friend struct test_Container::test_Node;  // This is a test case
 
 public:   ///////////////////// Constructors & Destructors /////////////////////
