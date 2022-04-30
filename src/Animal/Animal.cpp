@@ -175,7 +175,6 @@ void Animal::dump() const noexcept {
 
    Node::dump();
 
-   FORMAT_LINE_FOR_DUMP( "Animal", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "kingdom" ) << getKingdom() << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "classification" ) << getClassification() << endl ;
    FORMAT_LINE_FOR_DUMP( "Animal", "species" ) << getSpecies() << endl ;
