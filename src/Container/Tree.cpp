@@ -310,3 +310,14 @@ Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
 
    return returnNode;
 }
+
+
+void Tree::deleteAllNodes() {
+   TRACE_START
+
+   while( rootNode != nullptr ) {
+      erase( rootNode );
+   }
+
+   TRACE_END
+}

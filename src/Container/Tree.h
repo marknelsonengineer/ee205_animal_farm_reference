@@ -30,6 +30,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    void dump() const noexcept override;       ///< Output the member variables in this object
    bool validate() const noexcept override;   ///< Ensure the object is valid
    Node* getRandomNode() const noexcept;      ///< Get a random node from the Tree
+   void deleteAllNodes() ;                    ///< Delete all of the nodes in the Tree
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void insert( Node* atNode, Node* newNode );         ///< Add a Node starting at atNode

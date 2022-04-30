@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
    	BOOST_CHECK_EQUAL( testTree.empty(), true );
    	BOOST_CHECK_EQUAL( testTree.size(), 0 );
    	BOOST_CHECK_EQUAL( testTree.validate(), true );
-   	BOOST_CHECK_NO_THROW( testTree.dump());
+   	// BOOST_CHECK_NO_THROW( testTree.dump());
    }
 
 
@@ -97,6 +97,9 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       int count = 0;
 
       for( int i = 0 ; i < 6 ; i++ ) {
+         BOOST_CHECK_NO_THROW( testTree.deleteAllNodes() );
+         count = 0;
+
          double idealSizeOfList = pow( 2, i );
 
          BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]" ) ;
@@ -127,7 +130,8 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
             BOOST_CHECK_EQUAL( testTree.validate(), true );
          }
       }
-
+      BOOST_CHECK_NO_THROW( testTree.deleteAllNodes() );
+      count = 0;
    }
 
 BOOST_AUTO_TEST_SUITE_END()
