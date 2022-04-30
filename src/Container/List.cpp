@@ -24,9 +24,7 @@ using namespace std;
 /// @return `true` if `aNode` is in the List.  `false` if it's not.
 bool List::isIn(Node *aNode) const {
 
-   if( !Container::isIn( aNode ) ) {
-      return false;
-   }
+   Container::isIn( aNode );
 
    Node* currentNode = head;
 
