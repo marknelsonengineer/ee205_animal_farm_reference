@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE( test_Cat_min_constructor ) {
    BOOST_CHECK( aCat.validate() );
 
    #ifdef DEBUG
-      aCat.dump();
+      // aCat.dump();
    #endif
 }
 
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE( test_Cat_max_constructor ) {
    BOOST_CHECK( aCat.validate() );
 
    #ifdef DEBUG
-      aCat.dump();
+      // aCat.dump();
    #endif
 }
 

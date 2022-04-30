@@ -83,7 +83,7 @@ void List::deleteAllNodes() noexcept {
    }
 
    #ifdef DEBUG
-      cout << PROGRAM_NAME << ": All Nodes have been deleted" << endl ;
+      // cout << PROGRAM_NAME << ": All Nodes have been deleted" << endl ;
    #endif
 
    assert( validate() );

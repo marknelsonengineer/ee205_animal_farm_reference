@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE( test_Animal_Min_Constructor ) {
    BOOST_CHECK_EQUAL( anAnimal.getWeight(), 10 );
    BOOST_CHECK_THROW( anAnimal.setWeight( 10.0001 ), out_of_range );
    #ifdef DEBUG
-      anAnimal.dump();
+      // anAnimal.dump();
    #endif
    BOOST_CHECK_EQUAL( anAnimal.speak(), "Test speak()" );
    BOOST_CHECK_EQUAL( anAnimal.validate(), true );
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE( test_Animal_Max_Constructor ) {
    BOOST_CHECK_EQUAL( anAnimal.getGender(), Gender::FEMALE );
    BOOST_CHECK_EQUAL( anAnimal.getWeight(), 5.0 );
    #ifdef DEBUG
-      anAnimal.dump();
+      // anAnimal.dump();
    #endif
    BOOST_CHECK_EQUAL( anAnimal.validate(), true );
 }

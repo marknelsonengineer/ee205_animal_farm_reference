@@ -170,14 +170,14 @@ void Weight::setMaxWeight( const Weight::t_weight newMaxWeight ) {
 bool Weight::isWeightValid( const Weight::t_weight checkWeight ) const noexcept {
    /// Verify that `checkWeight` > 0
    if( checkWeight <= 0 ) {
-      cout << "Weight [" << checkWeight << "] can not be <= 0" << endl ;
+      cout << PROGRAM_NAME ": Weight [" << checkWeight << "] can not be <= 0" << endl ;
       return false;
    }
 
    /// If `bHasMax`, then `checkWeight` must be <= `maxWeight`
    if( bHasMax ) {
       if( checkWeight > maxWeight ) {
-         cout << "Weight [" << checkWeight << "] is > the maximum weight [" << maxWeight << "]" << endl ;
+         cout << PROGRAM_NAME ": Weight [" << checkWeight << "] is > the maximum weight [" << maxWeight << "]" << endl ;
          return false;
       }
    }
@@ -189,7 +189,7 @@ bool Weight::isWeightValid( const Weight::t_weight checkWeight ) const noexcept 
 bool Weight::validate() const noexcept {
    if( bHasMax ) {
       if( !isWeightValid(( maxWeight))) {
-         cout << "Max weight is <= 0" << endl;
+         cout << PROGRAM_NAME ": Max weight is <= 0" << endl;
          return false;
       }
 

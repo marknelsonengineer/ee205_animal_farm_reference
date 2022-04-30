@@ -51,7 +51,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front, Doubly
    BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), false );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.push_front( &node1 ) );
@@ -62,7 +62,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front, Doubly
    BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), true );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), &node1 );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    Node* node2;
@@ -73,7 +73,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_front, Doubly
    BOOST_CHECK_EQUAL( test_list.isIn( node2 ), false );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
@@ -89,7 +89,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back, DoublyL
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
    BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.push_back( &node1 ) );
@@ -101,7 +101,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back, DoublyL
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), &node1 );
    BOOST_CHECK_EQUAL( test_list.get_last(), &node1 );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    Node* node2;
@@ -113,7 +113,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_simple_push_and_pop_back, DoublyL
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
    BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
@@ -188,7 +188,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_multi_insert_and_delete, DoublyLi
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
    BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump());
+   // BOOST_CHECK_NO_THROW( test_list.dump());
    BOOST_CHECK( test_list.validate());
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes());
@@ -260,7 +260,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_insert_before_and_after, DoublyLi
    BOOST_CHECK_EQUAL( test_list.size(), 0 );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes());  // Doesn't break on an empty test_list
@@ -399,10 +399,10 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_insertion_sort, DoublyLinkedListT
          delete (Cat*) dll.pop_back();
       }
 
-      cout << ".";
-      cout << std::flush;
+      // cout << ".";
+      // cout << std::flush;
    }
-   cout << endl;
+   // cout << endl;
 }
 
 BOOST_AUTO_TEST_SUITE_END()

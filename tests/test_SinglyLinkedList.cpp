@@ -47,7 +47,7 @@ BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete, SinglyL
    BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), false );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.push_front( &node1 ) );
@@ -58,7 +58,7 @@ BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete, SinglyL
    BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), true );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), &node1 );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    Node* node2;
@@ -69,7 +69,7 @@ BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete, SinglyL
    BOOST_CHECK_EQUAL( test_list.isIn( node2 ), false );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
@@ -115,7 +115,7 @@ BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_multi_insert_and_delete, SinglyLi
    BOOST_CHECK_EQUAL( test_list.size(), 0 );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 
    BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() );  // Make sure you can delete an empty test_list
@@ -154,7 +154,7 @@ BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_insert_after, SinglyLinkedListTes
    BOOST_CHECK_EQUAL( test_list.size(), 0 );
    BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
    BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-   BOOST_CHECK_NO_THROW( test_list.dump() );
+   // BOOST_CHECK_NO_THROW( test_list.dump() );
    BOOST_CHECK( test_list.validate() );
 }
 
