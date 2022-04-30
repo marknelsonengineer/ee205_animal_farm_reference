@@ -10,6 +10,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <cassert>
+#include <random> // For test_bulk_erase_from_Tree
+
 
 #include "../config.h"
 #include "Tree.h"
@@ -30,12 +32,13 @@ void Tree::insert( Node* newNode ) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the container.
+   /// @throws logic_error If `newNode` is already in the Tree.
    if( isIn( newNode ) ) {
-      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+      throw logic_error( PROGRAM_NAME ": Node is already in Tree!" );
    }
 
    assert( validate() );
+   // Do the deed
 
    newNode->reset();   // These should already be null, but I'd like to make sure
 
@@ -45,6 +48,7 @@ void Tree::insert( Node* newNode ) {
       insert( rootNode, newNode );
    }
 
+   // Done
    count++;
    assert( validate() );
 
@@ -180,4 +184,129 @@ bool Tree::validate( Node* atNode ) const noexcept {
    assert( validate( atNode->right ));
 
    return true;
+}
+
+
+/// Removes the Node from the Tree, but does not `delete` the node from memory.
+void Tree::erase( Node* nodeToRemove ) {
+   TRACE_START
+
+   /// @throws invalid_argument If `nodeToRemove` is `nullptr`.
+   if( nodeToRemove == nullptr ) {
+      throw invalid_argument( PROGRAM_NAME ": nodeToRemove can't be nullptr" );
+   }
+
+   /// @throws domain_error If `nodeToRemove` is not valid.
+   if( !nodeToRemove->validate() ) {
+      throw domain_error( PROGRAM_NAME ": nodeToRemove is not valid" );
+   }
+
+   /// @throws logic_error If `nodeToRemove` is not in the Tree.
+   if( !isIn( nodeToRemove ) ) {
+      throw logic_error( PROGRAM_NAME ": nodeToRemove is not in the Tree!" );
+   }
+
+   assert( validate() );
+   // Do the deed
+
+   Node* parent = nullptr;
+   Node* currentLocation = rootNode;
+   // bool found = false;
+
+   while( true ) {
+      if( currentLocation > nodeToRemove ) { // Descend left
+         parent = currentLocation;
+         currentLocation = currentLocation->left;
+      } else if ( nodeToRemove > currentLocation ) {  // Descend right
+         parent = currentLocation;
+         currentLocation = currentLocation->right;
+      } else {
+         assert( currentLocation == nodeToRemove );
+         break;
+      }
+   }
+
+   if( currentLocation->left != nullptr && currentLocation->right != nullptr ) {
+      // The node has 2 children...
+      Node* successor = currentLocation->right;
+
+      parent = currentLocation;
+
+      while( successor->left != nullptr ) {
+         parent = successor;
+         successor = successor->left;
+      }
+
+      *currentLocation = *successor;
+      currentLocation = successor;
+   }
+
+   Node* subtree = currentLocation->left;
+   if( subtree == nullptr )
+      subtree = currentLocation->right;
+   if( parent == nullptr )
+      rootNode = subtree;
+   else if( parent->left == currentLocation )
+      parent->left = subtree;
+   else
+      parent->right = subtree;
+
+   currentLocation->reset();
+   /// currentLocation is nodeToDelete and it's now fully detached
+
+   // Done
+   count--;
+   assert( validate() );
+
+   #ifdef DEBUG
+   // cout << PROGRAM_NAME << ": " << __PRETTY_FUNCTION__ << endl;
+   // nodeToRemove->dump();
+   #endif
+
+   TRACE_END
+}
+
+
+/// @return A random Node from the Tree.
+Node* Tree::getRandomNode() const noexcept {
+   random_device RNG;        // Seed with a real random value, if available
+
+   if( empty() ) {
+      return nullptr;  /// If the Tree is empty return `nullptr`.
+   }
+
+   if( size() == 1 ) {
+      return rootNode ;
+   }
+
+   uniform_int_distribution<> randomIndexGenerator( 0, size()-1 );
+   int randomIndex = randomIndexGenerator( RNG );
+   // FORMAT_LINE_FOR_DUMP( "Tree", "randomIndex" )  << randomIndex  << std::endl ;
+
+   return getRandomNode( rootNode, &randomIndex );
+}
+
+
+Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
+   assert( aNode != nullptr );
+   Node* returnNode;
+
+   if( aNode->left != nullptr && *nodesLeft >= 0 )
+      returnNode = getRandomNode( aNode->left, nodesLeft );
+
+   if( *nodesLeft == 0 ) {
+      // aNode->dump();
+      return aNode;
+   }
+   *nodesLeft -= 1;
+
+   // FORMAT_LINE_FOR_DUMP( "Tree", "count" )  << count  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "Tree", "nodesLeft" )  << *nodesLeft  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "Tree", "aNode" )  << aNode  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "Tree", "returnNode" )  << returnNode  << std::endl ;
+
+   if( aNode->right != nullptr && *nodesLeft >= 0 )
+      returnNode = getRandomNode( aNode->right, nodesLeft );
+
+   return returnNode;
 }
