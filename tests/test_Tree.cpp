@@ -91,33 +91,40 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       }
    }
 
-   BOOST_AUTO_TEST_CASE( test_bulk_erase_from_Tree ) {
-      Tree testTree;  /// @todo Move into a test fixture
-      random_device RNG;        // Seed with a real random value, if available
+   BOOST_AUTO_TEST_CASE( test_bulk_operations_on_Tree ) {
+      Tree testTree;      /// @todo Move into a test fixture
+      random_device RNG;  // Seed with a real random value, if available
+      int count = 0;
 
-      for( int i = 0 ; i < 5 ; i++ ) {
+      for( int i = 0 ; i < 6 ; i++ ) {
          double idealSizeOfList = pow( 2, i );
 
          BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]" ) ;
 
-         for( int j = 0 ; j < 100 ; j++ ) {
+         for( int j = 0 ; j < 500 ; j++ ) {
             bernoulli_distribution isFixedRNG( testTree.size() / (idealSizeOfList*2) );  // If ideal size is 4, then 4/8 = 0.5
-
             bool deleteNode = isFixedRNG( RNG );
             // FORMAT_LINE_FOR_DUMP( "Test", "ideal" )  << idealSizeOfList  << std::endl ;
-
-            cout << "   ideal=" << idealSizeOfList ;
-            cout << "   testTree.size=" << testTree.size() ;
-            cout << "   percentage=" << testTree.size() / (idealSizeOfList*2) ;
-            cout << "   deleteNode=" << deleteNode << endl;
+            // cout << "   ideal=" << idealSizeOfList ;
+            // cout << "   testTree.size=" << testTree.size() ;
+            // cout << "   percentage=" << testTree.size() / (idealSizeOfList*2) ;
+            // cout << "   deleteNode=" << deleteNode << endl;
 
             if( deleteNode ) {
                Node* nodeToDelete = testTree.getRandomNode();
                BOOST_CHECK_NO_THROW( testTree.erase( nodeToDelete ) );
+               count -= 1;
+               BOOST_CHECK_EQUAL( testTree.isIn( nodeToDelete ), false );
+
             } else { // Insert a Node
                Cat& aCat = Cat::generateCat();
                BOOST_CHECK_NO_THROW( testTree.insert( &aCat ) );
+               count += 1;
+               BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), true );
+
             }
+            BOOST_CHECK_EQUAL( testTree.size(), count );
+            BOOST_CHECK_EQUAL( testTree.validate(), true );
          }
       }
 

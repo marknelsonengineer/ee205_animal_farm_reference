@@ -289,7 +289,7 @@ Node* Tree::getRandomNode() const noexcept {
 
 Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
    assert( aNode != nullptr );
-   Node* returnNode;
+   Node* returnNode = aNode;
 
    if( aNode->left != nullptr && *nodesLeft >= 0 )
       returnNode = getRandomNode( aNode->left, nodesLeft );
