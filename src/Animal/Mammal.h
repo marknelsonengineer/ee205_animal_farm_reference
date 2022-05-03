@@ -16,7 +16,10 @@
 #include "../Utility/Color.h"
 
 
-/// Mammals have more fun
+/// Mammals have more fun.
+///
+/// Mammals don't have anything to validate.
+/// Comparing two Mammals is done at the Animal level using Classification.
 class Mammal : public Animal {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const std::string MAMMAL_NAME;  ///< The scientific name for Mammals
@@ -30,6 +33,7 @@ public:   /////////////////////// Constructors ////////////////////////////////
           ,const std::string&     newSpecies
    ) : Animal( newMaxWeight, MAMMAL_NAME, newSpecies ) {};
 
+
    /// Create a Mammal, populating *all* of the member variables
    Mammal( const Color            newColor
           ,const Gender           newGender
@@ -42,8 +46,8 @@ public:   /////////////////////// Constructors ////////////////////////////////
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
    Color getColor() const noexcept { return color; }  ///< Get the color
-   void setColor( const Color newColor ) noexcept { color = newColor; }  ///< Set the color
+   void  setColor( const Color newColor ) noexcept { color = newColor; }  ///< Set the color
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void dump() const noexcept override;  ///< Print the contents of this object (and its parents)
+   void dump() const noexcept override;  ///< Output the contents of this object
 };
