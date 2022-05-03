@@ -204,7 +204,7 @@ Animal& Animal::generateAnimal() {
    Animal* newAnimal;
 
    switch( animalRNG( RNG ) ) {
-//    case 0: newAnimal = &(Cat::generateCat()) ;
+    case 0: newAnimal = &(Cat::generateCat()) ;
    }
 
    return *newAnimal;
