@@ -146,7 +146,9 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    }
 
 
-   /// Compare two nodes:  Is the left less than the right?
+public:  ///////////////////////// Operator Overrides //////////////////////////
+
+   /// Compare two Nodes:  Is the left less than the right?
    /// The `this` member is the left side of the operator.
    /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
    /// @return `true` if this < `rhs_node`
@@ -159,7 +161,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    }
 
 
-   /// Compare two nodes:  Is the right less than the left?
+   /// Compare two Nodes:  Is the right less than the left?
    /// The `this` member is the left side of the operator.
    /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
    /// @return `true` if `rhs_node` < `this`
@@ -168,7 +170,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    }
 
 
-   /// Compare two nodes:  Is the left less than or equal to the right?
+   /// Compare two Nodes:  Is the left less than or equal to the right?
    /// The `this` member is the left side of the operator.
    /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
    virtual bool operator<=( const Node& rhs_node ) const {
@@ -176,7 +178,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    }
 
 
-   /// Compare two nodes:  Is the right less than or equal to the left?
+   /// Compare two Nodes:  Is the right less than or equal to the left?
    /// The `this` member is the left side of the operator.
    /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
    virtual bool operator>=( const Node& rhs_node ) const {
