@@ -2,7 +2,7 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab10d_animal_farm_3 - EE 205 - Spr 2022
 ///
-/// Where the wild things roam
+/// Where the Wild Things Are
 ///
 /// @file Animal.h
 /// @version 1.0
@@ -56,14 +56,14 @@ public:   /////////////////////// Constructors ////////////////////////////////
           );
 
 public:   ///////////////////// Getters & Setters /////////////////////////////
-   std::string getKingdom() const noexcept;         ///< Get the kingdom, which is `Animalia`
+   std::string getKingdom()        const noexcept;  ///< Get the kingdom, which is `Animalia`
    std::string getClassification() const noexcept;  ///< Get the classification
-   std::string getSpecies() const noexcept;         ///< Get the species
+   std::string getSpecies()        const noexcept;  ///< Get the species
 
-   Gender getGender() const noexcept;  ///< Get the Animal's Gender
+   Gender      getGender()         const noexcept;  ///< Get the Animal's Gender
 
-   Weight::t_weight getWeight() const noexcept;         ///< Get the Animal's Weight
-   void setWeight( const Weight::t_weight newWeight );  ///< Set the Animal's Weight
+   Weight::t_weight getWeight()    const noexcept;  ///< Get the Animal's Weight
+   void             setWeight( const Weight::t_weight newWeight );  ///< Set the Animal's Weight
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
@@ -72,12 +72,23 @@ public:  /////////////////////// Static Public Methods /////////////////////////
    static Animal& generateAnimal() ;  ///< Generate a new, random Animal
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
-   void setGender( const Gender newGender);   ///< Set the Animal's Gender
+   void setGender( const Gender newGender );   ///< Set the Animal's Gender
 
 public:   ////////////////////////// Abstract Methods //////////////////////////
    virtual std::string speak() const noexcept = 0;  ///< Ask the Animal to say something.  This method is virtual and abstract.
 
 public:   /////////////////////////// Public Methods ///////////////////////////
-   void dump() const noexcept override;       ///< Output the contents of this object
+   void dump()     const noexcept override;   ///< Output the contents of this object
    bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
+
+public:  ///////////////////////// Operator Overrides //////////////////////////
+   bool operator< ( const Animal& rhs_animal ) const;  ///< Compare two Animals with the < operator
+   bool operator> ( const Animal& rhs_animal ) const;  ///< Compare two Animals with the > operator
+   bool operator<=( const Animal& rhs_animal ) const;  ///< Compare two Animals with the <= operator
+   bool operator>=( const Animal& rhs_animal ) const;  ///< Compare two Animals with the >= operator
+
+   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison operator between two Nodes
+   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison operator between two Nodes
+   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison operator between two Nodes
+   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison operator between two Nodes
 };
