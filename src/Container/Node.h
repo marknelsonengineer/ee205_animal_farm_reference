@@ -24,6 +24,7 @@ namespace test_Container { struct test_Node; } // Forward declaration for friend
 /// A generic Node class.
 ///
 /// May be used as a base class for a number of data structures.
+/// This class is defined as a header-only class.
 class Node {
    friend class List;
    friend class SinglyLinkedList;
@@ -95,11 +96,11 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    /// @endcode
    ///
    virtual void dump() const {
-      FORMAT_LINE_FOR_DUMP( "Node", "this" )      << this      << std::endl ;
-      FORMAT_LINE_FOR_DUMP( "Node", "next" )      << next      << std::endl ;
-      FORMAT_LINE_FOR_DUMP( "Node", "prev" )      << prev      << std::endl ;
-      FORMAT_LINE_FOR_DUMP( "Node", "left" )      << left      << std::endl ;
-      FORMAT_LINE_FOR_DUMP( "Node", "right" )     << right     << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "this" )  << this  << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "next" )  << next  << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "prev" )  << prev  << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "left" )  << left  << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Node", "right" ) << right << std::endl ;
    }
 
 
@@ -145,16 +146,41 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    }
 
 
-   /// Compare two nodes:  Is the left greater than the right?
-   ///
-   /// @param rightSide The `this` member is the left side of the `>` operator.
-   ///                  `rightSide` is the right side of the `>` operator.
-   /// @return `true` if `leftSide > rightSide`
-   virtual bool operator>(const Node& rightSide) {
-      // `this` is the leftSide of the operator, so compare:
-      // leftSide > rightSide
+   /// Compare two nodes:  Is the left less than the right?
+   /// The `this` member is the left side of the operator.
+   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   /// @return `true` if this < `rhs_node`
+   virtual bool operator<( const Node& rhs_node ) const {
+      /// By default, we will compare two Nodes by the only thing we can...
+      /// their addresses.
 
-      /// By default, we will compare two Nodes by their address.
-      return compareByAddress( this, &(Node&)rightSide );
+      return compareByAddress( this, &(Node&)rhs_node );
+      // return next < rhs_node.next;
    }
+
+
+   /// Compare two nodes:  Is the right less than the left?
+   /// The `this` member is the left side of the operator.
+   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   /// @return `true` if `rhs_node` < `this`
+   virtual bool operator>( const Node& rhs_node ) const {
+      return rhs_node < *this;
+   }
+
+
+   /// Compare two nodes:  Is the left less than or equal to the right?
+   /// The `this` member is the left side of the operator.
+   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   virtual bool operator<=( const Node& rhs_node ) const {
+      return !( rhs_node < *this );
+   }
+
+
+   /// Compare two nodes:  Is the right less than or equal to the left?
+   /// The `this` member is the left side of the operator.
+   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   virtual bool operator>=( const Node& rhs_node ) const {
+      return !( *this < rhs_node );
+   }
+
 } ; // class Node
