@@ -2,6 +2,9 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_lab15a_animal_farm_4 - EE 205 - Spr 2022
 ///
+/// Trees do not preach learning and precepts.  They preach, undeterred by
+/// particulars, the ancient law of life.
+///
 /// @file Tree.cpp
 /// @version 1.0
 ///
@@ -11,7 +14,6 @@
 
 #include <cassert>
 #include <random> // For test_bulk_erase_from_Tree
-
 
 #include "../config.h"
 #include "Tree.h"
@@ -73,24 +75,24 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 
    assert( atNode->validate() );
 
-   /// @throws logic_error If `newNode` is already in the container.
+   /// @throws logic_error If `newNode` is already in the Tree.
    if( isIn( newNode ) ) {
-      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+      throw logic_error( PROGRAM_NAME ": Node is already in the Tree!" );
    }
 
-   if( atNode > newNode ) {
+   if( *newNode < *atNode ) {             // If newNode < atNode...
       if( atNode->left == nullptr ) {
-         atNode->left = newNode;
+         atNode->left = newNode;          // Hang it on the left side
       } else {
-         insert( atNode->left, newNode );
+         insert( atNode->left, newNode ); // Or descend to the left
       }
    }
 
-   if( newNode > atNode ) {
+   if( *newNode > *atNode ) {            // If newNode > atNode...
       if( atNode->right == nullptr ) {
-         atNode->right = newNode;
+         atNode->right = newNode;        // Hang it on the right side
       } else {
-         insert( atNode->right, newNode );
+         insert( atNode->right, newNode ); // Or descend to the right
       }
    }
    #ifdef DEBUG
@@ -106,7 +108,7 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 ///
 /// @return `true` if `aNode` is in the Tree.  `false` if it's not.
 bool Tree::isIn( Node* aNode ) const {
-   Container::isIn( aNode );
+   Container::isIn( aNode );  // Container::isIn does basic checks, but doesn't know about the storage engine
 
    return isIn( rootNode, aNode );
 }
@@ -125,10 +127,10 @@ bool Tree::isIn( Node* atNode, Node* aNode ) const {
    if( atNode == aNode )
       return true;  // We've found the node we are looking for!
 
-   if( atNode > aNode )
+   if( *aNode < *atNode )  // If aNode is < atNode, go left
       return isIn( atNode->left, aNode );
 
-   return isIn( atNode->right, aNode );
+   return isIn( atNode->right, aNode );  // Otherwise, go right
 }
 
 
@@ -172,13 +174,13 @@ bool Tree::validate( Node* atNode ) const noexcept {
    if( atNode == nullptr )
       return true;  // Looks good so far
 
-   assert( atNode->validate() );
+   assert( atNode->validate() );  // Do an in-order traversal
 
    if( atNode->left != nullptr )
-      assert( atNode > atNode->left );
+      assert( *atNode > *atNode->left );
 
    if( atNode->right != nullptr )
-      assert( atNode->right > atNode );
+      assert( *atNode->right > *atNode );
 
    assert( validate( atNode->left ));
    assert( validate( atNode->right ));
@@ -217,10 +219,10 @@ void Tree::erase( Node* nodeToRemove ) {
    Node* currentLocation = rootNode;
 
    while( true ) {
-      if( currentLocation > nodeToRemove ) { // Descend left
+      if( *currentLocation > *nodeToRemove ) { // Descend left
          parent = currentLocation;
          currentLocation = currentLocation->left;
-      } else if ( nodeToRemove > currentLocation ) {  // Descend right
+      } else if ( *nodeToRemove > *currentLocation ) {  // Descend right
          parent = currentLocation;
          currentLocation = currentLocation->right;
       } else {
