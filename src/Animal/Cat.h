@@ -79,4 +79,15 @@ public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
    static Cat& generateCat() ;  ///< Generate a new, random Cat
+
+public:  ///////////////////////// Operator Overrides //////////////////////////
+   bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with the < operator
+   bool operator> ( const Cat& rhs_cat ) const;  ///< Compare two Cats with the > operator
+   bool operator<=( const Cat& rhs_cat ) const;  ///< Compare two Cats with the <= operator
+   bool operator>=( const Cat& rhs_cat ) const;  ///< Compare two Cats with the >= operator
+
+   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison operator between two Nodes
+   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison operator between two Nodes
+   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison operator between two Nodes
+   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison operator between two Nodes
 };
