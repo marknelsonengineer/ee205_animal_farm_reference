@@ -17,6 +17,9 @@
 
 #include <iostream>
 #include <iomanip>    // For setw() & setfill()
+#include <random>     // For random_device & mt19937
+
+#include "Utility/Random.h"
 
 /// A grammatically correct title for the program
 #define PROGRAM_TITLE "Animal Farm 4"
@@ -65,3 +68,8 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
               << std::setw(20) << (className)             \
               << std::setw(20) << (member)                \
               << std::setw(40)  /* (data) */
+
+
+/// Establish the RNG used by Animal Farm
+// #define ANIMAL_FARM_RNG trueRNG
+#define ANIMAL_FARM_RNG mersenneTwisterPRNG

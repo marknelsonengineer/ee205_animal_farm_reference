@@ -198,12 +198,11 @@ bool Animal::validate() const noexcept {
 /// @internal This function will use `new` to create a Cat on the heap
 ///           Be sure to `delete` the cat when it's no longer needed
 Animal& Animal::generateAnimal() {
-   random_device RNG;        // Seed with a real random value, if available
    uniform_int_distribution<> animalRNG( 0, 0 );
 
    Animal* newAnimal;
 
-   switch( animalRNG( RNG ) ) {
+   switch( animalRNG( ANIMAL_FARM_RNG ) ) {
     case 0: newAnimal = &(Cat::generateCat()) ;
    }
 
