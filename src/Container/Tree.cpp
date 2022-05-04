@@ -281,8 +281,6 @@ void Tree::erase( Node* nodeToRemove ) {
 
 /// @return A random Node from the Tree.
 Node* Tree::getRandomNode() const noexcept {
-   random_device RNG;        // Seed with a real random value, if available
-
    if( empty() ) {
       return nullptr;  /// If the Tree is empty return `nullptr`.
    }
