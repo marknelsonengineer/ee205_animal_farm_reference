@@ -226,13 +226,13 @@ void Tree::erase( Node* nodeToRemove ) {
    Node* currentLocation = rootNode;
 
    while( true ) {
-      if( *currentLocation > *nodeToRemove ) { // Descend left
+      if( *currentLocation > *nodeToRemove ) {          // Descend left
          parent = currentLocation;
          currentLocation = currentLocation->left;
       } else if ( *nodeToRemove > *currentLocation ) {  // Descend right
          parent = currentLocation;
          currentLocation = currentLocation->right;
-      } else {
+      } else {                                          // We must be at nodeToRemove
          assert( currentLocation == nodeToRemove );
          break;
       }
@@ -240,11 +240,11 @@ void Tree::erase( Node* nodeToRemove ) {
 
    if( currentLocation->left != nullptr && currentLocation->right != nullptr ) {
       // The node has 2 children...
-      Node* successor = currentLocation->right;
+      Node* successor = currentLocation->right;  // First, go right...
 
       parent = currentLocation;
 
-      while( successor->left != nullptr ) {
+      while( successor->left != nullptr ) {      // Then, go left as far as you can...
          parent = successor;
          successor = successor->left;
       }
