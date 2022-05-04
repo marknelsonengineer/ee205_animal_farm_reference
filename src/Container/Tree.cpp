@@ -12,11 +12,15 @@
 /// @date   25_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+// Set to trace the flow of execution through this code
+// #define TRACE
+
 #include <cassert>
 #include <random> // For test_bulk_erase_from_Tree
 
 #include "../config.h"
 #include "Tree.h"
+
 
 using namespace std;
 
@@ -108,6 +112,7 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 ///
 /// @return `true` if `aNode` is in the Tree.  `false` if it's not.
 bool Tree::isIn( Node* aNode ) const {
+   TRACE_START
    Container::isIn( aNode );  // Container::isIn does basic checks, but doesn't know about the storage engine
 
    return isIn( rootNode, aNode );
@@ -121,6 +126,8 @@ bool Tree::isIn( Node* aNode ) const {
 ///
 /// @return `true` if `aNode` is in the Tree.  `false` if it's not.
 bool Tree::isIn( Node* atNode, Node* aNode ) const {
+   TRACE_START
+
    if( atNode == nullptr )
       return false ;  // We've reached the end of the Tree and haven't found our node
 
