@@ -15,6 +15,7 @@
 #include "../Animal/Cat.h"
 #include "../Container/Tree.h"
 
+/// A Binary Search Tree that's customized to store Cats
 class CatEmpire : public Tree {
 protected:
    /// The root for the binary search tree is the topCat of our little Empire

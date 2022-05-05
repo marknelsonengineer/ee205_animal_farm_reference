@@ -18,9 +18,12 @@
 
 using namespace std;
 
+/// Number of cats to process
 const int NUMBER_OF_CATS = 20;
 
 /// The entry point for catBegat
+///
+/// Print a Family Tree of 20 Cats
 int main() {
    cout << "Welcome to catBegat of Cat Empire!" << endl;
 

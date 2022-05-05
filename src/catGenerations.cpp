@@ -18,6 +18,7 @@
 
 using namespace std;
 
+/// Number of cats to process
 const int NUMBER_OF_CATS = 100;
 
 /// The entry point for catGenerations

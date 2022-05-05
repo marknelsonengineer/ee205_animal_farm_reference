@@ -19,6 +19,7 @@
 
 using namespace std;
 
+/// Number of cats to process
 const int NUMBER_OF_CATS = 20;
 
 /// The entry point for catList
