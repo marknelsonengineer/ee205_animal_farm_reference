@@ -169,6 +169,7 @@ Cat::~Cat() {
 /// @param rhs_cat `rhs` stands for Right Hand Side and means the right side of the operator.
 /// @return `true` if this < `rhs_cat`
 bool Cat::operator<( const Cat& rhs_cat ) const {
+   // cout << "this.name=[" << name << "]  rhs_cat.name=[" << rhs_cat.name << "]  name < rhs_cat.name=[" << ((name < rhs_cat.name) ? "true" : "false") << "]" << endl;
    return name < rhs_cat.name;
 }
 
@@ -195,12 +196,12 @@ bool Cat::operator>=( const Cat& rhs_cat ) const {
 /// Compare a Cat and a Node.  This is the operator that actually gets
 /// overridden by a Generic comparison.  First, we will try to dynamically
 /// cast `rhs_node` to a Cat.  If both the left and right sides are Cats,
-/// then, use the Cat comparison.  If not, then use Animal comparison.
+/// then, use the Cat comparison.  If not, then try the Animal comparison.
 bool Cat::operator<( const Node& rhs_node ) const {
    try {
       const Cat& rhs_cat = dynamic_cast<const Cat&>(rhs_node);
       return *this < rhs_cat;
-   } catch ( bad_cast& exception ) {      /// If rhs_node is not a Cat, it will throw a `bad_cast` exception...
+   } catch ( bad_cast& exception ) {        /// If rhs_node is not a Cat, it will throw a `bad_cast` exception...
       return Animal::operator<( rhs_node ); /// which will be caught and we will use an Animal comparison.
    }
 }
