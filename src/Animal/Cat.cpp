@@ -100,27 +100,55 @@ std::string Cat::speak() const noexcept {
 static std::vector<std::string> names;
 
 
+unsigned int Cat::remaningCatNames() noexcept {
+   return names.size();
+}
+
+
+/// This static method should be used with care... several Animal Farm
+/// data structures (like Tree) can't handle Cats with the same name.
+///
+/// This has been added to facilitate unit testing.
+void Cat::resetCatNames() {
+   names.clear();
+
+   cout << "Loading... " ;
+
+   ifstream file( CAT_NAMES_FILE );
+   string line;
+   while( getline( file, line )) {
+      names.push_back( line );
+   }
+
+   cout << to_string( names.size() ) << " cat names from " CAT_NAMES_FILE << endl;
+}
+
+
 /// @internal This function will use `new` to create a Cat on the heap
 ///           Be sure to `delete` the cat when it's no longer needed
 Cat& Cat::generateCat() {
    if( names.empty() ) {
-      cout << "Loading... ";
-
-      ifstream file( CAT_NAMES_FILE );
-      string line;
-      while (getline(file, line)) names.push_back(line);
-
-      cout << to_string( names.size() ) << " names." << endl;
+      resetCatNames();
    }
 
-   random_device RNG;        // Seed with a real random value, if available
-   uniform_int_distribution<> nameRNG( 0, (int) names.size()-1 );
+   uniform_int_distribution<>  nameRNG( 0, (int) names.size()-1 );
    uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
-   bernoulli_distribution isFixedRNG(0.85); // 85% of cats are neutered
-   uniform_int_distribution<> colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
-   uniform_int_distribution<> genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
+   bernoulli_distribution      isFixedRNG(0.85); // 85% of cats are neutered
+   uniform_int_distribution<>  colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
+   uniform_int_distribution<>  genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
 
-   Cat* aCat = new Cat( names[nameRNG( RNG )], (Color) colorRNG( RNG ), isFixedRNG( RNG ), (Gender) genderRNG( RNG ), (float) weightRNG( RNG ) );
+   /// Remove names as they get used
+   auto nameIterator = names.begin();
+   int nameIndex = nameRNG( ANIMAL_FARM_RNG );
+   while( nameIndex > 0 ) {
+      nameIterator++;
+      nameIndex -= 1;
+   }
+
+   string catName = *nameIterator;
+   names.erase( nameIterator );
+
+   Cat* aCat = new Cat( catName, (Color) colorRNG( ANIMAL_FARM_RNG ), isFixedRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (float) weightRNG( ANIMAL_FARM_RNG ) );
 
    // aCat->dump();
 

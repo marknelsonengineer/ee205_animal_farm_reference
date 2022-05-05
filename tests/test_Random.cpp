@@ -26,6 +26,7 @@ using namespace std;
 BOOST_AUTO_TEST_SUITE( test_Random )
 
    BOOST_AUTO_TEST_CASE( test_Random ) {
+      mersenneTwisterPRNG.seed( 0 );  // Reset the seed
       BOOST_CHECK_EQUAL( mersenneTwisterPRNG(), 2357136044 );
       BOOST_CHECK_EQUAL( mersenneTwisterPRNG(), 2546248239 );
       BOOST_CHECK_EQUAL( mersenneTwisterPRNG(), 3071714933 );

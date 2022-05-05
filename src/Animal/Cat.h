@@ -78,7 +78,9 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
-   static Cat& generateCat() ;  ///< Generate a new, random Cat
+   static Cat& generateCat() ;   ///< Generate a new, random Cat
+   static void resetCatNames();  ///< Erase and then re-load the Cat names database
+   static unsigned int remaningCatNames() noexcept;  ///< Return the number of unique cat names left
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with the < operator
