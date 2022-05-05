@@ -71,5 +71,5 @@ static void TRACE_OUT( const std::string operation, const std::string functionNa
 
 
 /// Establish the RNG used by Animal Farm
-#define ANIMAL_FARM_RNG trueRNG
-// #define ANIMAL_FARM_RNG mersenneTwisterPRNG
+// #define ANIMAL_FARM_RNG trueRNG
+#define ANIMAL_FARM_RNG mersenneTwisterPRNG

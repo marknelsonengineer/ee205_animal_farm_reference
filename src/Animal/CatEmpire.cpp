@@ -51,9 +51,39 @@ string getEnglishSuffix( int n ) {
 }
 
 
-/// @todo Document this
+/// Print a pedigree of 20 Cats
+///
+/// A pedigree is a record of decedents.  In our case, we will implement a DFS
+/// preorder search to print a pedigree of cats.  The rules are:
+///
+///   - If the tree is empty, print `No cats!`
+///   - If the Cat has both a left and right child, print <code><em>parent</em> begat <em>left</em> and <em>right</em></code> substituting the appropriate cat names
+///   - If the Cat has only a left (or right) child, print <code><em>parent</em> begat <em>left</em></code> or <code><em>parent</em> begat <em>right</em></code>
+///   - If the Cat doesn't have any children, then don’t print anything
+///
+/// You should end up with a family tree that looks like this:
+///
+///     Mila begat Avion and Tiernan
+///     Avion begat Adony and Manning
+///     Manning begat Chrome
+///     Chrome begat Cade and Idola
+///     Tiernan begat Sweetie and Valeska
+///     Sweetie begat Starkitty
+///     Starkitty begat Roosevelt
+///     Roosevelt begat Olympia and Salvador
+///     Olympia begat Reena
+///     Reena begat Petty
+///     Petty begat Orianna
+///     Valeska begat Young
+///     Young begat Vevina and Yummy
+///
 void CatEmpire::catBegat() const {
+   if( topCat == nullptr ) {
+      cout << "No cats!" << endl;
+      return;
+   }
 
+   dfsPreorder( topCat );
 }
 
 
@@ -61,7 +91,7 @@ void CatEmpire::catBegat() const {
 ///
 /// Visualize the tree from Left-to-right.  Here are the rules:
 ///
-///   - If the tree is empty, print “`No cats!`”
+///   - If the tree is empty, print `No cats!`
 ///   - You’ll need to keep track of your depth, so pass 1 into depth and then
 ///     increment depth on each call to `dfsInorderReverse`
 ///   - Do a reverse in-order traversal... so recurse down the right side of
@@ -75,30 +105,29 @@ void CatEmpire::catBegat() const {
 ///     - If the node has **both** a `left` and `right` child, print “`<`“ and `endl`
 ///     - If the node has a `left` **XOR** `right` child, print either “`/`“ or “`\`” as appropriate
 ///
-/// #### You should end up with a family tree that looks like this:
+/// You should end up with a family tree that looks like this:
 ///
 ///     Print a family tree of 20 cats
-///
-///                             Zulema
-///                       Zinnia/
-///                 Simpson<
-///                       Saxonia\
-///                             Sasha
-///           Rolo<
-///                 Rayma\
-///                       Primo
-///     Pierce<
-///                 Peregrine\
-///                                   Liana
-///                             Laman<
-///                                   Kaya\
-///                                               Jamee
-///                                         Hemal/
-///                       Grettel<
-///                             Evelina\
-///                                   Dolby\
-///                                         Asher
-///           Armen/
+///                             Yummy
+///                       Young<
+///                             Vevina
+///                 Valeska/
+///           Tiernan<
+///                 Sweetie\
+///                       Starkitty\
+///                                   Salvador
+///                             Roosevelt<
+///                                         Reena\
+///                                               Petty\
+///                                                     Orianna
+///                                   Olympia/
+///     Mila<
+///                 Manning\
+///                             Idola
+///                       Chrome<
+///                             Cade
+///           Avion<
+///                 Adony
 ///
 void CatEmpire::catFamilyTree() const noexcept {
    if( topCat == nullptr ) {
@@ -129,11 +158,30 @@ void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
       return;}
 
 
-/// @todo Document this
+/// Depth First Search - Forward Preorder Traversal... printing cats
+/// to support CatEmpire::catBegat
 void CatEmpire::dfsPreorder( Cat* atCat ) const noexcept {
-   atCat = nullptr;
-   if( atCat == nullptr )
-      return;}
+   assert( atCat != nullptr );
+
+   if( atCat->left != nullptr && atCat->right != nullptr ) {
+      cout << atCat->getName() << " begat " << ((Cat*) atCat->left)->getName() << " and " << ((Cat *) atCat->right)->getName() << endl;
+      dfsPreorder( (Cat*) atCat->left);
+      dfsPreorder( (Cat*) atCat->right);
+      return;
+   }
+
+   if( atCat->left != nullptr && atCat->right == nullptr ) {
+      cout << atCat->getName() << " begat " << ((Cat*) atCat->left)->getName() << endl;
+      dfsPreorder( (Cat*) atCat->left );
+      return;
+   }
+
+   if( atCat->left == nullptr && atCat->right != nullptr ) {
+      cout << atCat->getName() << " begat " << ((Cat*) atCat->right)->getName() << endl;
+      dfsPreorder( (Cat*) atCat->right );
+      return;
+   }
+}
 
 
 /// @todo Document this
@@ -145,7 +193,7 @@ void CatEmpire::dfsInorder( Cat* atCat ) const noexcept {
 
 
 /// Depth First Search - Reverse Inorder Traversal... printing cats
-/// to support `catFamilyTree`.
+/// to support CatEmpire::catFamilyTree
 void CatEmpire::dfsInorderReverse( Cat* atCat, int depth ) const noexcept {
    assert( atCat != nullptr );
    const int nameLen = 6;
