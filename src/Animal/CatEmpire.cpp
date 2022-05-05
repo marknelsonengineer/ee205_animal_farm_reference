@@ -139,9 +139,41 @@ void CatEmpire::catFamilyTree() const noexcept {
 }
 
 
-/// @todo Document this
+/// Print an alphabetized list of 20 Cats
+///
+/// If the tree is empty, print `No cats!`  If the tree is not empty, use an
+/// in-order DFS to traverse the Tree and print Cats.
+///
+/// You should end up with a list that looks like this:
+///
+///     Adony
+///     Avion
+///     Cade
+///     Chrome
+///     Idola
+///     Manning
+///     Mila
+///     Olympia
+///     Orianna
+///     Petty
+///     Reena
+///     Roosevelt
+///     Salvador
+///     Starkitty
+///     Sweetie
+///     Tiernan
+///     Valeska
+///     Vevina
+///     Young
+///     Yummy
+///
 void CatEmpire::catList() const noexcept {
+   if( topCat == nullptr ) {
+      cout << "No cats!" << endl;
+      return;
+   }
 
+   dfsInorder( topCat );
 }
 
 
@@ -184,11 +216,18 @@ void CatEmpire::dfsPreorder( Cat* atCat ) const noexcept {
 }
 
 
-/// @todo Document this
+/// Depth First Search - Forward In-Order Traversal... printing cats
+/// to support CatEmpire::catList
 void CatEmpire::dfsInorder( Cat* atCat ) const noexcept {
-   atCat = nullptr;
-   if( atCat == nullptr )
-      return;
+   assert( atCat != nullptr );
+
+   if( atCat->left != nullptr )
+      dfsInorder( (Cat*) atCat->left );
+
+   cout << atCat->getName() << endl;
+
+   if( atCat->right != nullptr )
+      dfsInorder( (Cat*) atCat->right );
 }
 
 
