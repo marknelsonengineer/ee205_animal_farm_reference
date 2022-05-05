@@ -13,7 +13,6 @@
 
 #include <iostream>
 
-#include "config.h"
 #include "Animal/CatEmpire.h"
 
 using namespace std;
