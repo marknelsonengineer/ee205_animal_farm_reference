@@ -145,7 +145,7 @@ bool Tree::isIn( Node* atNode, Node* aNode ) const {
 void Tree::dump() const noexcept {
    Container::dump();
 
-   FORMAT_LINE_FOR_DUMP( "Tree", "rootNode" )  << rootNode  << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "Tree", "rootNode" ) << rootNode << std::endl ;
 
    dump( rootNode );
 }
@@ -172,25 +172,53 @@ void Tree::dump( Node* atNode ) const noexcept {
 bool Tree::validate() const noexcept {
    assert( Container::validate() );
 
-   return( validate( rootNode ));
+   /// If `rootNode` is `nullptr, then `count == 0`.
+   if( rootNode == nullptr ) {
+      assert( count == 0 );
+      assert( empty() );
+   } else {
+      assert( count != 0 );
+      assert( !empty() );
+   }
+
+   /// If the Tree only has 1 Node, ensure the count == 1.
+   if( rootNode != nullptr ) {
+      if( rootNode->left == nullptr && rootNode->right == nullptr ) {
+         assert( count == 1 );
+      }
+   }
+
+   unsigned int treeCount = 0;
+
+   assert( validate( rootNode, treeCount ));
+
+   assert( size() == treeCount );
+
+   #ifdef DEBUG
+   // cout << PROGRAM_NAME ": Tree is valid" << endl;
+   #endif
+
+   return true;
 }
 
 
 /// This method assumes that it is called by `validate()`
-bool Tree::validate( Node* atNode ) const noexcept {
+bool Tree::validate( Node* atNode, unsigned int& treeCount ) const noexcept {
    if( atNode == nullptr )
       return true;  // Looks good so far
 
    assert( atNode->validate() );  // Do an in-order traversal
+   treeCount += 1;
 
-   if( atNode->left != nullptr )
+   if( atNode->left != nullptr ) {
       assert( *atNode > *atNode->left );
+      assert( validate( atNode->left, treeCount ));
+   }
 
-   if( atNode->right != nullptr )
+   if( atNode->right != nullptr ) {
       assert( *atNode->right > *atNode );
-
-   assert( validate( atNode->left ));
-   assert( validate( atNode->right ));
+      assert( validate( atNode->right, treeCount ));
+   }
 
    return true;
 }
@@ -215,7 +243,7 @@ void Tree::erase( Node* nodeToRemove ) {
    }
 
    /// @throws logic_error If `nodeToRemove` is not in the Tree.
-   if( !isIn( nodeToRemove ) ) {
+   if( !isIn( nodeToRemove )) {
       throw logic_error( PROGRAM_NAME ": nodeToRemove is not in the Tree!" );
    }
 
@@ -290,7 +318,7 @@ Node* Tree::getRandomNode() const noexcept {
    }
 
    uniform_int_distribution<> randomIndexGenerator( 0, size()-1 );
-   int randomIndex = randomIndexGenerator( RNG );
+   int randomIndex = randomIndexGenerator( ANIMAL_FARM_RNG );
    // FORMAT_LINE_FOR_DUMP( "Tree", "randomIndex" )  << randomIndex  << std::endl ;
 
    return getRandomNode( rootNode, &randomIndex );
