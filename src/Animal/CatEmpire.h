@@ -25,12 +25,12 @@ public:   /////////////////////////// Public Methods ///////////////////////////
    void catBegat() const;
    void catFamilyTree() const noexcept;
    void catList() const noexcept;
-   void catGenerations() const noexcept;
+   void catGenerations() const;
    void catTail( CatEmpire* tailList ) const noexcept;
 
 private:   ////////////////////////// Private Methods //////////////////////////
    void dfsPreorder( Cat* atCat ) const noexcept;
    void dfsInorder( Cat* atCat ) const noexcept;
-   void dfsInorderReverse( Cat* atCat, int depth ) const noexcept;
-   void catTail( Cat* atCat, CatEmpire* tailList ) const noexcept;
+   void dfsInorderReverse( Cat* atCat, unsigned long depth ) const noexcept;
+   void catTail( Cat* atCat, CatEmpire* tailList ) const ;
 };

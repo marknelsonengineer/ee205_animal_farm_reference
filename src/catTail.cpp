@@ -2,14 +2,15 @@
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
-/// Print a family tree of cats by generation
+/// Print a reverse alphabetized list of cats in a binary search tree
 ///
-/// @file catGenerations.cpp
+/// @file catTail.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   30_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
+
 
 #include <iostream>
 
@@ -21,11 +22,12 @@ using namespace std;
 /// Number of cats to process
 const int NUMBER_OF_CATS = 20;
 
-/// The entry point for catGenerations
+/// The entry point for catList
 int main() {
-   cout << "Welcome to catGenerations of Cat Empire!" << endl;
+   cout << "Welcome to catTail of Cat Empire!" << endl;
 
    CatEmpire catEmpire;
+   CatEmpire catTail;
 
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
       Cat& newCat = Cat::generateCat();
@@ -33,7 +35,7 @@ int main() {
       catEmpire.insert( &newCat );
    }
 
-   cout << "List of " << NUMBER_OF_CATS << " cats by generation" << endl;
-
-   catEmpire.catGenerations();
+   cout << "Print a reverse alphabetized list of " << NUMBER_OF_CATS << " cats in a binary search tree" << endl;
+   catEmpire.catTail( &catTail );
+   catTail.catFamilyTree();
 }

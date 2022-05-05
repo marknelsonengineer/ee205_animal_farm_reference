@@ -38,16 +38,16 @@ public:  /////////////////////////// Static Methods ////////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
-   bool isSorted() const noexcept ;          ///< `true` if the List is sorted
+   virtual bool isSorted() const noexcept ;   ///< `true` if the List is sorted
 
-   Node* get_first() const noexcept ;    ///< Get the first Node in the List
+   virtual Node* get_first() const noexcept ; ///< Get the first Node in the List
 
-   void deleteAllNodes() noexcept ;      ///< Delete all of the nodes in the List
+   virtual void deleteAllNodes() noexcept ;  ///< Delete all of the nodes in the List
 
    void dump() const noexcept override;      ///< Output the member variables in this object
    bool validate() const noexcept override;  ///< Ensure the object is valid
 
 public:  ////////////////////////// Abstract Methods ///////////////////////////
    virtual void push_front( Node* newNode ) = 0 ;  ///< Insert `newNode` at the beginning of the List
-   virtual Node* pop_front() noexcept = 0 ;     ///< Remove and return the first Node in the List
+   virtual Node* pop_front() noexcept = 0 ;        ///< Remove and return the first Node in the List
 };

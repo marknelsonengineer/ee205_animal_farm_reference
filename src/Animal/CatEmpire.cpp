@@ -10,9 +10,10 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <cassert>
+#include <string>
 
-#include "../config.h"
 #include "CatEmpire.h"
+#include "../Container/Queue.h"
 
 using namespace std;
 
@@ -24,7 +25,8 @@ using namespace std;
 ///   - Ordinal numbers indicate position or order in relation to other numbers.
 ///   - Cardinal numbers, on the other hand, express a quantity of something.
 ///
-/// @see https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/
+/// @see https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/'
+/// @see https://en.wikipedia.org/wiki/English_numerals#Ordinal_numbers
 string getEnglishSuffix( int n ) {
    static thread_local string suffix;
 
@@ -51,12 +53,12 @@ string getEnglishSuffix( int n ) {
 }
 
 
-/// Print a pedigree of 20 Cats
+/// Print a pedigree of Cats
 ///
 /// A pedigree is a record of decedents.  In our case, we will implement a DFS
-/// preorder search to print a pedigree of cats.  The rules are:
+/// preorder search to print our pedigree.  The rules are:
 ///
-///   - If the tree is empty, print `No cats!`
+///   - If the Tree is empty, print `No cats!`
 ///   - If the Cat has both a left and right child, print <code><em>parent</em> begat <em>left</em> and <em>right</em></code> substituting the appropriate cat names
 ///   - If the Cat has only a left (or right) child, print <code><em>parent</em> begat <em>left</em></code> or <code><em>parent</em> begat <em>right</em></code>
 ///   - If the Cat doesn't have any children, then don’t print anything
@@ -87,23 +89,23 @@ void CatEmpire::catBegat() const {
 }
 
 
-/// Print a Family Tree of 20 Cats
+/// Print a Family Tree of Cats
 ///
-/// Visualize the tree from Left-to-right.  Here are the rules:
+/// Visualize the Tree from Left-to-right.  Here are the rules:
 ///
-///   - If the tree is empty, print `No cats!`
+///   - If the Tree is empty, print `No cats!`
 ///   - You’ll need to keep track of your depth, so pass 1 into depth and then
 ///     increment depth on each call to `dfsInorderReverse`
-///   - Do a reverse in-order traversal... so recurse down the right side of
-///     the tree first, then print the parent, then recurse down the left side.
+///   - Do a reverse in-order traversal... recursing down the right side of
+///     the Tree first, then print the parent, then recurse down the left side.
 ///     This will print the family tree on its side.
-///   - Print a cat name with these rules:
-///     - Assume that each cat name is 6 characters… so print (6 x depth-1)
-///       spaces... `cout << string( 6 * (depth-1), ' ' ) << atCat->name;`
-///     - ...and then print the cat’s name
+///   - Print a Cat name with these rules:
+///     - Assume that each Cat name is ~6 characters... print `6 * depth-1`
+///       spaces and then print the Cat’s name:
+///       - <code>cout << string( 6 * (depth-1), ' ' ) << atCat->name;</code>
 ///     - If the Cat node is a leaf node (both `left` and `right == nullptr`), just print `endl`
-///     - If the node has **both** a `left` and `right` child, print “`<`“ and `endl`
-///     - If the node has a `left` **XOR** `right` child, print either “`/`“ or “`\`” as appropriate
+///     - If the node has **both** a `left` and `right` child, print `<` and `endl`
+///     - If the node has a `left` **XOR** `right` child, print either `/` or `\` as appropriate
 ///
 /// You should end up with a family tree that looks like this:
 ///
@@ -139,10 +141,10 @@ void CatEmpire::catFamilyTree() const noexcept {
 }
 
 
-/// Print an alphabetized list of 20 Cats
+/// Print an alphabetized list of Cats
 ///
-/// If the tree is empty, print `No cats!`  If the tree is not empty, use an
-/// in-order DFS to traverse the Tree and print Cats.
+/// If the Tree is empty, print `No cats!`  If the tree is not empty, use an
+/// in-order DFS to alphabetically traverse the Tree and print Cats.
 ///
 /// You should end up with a list that looks like this:
 ///
@@ -177,17 +179,85 @@ void CatEmpire::catList() const noexcept {
 }
 
 
-/// @todo Document this
-void CatEmpire::catGenerations() const noexcept {
+/// Print Cats by generation
+///
+/// Before CatEmpire::catGenerations is called, the CatEmpire's Binary
+/// Search Tree will be populated with some number of Cats.
+/// CatEmpire::catGenerations will use a breadth first search (BFS) to iterate
+/// over the Tree and print Cats by their generation.
+///
+/// This is implemented by using **both** Tree and Queue (DoublyLinkedList) in
+/// combination.  Remember that Node has `left`, `right`, `prev` and `next`
+/// pointers.  We will use them all.
+///
+/// An algorithm for BFS with level tracking is suggested in [this StackOverflow answer](https://stackoverflow.com/a/31248992/4886240)
+///
+/// You should end up with a BFS that looks like this:
+///
+///     1st Generation
+///       Mila
+///     2nd Generation
+///       Avion  Tiernan
+///     3rd Generation
+///       Adony  Manning  Sweetie  Valeska
+///     4th Generation
+///       Chrome  Starkitty  Young
+///     5th Generation
+///       Cade  Idola  Roosevelt  Vevina  Yummy
+///     6th Generation
+///       Olympia  Salvador
+///     7th Generation
+///       Reena
+///     8th Generation
+///       Petty
+///     9th Generation
+///       Orianna
+///
+void CatEmpire::catGenerations() const {
+   Queue catQueue;
 
+   int level = 1;
+
+   string generation = "1st Generation";
+   cout << generation << endl;
+   catQueue.push( topCat );
+   catQueue.push( new Cat( "END OF " + generation ) );  // This is the marker for the end of the generation
+   // catQueue.push( nullptr );
+
+   while( !catQueue.empty() ) {
+      Cat* aCat = (Cat*) catQueue.front();   // Peek at the front of the queue...
+      Cat* aCatLeft = (Cat*) aCat->left;     // Get the left subtree
+      Cat* aCatRight = (Cat*) aCat->right;   // Get the right subtree
+      catQueue.pop();                        // Remove the Cat from the Queue (this resets the Node's pointers, which is why we have to get them first)
+
+      if( aCat->getName().find( "END OF " ) != string::npos ) {
+         level++;
+         generation = to_string(level) + getEnglishSuffix( level ) + " Generation";
+         catQueue.push( new Cat( "END OF " + generation ) );  // This is the marker for the end of the generation
+         // catQueue.push( nullptr );
+
+         cout << endl;
+
+         if( ((Cat*) catQueue.front())->getName().find("END OF ") != string::npos )
+            break;
+
+         cout << generation << endl;
+//       printf("%d%s Generation\n", level, getEnglishSuffix( level ) );
+
+         continue;
+      }
+
+      cout << "  " << aCat->getName();
+      //aCat->dump();
+
+      if( aCatLeft != nullptr ) {
+         catQueue.push( aCatLeft );
+      }
+      if( aCatRight != nullptr ) {
+         catQueue.push( aCatRight );
+      }
+   }
 }
-
-
-/// @todo Document this
-void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
-   tailList = nullptr;
-   if( tailList == nullptr )
-      return;}
 
 
 /// Depth First Search - Forward Preorder Traversal... printing cats
@@ -233,7 +303,7 @@ void CatEmpire::dfsInorder( Cat* atCat ) const noexcept {
 
 /// Depth First Search - Reverse Inorder Traversal... printing cats
 /// to support CatEmpire::catFamilyTree
-void CatEmpire::dfsInorderReverse( Cat* atCat, int depth ) const noexcept {
+void CatEmpire::dfsInorderReverse( Cat* atCat, unsigned long depth ) const noexcept {
    assert( atCat != nullptr );
    const int nameLen = 6;
 
@@ -256,10 +326,58 @@ void CatEmpire::dfsInorderReverse( Cat* atCat, int depth ) const noexcept {
 }
 
 
-/// @todo Document this
-void CatEmpire::catTail( Cat* atCat, CatEmpire* tailList ) const noexcept {
-   atCat = nullptr;
-   tailList = nullptr;
-   if( atCat == nullptr && tailList == nullptr )
+/// Populate tailList from Cats in `this` class in reverse order
+///
+/// @param tailList A new CatEmpire Tree (but it's effectively a linked list)
+///
+/// It will create a new Tree that looks like this:
+///
+///     Yummy\
+///           Young\
+///                 Vevina\
+///                       Valeska\
+///                             Tiernan\
+///                                   Sweetie\
+///                                         Starkitty\
+///                                               Salvador\
+///                                                     Roosevelt\
+///                                                           Reena\
+///                                                                 Petty\
+///                                                                       Orianna\
+///                                                                             Olympia\
+///                                                                                   Mila\
+///                                                                                         Manning\
+///                                                                                               Idola\
+///                                                                                                     Chrome\
+///                                                                                                           Cade\
+///                                                                                                                 Avion\
+///                                                                                                                       Adony
+///
+void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
+   assert( tailList->empty() );
+
+   if( topCat == nullptr ) {
+      cout << "No cats!" << endl;
       return;
+   }
+
+   catTail( topCat, tailList );
+}
+
+
+/// Reverse In-order Traversal... copying Cats from this list into `tailList`
+/// to support CatEmpire::catTail
+void CatEmpire::catTail( Cat* atCat, CatEmpire* tailList ) const {
+   assert( atCat != nullptr );
+   assert( tailList != nullptr );
+
+   if( atCat->right != nullptr )
+      catTail( (Cat*) atCat->right, tailList );
+
+   Cat* newCat = new Cat( atCat->getName() );  /// @todo this is flawed... I think we want a copy constructor and/or a copy assignment.  @see https://stackoverflow.com/a/12902851/4886240
+
+   tailList->insert( newCat );
+
+   if( atCat->left != nullptr )
+      catTail( (Cat*) atCat->left, tailList );
 }
