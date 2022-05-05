@@ -123,7 +123,7 @@ void CatEmpire::catGenerations() const noexcept {
 
 
 /// @todo Document this
-oid CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
+void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
    tailList = nullptr;
    if( tailList == nullptr )
       return;}
@@ -144,7 +144,8 @@ void CatEmpire::dfsInorder( Cat* atCat ) const noexcept {
 }
 
 
-/// @todo Document this
+/// Depth First Search - Reverse Inorder Traversal... printing cats
+/// to support `catFamilyTree`.
 void CatEmpire::dfsInorderReverse( Cat* atCat, int depth ) const noexcept {
    assert( atCat != nullptr );
    const int nameLen = 6;
