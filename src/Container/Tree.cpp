@@ -224,11 +224,17 @@ bool Tree::validate( Node* atNode, unsigned int& treeCount ) const noexcept {
 }
 
 
-/// Removes the Node from the Tree, but does not `delete` the node from memory.
+/// Removes nodeToRemove from the Tree, but does not `delete` the node from memory.
+///
+/// @internal This algorithm differs significantly from standard BST delete
+///           algorithms as they typically "swap" two nodes.  Because Animal
+///           Farm can have many different kinds of Animals, you can't swap two
+///           nodes (in-place)... instead, you actually need to remove one node
+///           and move another node into its place.
 ///
 /// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
-///      by Larry Nyhoff page 684.  I inlined the `search2` function, but
-///      otherwise, this is implemented verbatim.
+///      by Larry Nyhoff page 684.  I inlined the `search2` function
+///      and replaced the swap functionality with moving two Nodes.
 void Tree::erase( Node* nodeToRemove ) {
    TRACE_START
 
@@ -250,8 +256,8 @@ void Tree::erase( Node* nodeToRemove ) {
    assert( validate() );
    // Do the deed
 
-   Node* parent = nullptr;
-   Node* currentLocation = rootNode;
+   Node* parent = nullptr;            // The parent of the Node to be deleted.  If the root Rode is deleted, parent == nullptr
+   Node* currentLocation = rootNode;  // Search for the Node to be deleted.
 
    while( true ) {
       if( *currentLocation > *nodeToRemove ) {          // Descend left
@@ -261,38 +267,76 @@ void Tree::erase( Node* nodeToRemove ) {
          parent = currentLocation;
          currentLocation = currentLocation->right;
       } else {                                          // We must be at nodeToRemove
-         assert( currentLocation == nodeToRemove );
          break;
       }
    }
 
+   // At this point, we've found the nodeToRemove...
+   // And we have its parent Node (which is nullptr if the Node to remove is the root)
+   assert( currentLocation == nodeToRemove );
+   // cout << "currentLocation=" << currentLocation << endl;
+   // cout << "         parent=" << parent << endl;
+
    if( currentLocation->left != nullptr && currentLocation->right != nullptr ) {
       // The node has 2 children...
-      Node* successor = currentLocation->right;  // First, go right...
 
-      parent = currentLocation;
+      // successor is found by going right once and then left as far as possible
+      Node* successor = currentLocation->right;  // First, go right...
+      Node* successorParent = currentLocation;   // successorParent is self-explanatory
 
       while( successor->left != nullptr ) {      // Then, go left as far as you can...
-         parent = successor;
+         successorParent = successor;
          successor = successor->left;
       }
 
-      *currentLocation = *successor;
-      currentLocation = successor;
+      // cout << "      successor=" << successor << endl;
+      // cout << "successorParent=" << successorParent << endl;
+
+      // Let's put the successor where it belongs.  There are 3 cases:
+      if( parent == nullptr ) {  // The first case is when the node we are removing is the root node...
+         rootNode = successor;
+      } else if( parent->left == currentLocation ) {  // The second & third cases hang successor off of the parent
+         parent->left = successor;
+      } else if( parent->right == currentLocation) {
+         parent->right = successor;
+      } else {
+         assert( false );  // We should never get here
+      }
+
+      // Now, fixup successor parent by detaching the successor.  There are 2 cases:
+      if( currentLocation == successorParent ) {
+         // Do nothing... the currentLocation is the Node we are going to delete
+      } else {
+         assert( successorParent->left == successor );  // Otherwise, we *know* the successor is its parent's left node
+         successorParent->left = successor->right;      // So set it's left node to whatever succesor's right node is pointing to
+      }
+
+      // Finally, put successor in its place
+      successor->left = currentLocation->left;
+      if( currentLocation == successorParent ) {
+         // Do nothing... the currentLocation is the Node we are going to delete
+      } else {
+         successor->right = currentLocation->right;  // Reattach successor's subtree to it's right branch
+      }
+
+   } else {
+      // The Node has 0 or 1 children...
+
+      // subtree has the 0 or 1 children
+      Node* subtree = currentLocation->left;
+      if( subtree == nullptr )
+         subtree = currentLocation->right;
+
+      if( parent == nullptr )
+         rootNode = subtree;
+      else if( parent->left == currentLocation )
+         parent->left = subtree;
+      else
+         parent->right = subtree;
    }
 
-   Node* subtree = currentLocation->left;
-   if( subtree == nullptr )
-      subtree = currentLocation->right;
-   if( parent == nullptr )
-      rootNode = subtree;
-   else if( parent->left == currentLocation )
-      parent->left = subtree;
-   else
-      parent->right = subtree;
-
-   currentLocation->reset();
-   /// currentLocation is nodeToDelete and it's now fully detached
+   nodeToRemove->reset();
+   /// currentLocation is nodeToRemove and it's now fully detached
 
    // Done
    count--;

@@ -44,12 +44,12 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
    	for( int i = 0 ; i < 100 ; i++ ) {
    		Cat& aCat = Cat::generateCat();
-   		BOOST_CHECK_NO_THROW( testTree.insert( &aCat ));
-   		BOOST_CHECK_THROW( testTree.insert( &aCat ), logic_error );
-   		BOOST_CHECK_EQUAL( testTree.empty(), false );
-   		BOOST_CHECK_EQUAL( testTree.size(), i+1 );
-   		BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), true );
-   		BOOST_CHECK_EQUAL( testTree.validate(), true );
+   		BOOST_REQUIRE_NO_THROW( testTree.insert( &aCat ));
+   		BOOST_REQUIRE_THROW( testTree.insert( &aCat ), logic_error );
+   		BOOST_REQUIRE_EQUAL( testTree.empty(), false );
+   		BOOST_REQUIRE_EQUAL( testTree.size(), i+1 );
+   		BOOST_REQUIRE_EQUAL( testTree.isIn( &aCat ), true );
+   		BOOST_REQUIRE_EQUAL( testTree.validate(), true );
    	}
 
    	// testTree.dump();
@@ -64,19 +64,19 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       BOOST_CHECK_THROW( testTree.erase( &aCat ),
                          logic_error );  // Try to erase a cat that's not in the Tree
 
-      // Insert and remove the root node 10 times
+      // Insert and remove the rootNode node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {
-         BOOST_CHECK_NO_THROW( testTree.insert( &aCat ));
-         BOOST_CHECK_EQUAL( testTree.empty(), false );
-         BOOST_CHECK_EQUAL( testTree.size(), 1 );
-         BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), true );
-         BOOST_CHECK_EQUAL( testTree.validate(), true );
+         BOOST_REQUIRE_NO_THROW( testTree.insert( &aCat ));
+         BOOST_REQUIRE_EQUAL( testTree.empty(), false );
+         BOOST_REQUIRE_EQUAL( testTree.size(), 1 );
+         BOOST_REQUIRE_EQUAL( testTree.isIn( &aCat ), true );
+         BOOST_REQUIRE_EQUAL( testTree.validate(), true );
 
-         BOOST_CHECK_NO_THROW( testTree.erase( &aCat ));
-         BOOST_CHECK_EQUAL( testTree.empty(), true );
-         BOOST_CHECK_EQUAL( testTree.size(), 0 );
-         BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), false );
-         BOOST_CHECK_EQUAL( testTree.validate(), true );
+         BOOST_REQUIRE_NO_THROW( testTree.erase( &aCat ));
+         BOOST_REQUIRE_EQUAL( testTree.empty(), true );
+         BOOST_REQUIRE_EQUAL( testTree.size(), 0 );
+         BOOST_REQUIRE_EQUAL( testTree.isIn( &aCat ), false );
+         BOOST_REQUIRE_EQUAL( testTree.validate(), true );
       }
    }
 
@@ -87,26 +87,27 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
          testTree.insert( &Cat::generateCat() );
          Node* aNode = testTree.getRandomNode();
          // aNode->dump();
-         BOOST_CHECK_EQUAL( testTree.isIn( aNode ), true );
+         BOOST_REQUIRE_EQUAL( testTree.isIn( aNode ), true );
       }
    }
 
    BOOST_AUTO_TEST_CASE( test_bulk_operations_on_Tree ) {
       Tree testTree;      /// @todo Move into a test fixture
-      random_device RNG;  // Seed with a real random value, if available
+      Cat::resetCatNames();
+
       int count = 0;
 
-      for( int i = 0 ; i < 6 ; i++ ) {
-         BOOST_CHECK_NO_THROW( testTree.deleteAllNodes() );
+      for( int i = 0 ; i < 7 ; i++ ) {
+         BOOST_REQUIRE_NO_THROW( testTree.deleteAllNodes() );
          count = 0;
 
          double idealSizeOfList = pow( 2, i );
 
-         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]" ) ;
+         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]   remaining cat names = [" << Cat::remaningCatNames() << "]" ) ;
 
-         for( int j = 0 ; j < 500 ; j++ ) {
+         for( int j = 0 ; j < 1000 ; j++ ) {
             bernoulli_distribution isFixedRNG( testTree.size() / (idealSizeOfList*2) );  // If ideal size is 4, then 4/8 = 0.5
-            bool deleteNode = isFixedRNG( RNG );
+            bool deleteNode = isFixedRNG( ANIMAL_FARM_RNG );
             // FORMAT_LINE_FOR_DUMP( "Test", "ideal" )  << idealSizeOfList  << std::endl ;
             // cout << "   ideal=" << idealSizeOfList ;
             // cout << "   testTree.size=" << testTree.size() ;
@@ -114,23 +115,34 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
             // cout << "   deleteNode=" << deleteNode << endl;
 
             if( deleteNode ) {
+//               cout << "vvvvvvvvvvvvvvvvvv BEFORE REMOVE vvvvvvvvvvvvvvvvvv" << endl;
+//               testTree.dump();
+//               cout << "^^^^^^^^^^^^^^^^^^ BEFORE REMOVE ^^^^^^^^^^^^^^^^^^" << endl;
                Node* nodeToDelete = testTree.getRandomNode();
-               BOOST_CHECK_NO_THROW( testTree.erase( nodeToDelete ) );
+//               cout << "nodeToDelete vvvvvvvvvvvvvvvvvv" << endl;
+//               nodeToDelete->dump();
+//               cout << "nodeToDelete ^^^^^^^^^^^^^^^^^^" << endl;
+
+               BOOST_REQUIRE_NO_THROW( testTree.erase( nodeToDelete ) );
+//               cout << "vvvvvvvvvvvvvvvvvv AFTER REMOVE vvvvvvvvvvvvvvvvvv" << endl ;
+//               testTree.dump();
+//               cout << "^^^^^^^^^^^^^^^^^^ AFTER REMOVE ^^^^^^^^^^^^^^^^^^" << endl ;
+
                count -= 1;
-               BOOST_CHECK_EQUAL( testTree.isIn( nodeToDelete ), false );
+               BOOST_REQUIRE_EQUAL( testTree.isIn( nodeToDelete ), false );
 
             } else { // Insert a Node
                Cat& aCat = Cat::generateCat();
-               BOOST_CHECK_NO_THROW( testTree.insert( &aCat ) );
+               BOOST_REQUIRE_NO_THROW( testTree.insert( &aCat ) );
                count += 1;
-               BOOST_CHECK_EQUAL( testTree.isIn( &aCat ), true );
+               BOOST_REQUIRE_EQUAL( testTree.isIn( &aCat ), true );
 
             }
-            BOOST_CHECK_EQUAL( testTree.size(), count );
-            BOOST_CHECK_EQUAL( testTree.validate(), true );
+            BOOST_REQUIRE_EQUAL( testTree.size(), count );
+            BOOST_REQUIRE_EQUAL( testTree.validate(), true );
          }
       }
-      BOOST_CHECK_NO_THROW( testTree.deleteAllNodes() );
+      BOOST_REQUIRE_NO_THROW( testTree.deleteAllNodes() );
       count = 0;
    }
 
