@@ -31,11 +31,15 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    // From List
    bool isIn( Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); };  ///< `true` if `aNode` is in the Queue
    void deleteAllNodes() noexcept override { DoublyLinkedList::deleteAllNodes(); };      ///< Delete all of the Nodes in the Queue
+   static Node* get_next( const Node* currentNode ) { return DoublyLinkedList::get_next( currentNode ); };  ///< Get the next Node in the Queue
 
    // From DoublyLinkedList
    void push( Node* newNode ) { DoublyLinkedList::push_front( newNode ); };  ///< Insert `newNode` to the beginning of the Queue
    Node* pop() noexcept { return DoublyLinkedList::pop_back(); };            ///< Remove and return a Node from the Queue
    Node* front() const noexcept { return DoublyLinkedList::get_last(); };    ///< Peek at the next Node in the Queue
+   Node* last() const noexcept { return DoublyLinkedList::get_first(); };    ///< Peek at the last Node in the Queue
+   static Node* get_prev( const Node* currentNode ) { return DoublyLinkedList::get_prev( currentNode ); };  ///< Get the previous Node in the Queue
+
    void dump() const noexcept override { DoublyLinkedList::dump(); };  ///< Output the member variables in this object
    bool validate() const noexcept override { return DoublyLinkedList::validate(); };  ///< Ensure the object is valid
 };
