@@ -108,26 +108,10 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
          for( int j = 0 ; j < 1000 ; j++ ) {
             bernoulli_distribution isFixedRNG( testTree.size() / (idealSizeOfList*2) );  // If ideal size is 4, then 4/8 = 0.5
             bool deleteNode = isFixedRNG( ANIMAL_FARM_RNG );
-            // FORMAT_LINE_FOR_DUMP( "Test", "ideal" )  << idealSizeOfList  << std::endl ;
-            // cout << "   ideal=" << idealSizeOfList ;
-            // cout << "   testTree.size=" << testTree.size() ;
-            // cout << "   percentage=" << testTree.size() / (idealSizeOfList*2) ;
-            // cout << "   deleteNode=" << deleteNode << endl;
 
             if( deleteNode ) {
-//               cout << "vvvvvvvvvvvvvvvvvv BEFORE REMOVE vvvvvvvvvvvvvvvvvv" << endl;
-//               testTree.dump();
-//               cout << "^^^^^^^^^^^^^^^^^^ BEFORE REMOVE ^^^^^^^^^^^^^^^^^^" << endl;
                Node* nodeToDelete = testTree.getRandomNode();
-//               cout << "nodeToDelete vvvvvvvvvvvvvvvvvv" << endl;
-//               nodeToDelete->dump();
-//               cout << "nodeToDelete ^^^^^^^^^^^^^^^^^^" << endl;
-
                BOOST_REQUIRE_NO_THROW( testTree.erase( nodeToDelete ) );
-//               cout << "vvvvvvvvvvvvvvvvvv AFTER REMOVE vvvvvvvvvvvvvvvvvv" << endl ;
-//               testTree.dump();
-//               cout << "^^^^^^^^^^^^^^^^^^ AFTER REMOVE ^^^^^^^^^^^^^^^^^^" << endl ;
-
                count -= 1;
                BOOST_REQUIRE_EQUAL( testTree.isIn( nodeToDelete ), false );
 
