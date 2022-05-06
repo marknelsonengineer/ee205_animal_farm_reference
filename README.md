@@ -8,7 +8,7 @@ Software Engineering practices.  Students are expected to "Live" in
 this project as the code evolves over a series of requirements.
 
 #### Links
-The project's home page (hosted by GitHub) is [here](https://github.com/marknelsonengineer/ee205_lab13a_animal_farm_4)
+The project's home page (hosted by GitHub) is [here](https://github.com/marknelsonengineer/ee205_animal_farm)
 
 The source code documentation (hosted by UH) is [here](https://www2.hawaii.edu/~marknels/ee205/ee205_animal_farm)
 
