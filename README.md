@@ -32,3 +32,7 @@ This project is the product of a tremendous amount of R&D and would not be possi
 | **CLion**      | https://jetbrains.com/clion |  <img src="images/logo_clion.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
 | **Doxygen**    | https://doxygen.nl          | <img src="images/logo_doxygen.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/> |
 | **Boost**      | https://boost.org           |  <img src="images/logo_boost.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
+| **Git**        | https://git-scm.com         |   <img src="images/logo_git.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>   |
+| **GitHub**     | https://github.com          | <img src="images/logo_github.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
+| **GitLab**     | https://gitlab.org          | <img src="images/logo_gitlab.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
+| **Linux**      | https://kernel.org          |  <img src="images/logo_linux.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
