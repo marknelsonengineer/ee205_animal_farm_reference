@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///         University of Hawaii, College of Engineering
-/// @brief  ee205_lab14a_animal_farm_4 - EE 205 - Spr 2022
+/// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// A generic collection class.
 ///

@@ -1,10 +1,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///         University of Hawaii, College of Engineering
-/// @brief  ee205_lab08d_animal_farm_1_to_clion - EE 205 - Spr 2022
+/// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// Global configuration definitions for Animal Farm
 ///
-/// @todo Think about adding a namespace
 /// @todo Sweep through all of the headers and make the project just Animal Farm
 ///
 /// @file config.h
