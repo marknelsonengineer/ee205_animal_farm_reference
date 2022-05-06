@@ -1,3 +1,5 @@
+#pragma GCC diagnostic error "-Wcomment"
+
 ///////////////////////////////////////////////////////////////////////////////
 ///         University of Hawaii, College of Engineering
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
@@ -8,7 +10,6 @@
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   30_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 #include <cassert>
 #include <string>
 
@@ -109,27 +110,30 @@ void CatEmpire::catBegat() const {
 ///
 /// You should end up with a family tree that looks like this:
 ///
-///     Print a family tree of 20 cats
-///                             Yummy
-///                       Young<
-///                             Vevina
-///                 Valeska/
-///           Tiernan<
-///                 Sweetie\
-///                       Starkitty\
-///                                   Salvador
-///                             Roosevelt<
-///                                         Reena\
-///                                               Petty\
-///                                                     Orianna
-///                                   Olympia/
-///     Mila<
-///                 Manning\
-///                             Idola
-///                       Chrome<
-///                             Cade
-///           Avion<
-///                 Adony
+/**
+@verbatim
+                         Yummy
+                   Young<
+                         Vevina
+             Valeska/
+       Tiernan<
+             Sweetie\
+                   Starkitty\
+                               Salvador
+                         Roosevelt<
+                                     Reena\
+                                           Petty\
+                                                 Orianna
+                               Olympia/
+ Mila<
+             Manning\
+                         Idola
+                   Chrome<
+                         Cade
+       Avion<
+             Adony
+@endverbatim
+ */
 ///
 void CatEmpire::catFamilyTree() const noexcept {
    if( topCat == nullptr ) {
@@ -332,26 +336,30 @@ void CatEmpire::dfsInorderReverse( Cat* atCat, unsigned long depth ) const noexc
 ///
 /// It will create a new Tree that looks like this:
 ///
-///     Yummy\
-///           Young\
-///                 Vevina\
-///                       Valeska\
-///                             Tiernan\
-///                                   Sweetie\
-///                                         Starkitty\
-///                                               Salvador\
-///                                                     Roosevelt\
-///                                                           Reena\
-///                                                                 Petty\
-///                                                                       Orianna\
-///                                                                             Olympia\
-///                                                                                   Mila\
-///                                                                                         Manning\
-///                                                                                               Idola\
-///                                                                                                     Chrome\
-///                                                                                                           Cade\
-///                                                                                                                 Avion\
-///                                                                                                                       Adony
+/**
+@verbatim
+Yummy\
+      Young\
+            Vevina\
+                  Valeska\
+                        Tiernan\
+                              Sweetie\
+                                    Starkitty\
+                                          Salvador\
+                                                Roosevelt\
+                                                      Reena\
+                                                            Petty\
+                                                                  Orianna\
+                                                                        Olympia\
+                                                                              Mila\
+                                                                                    Manning\
+                                                                                          Idola\
+                                                                                                Chrome\
+                                                                                                      Cade\
+                                                                                                            Avion\
+                                                                                                                  Adony
+@endverbatim
+ */
 ///
 void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
    assert( tailList->empty() );
