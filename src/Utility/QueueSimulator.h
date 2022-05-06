@@ -23,6 +23,8 @@
 /// | interactive     | Yes          | Every SPEED_IN_MS   | Forever        | Visualize the operation of a queue |
 /// | not interactive | No           | As fast as possible | For ITERATIONS | Test the Queue class               |
 ///
+/// Alpha is a class-within-a-class.
+///
 /// Sample output from an interactive simulation is:
 ///
 ///          in    queue       out
@@ -48,7 +50,7 @@ public:  ////////////////////////// Public Constants ///////////////////////////
    const int SPEED_IN_MS = 500;   ///< Milliseconds per Queue operation (for interactive mode)
 
 private:  ////////////////////////// Private Classes ///////////////////////////
-   /// Alpha extends Node... and will carry a single character, 'a' through 'z' in it
+   /// Alpha extends Node... and holds a single character, 'a' through 'z' in the Queue
    class Alpha : public Node {
    public:
       char memberChar;            ///< This is the value stored in the Queue

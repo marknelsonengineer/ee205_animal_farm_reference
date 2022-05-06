@@ -28,6 +28,7 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    bool        isCatFixed ;  ///< `true` if the cat is fixed/neutered
 
 public:  //////////////////////////// Constructors /////////////////////////////
+
    /// Create a Cat with the minimum fields necessary to have a valid Cat
    /// @todo Why can't this be defined in the .cpp file??
    explicit Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {

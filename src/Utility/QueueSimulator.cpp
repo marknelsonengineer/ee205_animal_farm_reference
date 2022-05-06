@@ -37,6 +37,7 @@ void QueueSimulator::printQueueSimulatorHeader() noexcept {
 
 /// @param isInteractive `true` if the simulation interactive and should print
 ///                      output every SPEED_IN_MS.
+///                      <br/>
 ///                      `false` if the simulation is not interactive (it's run
 ///                      by an automated test).  It should silently run for
 ///                      ITERATIONS as fast as possible.
