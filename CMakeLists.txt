@@ -94,6 +94,8 @@ if (DOXYGEN_FOUND)
            ${CMAKE_SOURCE_DIR}/README.md
            ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
            ${CMAKE_SOURCE_DIR}/DOXYGEN.md
+           ${CMAKE_SOURCE_DIR}/RELEASE.md
+           ${CMAKE_SOURCE_DIR}/tests/README.md
            ALL
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )
