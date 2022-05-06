@@ -17,3 +17,9 @@ Pre-Release Checklist
 
 - Last looks
     - Do a `Rebuild Project` without any warnings
+
+- Releasing to students
+    - Determine if `DOXYGEN_SOURCE_BROWSER` should be `ON`
+    - Determine if `VERBATIM_HEADERS` should be `ON`
+    - Determine if `STRIP_CODE_COMMENTS` should be `ON`
+    - Determine if `WARN_AS_ERROR` should be `FAIL_ON_WARNINGS` or something else
