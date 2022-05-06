@@ -1,3 +1,18 @@
+###############################################################################
+###         University of Hawaii, College of Engineering
+### @brief  ee205_animal_farm - EE 205 - Spr 2022
+###
+### CMake manages the building of source code.
+###
+### @file CMakeLists.txt
+### @version 1.0
+###
+### @see https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
+###
+### @author Mark Nelson <marknels@hawaii.edu>
+### @date   05_May_2022
+###############################################################################
+
 set (Boost_USE_STATIC_LIBS OFF)
 
 # see https://cmake.org/cmake/help/latest/module/FindBoost.html
