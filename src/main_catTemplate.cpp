@@ -15,6 +15,7 @@
 #include <cstdlib>  // For EXIT_SUCCESS / EXIT_FAILURE
 #include <iostream>
 #include <list>     // For the list template
+//#include <set>     // For the set template
 
 #include "config.h"
 #include "Animal/Cat.h"
@@ -30,6 +31,7 @@ int main() {
    cout << "Starting " << PROGRAM_TITLE << endl ;
 
    list<Cat> catDB ;
+   // set<Animal> animalDB;  // @todo Consider several data structures and play with copy/move sort and erase behaviors (like erase a Animal nodes from Set...)
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
