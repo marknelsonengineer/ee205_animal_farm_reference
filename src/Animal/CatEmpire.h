@@ -19,7 +19,7 @@
 class CatEmpire : public Tree {
 protected:
    /// The root for the binary search tree is the topCat of our little Empire
-   Cat*& topCat = reinterpret_cast<Cat*&>(rootNode);
+   Cat*& topCat = reinterpret_cast<Cat*&>(root);
 
 public:   /////////////////////////// Public Methods ///////////////////////////
    void catBegat() const;

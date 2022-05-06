@@ -21,7 +21,7 @@
 /// Nodes.
 class Tree : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* rootNode = nullptr;  ///< The root for the binary search tree
+   Node* root = nullptr;  ///< The root for the binary search tree
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    void insert( Node* newNode );              ///< Add a Node to the Tree

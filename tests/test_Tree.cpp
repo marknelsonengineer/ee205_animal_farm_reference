@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       BOOST_CHECK_THROW( testTree.erase( &aCat ),
                          logic_error );  // Try to erase a cat that's not in the Tree
 
-      // Insert and remove the rootNode node 10 times
+      // Insert and remove the root node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {
          BOOST_REQUIRE_NO_THROW( testTree.insert( &aCat ));
          BOOST_REQUIRE_EQUAL( testTree.empty(), false );

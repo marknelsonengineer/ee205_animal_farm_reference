@@ -48,10 +48,10 @@ void Tree::insert( Node* newNode ) {
 
    newNode->reset();   // These should already be null, but I'd like to make sure
 
-   if( rootNode == nullptr ) {  // If the BST is empty, then...
-      rootNode = newNode;
+   if( root == nullptr ) {  // If the BST is empty, then...
+      root = newNode;
    } else {
-      insert( rootNode, newNode );
+      insert( root, newNode );
    }
 
    // Done
@@ -115,7 +115,7 @@ bool Tree::isIn( Node* aNode ) const {
    TRACE_START
    Container::isIn( aNode );  // Container::isIn does basic checks, but doesn't know about the storage engine
 
-   return isIn( rootNode, aNode );
+   return isIn( root, aNode );
 }
 
 
@@ -145,9 +145,9 @@ bool Tree::isIn( Node* atNode, Node* aNode ) const {
 void Tree::dump() const noexcept {
    Container::dump();
 
-   FORMAT_LINE_FOR_DUMP( "Tree", "rootNode" ) << rootNode << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "Tree", "root" ) << root << std::endl ;
 
-   dump( rootNode );
+   dump( root );
 }
 
 
@@ -172,8 +172,8 @@ void Tree::dump( Node* atNode ) const noexcept {
 bool Tree::validate() const noexcept {
    assert( Container::validate() );
 
-   /// If `rootNode` is `nullptr, then `count == 0`.
-   if( rootNode == nullptr ) {
+   /// If `root` is `nullptr, then `count == 0`.
+   if( root == nullptr ) {
       assert( count == 0 );
       assert( empty() );
    } else {
@@ -182,15 +182,15 @@ bool Tree::validate() const noexcept {
    }
 
    /// If the Tree only has 1 Node, ensure the count == 1.
-   if( rootNode != nullptr ) {
-      if( rootNode->left == nullptr && rootNode->right == nullptr ) {
+   if( root != nullptr ) {
+      if( root->left == nullptr && root->right == nullptr ) {
          assert( count == 1 );
       }
    }
 
    unsigned int treeCount = 0;
 
-   assert( validate( rootNode, treeCount ));
+   assert( validate( root, treeCount ));
 
    assert( size() == treeCount );
 
@@ -257,7 +257,7 @@ void Tree::erase( Node* nodeToRemove ) {
    // Do the deed
 
    Node* parent = nullptr;            // The parent of the Node to be deleted.  If the root Rode is deleted, parent == nullptr
-   Node* currentLocation = rootNode;  // Search for the Node to be deleted.
+   Node* currentLocation = root;  // Search for the Node to be deleted.
 
    while( true ) {
       if( *currentLocation > *nodeToRemove ) {          // Descend left
@@ -294,7 +294,7 @@ void Tree::erase( Node* nodeToRemove ) {
 
       // Let's put the successor where it belongs.  There are 3 cases:
       if( parent == nullptr ) {  // The first case is when the node we are removing is the root node...
-         rootNode = successor;
+         root = successor;
       } else if( parent->left == currentLocation ) {  // The second & third cases hang successor off of the parent
          parent->left = successor;
       } else if( parent->right == currentLocation) {
@@ -328,7 +328,7 @@ void Tree::erase( Node* nodeToRemove ) {
          subtree = currentLocation->right;
 
       if( parent == nullptr )
-         rootNode = subtree;
+         root = subtree;
       else if( parent->left == currentLocation )
          parent->left = subtree;
       else
@@ -358,14 +358,14 @@ Node* Tree::getRandomNode() const noexcept {
    }
 
    if( size() == 1 ) {
-      return rootNode ;
+      return root ;
    }
 
    uniform_int_distribution<> randomIndexGenerator( 0, size()-1 );
    int randomIndex = randomIndexGenerator( ANIMAL_FARM_RNG );
    // FORMAT_LINE_FOR_DUMP( "Tree", "randomIndex" )  << randomIndex  << std::endl ;
 
-   return getRandomNode( rootNode, &randomIndex );
+   return getRandomNode( root, &randomIndex );
 }
 
 
@@ -397,8 +397,8 @@ Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
 void Tree::deleteAllNodes() {
    TRACE_START
 
-   while( rootNode != nullptr ) {
-      erase( rootNode );
+   while( root != nullptr ) {
+      erase( root );
    }
 
    TRACE_END
