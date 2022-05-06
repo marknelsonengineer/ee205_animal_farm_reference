@@ -30,6 +30,7 @@ This project is the product of a tremendous amount of R&D and would not be possi
 | **gcc**        | https://gcc.gnu.org         |   <img src="images/logo_gcc.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>   |
 | **llvm/clang** | https://clang.llvm.org      |  <img src="images/logo_llvm.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>   |
 | **CLion**      | https://jetbrains.com/clion |  <img src="images/logo_clion.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
+| **CMake**      | https://cmake.org           |  <img src="images/logo_cmake.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
 | **Doxygen**    | https://doxygen.nl          | <img src="images/logo_doxygen.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/> |
 | **Boost**      | https://boost.org           |  <img src="images/logo_boost.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>  |
 | **Git**        | https://git-scm.com         |   <img src="images/logo_git.png" style="height:40px; float: center; margin: 0 0 0 0;" alt="GCC"/>   |
