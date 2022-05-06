@@ -4,8 +4,6 @@
 ///
 /// Global configuration definitions for Animal Farm
 ///
-/// @todo Sweep through all of the headers and make the project just Animal Farm
-///
 /// @file config.h
 /// @version 2.0
 ///
