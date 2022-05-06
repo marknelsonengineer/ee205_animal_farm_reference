@@ -17,6 +17,7 @@
 #include "config.h"
 #include "Container/SinglyLinkedList.h"
 #include "Animal/Animal.h"
+#include "Animal/AnimalFactory.h"
 
 using namespace std ;
 
@@ -32,7 +33,7 @@ int main() {
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_ANIMALS ; i++ ) {
-      animalDB.push_front( &Animal::generateAnimal() );
+      animalDB.push_front( &AnimalFactory::generateAnimal() );
    }
 
    for( Animal* animal = (Animal*) animalDB.get_first() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::get_next( animal ) ) {
