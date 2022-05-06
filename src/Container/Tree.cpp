@@ -308,12 +308,12 @@ void Tree::erase( Node* nodeToRemove ) {
          // Do nothing... the currentLocation is the Node we are going to delete
       } else {
          assert( successorParent->left == successor );  // Otherwise, we *know* the successor is its parent's left node
-         successorParent->left = successor->right;      // So set it's left node to whatever succesor's right node is pointing to
+         successorParent->left = successor->right;      // So set it's left node to whatever successor's right node is pointing to
       }
 
       // Finally, put successor in its place
       successor->left = currentLocation->left;
-      if( currentLocation == successorParent ) {
+      if( currentLocation == successorParent) {
          // Do nothing... the currentLocation is the Node we are going to delete
       } else {
          successor->right = currentLocation->right;  // Reattach successor's subtree to it's right branch

@@ -15,7 +15,6 @@
 #include <random>
 #include <fstream>
 
-
 #include "Cat.h"
 
 using namespace std ;
