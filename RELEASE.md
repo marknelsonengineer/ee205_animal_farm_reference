@@ -17,6 +17,7 @@ Pre-Release Checklist
 
 - Last looks
     - Do a `Rebuild Project` without any warnings
+    - `All_Boost_Tests` pass
 
 - Releasing to students
     - Determine if `DOXYGEN_SOURCE_BROWSER` should be `ON`
