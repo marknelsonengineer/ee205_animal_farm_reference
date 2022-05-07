@@ -18,6 +18,7 @@
 #include <stdexcept>
 
 #include "../src/Animal/Animal.h"
+#include "../src/Animal/AnimalFactory.h"
 
 using namespace std;
 
@@ -71,9 +72,9 @@ BOOST_AUTO_TEST_CASE( test_Animal_Max_Constructor ) {
 }
 
 
-BOOST_AUTO_TEST_CASE( test_Animal_Generator ) {
+BOOST_AUTO_TEST_CASE( test_Animal_Factory ) {
    for( int i = 0 ; i < 50 ; i++ ) {
-      Animal::generateAnimal();
+      AnimalFactory::generateAnimal();
    }
    BOOST_CHECK( true );
 }
