@@ -15,6 +15,16 @@
 #include <boost/test/tools/output_test_stream.hpp>
 
 #include <stdexcept>
+#include <list>
+#include <array>
+#include <vector>
+#include <deque>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <stack>
+#include <queue>
 
 #include "../src/Animal/Cat.h"
 #include "../src/Container/DoublyLinkedList.h"
@@ -169,6 +179,111 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       BOOST_CHECK_EQUAL( DoublyLinkedList::get_next( &y ), nullptr );
       BOOST_CHECK_EQUAL( DoublyLinkedList::get_prev( &y ), nullptr );
       BOOST_CHECK_EQUAL( y.getName(), "Bucky" );
+   }
+
+
+   BOOST_AUTO_TEST_CASE( test_Cat_in_STL_templates ) {
+
+      const int NUM_CATS = 1000;
+
+      // Doubly linked list from the STL
+      {
+         list<Cat> catList;
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catList.size(), i );
+            BOOST_CHECK_NO_THROW( catList.insert( catList.end(), Cat::generateCat()));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catList.erase( catList.begin()));
+            BOOST_CHECK_EQUAL( catList.size(), i );
+         }
+      }
+
+      // array<Cat, 10> catArray;  /// Does not compile.  Not sure why.  @todo Look into why call to implicitly deleted default constructor fails
+
+      // Auto-sized array container from the STL
+      {
+         vector<Cat> catVector;
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catVector.size(), i );
+            BOOST_CHECK_NO_THROW( catVector.insert( catVector.end(), Cat::generateCat()));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catVector.erase( catVector.begin() ));
+            BOOST_CHECK_EQUAL( catVector.size(), i );
+         }
+      }
+
+      // Double-ended queue from the STL
+      {
+         deque<Cat> catDeque;
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catDeque.size(), i );
+            BOOST_CHECK_NO_THROW( catDeque.insert( catDeque.end(), Cat::generateCat()));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catDeque.erase( catDeque.begin() ));
+            BOOST_CHECK_EQUAL( catDeque.size(), i );
+         }
+      }
+
+      // Sorted associated collection
+      {
+         set<Cat> catSet;
+         Cat::resetCatNames();
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catSet.size(), i );
+            BOOST_CHECK_NO_THROW( catSet.insert( catSet.end(), Cat::generateCat()));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catSet.erase( catSet.begin() ));
+            BOOST_CHECK_EQUAL( catSet.size(), i );
+         }
+      }
+
+      // Sorted associated list with key-value pairs
+      {
+         map<string, Cat> catMap;
+         Cat::resetCatNames();
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+//          BOOST_CHECK_EQUAL( catMap.size(), i );  /// @todo Not sure why this isn't working
+            Cat newCat = Cat::generateCat();
+            BOOST_CHECK_NO_THROW( catMap.insert( { newCat.getName(), newCat } ));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catMap.erase( catMap.begin() ));
+//          BOOST_CHECK_EQUAL( catMap.size(), i );   /// @todo Not sure why this isn't working
+         }
+      }
+
+      // unordered_set<Cat> catUnorderedSet;          /// Does not compile.  Not sure why.  @todo Look into why call to implicitly deleted default constructor fails
+      // unordered_map<Cat, string> catUnorderedMap;  /// Does not compile.  Not sure why.  @todo Look into why call to implicitly deleted default constructor fails
+
+      // Stack from the STL
+      {
+         stack<Cat> catStack;
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catStack.size(), i );
+            BOOST_CHECK_NO_THROW( catStack.push( Cat::generateCat()));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catStack.pop());
+            BOOST_CHECK_EQUAL( catStack.size(), i );
+         }
+      }
+
+      // Queue from the STL
+      {
+         queue<Cat> catQueue;
+         for( int i = 0 ; i < NUM_CATS ; i++ ) {
+            BOOST_CHECK_EQUAL( catQueue.size(), i );
+            BOOST_CHECK_NO_THROW( catQueue.push( Cat::generateCat() ));
+         }
+         for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
+            BOOST_CHECK_NO_THROW( catQueue.pop() );
+            BOOST_CHECK_EQUAL( catQueue.size(), i );
+         }
+      }
    }
 
 BOOST_AUTO_TEST_SUITE_END()

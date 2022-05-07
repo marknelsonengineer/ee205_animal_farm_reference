@@ -31,7 +31,7 @@ int main() {
    cout << "Starting " << PROGRAM_TITLE << endl ;
 
    list<Cat> catDB ;
-   // set<Animal> animalDB;  // @todo Consider several data structures and play with copy/move sort and erase behaviors (like erase a Animal nodes from Set...)
+   // set<Animal> animalDB;  // @todo Consider exploring several STL data structures
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
