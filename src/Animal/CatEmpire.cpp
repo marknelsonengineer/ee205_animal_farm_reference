@@ -382,7 +382,7 @@ void CatEmpire::catTail( Cat* atCat, CatEmpire* tailList ) const {
    if( atCat->right != nullptr )
       catTail( (Cat*) atCat->right, tailList );
 
-   Cat* newCat = new Cat( atCat->getName() );  /// @todo this is flawed... I think we want a copy constructor and/or a copy assignment.  @see https://stackoverflow.com/a/12902851/4886240
+   Cat* newCat = new Cat( *atCat );
 
    tailList->insert( newCat );
 
