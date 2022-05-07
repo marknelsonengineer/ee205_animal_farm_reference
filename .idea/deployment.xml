@@ -6,7 +6,7 @@
       <paths name="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)">
         <serverdata>
           <mappings>
-            <mapping deploy="/src/src-clion/ee205_lab14a_animal_farm_4" local="$PROJECT_DIR$" />
+            <mapping deploy="/src/src-clion/ee205_animal_farm" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
@@ -18,7 +18,7 @@
       <paths name="Wiliki (185b3e64-273f-47b0-b123-4bdb7de4519a)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.Qh0b2HFqNY" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.marknels.ee205_animal_farm" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release" />
