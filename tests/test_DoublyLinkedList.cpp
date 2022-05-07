@@ -34,10 +34,12 @@ static DoublyLinkedList test_list;
 struct DoublyLinkedListTestFixture {
    DoublyLinkedListTestFixture()   {
       test_list.deleteAllNodes();
+      Cat::resetCatNames();
       BOOST_TEST_MESSAGE( "setup fixture" );
    }
    ~DoublyLinkedListTestFixture()  {
       test_list.deleteAllNodes();
+      Cat::resetCatNames();
       BOOST_TEST_MESSAGE( "teardown fixture" );
    }
 } ;

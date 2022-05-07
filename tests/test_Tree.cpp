@@ -25,21 +25,35 @@
 
 using namespace std;
 
+/// All of the tests will use this one testTree, which must always remain valid.
+static Tree testTree;
+
+/// Delete all nodes before and after each of the test cases in this module.
+struct TreeTestFixture {
+   TreeTestFixture()   {
+      testTree.deleteAllNodes();
+      Cat::resetCatNames();
+      BOOST_TEST_MESSAGE( "setup fixture" );
+   }
+   ~TreeTestFixture()  {
+      testTree.deleteAllNodes();
+      Cat::resetCatNames();
+      BOOST_TEST_MESSAGE( "teardown fixture" );
+   }
+} ;
+
+
 BOOST_AUTO_TEST_SUITE( test_Tree )
 
-   BOOST_AUTO_TEST_CASE( test_empty_Tree ) {
-   	Tree testTree;  /// @todo Move into a test fixture
-
-   	BOOST_CHECK_EQUAL( testTree.empty(), true );
+   BOOST_FIXTURE_TEST_CASE( test_empty_Tree, TreeTestFixture ) {
+      BOOST_CHECK_EQUAL( testTree.empty(), true );
    	BOOST_CHECK_EQUAL( testTree.size(), 0 );
    	BOOST_CHECK_EQUAL( testTree.validate(), true );
    	// BOOST_CHECK_NO_THROW( testTree.dump());
    }
 
 
-   BOOST_AUTO_TEST_CASE( test_insert_Tree ) {
-   	Tree testTree;
-
+   BOOST_FIXTURE_TEST_CASE( test_insert_Tree, TreeTestFixture ) {
    	BOOST_CHECK_THROW( testTree.insert( nullptr ), invalid_argument );
 
    	for( int i = 0 ; i < 100 ; i++ ) {
@@ -56,8 +70,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
    }
 
 
-   BOOST_AUTO_TEST_CASE( test_simple_erase_from_Tree ) {
-      Tree testTree;  /// @todo Move into a test fixture
+   BOOST_FIXTURE_TEST_CASE( test_simple_erase_from_Tree, TreeTestFixture ) {
       Cat& aCat = Cat::generateCat();
 
       BOOST_CHECK_THROW( testTree.erase( nullptr ), invalid_argument );
@@ -80,9 +93,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       }
    }
 
-   BOOST_AUTO_TEST_CASE( test_getRandomNode ) {
-      Tree testTree;  /// @todo Move into a test fixture
-
+   BOOST_FIXTURE_TEST_CASE( test_getRandomNode, TreeTestFixture ) {
       for( int j = 0 ; j < 10 ; j++ ) {
          testTree.insert( &Cat::generateCat() );
          Node* aNode = testTree.getRandomNode();
@@ -91,10 +102,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       }
    }
 
-   BOOST_AUTO_TEST_CASE( test_bulk_operations_on_Tree ) {
-      Tree testTree;      /// @todo Move into a test fixture
-      Cat::resetCatNames();
-
+   BOOST_FIXTURE_TEST_CASE( test_bulk_operations_on_Tree, TreeTestFixture ) {
       int count = 0;
 
       for( int i = 0 ; i < 7 ; i++ ) {
