@@ -89,8 +89,8 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
    }
 
 
-   BOOST_AUTO_TEST_CASE( test_Cat_copy_semantics ) {
-      BOOST_CHECK_NO_THROW( Cat a( "Alice" ) );       /// Basic copy constructor
+   BOOST_AUTO_TEST_CASE( test_Cat_constructor_semantics ) {
+      BOOST_CHECK_NO_THROW( Cat a( "Alice" ) );       /// Direct initialization
       BOOST_CHECK_NO_THROW( Cat a = Cat( "Alice" ));  /// Actual Copy constructor
       BOOST_CHECK_NO_THROW( const Cat a( "Alice" ));  /// Basic const constructor
       BOOST_CHECK_NO_THROW( const Cat a("Alice"); Cat b = a; );  /// Copy a const

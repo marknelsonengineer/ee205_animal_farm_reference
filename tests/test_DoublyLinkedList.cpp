@@ -382,7 +382,7 @@ BOOST_FIXTURE_TEST_CASE( test_DoublyLinkedList_insertion_sort, DoublyLinkedListT
    BOOST_CHECK( test_list.isSorted() );
 
    for( int i = 0 ; i < 10 ; i++ ) {  // Outer loop
-      DoublyLinkedList dll = DoublyLinkedList();
+      DoublyLinkedList dll;
       for( int j = 0 ; j < 100 ; j++ ) {
          dll.push_front( &Cat::generateCat() );
          // BOOST_CHECK_NO_THROW( dll.push_front( &Cat::generateCat() ));

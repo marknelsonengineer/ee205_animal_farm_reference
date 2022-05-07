@@ -19,7 +19,7 @@
 using namespace std;
 
 
-/// @return `true` if the Container is empty.  `false` if the Container has Nodes in it.
+/// @return `true` if the Container is empty.  `false` if the Container has one or more Nodes in it.
 bool Container::empty() const noexcept {
    return (count == 0);
 }
@@ -42,7 +42,7 @@ bool Container::isIn( Node* aNode ) const {
 
    assert( aNode->validate() );
 
-   return false;  /// For the most generic container (with no way to put things in it), it's always false.
+   return false;  /// For the most generic container (with no way to put things in it), it's always `false`.
 }
 
 

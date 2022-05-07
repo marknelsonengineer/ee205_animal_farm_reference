@@ -60,7 +60,7 @@ private:  ////////////////////////// Private Classes ///////////////////////////
    };
 
 private:  /////////////////////////// Private Members ////////////////////////////
-   Queue queue = Queue();   ///< The queue under test
+   Queue queue;   ///< The queue under test
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    static void printQueueSimulatorHeader() noexcept;       ///< Print the header for the simulator

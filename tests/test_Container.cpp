@@ -17,7 +17,7 @@
 #include <stdexcept>
 
 #include "../src/Container/Container.h"
-#include "../src/Container/Node.h"
+#include "../src/Container/SinglyLinkedList.h"
 
 using namespace std;
 
@@ -58,6 +58,17 @@ BOOST_AUTO_TEST_SUITE( test_Container )
       BOOST_CHECK_THROW( testContainer.isIn( nullptr ), invalid_argument );
       BOOST_CHECK_EQUAL( testContainer.validate(), true );
       // BOOST_CHECK_NO_THROW( testContainer.dump() );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_Container_constructor_semantics ) {
+      // Code that is commented out should not compile
+      BOOST_CHECK_NO_THROW( SinglyLinkedList a; );    /// Default constructor
+      // BOOST_CHECK_NO_THROW( SinglyLinkedList a = SinglyLinkedList(); );  /// Actual Copy constructor
+      BOOST_CHECK_NO_THROW( const SinglyLinkedList a; );  /// Basic const constructor
+      // BOOST_CHECK_NO_THROW( const SinglyLinkedList a; Cat b = a; );  /// Copy a const
+      // BOOST_CHECK_NO_THROW( SinglyLinkedList a;
+      //                       SinglyLinkedList b;
+      //                       b = a;             );  /// Yet another copy constructor
    }
 
 BOOST_AUTO_TEST_SUITE_END()
