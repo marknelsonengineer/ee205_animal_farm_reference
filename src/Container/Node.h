@@ -23,8 +23,20 @@ namespace test_Container { struct test_Node; } // Forward declaration for friend
 
 /// A generic Node class.
 ///
-/// May be used as a base class for a number of data structures.
+/// May be used as a base class for a number of data structures (see Friends).
+///
+/// According to the Rule of Three, this class has a:
+///   - Copy constructor
+///   - Assignment overload
+///   - Destructor
+///
+/// ...all three of which will reset the pointers in the Node.  This ensures
+/// that other classes can't copy a Node and then later take over a data
+/// structure.
+///
 /// This class is defined as a header-only class.
+///
+/// @see https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)
 class Node {
    friend class List;
    friend class SinglyLinkedList;
@@ -34,7 +46,22 @@ class Node {
    friend struct test_Container::test_Node;  // This is a test case
 
 public:   ///////////////////// Constructors & Destructors /////////////////////
-   virtual ~Node() { Node::reset(); };  ///< Zero out the Node before destroying it
+   Node() = default;   ///< Default constructor
+   constexpr Node(const Node&) : next(nullptr), prev(nullptr),left( nullptr), right(nullptr) {}   ///< Copy constructor zeros out pointers
+   constexpr Node& operator=( const Node& copyFrom ) {  ///< Assignment constructor zeros out pointers
+      if( this != &copyFrom ) { // Protects from self-assignment
+         next = nullptr;
+         prev = nullptr;
+         left = nullptr;
+         right = nullptr;
+      }
+
+      return *this;
+   }
+
+   /// Zero out the Node before destroying it
+   virtual ~Node() { Node::reset(); };
+
 
 protected:  ////////////////////// Protected Members ///////////////////////////
    Node* next = nullptr;  ///< Point to the next Node in the list or `nullptr`
@@ -54,6 +81,7 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    Node* right = nullptr; ///< Point to the right Node in the tree or `nullptr`
 
 protected:  //////////////////////// Static Methods ////////////////////////////
+
    /// A generic comparison based on the memory address of the object.
    ///
    /// Functions (like sorting) may want to compare two nodes.
@@ -63,7 +91,7 @@ protected:  //////////////////////// Static Methods ////////////////////////////
    ///
    /// This allows us to separate the algorithm from the data.
    /// We can code an algorithm to operate on a virtual Node > operator and
-   /// allow the descendants of Node to override `>` and implement their own
+   /// allow the descendants of Node to override `>` to implement their own
    /// ordering.
    ///
    /// @return true if `node1 > node2`
@@ -156,9 +184,7 @@ public:  ///////////////////////// Operator Overrides //////////////////////////
    virtual bool operator<( const Node& rhs_node ) const {
       /// By default, we will compare two Nodes by the only thing we can...
       /// their addresses.
-
-      return compareByAddress( this, &(Node&)rhs_node );
-      // return next < rhs_node.next;
+      return compareByAddress( this, &rhs_node );
    }
 
 
@@ -185,5 +211,4 @@ public:  ///////////////////////// Operator Overrides //////////////////////////
    virtual bool operator>=( const Node& rhs_node ) const {
       return !( *this < rhs_node );
    }
-
 } ; // class Node
