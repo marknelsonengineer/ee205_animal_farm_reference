@@ -88,13 +88,14 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    /// Output the contents of this object
    ///
    /// #### Sample Output
-   /// @code
-   ///     ==============================================
-   ///     Node    this                0xa38d10
-   ///     Node    next                0xa39f50
-   ///     Node    prev                0
-   /// @endcode
-   ///
+   /**@verbatim
+   ======================================================
+   Node                this                0x7ffd0befed60
+   Node                next                0x7ffd0befee10
+   Node                prev                0x7ffd0befef70
+   Node                left                0
+   Node                right               0
+   @endverbatim */
    virtual void dump() const {
       FORMAT_LINE_FOR_DUMP( "Node", "this" )  << this  << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "next" )  << next  << std::endl ;
