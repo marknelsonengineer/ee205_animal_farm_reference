@@ -30,17 +30,7 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:  //////////////////////////// Constructors /////////////////////////////
 
    /// Create a Cat with the minimum fields necessary to have a valid Cat
-   /// @todo Why can't this be defined in the .cpp file??
-   explicit Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
-      if( !validateName( newName) ) {
-         /// @throws out_of_range If the Cat doesn't have a name
-         throw std::out_of_range( "Cats must have a name" );
-      }
-      name = newName;
-      isCatFixed = false;
-
-      Cat::validate();
-   }
+   explicit Cat( const std::string& newName ) ;
 
    /// Create a Cat, populating *all* of the member variables
    Cat( const std::string&     newName

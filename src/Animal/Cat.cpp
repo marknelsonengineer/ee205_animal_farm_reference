@@ -27,6 +27,21 @@ const std::string Cat::SPECIES_NAME = "Felis Catus";
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 
+/// This constructor is delcared to be `explicit`, so you can't do silly
+/// things like `Cat newCat = "Bella";` ... instead, you need to construct
+/// a Cat properly like `Cat newCat( "Bella" );`
+Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
+   if( !validateName( newName) ) {
+      /// @throws out_of_range If the Cat doesn't have a name
+      throw std::out_of_range( "Cats must have a name" );
+   }
+   name = newName;
+   isCatFixed = false;
+
+   Cat::validate();
+}
+
+
 string Cat::getName() const noexcept {
    return name;
 }
