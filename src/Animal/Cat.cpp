@@ -27,7 +27,7 @@ const std::string Cat::SPECIES_NAME = "Felis Catus";
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 
-/// This constructor is delcared to be `explicit`, so you can't do silly
+/// This constructor is declared to be `explicit`, so you can't do silly
 /// things like `Cat newCat = "Bella";` ... instead, you need to construct
 /// a Cat properly like `Cat newCat( "Bella" );`
 Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
@@ -68,10 +68,11 @@ void Cat::fixCat() noexcept {
 
 
 /// #### Sample Output
-///
-///     Cat     name                Kali
-///     Cat     isFixed             false
-///
+/**@verbatim
+======================================================
+Cat                 name                Boo
+Cat                 isFixed             false
+@endverbatim */
 void Cat::dump() const noexcept {
    assert( validate() ) ;
 
@@ -114,7 +115,7 @@ std::string Cat::speak() const noexcept {
 static std::vector<std::string> names;
 
 
-unsigned int Cat::remaningCatNames() noexcept {
+unsigned int Cat::remainingCatNames() noexcept {
    return names.size();
 }
 
@@ -173,8 +174,7 @@ Cat& Cat::generateCat() {
 
 
 /// This is required to safely use `delete` on a Cat object
-Cat::~Cat() {
-}
+Cat::~Cat() = default;
 
 
 /// @anchor Cat_comparison

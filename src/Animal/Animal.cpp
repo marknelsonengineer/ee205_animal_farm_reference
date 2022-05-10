@@ -167,6 +167,15 @@ bool Animal::validateSpecies( const std::string& checkSpecies ) noexcept {
 }
 
 
+/// #### Sample Output
+/**@verbatim
+======================================================
+Animal              kingdom             Animalia
+Animal              classification      Mammilian
+Animal              species             Felis Catus
+Animal              gender              Unknown gender
+Animal              weight              Unknown out of 40 Pounds
+@endverbatim */
 void Animal::dump() const noexcept {
    assert( validate() ) ;
 

@@ -111,7 +111,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
          double idealSizeOfList = pow( 2, i );
 
-         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]   remaining cat names = [" << Cat::remaningCatNames() << "]" ) ;
+         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]   remaining cat names = [" << Cat::remainingCatNames() << "]" ) ;
 
          for( int j = 0 ; j < 1000 ; j++ ) {
             bernoulli_distribution isFixedRNG( testTree.size() / (idealSizeOfList*2) );  // If ideal size is 4, then 4/8 = 0.5

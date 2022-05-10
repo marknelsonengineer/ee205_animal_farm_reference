@@ -63,7 +63,7 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string speak() const noexcept override;  ///< Say `Meow`.
-   void dump() const noexcept override;          ///< Print the contents of this object (and its parents)
+   void dump() const noexcept override;          ///< Output the contents of this object (and its parents)
    bool validate() const noexcept override;      ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
@@ -71,7 +71,7 @@ public:  /////////////////////// Static Public Methods /////////////////////////
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
    static Cat& generateCat() ;   ///< Generate a new, random Cat
    static void resetCatNames();  ///< Erase and then re-load the Cat names database
-   static unsigned int remaningCatNames() noexcept;  ///< Return the number of unique cat names left
+   static unsigned int remainingCatNames() noexcept;  ///< Return the number of unique cat names left
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with `<`

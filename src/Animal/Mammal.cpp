@@ -21,6 +21,11 @@ using namespace std;
 const std::string Mammal::MAMMAL_NAME = "Mammilian";
 
 
+/// #### Sample Output
+/**@verbatim
+======================================================
+Mammal              color               Unknown color
+@endverbatim */
 void Mammal::dump() const noexcept {
    assert( validate() ) ;
 
