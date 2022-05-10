@@ -42,6 +42,23 @@ Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
 }
 
 
+Cat::Cat( const std::string&     newName
+        ,const Color            newColor
+        ,const bool             newIsFixed
+        ,const Gender           newGender
+        ,const Weight::t_weight newWeight
+) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME ) {
+   if( !validateName( newName) ) {
+      /// @throws out_of_range If the Cat doesn't have a name
+      throw std::out_of_range( "Cats must have a name" );
+   }
+   name = newName;
+   isCatFixed = newIsFixed;
+
+   Cat::validate();
+}
+
+
 string Cat::getName() const noexcept {
    return name;
 }
