@@ -194,11 +194,10 @@ bool Animal::validate() const noexcept {
 }
 
 
-/// Compare two Animals:  Is the left < right?
-/// Both sides are Animals.
+/// @anchor Animal_comparison
 /// The `this` member is the left side of the operator.
-/// @param rhs_animal `rhs` stands for Right Hand Side and means the right side of the operator.
-/// @return `true` if this < `rhs_animal`
+/// @param rhs_animal `rhs` stands for Right Hand Side and is the right side of the operator.
+/// @return `true` if `this` < `rhs_animal`
 bool Animal::operator<( const Animal& rhs_animal ) const {
    if( classification < rhs_animal.classification )
       return true;
@@ -209,49 +208,53 @@ bool Animal::operator<( const Animal& rhs_animal ) const {
 }
 
 
-/// Compare two Animals:  Is the left > right?
-/// @todo Bring down the documentation
-bool Animal::operator>( const Animal& rhs_animal ) const {
-   return rhs_animal < *this;
-}
-
-
-/// Compare two Animals:  Is the left <= right?
+/// The actual implementation is in @ref Animal_comparison "operator<( Animal& rhs_animal )"
 bool Animal::operator<=( const Animal& rhs_animal ) const {
    return !( rhs_animal < *this );
 }
 
 
-/// Compare two Animals:  Is the left >= right?
+/// The actual implementation is in @ref Animal_comparison "operator<( Animal& rhs_animal )"
+bool Animal::operator>( const Animal& rhs_animal ) const {
+   return rhs_animal < *this;
+}
+
+
+/// The actual implementation is in @ref Animal_comparison "operator<( Animal& rhs_animal )"
 bool Animal::operator>=( const Animal& rhs_animal ) const {
    return !( *this < rhs_animal );
 }
 
 
-/// Compare an Animal and a Node.  This is the operator that actually gets
-/// overridden by a Generic comparison.  First, we will try to dynamically
-/// cast `rhs_node` to an Animal.  If both the left and right sides are Animals,
-/// then, use the Animal comparison.  If not, then use Node comparison.
+/// @anchor Animal_Node_comparison
+/// Compare an Animal and a Node.  This is the operator that gets overridden by a generic comparison (for example in an algorithm that knows about Nodes, but not Animals).
+///
+/// The `this` member is the left side of the operator.
+/// @param rhs_node `rhs` stands for Right Hand Side and is the right side of the operator.
+/// @return `true` if `this` < `rhs_node`
 bool Animal::operator<( const Node& rhs_node ) const {
    try {
-      const Animal& rhs_animal = dynamic_cast<const Animal&>(rhs_node);
-      return *this < rhs_animal;
-   } catch ( bad_cast& exception ) {      /// If rhs_node is not an Animal, it will throw a `bad_cast` exception...
-      return Node::operator<( rhs_node ); /// which will be caught and we will use Node comparison.
+      const Animal& rhs_animal = dynamic_cast<const Animal&>(rhs_node);  /// First, try to dynamically cast `rhs_node` to an Animal.
+      return *this < rhs_animal;          /// If both the left and right sides are Animals, then, use the Animal comparison like @ref Animal_comparison "operator<( Animal& rhs_animal )"
+   } catch ( bad_cast& exception ) {      /// If `rhs_node` is not an Animal, it will throw a `bad_cast` exception...
+      return Node::operator<( rhs_node ); /// which will be caught and we will use a Node comparison like Node::operator<
    }
 }
 
 
-bool Animal::operator>( const Node& rhs_node ) const {
-   return Node::operator>( rhs_node );
-}
-
-
+/// The actual implementation is in @ref Animal_Node_comparison "operator<( Node& rhs_node )"
 bool Animal::operator<=( const Node& rhs_node ) const {
    return Node::operator<=( rhs_node );
 }
 
 
+/// The actual implementation is in @ref Animal_Node_comparison "operator<( Node& rhs_node )"
+bool Animal::operator>( const Node& rhs_node ) const {
+   return Node::operator>( rhs_node );
+}
+
+
+/// The actual implementation is in @ref Animal_Node_comparison "operator<( Node& rhs_node )"
 bool Animal::operator>=( const Node& rhs_node ) const {
    return Node::operator>=( rhs_node );
 }

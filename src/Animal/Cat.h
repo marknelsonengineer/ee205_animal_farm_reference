@@ -84,13 +84,13 @@ public:  /////////////////////// Static Public Methods /////////////////////////
    static unsigned int remaningCatNames() noexcept;  ///< Return the number of unique cat names left
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
-   bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with the < operator
-   bool operator> ( const Cat& rhs_cat ) const;  ///< Compare two Cats with the > operator
-   bool operator<=( const Cat& rhs_cat ) const;  ///< Compare two Cats with the <= operator
-   bool operator>=( const Cat& rhs_cat ) const;  ///< Compare two Cats with the >= operator
+   bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with `<`
+   bool operator<=( const Cat& rhs_cat ) const;  ///< Compare two Cats with `<=`
+   bool operator> ( const Cat& rhs_cat ) const;  ///< Compare two Cats with `>`
+   bool operator>=( const Cat& rhs_cat ) const;  ///< Compare two Cats with `>=`
 
-   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison operator between two Nodes
-   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison operator between two Nodes
-   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison operator between two Nodes
-   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison operator between two Nodes
+   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison between two Nodes
+   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison between two Nodes
+   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison between two Nodes
+   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison between two Nodes
 };

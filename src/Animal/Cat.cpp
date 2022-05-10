@@ -162,60 +162,63 @@ Cat::~Cat() {
 }
 
 
-/// Compare two Cats:  Is the left < right?
-/// Both sides are Cats.
+/// @anchor Cat_comparison
 /// The `this` member is the left side of the operator.
-/// @param rhs_cat `rhs` stands for Right Hand Side and means the right side of the operator.
-/// @return `true` if this < `rhs_cat`
+/// @param rhs_cat `rhs` stands for Right Hand Side and is the right side of the operator.
+/// @return `true` if `this` < `rhs_cat`
 bool Cat::operator<( const Cat& rhs_cat ) const {
    // cout << "this.name=[" << name << "]  rhs_cat.name=[" << rhs_cat.name << "]  name < rhs_cat.name=[" << ((name < rhs_cat.name) ? "true" : "false") << "]" << endl;
    return name < rhs_cat.name;
 }
 
 
-/// Compare two Cats:  Is the left > right?
-/// @todo Bring down the documentation
-bool Cat::operator>( const Cat& rhs_cat ) const {
-   return rhs_cat < *this;
-}
-
-
-/// Compare two Cats:  Is the left <= right?
+/// The actual implementation is in @ref Cat_comparison "operator<( Cat& rhs_cat )"
 bool Cat::operator<=( const Cat& rhs_cat ) const {
    return !( rhs_cat < *this );
 }
 
 
-/// Compare two Cats:  Is the left >= right?
+/// The actual implementation is in @ref Cat_comparison "operator<( Cat& rhs_cat )"
+bool Cat::operator>( const Cat& rhs_cat ) const {
+   return rhs_cat < *this;
+}
+
+
+/// The actual implementation is in @ref Cat_comparison "operator<( Cat& rhs_cat )"
 bool Cat::operator>=( const Cat& rhs_cat ) const {
    return !( *this < rhs_cat );
 }
 
 
-/// Compare a Cat and a Node.  This is the operator that actually gets
-/// overridden by a Generic comparison.  First, we will try to dynamically
-/// cast `rhs_node` to a Cat.  If both the left and right sides are Cats,
-/// then, use the Cat comparison.  If not, then try the Animal comparison.
+/// @anchor Cat_Node_comparison
+/// Compare a Cat and a Node.  This is the operator that gets overridden by a generic comparison (for example in an algorithm that knows about Nodes, but not Cats).
+///
+/// The `this` member is the left side of the operator.
+/// @param rhs_node `rhs` stands for Right Hand Side and is the right side of the operator.
+/// @return `true` if `this` < `rhs_node`
 bool Cat::operator<( const Node& rhs_node ) const {
    try {
-      const Cat& rhs_cat = dynamic_cast<const Cat&>(rhs_node);
-      return *this < rhs_cat;
-   } catch ( bad_cast& exception ) {        /// If rhs_node is not a Cat, it will throw a `bad_cast` exception...
-      return Animal::operator<( rhs_node ); /// which will be caught and we will use an Animal comparison.
+      const Cat& rhs_cat = dynamic_cast<const Cat&>(rhs_node);  /// First, try to dynamically cast `rhs_node` to a Cat.
+      return *this < rhs_cat;               /// If both the left and right sides are Cats, then, use the Cat comparison like @ref Cat_comparison "operator<( Cat& rhs_cat )"
+   } catch ( bad_cast& exception ) {        /// If `rhs_node` is not a Cat, it will throw a `bad_cast` exception...
+      return Animal::operator<( rhs_node ); /// which will be caught and we will try an Animal comparison like @ref Animal_comparison "Animal::operator<( Animal& rhs_animal )"
    }
 }
 
 
-bool Cat::operator>( const Node& rhs_node ) const {
-   return Animal::operator>( rhs_node );
-}
-
-
+/// The actual implementation is in @ref Cat_Node_comparison "operator<( Node& rhs_node )"
 bool Cat::operator<=( const Node& rhs_node ) const {
    return Animal::operator<=( rhs_node );
 }
 
 
+/// The actual implementation is in @ref Cat_Node_comparison "operator<( Node& rhs_node )"
+bool Cat::operator>( const Node& rhs_node ) const {
+   return Animal::operator>( rhs_node );
+}
+
+
+/// The actual implementation is in @ref Cat_Node_comparison "operator<( Node& rhs_node )"
 bool Cat::operator>=( const Node& rhs_node ) const {
    return Animal::operator>=( rhs_node );
 }

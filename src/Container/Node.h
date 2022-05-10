@@ -48,7 +48,7 @@ class Node {
 public:   ///////////////////// Constructors & Destructors /////////////////////
    Node() = default;   ///< Default constructor
    constexpr Node(const Node&) : next(nullptr), prev(nullptr),left( nullptr), right(nullptr) {}   ///< Copy constructor zeros out pointers
-   constexpr Node& operator=( const Node& copyFrom ) {  ///< Assignment constructor zeros out pointers
+   constexpr Node& operator=( const Node& copyFrom ) {  /// Assignment constructor zeros out pointers
       if( this != &copyFrom ) { // Protects from self-assignment
          next = nullptr;
          prev = nullptr;
@@ -177,9 +177,10 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
 
-   /// Compare two Nodes:  Is the left less than the right?
+   /// Compare two Nodes with `<`
+   ///
    /// The `this` member is the left side of the operator.
-   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   /// @param rhs_node `rhs` stands for Right Hand Side and is the right side of the operator.
    /// @return `true` if this < `rhs_node`
    virtual bool operator<( const Node& rhs_node ) const {
       /// By default, we will compare two Nodes by the only thing we can...
@@ -188,26 +189,25 @@ public:  ///////////////////////// Operator Overrides //////////////////////////
    }
 
 
-   /// Compare two Nodes:  Is the right less than the left?
-   /// The `this` member is the left side of the operator.
-   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
-   /// @return `true` if `rhs_node` < `this`
-   virtual bool operator>( const Node& rhs_node ) const {
-      return rhs_node < *this;
-   }
-
-
-   /// Compare two Nodes:  Is the left less than or equal to the right?
-   /// The `this` member is the left side of the operator.
-   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   /// Compare two Nodes with `<=`
+   ///
+   /// The actual implementation is in Node::operator<
    virtual bool operator<=( const Node& rhs_node ) const {
       return !( rhs_node < *this );
    }
 
 
-   /// Compare two Nodes:  Is the right less than or equal to the left?
-   /// The `this` member is the left side of the operator.
-   /// @param rhs_node `rhs` stands for Right Hand Side and means the right side of the operator.
+   /// Compare two Nodes with `>`
+   ///
+   /// The actual implementation is in Node::operator<
+   virtual bool operator>( const Node& rhs_node ) const {
+      return rhs_node < *this;
+   }
+
+
+   /// Compare two Nodes with `>=`
+   ///
+   /// The actual implementation is in Node::operator<
    virtual bool operator>=( const Node& rhs_node ) const {
       return !( *this < rhs_node );
    }

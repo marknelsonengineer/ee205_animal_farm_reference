@@ -81,13 +81,13 @@ public:   /////////////////////////// Public Methods ///////////////////////////
    bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
-   bool operator< ( const Animal& rhs_animal ) const;  ///< Compare two Animals with the < operator
-   bool operator> ( const Animal& rhs_animal ) const;  ///< Compare two Animals with the > operator
-   bool operator<=( const Animal& rhs_animal ) const;  ///< Compare two Animals with the <= operator
-   bool operator>=( const Animal& rhs_animal ) const;  ///< Compare two Animals with the >= operator
+   bool operator< ( const Animal& rhs_animal ) const;  ///< Compare two Animals with `<`
+   bool operator<=( const Animal& rhs_animal ) const;  ///< Compare two Animals with `<=`
+   bool operator> ( const Animal& rhs_animal ) const;  ///< Compare two Animals with `>`
+   bool operator>=( const Animal& rhs_animal ) const;  ///< Compare two Animals with `>=`
 
-   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison operator between two Nodes
-   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison operator between two Nodes
-   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison operator between two Nodes
-   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison operator between two Nodes
+   bool operator< ( const Node& rhs_node ) const override;  ///< Override the virtual `<` comparison between two Nodes
+   bool operator<=( const Node& rhs_node ) const override;  ///< Override the virtual `<=` comparison between two Nodes
+   bool operator> ( const Node& rhs_node ) const override;  ///< Override the virtual `>` comparison between two Nodes
+   bool operator>=( const Node& rhs_node ) const override;  ///< Override the virtual `>=` comparison between two Nodes
 };
