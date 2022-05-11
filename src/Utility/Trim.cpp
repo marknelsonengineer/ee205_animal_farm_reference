@@ -1,8 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
+//          University of Hawaii, College of Engineering
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// General string-trimming functions
+///
+/// There are *so many ways* to implement string trimming...
+///
+///   - Maximize clarity and understandability
+///   - Maximize efficiency
+///   - Use an advanced C++ feature
+///
+/// This implementation is designed to try to balance all three.
 ///
 /// @file Trim.cpp
 /// @version 1.0
@@ -31,6 +39,8 @@ static size_t get_left_start_char( const string inString ) noexcept {
 }
 
 
+/// Get the last non-whitespace character in the string
+///
 /// This function is static in order to be private to Trim.cpp
 static size_t get_right_start_char( const string inString ) noexcept {
    size_t i = inString.size();
@@ -44,21 +54,15 @@ static size_t get_right_start_char( const string inString ) noexcept {
    return i;
 }
 
-/// There are *so many ways* to implement string trimming...
-///
-///   - Maximize clarity and understandability
-///   - Maximize efficiency
-///   - Use an advanced C++ feature
-///
-/// This implementation is designed to try to balance all three.
-///
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
+/// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
 string trim_left( const string inString ) noexcept {
    return inString.substr( get_left_start_char( inString ), inString.size() );
 }
 
 
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
+/// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
 std::string trim_right( const std::string inString ) noexcept {
 
    return( inString.substr( 0, get_right_start_char( inString ) ) );
@@ -81,7 +85,7 @@ std::string trim( const std::string inString ) noexcept {
 ///    - Trim the leading whitespace
 ///    - Trim trailing whitespace
 ///    - Replace consecutive whitespace characters inside the string with
-///      a single `' '`
+///      a single `" "`
 std::string trim_in( const std::string inString ) noexcept {
    if( inString.empty() )
       return inString;

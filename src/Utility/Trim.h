@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
+//          University of Hawaii, College of Engineering
 /// @brief  ee205_animal_farm - EE 205 - Spr 2022
 ///
 /// General string-trimming functions
@@ -17,4 +17,4 @@
 extern std::string trim_left( const std::string inString ) noexcept;   ///< Remove all leading whitespace from `inString`
 extern std::string trim_right( const std::string inString ) noexcept;  ///< Remove all trailing whitespace from `inString`
 extern std::string trim( const std::string inString ) noexcept;  ///< Remove all leading and trailing whitespace from `inString`
-extern std::string trim_in( const std::string inString ) noexcept;  ///< Collapse any consecutive interior whitespace into `' '`
+extern std::string trim_in( const std::string inString ) noexcept;  ///< Trim leading & trailing whitespace and collapse consecutive interior whitespace into `" "`
