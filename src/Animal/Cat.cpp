@@ -31,7 +31,7 @@ const Weight::t_weight Cat::MAX_WEIGHT = 40;
 /// things like `Cat newCat = "Bella";` ... instead, you need to construct
 /// a Cat properly like `Cat newCat( "Bella" );`
 Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
-   if( !validateName( newName) ) {
+   if( !validateName( newName ) ) {
       /// @throws out_of_range If the Cat doesn't have a name
       throw std::out_of_range( "Cats must have a name" );
    }
@@ -84,6 +84,8 @@ void Cat::fixCat() noexcept {
 }
 
 
+/// Output the contents of this object (and its parents).
+///
 /// #### Sample Output
 /**@verbatim
 ======================================================

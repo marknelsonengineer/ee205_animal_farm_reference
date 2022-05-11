@@ -21,6 +21,8 @@ using namespace std;
 const std::string Mammal::MAMMAL_NAME = "Mammilian";
 
 
+/// Output the contents of this object (and its parents).
+///
 /// #### Sample Output
 /**@verbatim
 ======================================================

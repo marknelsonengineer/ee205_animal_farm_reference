@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
-/// Where the wild things roam
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2022
+//
+/// Where the wild things are.
 ///
 /// @file Animal.cpp
 /// @version 1.0
@@ -167,6 +167,8 @@ bool Animal::validateSpecies( const std::string& checkSpecies ) noexcept {
 }
 
 
+/// Output the contents of this object (and its parents).
+///
 /// #### Sample Output
 /**@verbatim
 ======================================================
