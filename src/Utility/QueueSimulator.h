@@ -50,6 +50,7 @@ public:  ////////////////////////// Public Constants ///////////////////////////
    const int SPEED_IN_MS = 500;   ///< Milliseconds per Queue operation (for interactive mode)
 
 private:  ////////////////////////// Private Classes ///////////////////////////
+
    /// Alpha extends Node... and holds a single character, 'a' through 'z' in the Queue
    class Alpha : public Node {
    public:

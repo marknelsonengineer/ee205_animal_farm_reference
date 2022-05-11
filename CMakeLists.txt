@@ -45,7 +45,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_QUIET YES)
    set(DOXYGEN_GENERATE_HTML YES)
    set(DOXYGEN_CLANG_ASSISTED_PARSING YES)
-   set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)
+#  set(DOXYGEN_WARN_AS_ERROR FAIL_ON_WARNINGS)   # @todo Consider turning this off for students
    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/generated_docs)
 
    # Look and feel
@@ -57,6 +57,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_DISABLE_INDEX NO)
    set(DOXYGEN_HTML_TIMESTAMP YES)
    set(DOXYGEN_PAPER_TYPE letter)
+   set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
 
    # C-Style Documentation
    set(DOXYGEN_SORT_MEMBERS_CTORS_1ST YES)   # Put constructors first
@@ -145,4 +146,4 @@ add_executable(catList src/config.h src/Container/Node.h src/Container/List.h sr
 add_executable(catTail src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catTail.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h)
 
 add_executable(queueSimulator src/queueSimulator.cpp ${SOURCE_FILES_QUEUES} src/Utility/QueueSimulator.h src/Utility/QueueSimulator.cpp)
-add_executable(main_test src/main_test.cpp ${SOURCE_FILES_CATS})
+add_executable(main_test src/main_test.cpp ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
