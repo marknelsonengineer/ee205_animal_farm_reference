@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
-/// A generic SinglyLinkedList collection class.
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// A SinglyLinkedList collection class.
 ///
 /// @file SinglyLinkedList.cpp
 /// @version 1.0

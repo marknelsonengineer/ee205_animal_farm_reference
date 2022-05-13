@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 //          University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
 /// General string-trimming functions
 ///
 /// @file Trim.h

@@ -2,7 +2,7 @@
 //         University of Hawaii, College of Engineering
 //         ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Where the wild things are.
+/// Where the Wild Things Are
 ///
 /// @file Animal.cpp
 /// @version 1.0

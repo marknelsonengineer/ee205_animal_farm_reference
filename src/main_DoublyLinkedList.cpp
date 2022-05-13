@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
 /// Orchestrates the entire program:
 ///    Starting Animal Farm 2
 /// ...and end by printing

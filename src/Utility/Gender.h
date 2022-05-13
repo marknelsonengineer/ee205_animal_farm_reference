@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
 /// A gender... for educational use only.
 /// This is not intended to be inclusive of all possible genders
 ///

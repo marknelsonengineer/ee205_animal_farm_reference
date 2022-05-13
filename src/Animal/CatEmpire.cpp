@@ -1,8 +1,10 @@
 #pragma GCC diagnostic error "-Wcomment"
 
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// A specialized Binary Search Tree that holds Cats
 ///
 /// @file CatEmpire.cpp
 /// @version 1.0

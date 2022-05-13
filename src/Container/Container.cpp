@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
-/// A generic list-based collection class.
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// A generic collection class.
 ///
 /// @file Container.cpp
 /// @version 1.0

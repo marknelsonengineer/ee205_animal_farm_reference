@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
-/// Prints data about the Empire of Cats
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// A specialized Binary Search Tree that holds Cats
 ///
 /// @file CatEmpire.h
 /// @version 1.0

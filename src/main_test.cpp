@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
-///
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
 /// A scratch program for testing things
 ///
 /// @file main_test.cpp
@@ -14,14 +14,25 @@
 #include <iostream>
 
 #include "Animal/Cat.h"
+#include "Container/DoublyLinkedList.h"
 
 using namespace std;
 
 /// Entry point for the program
 int main() {
-   Cat a( "Boo" );
+   DoublyLinkedList aa;
 
-   a.dump();
+   Cat a( "Alice" );
+   Cat b( "Boo" );
+   Cat c( "Chili" );
+
+   aa.push_back( &a );
+   aa.push_back( &b );
+   aa.push_back( &c );
+
+   cout << "b:  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
+   b.dump();
+   cout << "b: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
 
    return 0;
 }
