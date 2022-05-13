@@ -1,6 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// All things Cat
 ///
 /// @file Cat.cpp
 /// @version 1.0
@@ -13,10 +15,8 @@
 #include <iostream>
 #include <cassert>
 #include <random>
-#include <fstream>
 
 #include "Cat.h"
-#include "../Utility/Name.h"
 #include "../Utility/Trim.h"
 
 using namespace std ;
@@ -27,6 +27,9 @@ using namespace std ;
 
 const std::string Cat::SPECIES_NAME = "Felis Catus";
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
+
+/// This is static, so the list will be available for any and all Cats to use.
+Name Cat::names( CAT_NAMES_FILE );
 
 
 /// This constructor is declared to be `explicit`, so you can't do silly
@@ -69,11 +72,12 @@ string Cat::getName() const noexcept {
 }
 
 
+/// @param newName The Cat's new name.  It must be valid per Name::validateName.
 void Cat::setName( const string& newName ) {
    string trialName = trim_in( newName );
 
    if( !Name::validateName( trialName ) ) {
-      /// @throws invalid_argument If the Cat doesn't have a name
+      /// @throws invalid_argument If the Cat's name is invalid
       throw invalid_argument( "The cat's name [" + trialName + "] is invalid" );
    }
 
@@ -86,7 +90,7 @@ bool Cat::isFixed() const noexcept {
 }
 
 
-/// Once the cat is fixed, it can never be un-fixed.
+/// Once the Cat is fixed, it can never be un-fixed.
 void Cat::fixCat() noexcept {
    Cat::isCatFixed = true;
 }
@@ -125,60 +129,15 @@ std::string Cat::speak() const noexcept {
 }
 
 
-/// Holds a list of cat names.  This is static, so the list will be built
-/// once (on first use) and then remain available for the future.
-static std::vector<std::string> names;
-
-
-unsigned int Cat::remainingCatNames() noexcept {
-   return names.size();
-}
-
-
-/// This static method should be used with care... several Animal Farm
-/// data structures (like Tree) can't handle Cats with the same name.
-///
-/// This has been added to facilitate unit testing.
-void Cat::resetCatNames() {
-   names.clear();
-
-   cout << "Loading... " ;
-
-   ifstream file( CAT_NAMES_FILE );
-   string line;
-   while( getline( file, line )) {
-      names.push_back( line );
-   }
-
-   cout << to_string( names.size() ) << " cat names from " CAT_NAMES_FILE << endl;
-}
-
-
 /// @internal This function will use `new` to create a Cat on the heap
 ///           Be sure to `delete` the cat when it's no longer needed
 Cat& Cat::generateCat() {
-   if( names.empty() ) {
-      resetCatNames();
-   }
-
-   uniform_int_distribution<>  nameRNG( 0, (int) names.size()-1 );
    uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
    bernoulli_distribution      isFixedRNG(0.85); // 85% of cats are neutered
    uniform_int_distribution<>  colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
    uniform_int_distribution<>  genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
 
-   /// Remove names as they get used
-   auto nameIterator = names.begin();
-   int nameIndex = nameRNG( ANIMAL_FARM_RNG );
-   while( nameIndex > 0 ) {
-      nameIterator++;
-      nameIndex -= 1;
-   }
-
-   string catName = *nameIterator;
-   names.erase( nameIterator );
-
-   Cat* aCat = new Cat( catName, (Color) colorRNG( ANIMAL_FARM_RNG ), isFixedRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (float) weightRNG( ANIMAL_FARM_RNG ) );
+   Cat* aCat = new Cat( names.getNextName(), (Color) colorRNG( ANIMAL_FARM_RNG ), isFixedRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (float) weightRNG( ANIMAL_FARM_RNG ) );
 
    // aCat->dump();
 

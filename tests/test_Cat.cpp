@@ -230,7 +230,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       // Sorted associated collection
       {
          set<Cat> catSet;
-         Cat::resetCatNames();
+         Cat::names.reset();
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catSet.size(), i );
             BOOST_CHECK_NO_THROW( catSet.insert( catSet.end(), Cat::generateCat()));
@@ -244,7 +244,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       // Sorted associated list with key-value pairs
       {
          map<string, Cat> catMap;
-         Cat::resetCatNames();
+         Cat::names.reset();
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
 //          BOOST_CHECK_EQUAL( catMap.size(), i );  /// @todo Not sure why this isn't working
             Cat newCat = Cat::generateCat();

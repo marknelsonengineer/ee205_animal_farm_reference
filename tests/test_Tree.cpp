@@ -25,25 +25,25 @@
 
 using namespace std;
 
-/// All of the tests will use this one testTree, which must always remain valid.
-static Tree testTree;
-
-/// Delete all nodes before and after each of the test cases in this module.
-struct TreeTestFixture {
-   TreeTestFixture()   {
-      testTree.deleteAllNodes();
-      Cat::resetCatNames();
-      BOOST_TEST_MESSAGE( "setup fixture" );
-   }
-   ~TreeTestFixture()  {
-      testTree.deleteAllNodes();
-      Cat::resetCatNames();
-      BOOST_TEST_MESSAGE( "teardown fixture" );
-   }
-} ;
-
-
 BOOST_AUTO_TEST_SUITE( test_Tree )
+
+   /// All of the tests will use this one testTree, which must always remain valid.
+   static Tree testTree;
+
+   /// Delete all nodes before and after each of the test cases in this module.
+   struct TreeTestFixture {
+      TreeTestFixture()   {
+         testTree.deleteAllNodes();
+         Cat::names.reset();
+         BOOST_TEST_MESSAGE( "setup fixture" );
+      }
+      ~TreeTestFixture()  {
+         testTree.deleteAllNodes();
+         Cat::names.reset();
+         BOOST_TEST_MESSAGE( "teardown fixture" );
+      }
+   } ;
+
 
    BOOST_FIXTURE_TEST_CASE( test_empty_Tree, TreeTestFixture ) {
       BOOST_CHECK_EQUAL( testTree.empty(), true );
@@ -111,7 +111,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
          double idealSizeOfList = pow( 2, i );
 
-         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]   remaining cat names = [" << Cat::remainingCatNames() << "]" ) ;
+         BOOST_TEST_MESSAGE( "ideal size of list = [" << idealSizeOfList << "]   remaining cat names = [" << Cat::names.remainingNames() << "]" ) ;
 
          for( int j = 0 ; j < 1000 ; j++ ) {
             bernoulli_distribution isFixedRNG( testTree.size() / (idealSizeOfList*2) );  // If ideal size is 4, then 4/8 = 0.5

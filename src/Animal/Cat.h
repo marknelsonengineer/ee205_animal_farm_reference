@@ -1,6 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
-///         University of Hawaii, College of Engineering
-/// @brief  ee205_animal_farm - EE 205 - Spr 2022
+//          University of Hawaii, College of Engineering
+//          ee205_animal_farm - EE 205 - Spr 2022
+//
+/// All things Cat
 ///
 /// @file Cat.h
 /// @version 1.0
@@ -14,18 +16,21 @@
 
 #include "../config.h"
 #include "Mammal.h"
-
+#include "../Utility/Name.h"
 
 /// Felis Catus
 ///
 class Cat : public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const std::string      SPECIES_NAME;  ///< The scientific name for this species
-   static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for this species
+   static const std::string      SPECIES_NAME;  ///< The scientific name for Cats
+   static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for Cats
+
+public:  ////////////////////////// Static Members /////////////////////////////
+   static Name names;                ///< A list of potential Cat names
 
 protected:  ///////////////////////// Member Variables /////////////////////////
-   std::string name ;                ///< The name of the cat
-   bool        isCatFixed = false ;  ///< `true` if the cat is fixed/neutered
+   std::string name ;                ///< The name of the Cat
+   bool        isCatFixed = false ;  ///< `true` if the Cat is fixed/neutered
 
 public:  //////////////////////////// Constructors /////////////////////////////
 
@@ -45,12 +50,11 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   std::string getName() const noexcept ;  ///< Get the Cat's name
-   void setName( const std::string& newName );   ///< Set the Cat's name.  The name
-                                                 ///< must not be empty.
+   std::string getName() const noexcept ;        ///< Get the Cat's name
+   void setName( const std::string& newName );   ///< Set the Cat's name.
 
-   bool isFixed() const noexcept ;      ///< Return `true` if the cat is fixed/neutered
-   void fixCat() noexcept ;             ///< Spay or neuter the cat
+   bool isFixed() const noexcept ;      ///< Return `true` if the Cat is fixed/neutered
+   void fixCat() noexcept ;             ///< Spay or neuter the Cat
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string speak() const noexcept override;  ///< Say `Meow`.
@@ -60,8 +64,6 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
    static Cat& generateCat() ;   ///< Generate a new, random Cat
-   static void resetCatNames();  ///< Erase and then re-load the Cat names database
-   static unsigned int remainingCatNames() noexcept;  ///< Return the number of unique cat names left
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with `<`
