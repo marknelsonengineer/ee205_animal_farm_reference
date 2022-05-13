@@ -16,6 +16,8 @@
 #include <fstream>
 
 #include "Cat.h"
+#include "../Utility/Name.h"
+#include "../Utility/Trim.h"
 
 using namespace std ;
 
@@ -30,12 +32,14 @@ const Weight::t_weight Cat::MAX_WEIGHT = 40;
 /// This constructor is declared to be `explicit`, so you can't do silly
 /// things like `Cat newCat = "Bella";` ... instead, you need to construct
 /// a Cat properly like `Cat newCat( "Bella" );`
-Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
-   if( !validateName( newName ) ) {
-      /// @throws out_of_range If the Cat doesn't have a name
-      throw std::out_of_range( "Cats must have a name" );
+///
+/// @param newName Must be a valid name per Name::validateName
+Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME )
+                                       , name { trim_in( newName ) } {
+   if( !Name::validateName( name ) ) {
+      /// @throws invalid_argument If the Cat doesn't have a name
+      throw invalid_argument( "The cat's name [" + name + "] is invalid" );
    }
-   name = newName;
    isCatFixed = false;
 
    Cat::validate();
@@ -43,17 +47,18 @@ Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME ) {
 
 
 Cat::Cat( const std::string&     newName
-        ,const Color            newColor
-        ,const bool             newIsFixed
-        ,const Gender           newGender
-        ,const Weight::t_weight newWeight
-) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME ) {
-   if( !validateName( newName) ) {
-      /// @throws out_of_range If the Cat doesn't have a name
-      throw std::out_of_range( "Cats must have a name" );
+         ,const Color            newColor
+         ,const bool             newIsFixed
+         ,const Gender           newGender
+         ,const Weight::t_weight newWeight
+) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME )
+  , name { trim_in( newName ) }
+  , isCatFixed { newIsFixed } {
+
+   if( !Name::validateName( name ) ) {
+      /// @throws invalid_argument If the Cat doesn't have a name
+      throw invalid_argument( "The cat's name [" + name + "] is invalid" );
    }
-   name = newName;
-   isCatFixed = newIsFixed;
 
    Cat::validate();
 }
@@ -65,11 +70,14 @@ string Cat::getName() const noexcept {
 
 
 void Cat::setName( const string& newName ) {
-   if( !validateName( newName )) {
-      /// @throw invalid_argument Cats should have a name
-      throw invalid_argument( "Cats should have a good name" );
+   string trialName = trim_in( newName );
+
+   if( !Name::validateName( trialName ) ) {
+      /// @throws invalid_argument If the Cat doesn't have a name
+      throw invalid_argument( "The cat's name [" + trialName + "] is invalid" );
    }
-   name = newName ;
+
+   name = trialName ;
 }
 
 
@@ -106,19 +114,7 @@ void Cat::dump() const noexcept {
 bool Cat::validate() const noexcept {
    Mammal::validate() ;
 
-   assert( validateName( getName() ));
-
-   return true;
-}
-
-
-/// @param newName The name to check
-/// @return `true` if the name is valid (not empty).  `false` if the cat doesn't have a name.
-bool Cat::validateName( const std::string& newName ) {
-   if( newName.empty() ) {
-      cout << PROGRAM_NAME ": A cat should have a name" << endl;
-      return false;
-   }
+   assert( Name::validateName( getName() ) );
 
    return true;
 }

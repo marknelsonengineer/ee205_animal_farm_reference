@@ -24,8 +24,8 @@ public:   //////////////////////// Constants ///////////////////////////////////
    static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for this species
 
 protected:  ///////////////////////// Member Variables /////////////////////////
-   std::string name ;        ///< The name of the cat
-   bool        isCatFixed ;  ///< `true` if the cat is fixed/neutered
+   std::string name ;                ///< The name of the cat
+   bool        isCatFixed = false ;  ///< `true` if the cat is fixed/neutered
 
 public:  //////////////////////////// Constructors /////////////////////////////
 
@@ -59,7 +59,6 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
-   static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
    static Cat& generateCat() ;   ///< Generate a new, random Cat
    static void resetCatNames();  ///< Erase and then re-load the Cat names database
    static unsigned int remainingCatNames() noexcept;  ///< Return the number of unique cat names left
