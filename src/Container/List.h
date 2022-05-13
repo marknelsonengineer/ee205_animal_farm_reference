@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A generic list-based collection class.
+/// A general-purpose list-based collection class.
 ///
 /// @todo Implement get( index ) // Get via index
 /// @todo Implement get( key )   // Get via key

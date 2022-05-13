@@ -2,6 +2,8 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
+/// Random number utilities
+///
 /// @file Random.h
 /// @version 1.0
 ///

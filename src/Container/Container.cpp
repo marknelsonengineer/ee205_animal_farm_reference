@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A generic collection class.
+/// A generic interface for collections.
 ///
 /// @file Container.cpp
 /// @version 1.0

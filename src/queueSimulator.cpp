@@ -2,6 +2,8 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
+/// Interactively run a simulation of a Queue
+///
 /// @file queueSimulator.cpp
 /// @version 1.0
 ///

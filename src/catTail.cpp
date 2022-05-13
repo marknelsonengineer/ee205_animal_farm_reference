@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Print a reverse alphabetized list of cats in a binary search tree
+/// Print a reverse alphabetized list of cats in a Binary Search Tree
 ///
 /// @file catTail.cpp
 /// @version 1.0

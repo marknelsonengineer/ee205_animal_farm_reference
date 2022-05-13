@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Demonstrate virtual binding and exercise our SinglyLinkedList
+/// Demonstrate virtual binding and exercise a SinglyLinkedList
 ///
 /// @file main_AnimalFarm.cpp
 /// @version 1.0

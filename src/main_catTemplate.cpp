@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Demonstrate the use of STL `list` template
+/// Demonstrate the use of the STL `list` template (and potentially others)
 ///
 /// @file main_catTemplate.cpp
 /// @version 1.0

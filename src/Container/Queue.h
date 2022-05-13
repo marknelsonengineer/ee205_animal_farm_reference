@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Implement a FIFO Queue from a DoublyLinkedList.
+/// Implement a general-purpose FIFO Queue from a DoublyLinkedList.
 ///
 /// This is a header-only class.
 ///

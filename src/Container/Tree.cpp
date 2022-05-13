@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A generic Binary Search Tree
+/// A general-purpose Binary Search Tree
 ///
 /// Trees do not preach learning and precepts.  They preach, undeterred by
 /// particulars, the ancient law of life.
