@@ -57,5 +57,6 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    void reset();  ///< Erase and then re-load the names database
    serial_t remainingNames() noexcept;  ///< Return the number of unique names left
 
+public:  //////////////////////// Static Public Methods ////////////////////////
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
 };

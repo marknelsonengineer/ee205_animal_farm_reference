@@ -13,6 +13,8 @@
 
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
+#include <boost/test/tools/output_test_stream.hpp>
+
 #include <stdexcept>
 #include <istream>
 
@@ -122,5 +124,115 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       BOOST_CHECK_EQUAL( testSerial.getNextName(), "Animal #[4]" );
    }
 
+
+   // Test all of the error messages with respect to name
+   struct cout_redirect {
+      cout_redirect( std::streambuf * new_buffer )
+              : old( std::cout.rdbuf( new_buffer ) )
+      { }
+
+      ~cout_redirect( ) {
+         std::cout.rdbuf( old );
+      }
+
+   private:
+      std::streambuf * old;
+   };
+
+   BOOST_AUTO_TEST_CASE( test_validate_empty_name ) {
+      /// Testing output
+      /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
+      boost::test_tools::output_test_stream output;
+      {
+         cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should not be empty" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_front ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "\tSam" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should be trimmed for whitespace" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_back ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "Sam\t" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should be trimmed for whitespace" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_name_with_special_chars ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "Mr. Boo" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should not have any special characters" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_name_starting_with_number ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "1-Boo" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should not start with a number or -" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_name_starting_with_dash ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "-Boo" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The name should not start with a number or -" ), string::npos );
+   }
+
+   BOOST_AUTO_TEST_CASE( test_validate_name_with_interior_whitespace ) {
+      boost::test_tools::output_test_stream output;
+      {  cout_redirect guard( output.rdbuf() );
+         bool result = Name::validateName( "Boo--Boo" );
+         BOOST_CHECK_EQUAL( result, false );
+      }
+      BOOST_CHECK_NE( output.str().find( "The interior whitespace of the name should be trimmed" ), string::npos );
+   }
+
+   // General test (without checking error messages) of names
+   BOOST_AUTO_TEST_CASE( test_validate_names ) {
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "A" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "AB" ), true );
+
+      BOOST_CHECK_EQUAL( Name::validateName( "" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( " " ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "  " ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( " Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "-Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "0Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam " ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam-" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam0" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam Sam Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam Sam Sam Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam-Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam-Sam-Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam-Sam-Sam-Sam" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam- Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam -Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam  Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "Sam--Sam" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvbwxyz0123456789-" ), true );
+      BOOST_CHECK_EQUAL( Name::validateName( "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvbwxyz0123456789*" ), false );
+      BOOST_CHECK_EQUAL( Name::validateName( "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvbwxyz0123456789@" ), false );
+   }
 
 BOOST_AUTO_TEST_SUITE_END()

@@ -8,6 +8,7 @@
 ### @version 1.0
 ###
 ### @see https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
+### @see https://www.jetbrains.com/help/clion/boost-test-support.html#add-boost-tests
 ###
 ### @author Mark Nelson <marknels@hawaii.edu>
 ### @date   05_May_2022

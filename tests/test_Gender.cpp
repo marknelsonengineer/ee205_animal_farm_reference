@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( test_Gender ) {
    /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
    boost::test_tools::output_test_stream output;
    {
-      cout_redirect guard( output.rdbuf());
+      cout_redirect guard( output.rdbuf() );
       cout << g1;
    }
    BOOST_CHECK( output.is_equal("Unknown gender")  ) ;
