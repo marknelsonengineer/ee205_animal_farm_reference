@@ -45,7 +45,6 @@ public:  //////////////////////////// Constructors /////////////////////////////
        ,const Weight::t_weight newWeight
    );
 
-
    /// Delete a Cat object
    virtual ~Cat();
 
@@ -53,8 +52,8 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
    std::string getName() const noexcept ;        ///< Get the Cat's name
    void setName( const std::string& newName );   ///< Set the Cat's name.
 
-   bool isFixed() const noexcept ;      ///< Return `true` if the Cat is fixed/neutered
-   void fixCat() noexcept ;             ///< Spay or neuter the Cat
+   bool isFixed() const noexcept ;  ///< Return `true` if the Cat is fixed/neutered
+   void fixCat() noexcept ;         ///< Spay or neuter the Cat
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string speak() const noexcept override;  ///< Say `Meow`.

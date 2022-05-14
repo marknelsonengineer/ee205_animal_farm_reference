@@ -74,21 +74,17 @@ Animal::Animal( const Gender newGender
 /// This can be `static` but for symmetry with the other `get` methods, I'm
 /// leaving it in the class
 ///
-/// @todo Replace with returning a `string_view`
-///
 /// @return KINGDOM_NAME
 std::string Animal::getKingdom() const noexcept {
    return KINGDOM_NAME;
 }
 
 
-/// @todo Replace with returning a `string_view`
 std::string Animal::getClassification() const noexcept {
    return classification;
 }
 
 
-/// @todo Replace with returning a `string_view`
 std::string Animal::getSpecies() const noexcept {
    return species;
 }
@@ -132,40 +128,6 @@ void Animal::setGender( const Gender newGender ) {
 }
 
 
-/// It's unfortunate that C++'s string library does not have 'trim
-/// whitespace' functionality.  Note:  It *is* available via Boost.
-///
-/// @todo Add left and right whitespace trim to classification.
-///
-/// @param checkClassification The classification to check
-/// @return `true` if the classification is valid
-bool Animal::validateClassification( const std::string& checkClassification ) noexcept {
-   if( checkClassification.empty() ) {
-      cout << PROGRAM_NAME ": classification must not be empty" << endl ;
-      return false;
-   }
-
-   return true;
-}
-
-
-/// It's unfortunate that C++'s string library does not have 'trim
-/// whitespace' functionality.  Note:  It *is* available via Boost.
-///
-/// @todo Add left and right whitespace trim to species.
-///
-/// @param checkSpecies The species to check
-/// @return `true` if the species is valid
-bool Animal::validateSpecies( const std::string& checkSpecies ) noexcept {
-   if( checkSpecies.empty() ) {
-      cout << PROGRAM_NAME ": species must not be empty" << endl ;
-      return false;
-   }
-
-   return true;
-}
-
-
 /// Output the contents of this object (and its parents).
 ///
 /// #### Sample Output
@@ -196,10 +158,11 @@ bool Animal::validate() const noexcept {
    assert( Node::validate() );
 
    assert( !getKingdom().empty() );
-   assert( validateClassification(getClassification()) );
-   assert( validateSpecies( getSpecies() ));
+   assert( Name::validateName( getSpecies() ));
+   assert( Name::validateName( getClassification() ));
    /// Nothing to validate for Gender
    assert( weight.validate() );
+
    return true;
 }
 

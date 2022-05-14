@@ -33,7 +33,6 @@ public:   /////////////////////// Constructors ////////////////////////////////
           ,const std::string&     newSpecies
    );
 
-
    /// Create a Mammal, populating *all* of the member variables
    Mammal( const Color            newColor
           ,const Gender           newGender

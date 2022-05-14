@@ -65,11 +65,6 @@ public:   ///////////////////// Getters & Setters /////////////////////////////
    Weight::t_weight getWeight()    const noexcept;  ///< Get the Animal's Weight
    void             setWeight( const Weight::t_weight newWeight );  ///< Set the Animal's Weight
 
-public:  /////////////////////// Static Public Methods /////////////////////////
-   // Static methods are `const` by default
-   static bool validateClassification( const std::string& checkClassification ) noexcept;  ///< Verify the biological classification is valid
-   static bool validateSpecies( const std::string& checkSpecies ) noexcept;                ///< Verify the biological species is valid
-
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void setGender( const Gender newGender );   ///< Set the Animal's Gender
 

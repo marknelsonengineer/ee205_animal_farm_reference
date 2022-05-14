@@ -28,7 +28,7 @@ using namespace std ;
 const std::string Cat::SPECIES_NAME = "Felis Catus";
 const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
-/// This is static, so the list will be available for any and all Cats to use.
+/// This is static, so the list will be available for any and all Cats to use (but nobody else).
 Name Cat::names( CAT_NAMES_FILE );
 
 
@@ -54,9 +54,9 @@ Cat::Cat( const std::string&     newName
          ,const bool             newIsFixed
          ,const Gender           newGender
          ,const Weight::t_weight newWeight
-) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME )
-  , name { trim_in( newName ) }
-  , isCatFixed { newIsFixed } {
+) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
+  , name { trim_in( newName ) }  // Member initializer list
+  , isCatFixed { newIsFixed } {  // Member initializer list
 
    if( !Name::validateName( name ) ) {
       /// @throws invalid_argument If the Cat doesn't have a name
@@ -119,6 +119,8 @@ bool Cat::validate() const noexcept {
    Mammal::validate() ;
 
    assert( Name::validateName( getName() ) );
+
+   /// Nothing to validate for isCatFixed
 
    return true;
 }
