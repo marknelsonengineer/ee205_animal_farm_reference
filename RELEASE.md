@@ -13,7 +13,8 @@ Pre-Release Checklist
 
 - For each constructor:
   - Are we using delegating constructors?
-  - Are we using initializer lists?
+  - Are we using initializer lists?  
+     - Can the initializer use move semantics? 
 
 - Doxygen
     - No Doxygen warnings

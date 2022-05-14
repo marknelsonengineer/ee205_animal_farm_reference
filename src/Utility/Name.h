@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A utility class for managing lists of Animal names
+/// A utility class for managing Animal names
 ///
 /// @file Name.h
 /// @version 1.0
@@ -15,12 +15,12 @@
 #include <string>
 #include <vector>
 
-/// A utility class for managing lists of Animal names
+/// A utility class for managing Animal names
 ///
 /// Names can come from several sources:
 ///
 ///    - #FROM_FILE:  A list of names in a file
-///    - #FROM_SERIAL:  Monotonically generated names
+///    - #FROM_SERIAL:  Monotonically generated names with an optional prefix and/or suffix
 ///
 /// This class does not have setters as once it's instantiated, nothing needs
 /// to change.
@@ -38,13 +38,13 @@ public:   //////////////////////// Constants ///////////////////////////////////
    static serial_t maxSerial;   ///< The largest possible serial number
 
 protected:  ///////////////////////// Member Variables /////////////////////////
-   enum NameType nameType;  ///< Holds how the names are generated;
+   enum NameType nameType;  ///< Enum that determines how names are generated;
 
-   std::string fileName;  ///< If FROM_FILE, then the source filename
-   std::vector<std::string> names;  ///< If #FROM_FILE, then this is the set of names
+   std::string fileName;  ///< If #FROM_FILE, the source filename
+   std::vector<std::string> names;  ///< If #FROM_FILE, the collection of names read from the file
 
-   std::string serialPrefix;  ///< If #FROM_SERIAL, then print this before the serial number
-   std::string serialSuffix;  ///< If #FROM_SERIAL, then print this after the serial number
+   std::string serialPrefix;  ///< If #FROM_SERIAL, print this before the serial number
+   std::string serialSuffix;  ///< If #FROM_SERIAL, print this after the serial number
    serial_t serial = 0;   ///< If #FROM_SERIAL, then this is the serial number
 
 public:  //////////////////////////// Constructors /////////////////////////////
@@ -54,9 +54,15 @@ public:  //////////////////////////// Constructors /////////////////////////////
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string getNextName() noexcept;  ///< Get the next name
 
-   void reset();  ///< Erase and then re-load the names database
+   void reset();  ///< Erase and then re-load the names database or set the serial number to 0
    serial_t remainingNames() noexcept;  ///< Return the number of unique names left
 
 public:  //////////////////////// Static Public Methods ////////////////////////
    static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
+   static bool validateNotEmpty( const std::string& newName ) ;  ///< Return `true` if `newName` is not empty
+   static bool validateTrimmed( const std::string& newName ) ;  ///< Return `true` if `newName` is left and right trimmed for whitespace
+   static bool validateStartsWithAlpha( const std::string& newName ) ;  ///< Return `true` if `newName` starts with an alphabetic character (`A` - `Z` or `a` - `z`)
+   static bool validateNoSpecialChars( const std::string& newName ) ;  ///< Return `true` if `newName` only contains `A` - `Z`, `a` - `z`, `0`-`9`, space and `-`
+   static bool validateInteriorWhitespaceTrimmed( const std::string& newName ) ;  ///< Return `true` if `newName`'s interior whitespace is trimmed
+
 };

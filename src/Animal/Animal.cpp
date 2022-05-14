@@ -155,13 +155,13 @@ void Animal::dump() const noexcept {
 
 
 bool Animal::validate() const noexcept {
-   assert( Node::validate() );
+   assert( Node::validate());
 
-   assert( !getKingdom().empty() );
-   assert( Name::validateName( getSpecies() ));
-   assert( Name::validateName( getClassification() ));
+   assert( !getKingdom().empty());
+   assert( Name::validateName( getSpecies()));
+   assert( Name::validateName( getClassification()));
    /// Nothing to validate for Gender
-   assert( weight.validate() );
+   assert( weight.validate());
 
    return true;
 }
