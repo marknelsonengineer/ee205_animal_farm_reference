@@ -11,6 +11,10 @@ Pre-Release Checklist
     - Are the parameters documented?
     - Only accepted Clang-Tidy problems
 
+- For each constructor:
+  - Are we using delegating constructors?
+  - Are we using initializer lists?
+
 - Doxygen
     - No Doxygen warnings
     - Proofread the Doxygen-generated content

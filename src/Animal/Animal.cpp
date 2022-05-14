@@ -16,10 +16,10 @@
 #include <stdexcept>  // For out_of_range
 #include <iomanip>    // For setw() & setfill()
 
-
 #include "../config.h"
 #include "Animal.h"
-#include "Cat.h"
+#include "../Utility/Trim.h"
+#include "../Utility/Name.h"
 
 using namespace std;
 
@@ -27,47 +27,46 @@ using namespace std;
 const std::string Animal::KINGDOM_NAME = "Animalia";
 
 
+/// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
+/// @param newClassification Must be a valid name per Name::validateName
+/// @param newSpecies Must be a valid name per Name::validateName
 Animal::Animal( const Weight::t_weight newMaxWeight
                ,const std::string& newClassification
-               ,const std::string& newSpecies ) : Node(), weight( Weight::POUND, newMaxWeight ) {
-   if( !validateClassification( newClassification ) ) {
-      /// @throws invalid_argument When the classification is invalid
-      throw invalid_argument( "The classification is invalid" );
+               ,const std::string& newSpecies
+               ) : Node()                                           // Delegating constructor
+                 , species { trim_in( newSpecies ) }                // Member initializer list
+                 , classification { trim_in( newClassification ) }  // Member initializer list
+                 , weight( Weight::POUND, newMaxWeight )            // Delegating constructor
+                  {
+   if( !Name::validateName( newClassification ) ) {
+      /// @throws invalid_argument When the classification is invalid per Name::validateName
+      throw invalid_argument( "The classification [" + classification + "] is invalid" );
    }
-   classification = newClassification;
 
-   if( !validateSpecies( newSpecies ) ) {
-      /// @throws invalid_argument When the species is invalid
-      throw invalid_argument( "The species is invalid" );
+   if( !Name::validateName( newSpecies ) ) {
+      /// @throws invalid_argument When the species is invalid per Name::validateName
+      throw invalid_argument( "The species [" + species + "] is invalid" );
    }
-   species = newSpecies;
 
    Animal::validate();
 }
 
 
+/// @param newGender The Gender of the Animal
+/// @param newWeight Must be a valid weight per Weight::isWeightValid
+/// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
+/// @param newClassification Must be a valid name per Name::validateName
+/// @param newSpecies Must be a valid name per Name::validateName
 Animal::Animal( const Gender newGender
                ,const Weight::t_weight newWeight
                ,const Weight::t_weight newMaxWeight
                ,const string& newClassification
-               ,const string& newSpecies ) : Node(), weight( newWeight, newMaxWeight ) {
-
-   /// @todo Research delegating constructors and then replace the redundant
-   ///       code below.
-
-   if( !validateClassification( newClassification ) ) {
-      /// @throws invalid_argument When the classification is invalid
-      throw invalid_argument( "The classification is invalid" );
-   }
-   classification = newClassification;
-
-   if( !validateSpecies( newSpecies ) ) {
-      /// @throws invalid_argument When the species is invalid
-      throw invalid_argument( "The species is invalid" );
-   }
-   species = newSpecies;
+               ,const string& newSpecies
+               ) : Animal( newMaxWeight, newClassification, newSpecies ) {  // Delegating constructor
 
    setGender( newGender );
+   weight.setWeight( newWeight );
+
    Animal::validate();
 }
 

@@ -37,13 +37,13 @@ Name Cat::names( CAT_NAMES_FILE );
 /// a Cat properly like `Cat newCat( "Bella" );`
 ///
 /// @param newName Must be a valid name per Name::validateName
-Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME )
-                                       , name { trim_in( newName ) } {
+Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
+                                       , name { trim_in( newName ) }         // Member initializer list
+                                       , isCatFixed { false } {              // Member initializer list
    if( !Name::validateName( name ) ) {
       /// @throws invalid_argument If the Cat doesn't have a name
       throw invalid_argument( "The cat's name [" + name + "] is invalid" );
    }
-   isCatFixed = false;
 
    Cat::validate();
 }

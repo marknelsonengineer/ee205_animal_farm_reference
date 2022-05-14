@@ -37,7 +37,7 @@ public:   //////////////////////// Constants ///////////////////////////////////
 private:  ///////////////////// Member Variables //////////////////////////////
    std::string species;                     ///< The Animal's biological species
    std::string classification;              ///< The Animal's biological classification
-   Gender gender = Gender::UNKNOWN_GENDER;  ///< The Animal's gender
+   Gender gender = Gender::UNKNOWN_GENDER;  ///< The Animal's gender.  Scientifically, not all Animals have a gender, but all Animals on Animal Farm have a gender.
    Weight weight;                           ///< The weight of the Animal
 
 public:   /////////////////////// Constructors ////////////////////////////////
