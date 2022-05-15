@@ -123,7 +123,7 @@ add_subdirectory(tests)
 
 # Group related source files together... This is the module-level dependency map for Animal Farm
 set(SOURCE_FILES_GENERAL                                 src/config.h src/Utility/Random.h src/Utility/Random.cpp)
-set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Weight.h src/Utility/Weight.cpp)
+set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Weight.h src/Utility/Weight.cpp src/Utility/Trim.h src/Utility/Trim.cpp src/Utility/Name.h src/Utility/Name.cpp)
 set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal.h src/Animal/Mammal.cpp src/Utility/Color.h)
 set(SOURCE_FILES_CATS            ${SOURCE_FILES_MAMMALS} src/Animal/Cat.h src/Animal/Cat.cpp)
 set(SOURCE_FILES_ANIMAL_FACTORY  ${SOURCE_FILES_CATS}    src/Animal/AnimalFactory.h src/Animal/AnimalFactory.cpp)
@@ -134,16 +134,18 @@ set(SOURCE_FILES_DOUBLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/DoublyL
 set(SOURCE_FILES_QUEUES ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Container/Queue.h)
 set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/Tree.h src/Container/Tree.cpp)
 
-add_executable(main_DoublyLinkedList src/main_DoublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_CATS})
-add_executable(main_AnimalFarm       src/main_AnimalFarm.cpp ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
-add_executable(main_catTemplate      src/main_catTemplate.cpp ${SOURCE_FILES_CATS})
+set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h)
 
-# @todo Think about how we want to aggregate CatEmpire's source files
-add_executable(catBegat src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catBegat.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h)
-add_executable(catFamilyTree src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catFamilyTree.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h)
-add_executable(catGenerations src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catGenerations.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h src/Container/Queue.h)
-add_executable(catList src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catList.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h)
-add_executable(catTail src/config.h src/Container/Node.h src/Container/List.h src/Container/List.cpp src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp src/Utility/Gender.h src/Utility/Color.h src/Utility/Weight.h src/Utility/Weight.cpp src/Animal/Animal.h src/Animal/Animal.cpp src/Animal/Mammal.h src/Animal/Mammal.cpp src/Animal/Cat.h src/Animal/Cat.cpp src/Container/Container.cpp src/Container/Container.h src/Container/Tree.cpp src/Container/Tree.h src/catTail.cpp src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h src/Utility/Random.cpp src/Utility/Random.h)
+
+add_executable(catBegat       src/catBegat.cpp       ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catFamilyTree  src/catFamilyTree.cpp  ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catGenerations src/catGenerations.cpp ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catList        src/catList.cpp        ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catTail        src/catTail.cpp        ${SOURCE_FILES_CAT_EMPIRE})
+
+add_executable(main_AnimalFarm       src/main_AnimalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
+add_executable(main_catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
+add_executable(main_DoublyLinkedList src/main_DoublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_CATS})
+add_executable(main_test             src/main_test.cpp             ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
 
 add_executable(queueSimulator src/queueSimulator.cpp ${SOURCE_FILES_QUEUES} src/Utility/QueueSimulator.h src/Utility/QueueSimulator.cpp)
-add_executable(main_test src/main_test.cpp ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
