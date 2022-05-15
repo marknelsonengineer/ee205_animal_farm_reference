@@ -26,7 +26,7 @@ bool Container::empty() const noexcept {
 
 
 /// @return The number of Nodes in the Container
-unsigned int Container::size() const noexcept {
+Container::t_size Container::size() const noexcept {
    return count ;
 }
 

@@ -486,7 +486,7 @@ bool DoublyLinkedList::validate() const noexcept {
       assert( count == 1 );
    }
 
-   unsigned int forwardCount = 0;
+   Container::t_size forwardCount = 0;
    Node* currentNode = head;
    // Count forward through the List
    while( currentNode != nullptr ) {
@@ -500,7 +500,7 @@ bool DoublyLinkedList::validate() const noexcept {
    assert( size() == forwardCount );
 
    // Count backward through the List
-   unsigned int backwardCount = 0;
+   Container::t_size backwardCount = 0;
    currentNode = tail;
    while( currentNode != nullptr ) {
       assert( currentNode->validate() ) ;

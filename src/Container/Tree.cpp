@@ -191,7 +191,7 @@ bool Tree::validate() const noexcept {
    }
 
    #ifdef DEBUG
-   unsigned int treeCount = 0;
+   Container::t_size treeCount = 0;
    #endif
 
    assert( validate( root, treeCount ));
@@ -207,7 +207,7 @@ bool Tree::validate() const noexcept {
 
 
 /// This method assumes that it is called by `validate()`
-bool Tree::validate( Node* atNode, unsigned int& treeCount ) const noexcept {
+bool Tree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept {
    if( atNode == nullptr )
       return true;  // Looks good so far
 

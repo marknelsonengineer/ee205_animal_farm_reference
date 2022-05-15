@@ -34,6 +34,10 @@
 /// @see https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)
 ///
 class Container {
+public:  //////////////// Enumerations & Type Definitions //////////////////////
+   /// The native datatype of the Container's count/size
+   typedef unsigned int t_size;
+
 public:   ///////////////////// Constructors & Destructors /////////////////////
    explicit Container() = default;   ///< Default constructor (allowed)
    constexpr Container(const Container&) = delete;   ///< Copy constructor for a Container is not allowed
@@ -41,15 +45,15 @@ public:   ///////////////////// Constructors & Destructors /////////////////////
 
    protected:  ////////////////////// Protected Members ///////////////////////////
 
-   unsigned int count = 0 ;   ///< Maintain a count of the number of Nodes in this Container
+   t_size count = 0 ;   ///< Maintain a count of the number of Nodes in this Container
 
 
 public:  /////////////////////////// Public Methods ////////////////////////////
 
-   virtual bool         empty()    const noexcept ;  ///< `true` if the Container is empty
-   virtual unsigned int size()     const noexcept ;  ///< Return the number of Nodes in the Container
-   virtual bool         isIn( Node* aNode ) const ;  ///< `true` if `aNode` is in the Container
+   virtual bool   empty()    const noexcept ;  ///< `true` if the Container is empty
+   virtual t_size size()     const noexcept ;  ///< Return the number of Nodes in the Container
+   virtual bool   isIn( Node* aNode ) const ;  ///< `true` if `aNode` is in the Container
 
-   virtual void         dump()     const noexcept ;  ///< Output the member variables in this object
-   virtual bool         validate() const noexcept ;  ///< Ensure the object is valid
+   virtual void   dump()     const noexcept ;  ///< Output the member variables in this object
+   virtual bool   validate() const noexcept ;  ///< Ensure the object is valid
 };

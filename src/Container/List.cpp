@@ -123,7 +123,7 @@ bool List::validate() const noexcept {
    }
 
    /// Count the number of nodes and ensure `count` is correct.
-   unsigned int forwardCount = 0;
+   Container::t_size forwardCount = 0;
    Node* currentNode = head;
    // Count forward through the List
    while( currentNode != nullptr ) {
