@@ -190,7 +190,9 @@ bool Tree::validate() const noexcept {
       }
    }
 
+   #ifdef DEBUG
    unsigned int treeCount = 0;
+   #endif
 
    assert( validate( root, treeCount ));
 
