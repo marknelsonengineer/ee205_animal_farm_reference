@@ -24,7 +24,7 @@ using namespace std;
 Animal& AnimalFactory::generateAnimal() {
    uniform_int_distribution<> animalRNG( 0, 0 );
 
-   Animal* newAnimal;
+   Animal* newAnimal = nullptr;
 
    switch( animalRNG( ANIMAL_FARM_RNG ) ) {
       case 0: newAnimal = &(Cat::generateCat()) ;
