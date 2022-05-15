@@ -125,7 +125,8 @@ BOOST_AUTO_TEST_SUITE( test_Name )
    }
 
 
-   // Test all of the error messages with respect to name
+   /// Test error messages with respect to name
+   /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
    struct cout_redirect {
       cout_redirect( std::streambuf * new_buffer )
               : old( std::cout.rdbuf( new_buffer ) )
@@ -141,29 +142,32 @@ BOOST_AUTO_TEST_SUITE( test_Name )
 
    BOOST_AUTO_TEST_CASE( test_validate_empty_name ) {
       /// Testing output
-      /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
       boost::test_tools::output_test_stream output;
       {
          cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "" );
+         bool result = Name::validateNotEmpty( "" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The name should not be empty" ), string::npos );
+
+      BOOST_CHECK_EQUAL( Name::validateNotEmpty( " " ), true );
    }
 
    BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_front ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "\tSam" );
+         bool result = Name::validateTrimmed( "\tSam" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The name should be trimmed for whitespace" ), string::npos );
+
+      BOOST_CHECK_EQUAL( Name::validateTrimmed( "Sam" ), true );
    }
 
    BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_back ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "Sam\t" );
+         bool result = Name::validateTrimmed( "Sam\t" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The name should be trimmed for whitespace" ), string::npos );
@@ -172,37 +176,49 @@ BOOST_AUTO_TEST_SUITE( test_Name )
    BOOST_AUTO_TEST_CASE( test_validate_name_with_special_chars ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "Mr. Boo" );
+         bool result = Name::validateNoSpecialChars( "Mr. Boo" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The name should not have any special characters" ), string::npos );
+
+      BOOST_CHECK_EQUAL( Name::validateNoSpecialChars( "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvbwxyz0123456789-" ), true );
+
+      for( char const &c: "`~!@#$%^&*()_=+[]{}\\|;:'\",<.>/?" ) {
+         string s( 1, c );
+         BOOST_CHECK_EQUAL( Name::validateNoSpecialChars( s ), false );
+      }
    }
 
-   BOOST_AUTO_TEST_CASE( test_validate_name_starting_with_number ) {
+   BOOST_AUTO_TEST_CASE( test_validate_name_does_not_start_with_number ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "1-Boo" );
+         bool result = Name::validateStartsWithAlpha( "1-Boo" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The name should not start with a number or -" ), string::npos );
-   }
 
-   BOOST_AUTO_TEST_CASE( test_validate_name_starting_with_dash ) {
-      boost::test_tools::output_test_stream output;
-      {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "-Boo" );
-         BOOST_CHECK_EQUAL( result, false );
+      for( char const &c: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ) {
+         if( c == '\0' ) continue;  // Range based for loops return the \0
+         string s( 1, c );
+         BOOST_CHECK_EQUAL( Name::validateStartsWithAlpha( s ), true );
       }
-      BOOST_CHECK_NE( output.str().find( "The name should not start with a number or -" ), string::npos );
+
+      for( char const &c: "`~!@#$%^&* ()_=+[]{}\\|;:'\",<.>/?1234567890-" ) {
+         string s( 1, c );
+         s += "Sam";
+         BOOST_CHECK_EQUAL( Name::validateStartsWithAlpha( s ), false );
+      }
    }
 
    BOOST_AUTO_TEST_CASE( test_validate_name_with_interior_whitespace ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
-         bool result = Name::validateName( "Boo--Boo" );
+         bool result = Name::validateInteriorWhitespaceTrimmed( "Boo--Boo" );
          BOOST_CHECK_EQUAL( result, false );
       }
       BOOST_CHECK_NE( output.str().find( "The interior whitespace of the name should be trimmed" ), string::npos );
+
+      BOOST_CHECK_EQUAL( Name::validateInteriorWhitespaceTrimmed( "   Sam Sam Sam\tSam\nSam\rSam\fSam\vSam Sam   " ), true );
    }
 
    // General test (without checking error messages) of names
