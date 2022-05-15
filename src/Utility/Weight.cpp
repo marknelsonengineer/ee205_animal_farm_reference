@@ -31,54 +31,76 @@ const string Weight::KILO_LABEL  = "Kilo" ;  ///< @see https://en.wikipedia.org/
 const string Weight::SLUG_LABEL  = "Slug" ;  ///< @see https://en.wikipedia.org/wiki/Slug_(unit)
 
 
-Weight::Weight() noexcept {
+// Constructor 1 -- No parameters
+Weight::Weight() noexcept :
+         bIsKnown { false }              // Member initializer list
+        ,bHasMax { false }
+        ,unitOfWeight { POUND }
+        ,weight { UNKNOWN_WEIGHT }
+        ,maxWeight { UNKNOWN_WEIGHT } {
    assert( validate() );
 }
 
 
-
-Weight::Weight( const Weight::t_weight newWeight ) {
-   setWeight( newWeight );
+// Constructor 2
+Weight::Weight( const Weight::t_weight newWeight ) :
+         bHasMax { false }              // Member initializer list
+        ,unitOfWeight { POUND }
+        ,maxWeight { UNKNOWN_WEIGHT } {
+   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
 
-/// Once UnitOfWeight is set, it can't be changed
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept {
-   unitOfWeight = newUnitOfWeight ;
+// Constructor 3
+/// Once #UnitOfWeight is set, it can't be changed
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept :
+         bIsKnown { false }              // Member initializer list
+        ,bHasMax { false }
+        ,unitOfWeight { newUnitOfWeight }
+        ,weight { UNKNOWN_WEIGHT }
+        ,maxWeight { UNKNOWN_WEIGHT } {
    assert( validate() );
 }
 
 
-/// Once UnitOfWeight is set, it can't be changed
-Weight::Weight( const Weight::t_weight newWeight, const Weight::UnitOfWeight newUnitOfWeight ) : Weight( newUnitOfWeight ) {
-   setWeight( newWeight, newUnitOfWeight );
+// Constructor 4
+/// Once #UnitOfWeight is set, it can't be changed
+Weight::Weight( const Weight::t_weight     newWeight
+               ,const Weight::UnitOfWeight newUnitOfWeight ) : Weight( newUnitOfWeight ) {
+   setWeight( newWeight, newUnitOfWeight );  // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
 
-/// Once maxWeight is set, it can't be changed
-Weight::Weight( const Weight::t_weight newWeight, const Weight::t_weight newMaxWeight ) {
-   setMaxWeight( newMaxWeight );
-   setWeight( newWeight );
-   assert( validate() );
-}
-
-
-/// Once UnitOfWeight is set, it can't be changed.
-/// Once maxWeight is set, it can't be changed.
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight, const Weight::t_weight newMaxWeight ) : Weight( newUnitOfWeight ) {
-   setMaxWeight( newMaxWeight );
-   assert( validate() );
-}
-
-
-/// Once UnitOfWeight is set, it can't be changed.
-/// Once maxWeight is set, it can't be changed.
+// Constructor 5
+/// Once #maxWeight is set, it can't be changed
 Weight::Weight( const Weight::t_weight newWeight
-        ,const Weight::UnitOfWeight newUnitOfWeight
-        ,const Weight::t_weight newMaxWeight ) : Weight( newUnitOfWeight, newMaxWeight ) {
-   setWeight( newWeight );
+               ,const Weight::t_weight newMaxWeight ) :
+         unitOfWeight { POUND } { // Member initializer list
+   setMaxWeight( newMaxWeight );  // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
+   assert( validate() );
+}
+
+
+// Constructor 6
+/// Once #UnitOfWeight is set, it can't be changed.
+/// Once #maxWeight is set, it can't be changed.
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight
+               ,const Weight::t_weight     newMaxWeight ) : Weight( newUnitOfWeight ) {
+   setMaxWeight( newMaxWeight );  // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+   assert( validate() );
+}
+
+
+// Constructor 7
+/// Once #UnitOfWeight is set, it can't be changed.
+/// Once #maxWeight is set, it can't be changed.
+Weight::Weight( const Weight::t_weight     newWeight
+               ,const Weight::UnitOfWeight newUnitOfWeight
+               ,const Weight::t_weight     newMaxWeight ) : Weight( newUnitOfWeight, newMaxWeight ) {
+   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
@@ -97,14 +119,11 @@ bool Weight::hasMaxWeight() const noexcept {
 }
 
 
-/// If the weight is not known, return UNKNOWN_WEIGHT.
+/// If #weight is not known, return #UNKNOWN_WEIGHT.
 Weight::t_weight Weight::getWeight() const noexcept {
    assert( validate() );
 
-   if( bIsKnown )
-      return weight ;
-   else
-      return UNKNOWN_WEIGHT ;
+   return( bIsKnown ) ? weight : UNKNOWN_WEIGHT ;
 }
 
 
@@ -115,14 +134,11 @@ Weight::t_weight Weight::getWeight( const Weight::UnitOfWeight weightUnits ) con
 }
 
 
-/// If the maximum weight is not known, return UNKNOWN_WEIGHT.
+/// If #maxWeight is not known, return #UNKNOWN_WEIGHT.
 Weight::t_weight Weight::getMaxWeight() const noexcept {
    assert( validate() );
 
-   if( bHasMax )
-      return maxWeight ;
-   else
-      return UNKNOWN_WEIGHT ;
+   return ( bHasMax ) ? maxWeight : UNKNOWN_WEIGHT ;
 }
 
 
@@ -137,27 +153,28 @@ void Weight::setWeight( const Weight::t_weight newWeight ) {
    assert( validate() );
 
    if( !isWeightValid( newWeight ) ) {
-      /// @throws out_of_range When the weight is <=0 or > `maxWeight` (if `maxWeight` is set)
+      /// @throws out_of_range When `newWeight` is `<=0` or `>` #maxWeight (if it's set)
       throw out_of_range( "Weight is out of range" ) ;
    }
 
    weight = newWeight ;
-   bIsKnown = true ;
+   bIsKnown = true ;    /// Set #bIsKnown to `true`
    assert( validate() );
 }
 
 
 void Weight::setWeight( const Weight::t_weight newWeight, const Weight::UnitOfWeight weightUnits ) {
    setWeight( convertWeight( newWeight, weightUnits, unitOfWeight ));
+   /// Set #bIsKnown to `true`
 }
 
 
 void Weight::setMaxWeight( const Weight::t_weight newMaxWeight ) {
-   /// The maximum weight should not be set when we start this routine
+   /// #bHasMax should not be set when setMaxWeight() is called
    assert( !bHasMax );
 
    if( !isWeightValid( newMaxWeight) ) {
-      /// @throws out_of_range When the maximum weight is <= 0
+      /// @throws out_of_range When #maxWeight is `<= 0`
       throw out_of_range( "The maximum weight is out of range" );
    }
 
@@ -176,7 +193,7 @@ bool Weight::isWeightValid( const Weight::t_weight checkWeight ) const noexcept 
       return false;
    }
 
-   /// If `bHasMax`, then `checkWeight` must be <= `maxWeight`
+   /// If #bHasMax, then `checkWeight` must be `<=` #maxWeight
    if( bHasMax ) {
       if( checkWeight > maxWeight ) {
          cout << PROGRAM_NAME ": Weight [" << checkWeight << "] is > the maximum weight [" << maxWeight << "]" << endl ;
@@ -189,6 +206,7 @@ bool Weight::isWeightValid( const Weight::t_weight checkWeight ) const noexcept 
 
 
 bool Weight::validate() const noexcept {
+   /// If #bHasMax then ensure #maxWeight is valid
    if( bHasMax ) {
       if( !isWeightValid(( maxWeight))) {
          cout << PROGRAM_NAME ": Max weight is <= 0" << endl;
@@ -198,6 +216,7 @@ bool Weight::validate() const noexcept {
       assert( maxWeight > 0 );
    }
 
+   /// If #bIsKnown then ensure #weight is `>0`
    if( bIsKnown ) {
       if( !isWeightValid( weight ) ) {
          return false;
@@ -205,6 +224,7 @@ bool Weight::validate() const noexcept {
 
       assert( weight > 0);
 
+      /// If #bIsKnown and #bHasMax, then ensure #weight `<=` #maxWeight
       if( bHasMax ) {
          assert( weight <= maxWeight );
       }
@@ -269,27 +289,28 @@ Weight::t_weight Weight::convertWeight( const Weight::t_weight fromWeight
 }
 
 
+/// Output the contents of this object
+///
 /// #### Sample Output
-/// @code
-/// Weight noWeight;
-///     ==============================================
-///     Weight  this                0x7ffd00c73360
-///     Weight  isKnown             false
-///     Weight  weight              0
-///     Weight  unitOfWeight        Pound
-///     Weight  hasMax              false
-///     Weight  maxWeight           0
-///
-/// Weight myWeight( 3.14, Weight::KILO, 20 );
-///     ==============================================
-///     Weight  this                0x7ffcc65aeb00
-///     Weight  isKnown             true
-///     Weight  weight              3.14
-///     Weight  unitOfWeight        Kilo
-///     Weight  hasMax              true
-///     Weight  maxWeight           20
-/// @endcode
-///
+/**@verbatim
+Weight noWeight;
+    ==============================================
+    Weight  this                0x7ffd00c73360
+    Weight  isKnown             false
+    Weight  weight              0
+    Weight  unitOfWeight        Pound
+    Weight  hasMax              false
+    Weight  maxWeight           0
+
+Weight myWeight( 3.14, Weight::KILO, 20 );
+    ==============================================
+    Weight  this                0x7ffcc65aeb00
+    Weight  isKnown             true
+    Weight  weight              3.14
+    Weight  unitOfWeight        Kilo
+    Weight  hasMax              true
+    Weight  maxWeight           20
+@endverbatim */
 void Weight::dump() const noexcept {
    FORMAT_LINE_FOR_DUMP( "Weight", "this" ) << this << endl ;
    FORMAT_LINE_FOR_DUMP( "Weight", "isKnown" ) << bIsKnown << endl ;
@@ -303,9 +324,9 @@ void Weight::dump() const noexcept {
 
 /// #### Output rules
 ///
-///   - If the weight is unknown, print `Unknown`
-///   - If the weight has a maximum weight, print the weight followed by ` out of ` and the maximum weight
-///   - Print the unit.  If the last number that's printed is > 1, then make the unit plural by adding an `s`
+///   - If #Weight::weight is unknown, print `Unknown`
+///   - If Weight has a #Weight::maxWeight, print the #Weight::weight followed by ` out of ` and then #Weight::maxWeight
+///   - Print the #Weight::UnitOfWeight.  If the last number that's printed is > 1, then make the unit plural by adding an `s`
 ///
 /// #### Sample Output
 ///
@@ -362,8 +383,9 @@ std::ostream& operator<<( ostream& lhs_stream, const Weight::UnitOfWeight rhs_Un
 
 
 bool Weight::operator==( const Weight& rhs_Weight ) const {
-   /// Remember to convert the two weight's units into a common unit!
-   /// Treat unknown weights as 0 (so we can sort them without dealing with exceptions)
+   /// Convert the two Weight's units into a common unit before comparing them
+   ///
+   /// Treat unknown weights as 0 (so we can sort them without throwing an exception)
    Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
    Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
 
@@ -372,8 +394,9 @@ bool Weight::operator==( const Weight& rhs_Weight ) const {
 
 
 bool Weight::operator<( const Weight& rhs_Weight ) const {
-   /// Remember to convert the two weight's units into a common unit!
-   /// Treat unknown weights as 0 (so we can sort them without dealing with exceptions)
+   /// Convert the two Weight's units into a common unit before comparing them
+   ///
+   /// Treat unknown weights as 0 (so we can sort them without throwing an exception)
    Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
    Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
 
@@ -384,11 +407,24 @@ bool Weight::operator<( const Weight& rhs_Weight ) const {
 /// It's assumed that rhs_addToWeight is in the same units as Weight
 Weight& Weight::operator+=( const Weight::t_weight rhs_addToWeight ) {
    if( !bIsKnown ) {
-      /// @throws out_of_range When a mathematical operation is attempted when the weight is unknown
+      /// @throws out_of_range When a mathematical operation is attempted when the Weight is unknown
       throw out_of_range( "Weight is unknown" ) ;
    }
 
    setWeight( weight + rhs_addToWeight );
+
+   return *this;
+}
+
+
+/// It's assumed that rhs_subtractFromWeight is in the same units as Weight
+Weight& Weight::operator-=( const Weight::t_weight rhs_subtractFromWeight ) {
+   if( !bIsKnown ) {
+      /// @throws out_of_range When a mathematical operation is attempted when the Weight is unknown
+      throw out_of_range( "Weight is unknown" ) ;
+   }
+
+   setWeight( weight - rhs_subtractFromWeight );
 
    return *this;
 }
