@@ -248,7 +248,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
 //          BOOST_CHECK_EQUAL( catMap.size(), i );  /// @todo Not sure why this isn't working
             Cat newCat = Cat::generateCat();
-            BOOST_CHECK_NO_THROW( catMap.insert( { newCat.getName(), newCat } ));
+            BOOST_CHECK_NO_THROW( catMap.insert( { string{ newCat.getName() }, newCat } ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catMap.erase( catMap.begin() ));
