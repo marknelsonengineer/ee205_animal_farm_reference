@@ -28,18 +28,18 @@ using namespace std;
 Name::serial_t Name::maxSerial = numeric_limits<Name::serial_t>::max();
 
 
-Name::Name( string newFilename )
-   : nameType { FROM_FILE }           // Member initializer list
-   , fileName { move(newFilename) }   // Member initializer list w/ move semantics
+Name::Name( string_view newFilename )
+   : nameType { FROM_FILE }    // Member initializer list
+   , fileName { newFilename }  // Member initializer list
    {
    reset();
 }
 
 
-Name::Name( string newSerialPrefix, string newSerialSuffix )
-   : nameType { FROM_SERIAL }               // Member initializer list
-   , serialPrefix { move(newSerialPrefix) } // Member initializer list w/ move semantics
-   , serialSuffix { move(newSerialSuffix) } // Member initializer list w/ move semantics
+Name::Name( string_view newSerialPrefix, string_view newSerialSuffix )
+   : nameType { FROM_SERIAL }         // Member initializer list
+   , serialPrefix { newSerialPrefix } // Member initializer list
+   , serialSuffix { newSerialSuffix } // Member initializer list
    {
    reset();
 }
@@ -135,7 +135,7 @@ Name::serial_t Name::remainingNames() noexcept {
 ///
 /// @param newName The name to check
 /// @return `true` if the name is valid.  `false` if it's not.
-bool Name::validateName( const std::string& newName ) {
+bool Name::validateName( const std::string_view newName ) {
 
    if( !validateNotEmpty( newName ))
       return false;
@@ -159,7 +159,7 @@ bool Name::validateName( const std::string& newName ) {
 
 
 /// @hidecallergraph @hidecallgraph
-bool Name::validateNotEmpty( const string& newName ) {
+bool Name::validateNotEmpty( const string_view newName ) {
    if( newName.empty() ) {
       ///   If not valid, print `The name should not be empty` and return `false`
       cout << PROGRAM_NAME << ": The name should not be empty" << endl;
@@ -171,7 +171,7 @@ bool Name::validateNotEmpty( const string& newName ) {
 
 
 /// @hidecallergraph @hidecallgraph
-bool Name::validateTrimmed( const string& newName ) {
+bool Name::validateTrimmed( const string_view newName ) {
    if( newName.empty() )
       return true;  /// Empty strings are considered trimmed
 
@@ -186,7 +186,7 @@ bool Name::validateTrimmed( const string& newName ) {
 
 
 /// @hidecallergraph @hidecallgraph
-bool Name::validateStartsWithAlpha( const string& newName ) {
+bool Name::validateStartsWithAlpha( const string_view newName ) {
    if( !isalpha( *newName.begin() ) ) {
       ///   If not valid, print `The name should not start with a number or -` and return `false`
       cout << PROGRAM_NAME << ": The name should not start with a number or -" << endl;
@@ -198,7 +198,7 @@ bool Name::validateStartsWithAlpha( const string& newName ) {
 
 
 /// @hidecallergraph @hidecallgraph
-bool Name::validateNoSpecialChars( const string& newName ) {
+bool Name::validateNoSpecialChars( const string_view newName ) {
    for( auto i = newName.begin() ; i != newName.end() ; i++ ) {
       if( isalnum( *i ) || *i == ' ' || *i == '-' )
          continue;
@@ -214,8 +214,8 @@ bool Name::validateNoSpecialChars( const string& newName ) {
 
 
 /// @hidecallergraph @hidecallgraph
-bool Name::validateInteriorWhitespaceTrimmed( const string& newName ) {
-   string trialName = trim( newName );  // Trim whitespace
+bool Name::validateInteriorWhitespaceTrimmed( const string_view newName ) {
+   string trialName { trim( newName ) };  // Trim whitespace
 
    for( auto i = trialName.begin() ; i+1 != trialName.end() ; i++ ) {
       bool isCurrentWhitespace = (*i == ' ' || *i == '-' ) ? true : false;

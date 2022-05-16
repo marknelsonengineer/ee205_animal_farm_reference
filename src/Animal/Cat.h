@@ -22,8 +22,8 @@
 ///
 class Cat : public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const std::string      SPECIES_NAME;  ///< The scientific name for Cats
-   static const Weight::t_weight MAX_WEIGHT;    ///< The maximum weight for Cats
+   static const constexpr std::string_view SPECIES_NAME { "Felis Catus" };  ///< The scientific name for Cats
+   static const constexpr Weight::t_weight MAX_WEIGHT { 40 };  ///< The maximum weight for Cats
 
 public:  ////////////////////////// Static Members /////////////////////////////
    static Name names;                ///< A list of potential Cat names
@@ -35,10 +35,10 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:  //////////////////////////// Constructors /////////////////////////////
 
    /// Create a Cat with the minimum fields necessary to have a valid Cat
-   explicit Cat( const std::string& newName ) ;
+   explicit Cat( const std::string_view newName ) ;
 
    /// Create a Cat, populating *all* of the member variables
-   Cat( const std::string&     newName
+   Cat( const std::string_view newName
        ,const Color            newColor
        ,const bool             newIsFixed
        ,const Gender           newGender
@@ -49,8 +49,8 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   std::string getName() const noexcept ;        ///< Get the Cat's name
-   void setName( const std::string& newName );   ///< Set the Cat's name.
+   std::string_view getName() const noexcept ;       ///< Get the Cat's name
+   void setName( const std::string_view newName );   ///< Set the Cat's name.
 
    bool isFixed() const noexcept ;  ///< Return `true` if the Cat is fixed/neutered
    void fixCat() noexcept ;         ///< Spay or neuter the Cat

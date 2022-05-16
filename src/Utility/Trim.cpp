@@ -29,7 +29,7 @@ using namespace std;
 /// Get the first non-whitespace character starting from the left.
 ///
 /// This function is static in order to be private to Trim.cpp
-static size_t get_left_start_char( const string inString ) noexcept {
+static size_t get_left_start_char( const string_view inString ) noexcept {
    size_t i = 0;
    while( i < inString.size() && isspace( inString[i] ) ) {
       i++;
@@ -42,7 +42,7 @@ static size_t get_left_start_char( const string inString ) noexcept {
 /// Get the last non-whitespace character in the string
 ///
 /// This function is static in order to be private to Trim.cpp
-static size_t get_right_start_char( const string inString ) noexcept {
+static size_t get_right_start_char( const string_view inString ) noexcept {
    size_t i = inString.size();
    while( i > 0 ) {
       if( isspace( inString[i-1] ))
@@ -56,14 +56,14 @@ static size_t get_right_start_char( const string inString ) noexcept {
 
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
 /// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
-string trim_left( const string inString ) noexcept {
+string_view trim_left( const string_view inString ) noexcept {
    return inString.substr( get_left_start_char( inString ), inString.size() );
 }
 
 
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
 /// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
-std::string trim_right( const std::string inString ) noexcept {
+std::string_view trim_right( const std::string_view inString ) noexcept {
 
    return( inString.substr( 0, get_right_start_char( inString ) ) );
 }
@@ -72,7 +72,7 @@ std::string trim_right( const std::string inString ) noexcept {
 ///
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
 /// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
-std::string trim( const std::string inString ) noexcept {
+std::string_view trim( const std::string_view inString ) noexcept {
    size_t left_start_char = get_left_start_char( inString );
    size_t right_start_char = get_right_start_char( inString );
 
@@ -86,9 +86,9 @@ std::string trim( const std::string inString ) noexcept {
 ///    - Trim trailing whitespace
 ///    - Replace consecutive whitespace characters inside the string with
 ///      a single `" "`
-std::string trim_in( const std::string inString ) noexcept {
+std::string trim_in( const std::string_view inString ) noexcept {
    if( inString.empty() )
-      return inString;
+      return ""s;
 
    char* buffer = (char*) malloc( inString.size()+1 );
 
@@ -132,5 +132,6 @@ std::string trim_in( const std::string inString ) noexcept {
 
    // Don't forget to null-terminate
    buffer[bufferIndex++] = '\0';
+
    return std::string{ buffer };
 }

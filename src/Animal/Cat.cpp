@@ -22,11 +22,8 @@
 using namespace std ;
 
 /// Data file that holds a list of cat names
-#define CAT_NAMES_FILE "./data/catNames.txt"
+#define CAT_NAMES_FILE "./data/catNames.txt"sv
 
-
-const std::string Cat::SPECIES_NAME = "Felis Catus";
-const Weight::t_weight Cat::MAX_WEIGHT = 40;
 
 /// This is static, so the list will be available for any and all Cats to use (but nobody else).
 Name Cat::names( CAT_NAMES_FILE );
@@ -37,9 +34,10 @@ Name Cat::names( CAT_NAMES_FILE );
 /// a Cat properly like `Cat newCat( "Bella" );`
 ///
 /// @param newName Must be a valid name per Name::validateName
-Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
-                                       , name { trim_in( newName ) }         // Member initializer list
-                                       , isCatFixed { false } {              // Member initializer list
+Cat::Cat( const std::string_view newName )
+        : Mammal( MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
+        , name { trim_in( newName ) }         // Member initializer list
+        , isCatFixed { false } {              // Member initializer list
    if( !Name::validateName( name ) ) {
       /// @throws invalid_argument If the Cat doesn't have a name
       throw invalid_argument( "The cat's name [" + name + "] is invalid" );
@@ -49,14 +47,14 @@ Cat::Cat( const std::string& newName ) : Mammal( MAX_WEIGHT, SPECIES_NAME )  // 
 }
 
 
-Cat::Cat( const std::string&     newName
+Cat::Cat( const std::string_view newName
          ,const Color            newColor
          ,const bool             newIsFixed
          ,const Gender           newGender
-         ,const Weight::t_weight newWeight
-) : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
-  , name { trim_in( newName ) }  // Member initializer list
-  , isCatFixed { newIsFixed } {  // Member initializer list
+         ,const Weight::t_weight newWeight )
+        : Mammal( newColor, newGender, newWeight, MAX_WEIGHT, SPECIES_NAME )  // Delegating constructor
+        , name { trim_in( newName ) }  // Member initializer list
+        , isCatFixed { newIsFixed } {  // Member initializer list
 
    if( !Name::validateName( name ) ) {
       /// @throws invalid_argument If the Cat doesn't have a name
@@ -67,21 +65,21 @@ Cat::Cat( const std::string&     newName
 }
 
 
-string Cat::getName() const noexcept {
+string_view Cat::getName() const noexcept {
    return name;
 }
 
 
 /// @param newName The Cat's new name.  It must be valid per Name::validateName.
-void Cat::setName( const string& newName ) {
-   string trialName = trim_in( newName );
+void Cat::setName( const string_view newName ) {
+   string trialName { trim_in( newName ) };
 
    if( !Name::validateName( trialName ) ) {
       /// @throws invalid_argument If the Cat's name is invalid
       throw invalid_argument( "The cat's name [" + trialName + "] is invalid" );
    }
 
-   name = trialName ;
+   name = move( trialName );
 }
 
 

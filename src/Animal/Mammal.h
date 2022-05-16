@@ -22,7 +22,7 @@
 /// Comparing two Mammals is done at the Animal level using Classification.
 class Mammal : public Animal {
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const std::string MAMMAL_NAME;  ///< The scientific name for Mammals
+   static const constexpr std::string_view MAMMAL_NAME { "Mammilian" };  ///< The scientific name for Mammals
 
 protected:  ///////////////////////// Member Variables /////////////////////////
    Color color = Color::UNKNOWN_COLOR;  ///< The primary color of the Mammal
@@ -30,7 +30,7 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:   /////////////////////// Constructors ////////////////////////////////
    /// Create a Mammal with the *minimum* required fields
    Mammal( const Weight::t_weight newMaxWeight
-          ,const std::string&     newSpecies
+          ,const std::string_view newSpecies
    );
 
    /// Create a Mammal, populating *all* of the member variables
@@ -38,7 +38,7 @@ public:   /////////////////////// Constructors ////////////////////////////////
           ,const Gender           newGender
           ,const Weight::t_weight newWeight
           ,const Weight::t_weight newMaxWeight
-          ,const std::string&     newSpecies
+          ,const std::string_view newSpecies
    );
 
 public:  ////////////////////////// Getters & Setters //////////////////////////

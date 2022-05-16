@@ -20,14 +20,11 @@
 using namespace std;
 
 
-const std::string Mammal::MAMMAL_NAME = "Mammilian";
-
-
 /// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
 /// @param newSpecies Must be a valid name per Name::validateName
 Mammal::Mammal( const Weight::t_weight newMaxWeight
-               ,const std::string&     newSpecies
-              ) : Animal( newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
+              , const std::string_view newSpecies )
+              : Animal( newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
    {}  // Nothing else to do
 
 
@@ -37,12 +34,12 @@ Mammal::Mammal( const Weight::t_weight newMaxWeight
 /// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
 /// @param newSpecies Must be a valid name per Name::validateName
 Mammal::Mammal( const Color            newColor
-               ,const Gender           newGender
-               ,const Weight::t_weight newWeight
-               ,const Weight::t_weight newMaxWeight
-               ,const std::string&     newSpecies
-              ) : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
-                , color { newColor }  // Member initializer list
+              , const Gender           newGender
+              , const Weight::t_weight newWeight
+              , const Weight::t_weight newMaxWeight
+              , const std::string_view newSpecies )
+              : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
+              , color { newColor }  // Member initializer list
    {}  // Nothing else to do
 
 

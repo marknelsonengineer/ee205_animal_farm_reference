@@ -24,20 +24,17 @@
 using namespace std;
 
 
-const std::string Animal::KINGDOM_NAME = "Animalia";
-
-
 /// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
 /// @param newClassification Must be a valid name per Name::validateName
 /// @param newSpecies Must be a valid name per Name::validateName
 Animal::Animal( const Weight::t_weight newMaxWeight
-               ,const std::string& newClassification
-               ,const std::string& newSpecies
-               ) : Node()                                           // Delegating constructor
-                 , species { trim_in( newSpecies ) }                // Member initializer list
-                 , classification { trim_in( newClassification ) }  // Member initializer list
-                 , weight( Weight::POUND, newMaxWeight )            // Delegating constructor
-                  {
+              , const std::string_view newClassification
+              , const std::string_view newSpecies )
+              : Node()                                           // Delegating constructor
+              , species { trim_in( newSpecies ) }                // Member initializer list
+              , classification { trim_in( newClassification ) }  // Member initializer list
+              , weight( Weight::POUND, newMaxWeight ) {          // Delegating constructor
+
    if( !Name::validateName( newClassification ) ) {
       /// @throws invalid_argument When the classification is invalid per Name::validateName
       throw invalid_argument( "The classification [" + classification + "] is invalid" );
@@ -58,11 +55,11 @@ Animal::Animal( const Weight::t_weight newMaxWeight
 /// @param newClassification Must be a valid name per Name::validateName
 /// @param newSpecies Must be a valid name per Name::validateName
 Animal::Animal( const Gender newGender
-               ,const Weight::t_weight newWeight
-               ,const Weight::t_weight newMaxWeight
-               ,const string& newClassification
-               ,const string& newSpecies
-               ) : Animal( newMaxWeight, newClassification, newSpecies ) {  // Delegating constructor
+              , const Weight::t_weight newWeight
+              , const Weight::t_weight newMaxWeight
+              , const string_view newClassification
+              , const string_view newSpecies )
+              : Animal( newMaxWeight, newClassification, newSpecies ) {  // Delegating constructor
 
    setGender( newGender );
    weight.setWeight( newWeight );
@@ -74,18 +71,18 @@ Animal::Animal( const Gender newGender
 /// This can be `static` but for symmetry with the other `get` methods, I'm
 /// leaving it in the class
 ///
-/// @return KINGDOM_NAME
-std::string Animal::getKingdom() const noexcept {
+/// @return #KINGDOM_NAME
+std::string_view Animal::getKingdom() const noexcept {
    return KINGDOM_NAME;
 }
 
 
-std::string Animal::getClassification() const noexcept {
+std::string_view Animal::getClassification() const noexcept {
    return classification;
 }
 
 
-std::string Animal::getSpecies() const noexcept {
+std::string_view Animal::getSpecies() const noexcept {
    return species;
 }
 

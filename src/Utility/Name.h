@@ -48,8 +48,8 @@ protected:  ///////////////////////// Member Variables /////////////////////////
    serial_t serial = 0;   ///< If #FROM_SERIAL, then this is the serial number
 
 public:  //////////////////////////// Constructors /////////////////////////////
-   Name( std::string newFilename );  ///< Construct a #FROM_FILE Name class
-   Name( std::string newSerialPrefix, std::string newSerialSuffix );  ///< Construct a #FROM_SERIAL Name class
+   Name( std::string_view newFilename );  ///< Construct a #FROM_FILE Name class
+   Name( std::string_view newSerialPrefix, std::string_view newSerialSuffix );  ///< Construct a #FROM_SERIAL Name class
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    std::string getNextName() noexcept;  ///< Get the next name
@@ -58,11 +58,11 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    serial_t remainingNames() noexcept;  ///< Return the number of unique names left
 
 public:  //////////////////////// Static Public Methods ////////////////////////
-   static bool validateName( const std::string& newName ) ;  ///< Check if `newName` is valid
-   static bool validateNotEmpty( const std::string& newName ) ;  ///< Return `true` if `newName` is not empty
-   static bool validateTrimmed( const std::string& newName ) ;  ///< Return `true` if `newName` is left and right trimmed for whitespace
-   static bool validateStartsWithAlpha( const std::string& newName ) ;  ///< Return `true` if `newName` starts with an alphabetic character (`A` - `Z` or `a` - `z`)
-   static bool validateNoSpecialChars( const std::string& newName ) ;  ///< Return `true` if `newName` only contains `A` - `Z`, `a` - `z`, `0`-`9`, space and `-`
-   static bool validateInteriorWhitespaceTrimmed( const std::string& newName ) ;  ///< Return `true` if `newName`'s interior whitespace is trimmed
+   static bool validateName( const std::string_view newName ) ;  ///< Check if `newName` is valid
+   static bool validateNotEmpty( const std::string_view newName ) ;  ///< Return `true` if `newName` is not empty
+   static bool validateTrimmed( const std::string_view newName ) ;  ///< Return `true` if `newName` is left and right trimmed for whitespace
+   static bool validateStartsWithAlpha( const std::string_view newName ) ;  ///< Return `true` if `newName` starts with an alphabetic character (`A` - `Z` or `a` - `z`)
+   static bool validateNoSpecialChars( const std::string_view newName ) ;  ///< Return `true` if `newName` only contains `A` - `Z`, `a` - `z`, `0`-`9`, space and `-`
+   static bool validateInteriorWhitespaceTrimmed( const std::string_view newName ) ;  ///< Return `true` if `newName`'s interior whitespace is trimmed
 
 };
