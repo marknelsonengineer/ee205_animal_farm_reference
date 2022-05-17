@@ -73,6 +73,7 @@ public:   ////////////////////////// Abstract Methods //////////////////////////
    virtual std::string_view getName() const noexcept = 0;  ///< Get the Cat's name
 
 public:   /////////////////////////// Public Methods ///////////////////////////
+   std::string info() const noexcept;         ///< Return one-line of information about this Animal
    void dump()     const noexcept override;   ///< Output the contents of this object (and its parents).
    bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
 

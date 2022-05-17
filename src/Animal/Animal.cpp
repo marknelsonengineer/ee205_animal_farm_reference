@@ -15,6 +15,7 @@
 #include <iostream>   // For cout
 #include <stdexcept>  // For out_of_range
 #include <iomanip>    // For setw() & setfill()
+#include <boost/core/typeinfo.hpp>  // for typeinfo()
 
 #include "../config.h"
 #include "Animal.h"
@@ -125,13 +126,41 @@ void Animal::setGender( const Gender newGender ) {
 }
 
 
+/// Ideally, this will print out the sort keys a given Animal on the Farm
+///
+/// #### Sample Output
+/**@verbatim
+The Cat (Felis Catus) named Rose at 0x676b20 says Meow
+@endverbatim */
+std::string Animal::info() const noexcept {
+   // Put the address of this object into a string
+   std::stringstream stringStream;
+   stringStream << this;
+   std::string theAddressOfThis = stringStream.str();
+
+   string infoString {};
+
+   // Print the class
+   infoString += "The ";
+   infoString += boost::core::demangled_name( BOOST_CORE_TYPEID( *this ));
+   infoString += " (" + species + ")";
+   infoString += " named ";
+   infoString += getName();
+   infoString += " at ";
+   infoString += theAddressOfThis;
+   infoString += " says ";
+   infoString += speak();
+   return infoString;
+}
+
+
 /// Output the contents of this object (and its parents).
 ///
 /// #### Sample Output
 /**@verbatim
 ======================================================
 Animal              kingdom             Animalia
-Animal              classification      Mammilian
+Animal              classification      Mammalia
 Animal              species             Felis Catus
 Animal              gender              Unknown gender
 Animal              weight              Unknown out of 40 Pounds

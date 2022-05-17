@@ -22,7 +22,7 @@
 /// Comparing two Mammals is done at the Animal level using Classification.
 class Mammal : public Animal {
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const constexpr std::string_view MAMMAL_NAME { "Mammilian" };  ///< The scientific name for Mammals
+   static const constexpr std::string_view MAMMAL_NAME { "Mammalia" };  ///< The scientific name for Mammals
 
 protected:  ///////////////////////// Member Variables /////////////////////////
    Color color = Color::UNKNOWN_COLOR;  ///< The primary color of the Mammal

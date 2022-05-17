@@ -15,6 +15,7 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/tools/output_test_stream.hpp>
 
+#include <string>
 #include <stdexcept>
 
 #include "../src/Animal/Animal.h"
@@ -60,6 +61,13 @@ BOOST_AUTO_TEST_CASE( test_Animal_Min_Constructor ) {
    #endif
    BOOST_CHECK_EQUAL( anAnimal.speak(), "Test speak()" );
    BOOST_CHECK_EQUAL( anAnimal.getName(), "Test getName()" );
+   string infoString;
+   BOOST_CHECK_NO_THROW( infoString = anAnimal.info() );
+   cout << infoString << endl;
+   BOOST_CHECK_NE( infoString.find( "AnimalTest "), string::npos );
+   BOOST_CHECK_NE( infoString.find( "Boo Boo"), string::npos );
+   BOOST_CHECK_NE( infoString.find( "Test getName() "), string::npos );
+   BOOST_CHECK_NE( infoString.find( "Test speak()"), string::npos );
    BOOST_CHECK_EQUAL( anAnimal.validate(), true );
 }
 
