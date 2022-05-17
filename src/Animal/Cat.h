@@ -49,14 +49,14 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   virtual std::string_view getName() const noexcept override;  ///< Get the Cat's name
+   std::string_view getName() const noexcept override;  ///< Get the Cat's name
    void setName( const std::string_view newName );              ///< Set the Cat's name.
 
    bool isFixed() const noexcept ;  ///< Return `true` if the Cat is fixed/neutered
    void fixCat() noexcept ;         ///< Spay or neuter the Cat
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   virtual std::string_view speak() const noexcept override;  ///< Say `Meow`.
+   std::string_view speak() const noexcept override;  ///< Say `Meow`.
    void dump() const noexcept override;      ///< Output the contents of this object (and its parents)
    bool validate() const noexcept override;  ///< Check to see if the Cat object is valid
 

@@ -30,11 +30,11 @@ public:
    AnimalTest() : Animal( 10, "Boo", "Boo Boo" ) {};
    AnimalTest( Gender newGender,  Weight::t_weight newWeight, Weight::t_weight newMaxWeight, const std::string& newClassification, const std::string& newSpecies ) : Animal( newGender, newWeight, newMaxWeight, newClassification, newSpecies ) {};
 
-   virtual std::string_view speak() const noexcept override {
+   std::string_view speak() const noexcept override {
       return "Test speak()"sv;
    }
 
-   virtual std::string_view getName() const noexcept override {
+   std::string_view getName() const noexcept override {
       return "Test getName()"sv;
    }
 };
