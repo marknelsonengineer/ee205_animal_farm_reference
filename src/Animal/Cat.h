@@ -49,16 +49,16 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Cat();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   std::string_view getName() const noexcept ;       ///< Get the Cat's name
-   void setName( const std::string_view newName );   ///< Set the Cat's name.
+   virtual std::string_view getName() const noexcept override;  ///< Get the Cat's name
+   void setName( const std::string_view newName );              ///< Set the Cat's name.
 
    bool isFixed() const noexcept ;  ///< Return `true` if the Cat is fixed/neutered
    void fixCat() noexcept ;         ///< Spay or neuter the Cat
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   std::string speak() const noexcept override;  ///< Say `Meow`.
-   void dump() const noexcept override;          ///< Output the contents of this object (and its parents)
-   bool validate() const noexcept override;      ///< Check to see if the Cat object is valid
+   virtual std::string_view speak() const noexcept override;  ///< Say `Meow`.
+   void dump() const noexcept override;      ///< Output the contents of this object (and its parents)
+   bool validate() const noexcept override;  ///< Check to see if the Cat object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default

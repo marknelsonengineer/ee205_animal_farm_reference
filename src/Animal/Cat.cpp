@@ -124,8 +124,8 @@ bool Cat::validate() const noexcept {
 }
 
 
-std::string Cat::speak() const noexcept {
-   return "Meow" ;
+std::string_view Cat::speak() const noexcept {
+   return "Meow"sv ;
 }
 
 

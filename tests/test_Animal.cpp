@@ -30,8 +30,12 @@ public:
    AnimalTest() : Animal( 10, "Boo", "Boo Boo" ) {};
    AnimalTest( Gender newGender,  Weight::t_weight newWeight, Weight::t_weight newMaxWeight, const std::string& newClassification, const std::string& newSpecies ) : Animal( newGender, newWeight, newMaxWeight, newClassification, newSpecies ) {};
 
-   std::string speak() const noexcept override {
-      return "Test speak()";
+   virtual std::string_view speak() const noexcept override {
+      return "Test speak()"sv;
+   }
+
+   virtual std::string_view getName() const noexcept override {
+      return "Test getName()"sv;
    }
 };
 
@@ -55,6 +59,7 @@ BOOST_AUTO_TEST_CASE( test_Animal_Min_Constructor ) {
       // anAnimal.dump();
    #endif
    BOOST_CHECK_EQUAL( anAnimal.speak(), "Test speak()" );
+   BOOST_CHECK_EQUAL( anAnimal.getName(), "Test getName()" );
    BOOST_CHECK_EQUAL( anAnimal.validate(), true );
 }
 

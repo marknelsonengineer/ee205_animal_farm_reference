@@ -69,7 +69,8 @@ protected:  ////////////////////// Protected Methods ///////////////////////////
    void setGender( const Gender newGender );   ///< Set the Animal's Gender
 
 public:   ////////////////////////// Abstract Methods //////////////////////////
-   virtual std::string speak() const noexcept = 0;  ///< Ask the Animal to say something.  This method is virtual and abstract.
+   virtual std::string_view speak() const noexcept = 0;    ///< Ask the Animal to say something.  This method is virtual and abstract.
+   virtual std::string_view getName() const noexcept = 0;  ///< Get the Cat's name
 
 public:   /////////////////////////// Public Methods ///////////////////////////
    void dump()     const noexcept override;   ///< Output the contents of this object (and its parents).
