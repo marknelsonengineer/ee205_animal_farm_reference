@@ -2,17 +2,19 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Print a pedigree of cats
+/// Print a reverse alphabetized list of cats in a Binary Search Tree
 ///
-/// @file catBegat.cpp
+/// @file main_catTail.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   30_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+
 #include <iostream>
 
+#include "config.h"
 #include "Animal/CatEmpire.h"
 
 using namespace std;
@@ -20,13 +22,12 @@ using namespace std;
 /// Number of cats to process
 const int NUMBER_OF_CATS = 20;
 
-/// The entry point for catBegat
-///
-/// Print a Family Tree of 20 Cats
+/// The entry point for catList
 int main() {
-   cout << "Welcome to catBegat of Cat Empire!" << endl;
+   cout << "Welcome to catTail of Cat Empire!" << endl;
 
    CatEmpire catEmpire;
+   CatEmpire catTail;
 
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
       Cat& newCat = Cat::generateCat();
@@ -34,7 +35,7 @@ int main() {
       catEmpire.insert( &newCat );
    }
 
-   cout << "Print a pedigree of " << NUMBER_OF_CATS << " cats" << endl;
-
-   catEmpire.catBegat();
+   cout << "Print a reverse alphabetized list of " << NUMBER_OF_CATS << " cats in a binary search tree" << endl;
+   catEmpire.catTail( &catTail );
+   catTail.catFamilyTree();
 }

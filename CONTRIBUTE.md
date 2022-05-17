@@ -5,6 +5,7 @@ Contribute to Animal Farm
 - `using namespace std` in `.cpp` files is OK
 - `using namespace std` in `.h` files is **NOT** OK
 - Animal Farm uses `cout`, not `printf`
+- Sources that contain a `main()` are named `main_someProgram.cpp`
 - Messages and exceptions should be pre-pended with `PROGRAM_NAME`
 - Hierarchy of messages & error handling
   - DEBUG - Print message only when DEBUG is enabled

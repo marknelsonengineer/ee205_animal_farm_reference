@@ -4,7 +4,7 @@
 //
 /// Print a family tree of cats by generation
 ///
-/// @file catGenerations.cpp
+/// @file main_catGenerations.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>

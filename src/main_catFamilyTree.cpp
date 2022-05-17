@@ -2,15 +2,14 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Print an alphabetized list of cats
+/// Print a family tree of cats
 ///
-/// @file catList.cpp
+/// @file main_catFamilyTree.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
 /// @date   30_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
-
 
 #include <iostream>
 
@@ -22,9 +21,9 @@ using namespace std;
 /// Number of cats to process
 const int NUMBER_OF_CATS = 20;
 
-/// The entry point for catList
+/// The entry point for catFamilyTree
 int main() {
-   cout << "Welcome to catList of Cat Empire!" << endl;
+   cout << "Welcome to catFamilyTree of Cat Empire!" << endl;
 
    CatEmpire catEmpire;
 
@@ -34,7 +33,7 @@ int main() {
       catEmpire.insert( &newCat );
    }
 
-   cout << "Print an alphabetized list of " << NUMBER_OF_CATS << " cats" << endl;
+   cout << "Print a family tree of " << NUMBER_OF_CATS << " cats" << endl;
 
-   catEmpire.catList();
+   catEmpire.catFamilyTree();
 }

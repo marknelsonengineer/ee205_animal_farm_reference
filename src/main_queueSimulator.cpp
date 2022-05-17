@@ -4,7 +4,7 @@
 //
 /// Interactively run a simulation of a Queue
 ///
-/// @file queueSimulator.cpp
+/// @file main_queueSimulator.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>

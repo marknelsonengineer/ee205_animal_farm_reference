@@ -4,7 +4,7 @@
 //
 /// A scratch program for testing things
 ///
-/// @file main_test.cpp
+/// @file main_scratch.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>

@@ -136,16 +136,15 @@ set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/Tree.h src/Container/
 
 set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h)
 
+add_executable(catBegat       src/main_catBegat.cpp ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catFamilyTree  src/main_catFamilyTree.cpp ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catGenerations src/main_catGenerations.cpp ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catList        src/main_catList.cpp ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(catTail        src/main_catTail.cpp ${SOURCE_FILES_CAT_EMPIRE})
 
-add_executable(catBegat       src/catBegat.cpp       ${SOURCE_FILES_CAT_EMPIRE})
-add_executable(catFamilyTree  src/catFamilyTree.cpp  ${SOURCE_FILES_CAT_EMPIRE})
-add_executable(catGenerations src/catGenerations.cpp ${SOURCE_FILES_CAT_EMPIRE})
-add_executable(catList        src/catList.cpp        ${SOURCE_FILES_CAT_EMPIRE})
-add_executable(catTail        src/catTail.cpp        ${SOURCE_FILES_CAT_EMPIRE})
+add_executable(animalFarm       src/main_animalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
+add_executable(catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
+add_executable(doublyLinkedList src/main_doublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_CATS})
+add_executable(scratch          src/main_scratch.cpp          ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
 
-add_executable(main_AnimalFarm       src/main_AnimalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
-add_executable(main_catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
-add_executable(main_DoublyLinkedList src/main_DoublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_CATS})
-add_executable(main_test             src/main_test.cpp             ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
-
-add_executable(queueSimulator src/queueSimulator.cpp ${SOURCE_FILES_QUEUES} src/Utility/QueueSimulator.h src/Utility/QueueSimulator.cpp)
+add_executable(queueSimulator src/main_queueSimulator.cpp ${SOURCE_FILES_QUEUES} src/Utility/QueueSimulator.h src/Utility/QueueSimulator.cpp)
