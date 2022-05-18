@@ -97,6 +97,7 @@ if (DOXYGEN_FOUND)
            ${CMAKE_SOURCE_DIR}/DOXYGEN.md
            ${CMAKE_SOURCE_DIR}/RELEASE.md
            ${CMAKE_SOURCE_DIR}/tests/README.md
+           ${CMAKE_SOURCE_DIR}/Statistics.md
            ALL
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
            )
@@ -105,6 +106,12 @@ if (DOXYGEN_FOUND)
            PRE_BUILD
            COMMAND rsync --recursive --mkpath --checksum --delete ${CMAKE_SOURCE_DIR}/images ${DOXYGEN_OUTPUT_DIRECTORY}/html
            COMMENT "Updating images directory"
+           )
+
+   add_custom_command(TARGET doxygen
+           PRE_BUILD
+           COMMAND ../bin/stats.sh > ../Statistics.md
+           COMMENT "Updating statistics"
            )
 
    add_custom_command(TARGET doxygen

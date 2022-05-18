@@ -3,6 +3,7 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
+      <file path="$PROJECT_DIR$/bin" />
       <file path="$PROJECT_DIR$/data" />
       <file path="$PROJECT_DIR$/html" />
       <file path="$PROJECT_DIR$/images" />
