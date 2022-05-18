@@ -26,32 +26,32 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_Gender )
 
-struct cout_redirect {
-        cout_redirect( std::streambuf * new_buffer )
-        : old( std::cout.rdbuf( new_buffer ) )
-        { }
+   struct cout_redirect {
+           cout_redirect( std::streambuf * new_buffer )
+           : old( std::cout.rdbuf( new_buffer ) )
+           { }
 
-        ~cout_redirect( ) {
-           std::cout.rdbuf( old );
-        }
+           ~cout_redirect( ) {
+              std::cout.rdbuf( old );
+           }
 
-        private:
-        std::streambuf * old;
-};
+           private:
+           std::streambuf * old;
+   };
 
 
-BOOST_AUTO_TEST_CASE( test_Gender ) {
-   Gender g1 = Gender::UNKNOWN_GENDER;
-   BOOST_CHECK_EQUAL( g1, Gender::UNKNOWN_GENDER );
+   BOOST_AUTO_TEST_CASE( test_Gender ) {
+      Gender g1 = Gender::UNKNOWN_GENDER;
+      BOOST_CHECK_EQUAL( g1, Gender::UNKNOWN_GENDER );
 
-   /// Testing output
-   /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
-   boost::test_tools::output_test_stream output;
-   {
-      cout_redirect guard( output.rdbuf() );
-      cout << g1;
+      /// Testing output
+      /// @see https://stackoverflow.com/questions/5405016/can-i-check-my-programs-output-with-boost-test
+      boost::test_tools::output_test_stream output;
+      {
+         cout_redirect guard( output.rdbuf() );
+         cout << g1;
+      }
+      BOOST_CHECK( output.is_equal("Unknown gender")  ) ;
    }
-   BOOST_CHECK( output.is_equal("Unknown gender")  ) ;
-}
 
 BOOST_AUTO_TEST_SUITE_END()
