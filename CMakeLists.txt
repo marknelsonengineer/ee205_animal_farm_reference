@@ -58,6 +58,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_HTML_TIMESTAMP YES)
    set(DOXYGEN_PAPER_TYPE letter)
    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
+   set(DOXYGEN_STRIP_FROM_PATH "/home/mark/src/src-clion")   # Each student will need to update this
 
    # C-Style Documentation
    set(DOXYGEN_SORT_MEMBERS_CTORS_1ST YES)   # Put constructors first
