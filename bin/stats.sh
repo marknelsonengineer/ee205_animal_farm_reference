@@ -22,10 +22,10 @@ function processSourceFiles {
    for i in "${arr[@]}"; do
       # processFile "$i"
       ((file_count+=1))
-      ((raw_lines+=`wc -l "${1}" | awk '{print $1}'`))
-      ((raw_bytes+=`wc -c "${1}" | awk '{print $1}'`))
-      ((working_lines+=`gcc -fpreprocessed -dD -E "$1" 2> /dev/null | sed 1,2d | grep "\S" | wc -l | awk '{print $1}'`))
-      ((working_bytes+=`gcc -fpreprocessed -dD -E "$1" 2> /dev/null | sed 1,2d | grep "\S" | wc -c | awk '{print $1}'`))
+      ((raw_lines+=`wc -l "$i" | awk '{print $1}'`))
+      ((raw_bytes+=`wc -c "$i" | awk '{print $1}'`))
+      ((working_lines+=`gcc -fpreprocessed -dD -E "$i" 2> /dev/null | sed 1,2d | grep "\S" | wc -l | awk '{print $1}'`))
+      ((working_bytes+=`gcc -fpreprocessed -dD -E "$i" 2> /dev/null | sed 1,2d | grep "\S" | wc -c | awk '{print $1}'`))
    done
 
    printf "|%s|%'d|%'d|%'d|%'d|%'d|\n" "$rowHeader" "$file_count" $raw_lines $raw_bytes $working_lines $working_bytes
