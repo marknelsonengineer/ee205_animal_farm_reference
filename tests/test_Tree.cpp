@@ -21,7 +21,7 @@
 
 
 #include "../src/Container/Tree.h"
-#include "../src/Animal/Cat.h"
+#include "../src/Animal/Mammal/Cat/Cat.h"
 
 using namespace std;
 

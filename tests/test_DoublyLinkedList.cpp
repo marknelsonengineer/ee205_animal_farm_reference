@@ -19,7 +19,7 @@
 
 #include "../src/Container/DoublyLinkedList.h"
 #include "../src/Animal/Animal.h"
-#include "../src/Animal/Cat.h"
+#include "../src/Animal/Mammal/Cat/Cat.h"
 
 
 using namespace std;

@@ -14,7 +14,7 @@
 #include <iostream>
 
 #include "config.h"
-#include "Animal/CatEmpire.h"
+#include "Animal/Mammal/Cat/CatEmpire.h"
 
 using namespace std;
 

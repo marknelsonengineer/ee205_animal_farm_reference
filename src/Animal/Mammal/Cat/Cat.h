@@ -14,9 +14,9 @@
 
 #include <string>
 
-#include "../config.h"
-#include "Mammal.h"
-#include "../Utility/Name.h"
+#include "../../../config.h"
+#include "../Mammal.h"
+#include "../../../Utility/Name.h"
 
 /// Felis Catus
 ///

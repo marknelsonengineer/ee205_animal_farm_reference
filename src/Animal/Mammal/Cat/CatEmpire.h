@@ -12,8 +12,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "../Animal/Cat.h"
-#include "../Container/Tree.h"
+#include "Cat.h"
+#include "../../../Container/Tree.h"
 
 /// A Binary Search Tree that's customized to store Cats
 class CatEmpire : public Tree {

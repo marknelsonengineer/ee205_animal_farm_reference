@@ -26,7 +26,7 @@
 #include <stack>
 #include <queue>
 
-#include "../src/Animal/Cat.h"
+#include "../src/Animal/Mammal/Cat/Cat.h"
 #include "../src/Container/DoublyLinkedList.h"
 
 using namespace std;

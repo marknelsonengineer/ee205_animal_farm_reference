@@ -18,7 +18,7 @@
 //#include <set>     // For the set template
 
 #include "config.h"
-#include "Animal/Cat.h"
+#include "Animal/Mammal/Cat/Cat.h"
 
 using namespace std ;
 

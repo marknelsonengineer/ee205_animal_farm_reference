@@ -17,7 +17,7 @@
 #include <random>
 
 #include "Cat.h"
-#include "../Utility/Trim.h"
+#include "../../../Utility/Trim.h"
 
 using namespace std ;
 

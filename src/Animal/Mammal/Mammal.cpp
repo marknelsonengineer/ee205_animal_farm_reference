@@ -14,7 +14,7 @@
 #include <string>
 #include <cassert>
 
-#include "../config.h"
+#include "../../config.h"
 #include "Mammal.h"
 
 using namespace std;

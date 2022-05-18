@@ -15,7 +15,7 @@
 
 #include "../config.h"
 #include "AnimalFactory.h"
-#include "Cat.h"
+#include "Mammal/Cat/Cat.h"
 
 using namespace std;
 

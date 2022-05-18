@@ -131,8 +131,8 @@ add_subdirectory(tests)
 # Group related source files together... This is the module-level dependency map for Animal Farm
 set(SOURCE_FILES_GENERAL                                 src/config.h src/Utility/Random.h src/Utility/Random.cpp)
 set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Weight.h src/Utility/Weight.cpp src/Utility/Trim.h src/Utility/Trim.cpp src/Utility/Name.h src/Utility/Name.cpp)
-set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal.h src/Animal/Mammal.cpp src/Utility/Color.h)
-set(SOURCE_FILES_CATS            ${SOURCE_FILES_MAMMALS} src/Animal/Cat.h src/Animal/Cat.cpp)
+set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal/Mammal.h src/Animal/Mammal/Mammal.cpp src/Utility/Color.h)
+set(SOURCE_FILES_CATS            ${SOURCE_FILES_MAMMALS} src/Animal/Mammal/Cat/Cat.h src/Animal/Mammal/Cat/Cat.cpp)
 set(SOURCE_FILES_ANIMAL_FACTORY  ${SOURCE_FILES_CATS}    src/Animal/AnimalFactory.h src/Animal/AnimalFactory.cpp)
 
 set(SOURCE_FILES_LISTS ${SOURCE_FILES_GENERAL} src/Container/Node.h src/Container/Container.h src/Container/Container.cpp src/Container/List.h src/Container/List.cpp)
@@ -141,7 +141,7 @@ set(SOURCE_FILES_DOUBLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/DoublyL
 set(SOURCE_FILES_QUEUES ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Container/Queue.h)
 set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/Tree.h src/Container/Tree.cpp)
 
-set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/CatEmpire.cpp src/Animal/CatEmpire.h)
+set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatEmpire.cpp src/Animal/Mammal/Cat/CatEmpire.h)
 
 add_executable(catBegat       src/main_catBegat.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catFamilyTree  src/main_catFamilyTree.cpp ${SOURCE_FILES_CAT_EMPIRE})

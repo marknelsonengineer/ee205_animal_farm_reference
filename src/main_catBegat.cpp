@@ -13,7 +13,7 @@
 
 #include <iostream>
 
-#include "Animal/CatEmpire.h"
+#include "Animal/Mammal/Cat/CatEmpire.h"
 
 using namespace std;
 
