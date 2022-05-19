@@ -4,7 +4,7 @@
 //
 /// A scratch program for testing things
 ///
-/// Practice tagging for:  Animal Farm 2
+/// Practice tagging for:  Animal Farm 2 - Modified
 ///
 /// @file main_scratch.cpp
 /// @version 1.0
