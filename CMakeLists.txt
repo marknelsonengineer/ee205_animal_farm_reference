@@ -59,6 +59,7 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_PAPER_TYPE letter)
    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
    set(DOXYGEN_STRIP_FROM_PATH "/home/mark/src/src-clion")   # Each student will need to update this
+   set(DOXYGEN_USE_MDFILE_AS_MAINPAGE "README.md")
 
    # C-Style Documentation
    set(DOXYGEN_SORT_MEMBERS_CTORS_1ST YES)   # Put constructors first
@@ -97,7 +98,7 @@ if (DOXYGEN_FOUND)
            ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
            ${CMAKE_SOURCE_DIR}/DOXYGEN.md
            ${CMAKE_SOURCE_DIR}/RELEASE.md
-           ${CMAKE_SOURCE_DIR}/tests/README.md
+           ${CMAKE_SOURCE_DIR}/tests/INSTALLING_BOOST_TESTS.md
            ${CMAKE_SOURCE_DIR}/Statistics.md
            ALL
            COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
@@ -134,7 +135,8 @@ set(SOURCE_FILES_GENERAL                                 src/config.h src/Utilit
 set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Weight.h src/Utility/Weight.cpp src/Utility/Trim.h src/Utility/Trim.cpp src/Utility/Name.h src/Utility/Name.cpp)
 set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal/Mammal.h src/Animal/Mammal/Mammal.cpp src/Utility/Color.h)
 set(SOURCE_FILES_CATS            ${SOURCE_FILES_MAMMALS} src/Animal/Mammal/Cat/Cat.h src/Animal/Mammal/Cat/Cat.cpp)
-set(SOURCE_FILES_ANIMAL_FACTORY  ${SOURCE_FILES_CATS}    src/Animal/AnimalFactory.h src/Animal/AnimalFactory.cpp)
+set(SOURCE_FILES_DOGS            ${SOURCE_FILES_MAMMALS} src/Animal/Mammal/Dog/Dog.cpp src/Animal/Mammal/Dog/Dog.h)
+set(SOURCE_FILES_ANIMAL_FACTORY  ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOGS} src/Animal/AnimalFactory.h src/Animal/AnimalFactory.cpp)
 
 set(SOURCE_FILES_LISTS ${SOURCE_FILES_GENERAL} src/Container/Node.h src/Container/Container.h src/Container/Container.cpp src/Container/List.h src/Container/List.cpp)
 set(SOURCE_FILES_SINGLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp)
@@ -150,7 +152,7 @@ add_executable(catGenerations src/main_catGenerations.cpp ${SOURCE_FILES_CAT_EMP
 add_executable(catList        src/main_catList.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catTail        src/main_catTail.cpp ${SOURCE_FILES_CAT_EMPIRE})
 
-add_executable(animalFarm       src/main_animalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS} src/Animal/Mammal/Dog/Dog.cpp src/Animal/Mammal/Dog/Dog.h)
+add_executable(animalFarm       src/main_animalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
 add_executable(catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
 add_executable(doublyLinkedList src/main_doublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_CATS})
 add_executable(scratch          src/main_scratch.cpp          ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS})
