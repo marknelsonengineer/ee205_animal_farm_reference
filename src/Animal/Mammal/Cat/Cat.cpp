@@ -65,6 +65,10 @@ Cat::Cat( const std::string_view newName
 }
 
 
+/// This is required to safely use `delete` on a Cat object
+Cat::~Cat() = default;
+
+
 string_view Cat::getName() const noexcept {
    return name;
 }
@@ -94,6 +98,11 @@ void Cat::fixCat() noexcept {
 }
 
 
+std::string_view Cat::speak() const noexcept {
+   return "Meow"sv ;
+}
+
+
 /// Output the contents of this object (and its parents).
 ///
 /// #### Sample Output
@@ -112,7 +121,7 @@ void Cat::dump() const noexcept {
 }
 
 
-/// Check the Cat object.
+/// Check the Cat object
 bool Cat::validate() const noexcept {
    Mammal::validate() ;
 
@@ -124,13 +133,8 @@ bool Cat::validate() const noexcept {
 }
 
 
-std::string_view Cat::speak() const noexcept {
-   return "Meow"sv ;
-}
-
-
 /// @internal This function will use `new` to create a Cat on the heap
-///           Be sure to `delete` the cat when it's no longer needed
+///           Be sure to `delete` the Cat when it's no longer needed
 Cat& Cat::generateCat() {
    uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
    bernoulli_distribution      isFixedRNG(0.85); // 85% of cats are neutered
@@ -145,10 +149,6 @@ Cat& Cat::generateCat() {
 
    return *aCat;
 }
-
-
-/// This is required to safely use `delete` on a Cat object
-Cat::~Cat() = default;
 
 
 /// @anchor Cat_comparison

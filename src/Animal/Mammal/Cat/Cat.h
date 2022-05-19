@@ -22,8 +22,8 @@
 ///
 class Cat : public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const constexpr std::string_view SPECIES_NAME { "Felis Catus" };  ///< The scientific name for Cats
-   static const constexpr Weight::t_weight MAX_WEIGHT { 40 };  ///< The maximum weight for Cats
+   static const constexpr std::string_view SPECIES_NAME { "Felis Catus" };  ///< The scientific name for a Cat
+   static const constexpr Weight::t_weight MAX_WEIGHT { 40 };  ///< The maximum weight a Cat
 
 public:  ////////////////////////// Static Members /////////////////////////////
    static Name names;                ///< A list of potential Cat names
@@ -50,7 +50,7 @@ public:  //////////////////////////// Constructors /////////////////////////////
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
    std::string_view getName() const noexcept override;  ///< Get the Cat's name
-   void setName( const std::string_view newName );              ///< Set the Cat's name.
+   void setName( const std::string_view newName );      ///< Set the Cat's name.
 
    bool isFixed() const noexcept ;  ///< Return `true` if the Cat is fixed/neutered
    void fixCat() noexcept ;         ///< Spay or neuter the Cat
