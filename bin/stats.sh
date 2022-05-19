@@ -77,3 +77,6 @@ print_number_of_unit_tests
 print_number_of_individual_tests
 # print_number_of_commits  # Broken because remote directory is not a git repo
 print_date
+
+# Use the following to get the tag/release history
+# $ git tag --sort=v:refname --format="%(tag)|%(contents)|%(creator)"
