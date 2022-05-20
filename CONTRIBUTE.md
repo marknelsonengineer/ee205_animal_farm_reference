@@ -31,3 +31,14 @@ Contribute to Animal Farm
   - Private methods
   - Abstract methods
   - Overrides
+
+![GitHub repo size](https://img.shields.io/github/repo-size/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub issues](https://img.shields.io/github/issues/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/marknelsonengineer/ee205_animal_farm?style=social)
+

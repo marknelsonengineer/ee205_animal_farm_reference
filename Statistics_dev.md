@@ -22,4 +22,13 @@ Dot image with the lines of code vs. tag/dates
 
 Automatically generated on Tue May 17 11:09:43 PM HST 2022
 
+![GitHub repo size](https://img.shields.io/github/repo-size/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub last commit](https://img.shields.io/github/last-commit/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub issues](https://img.shields.io/github/issues/marknelsonengineer/ee205_animal_farm?style=social)
+
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/marknelsonengineer/ee205_animal_farm?style=social)
 
