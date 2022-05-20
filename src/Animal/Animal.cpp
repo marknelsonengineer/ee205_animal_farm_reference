@@ -34,8 +34,8 @@ Animal::Animal( const Weight::t_weight newMaxWeight
               : Node()                                           // Delegating constructor
               , species { trim_in( newSpecies ) }                // Member initializer list
               , classification { trim_in( newClassification ) }  // Member initializer list
-              , weight( Weight::POUND, newMaxWeight ) {          // Delegating constructor
-
+              , weight( Weight::POUND, newMaxWeight )            // Delegating constructor
+{
    if( !Name::validateName( newClassification ) ) {
       /// @throws invalid_argument When the classification is invalid per Name::validateName
       throw invalid_argument( "The classification [" + classification + "] is invalid" );

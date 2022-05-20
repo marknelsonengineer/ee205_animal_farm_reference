@@ -65,7 +65,7 @@ Cat::Cat( const std::string_view newName
 }
 
 
-/// This is required to safely use `delete` on a Cat object
+/// Required to safely use `delete` on a Cat object
 Cat::~Cat() = default;
 
 
@@ -123,7 +123,7 @@ void Cat::dump() const noexcept {
 
 /// Check the Cat object
 bool Cat::validate() const noexcept {
-   Mammal::validate() ;
+   assert( Mammal::validate() );
 
    assert( Name::validateName( getName() ) );
 
@@ -136,10 +136,10 @@ bool Cat::validate() const noexcept {
 /// @internal This function will use `new` to create a Cat on the heap
 ///           Be sure to `delete` the Cat when it's no longer needed
 Cat& Cat::generateCat() {
-   uniform_real_distribution<> weightRNG (0.1 ,Cat::MAX_WEIGHT);
-   bernoulli_distribution      isFixedRNG(0.85); // 85% of cats are neutered
-   uniform_int_distribution<>  colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
-   uniform_int_distribution<>  genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
+   uniform_real_distribution<> weightRNG ( 0.1, Cat::MAX_WEIGHT );
+   bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered
+   uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );
+   uniform_int_distribution<>  genderRNG( (int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE );
 
    Cat* aCat = new Cat( names.getNextName(), (Color) colorRNG( ANIMAL_FARM_RNG ), isFixedRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (float) weightRNG( ANIMAL_FARM_RNG ) );
 
