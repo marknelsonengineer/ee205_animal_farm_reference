@@ -16,6 +16,7 @@
 #pragma once
 
 #include <iostream>   // For cout
+#include <boost/core/typeinfo.hpp>  // for typeinfo()
 
 #include "../config.h"
 
@@ -118,14 +119,16 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    /// #### Sample Output
    /**@verbatim
    ======================================================
-   Node                this                0x7ffd0befed60
-   Node                next                0x7ffd0befee10
-   Node                prev                0x7ffd0befef70
+   Object              class               Finch
+   Object              this                0x7ffc8f7605d0
+   Node                next                0x7ffd0be7ee10
+   Node                prev                0x7ffd0be8ef70
    Node                left                0
    Node                right               0
    @endverbatim */
    virtual void dump() const {
-      FORMAT_LINE_FOR_DUMP( "Node", "this" )  << this  << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Object", "class" )  << boost::core::demangled_name( BOOST_CORE_TYPEID( *this )) << std::endl ;
+      FORMAT_LINE_FOR_DUMP( "Object", "this" )  << this  << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "next" )  << next  << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "prev" )  << prev  << std::endl ;
       FORMAT_LINE_FOR_DUMP( "Node", "left" )  << left  << std::endl ;
