@@ -34,7 +34,7 @@ The source code documentation (hosted by UH) is [here](https://www2.hawaii.edu/~
 | Animal Farm 11                 | Refactor Node & Linked List                                                                             |
 | Cat Navy                       | Cats & Nodes & Linked Lists                                                                             |
 | Animal Farm 12                 | Mammal & Animal classes                                                                                 |
-| Animal Farm 13                 | Dogs & Birds & Ravens & Nenes                                                                           |
+| Animal Farm 13                 | Dogs & Birds & Finches & Chickens                                                                       |
 | Animal Farm 14                 | Animal Generators                                                                                       |
 | Animal Farm 15                 | Doubly Linked Lists                                                                                     |
 | Cat Wrangler 1                 | Doubly Linked List collections w/ Cats                                                                  |
