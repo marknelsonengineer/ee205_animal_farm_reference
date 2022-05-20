@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       BOOST_CHECK_EQUAL( aCat.isFixed(), true );
       BOOST_CHECK_EQUAL( aCat.getColor(), Color::GINGER );
       BOOST_CHECK_EQUAL( aCat.getSpecies(), Cat::SPECIES_NAME );
-      BOOST_CHECK_EQUAL( aCat.getClassification(), Mammal::MAMMAL_NAME );
+      BOOST_CHECK_EQUAL( aCat.getClassification(), Mammal::CLASSIFICATION_NAME );
       BOOST_CHECK_EQUAL( aCat.getKingdom(), Animal::KINGDOM_NAME );
       BOOST_CHECK_EQUAL( aCat.getGender(), Gender::MALE );
       BOOST_CHECK_EQUAL( aCat.getWeight(), 18 );
