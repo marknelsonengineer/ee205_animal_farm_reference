@@ -15,26 +15,21 @@
 
 #include <iostream>
 
-#include "Animal/Mammal/Cat/Cat.h"
-#include "Container/DoublyLinkedList.h"
+#include "Animal/Bird/Finch.h"
 
 using namespace std;
 
 /// Entry point for the program
 int main() {
-   DoublyLinkedList aa;
+//   Weight myWeight { Weight::UNKNOWN_WEIGHT, Weight::UNKNOWN_WEIGHT };
+//   myWeight.dump();
 
-   Cat a( "Alice" );
-   Cat b( "Boo" );
-   Cat c( "Chili" );
-
-   aa.push_back( &a );
-   aa.push_back( &b );
-   aa.push_back( &c );
-
-   cout << "b:  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv" << endl;
-   b.dump();
-   cout << "b: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-
+   // Finch myFinch("Boo", Gender::UNKNOWN_GENDER, 0.00001 );
+   for( int i = 0 ; i < 10 ; i++ ) {
+      Finch myFinch { Bird::ConstructorType::RANDOM };
+      // cout << myFinch.speak() << endl;
+      cout << myFinch.info() << endl;
+      myFinch.dump();
+   }
    return 0;
 }
