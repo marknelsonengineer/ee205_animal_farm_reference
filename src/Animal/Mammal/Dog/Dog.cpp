@@ -43,7 +43,7 @@ Dog::Dog( const std::string_view newName
 }
 
 
-/// This is required to safely use `delete` on a Dog object
+/// Required to safely use `delete` on a Dog object
 Dog::~Dog() = default;
 
 
@@ -69,13 +69,13 @@ void Dog::dump() const noexcept {
 
    Mammal::dump() ;
 
-   FORMAT_LINE_FOR_DUMP( "Dog", "name" )    << getName() << endl ;
+   FORMAT_LINE_FOR_DUMP( "Dog", "name" ) << getName() << endl ;
 }
 
 
 /// Check the Dog object
 bool Dog::validate() const noexcept {
-   Mammal::validate() ;
+   assert( Mammal::validate() );
 
    assert( Name::validateName( getName() ) );
 
@@ -88,11 +88,11 @@ bool Dog::validate() const noexcept {
 /// @internal This function will use `new` to create a Dog on the heap
 ///           Be sure to `delete` the Dog when it's no longer needed
 Dog& Dog::generateDog() {
-   uniform_real_distribution<> weightRNG (0.1 ,Dog::MAX_WEIGHT);
-   uniform_int_distribution<>  colorRNG((int) Color::UNKNOWN_COLOR, (int) Color::CALICO);
-   uniform_int_distribution<>  genderRNG((int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE);
+   uniform_real_distribution<> weightRNG( 0.1, Dog::MAX_WEIGHT );
+   uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );
+   uniform_int_distribution<>  genderRNG( (int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE );
 
-   Dog* aDog = new Dog( names.getNextName(), (Color) colorRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (float) weightRNG( ANIMAL_FARM_RNG ) );
+   Dog* aDog = new Dog( names.getNextName(), (Color) colorRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) );
 
    // aDog->dump();
 
