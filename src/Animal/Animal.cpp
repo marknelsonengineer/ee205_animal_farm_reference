@@ -60,11 +60,12 @@ Animal::Animal( const Gender newGender
               , const Weight::t_weight newMaxWeight
               , const string_view newClassification
               , const string_view newSpecies )
-              : Animal( newMaxWeight, newClassification, newSpecies ) {  // Delegating constructor
-
-   setGender( newGender );
-   weight.setWeight( newWeight );
-
+        : Node()                                           // Delegating constructor
+        , species { trim_in( newSpecies ) }                // Member initializer list
+        , classification { trim_in( newClassification ) }
+        , gender { newGender }
+        , weight( newWeight, Weight::POUND, newMaxWeight )
+{
    Animal::validate();
 }
 
