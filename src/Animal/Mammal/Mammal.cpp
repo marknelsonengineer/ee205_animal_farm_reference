@@ -24,7 +24,7 @@ using namespace std;
 /// @param newSpecies Must be a valid name per Name::validateName
 Mammal::Mammal( const Weight::t_weight newMaxWeight
               , const std::string_view newSpecies )
-              : Animal( newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
+              : Animal( newMaxWeight, CLASSIFICATION_NAME, newSpecies )  // Delegating constructor
    {}  // Nothing else to do
 
 
@@ -38,7 +38,7 @@ Mammal::Mammal( const Color            newColor
               , const Weight::t_weight newWeight
               , const Weight::t_weight newMaxWeight
               , const std::string_view newSpecies )
-              : Animal( newGender, newWeight, newMaxWeight, MAMMAL_NAME, newSpecies )  // Delegating constructor
+              : Animal( newGender, newWeight, newMaxWeight, CLASSIFICATION_NAME, newSpecies )  // Delegating constructor
               , color { newColor }  // Member initializer list
    {}  // Nothing else to do
 
