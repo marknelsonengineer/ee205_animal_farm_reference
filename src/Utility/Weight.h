@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Every Animal has a Weight.
+/// Every Animal has a Weight in the world.
 ///
 /// @file Weight.h
 /// @version 1.0
@@ -15,13 +15,15 @@
 #include <string>
 #include <ostream>
 
-/// Every Animal has a Weight.
+using namespace std::string_view_literals;
+
+/// Every Animal has a Weight in the world.
 ///
 /// C++ maintains Weight as a `float` (#t_weight), however, weights in the physical world
 /// have certain constraints (i.e. you can't have a negative #weight -- and/or you
 /// *may* have a maximum weight.)
 ///
-/// By default, the weight is #UNKNOWN_WEIGHT.  Once it's known, it can never
+/// By default, the weight is #UNKNOWN_WEIGHT (-1).  Once it's known, it can never
 /// be un-known.
 ///
 /// If the Weight has a maximum weight, then #weight must be `<=` it.  Also,
@@ -52,23 +54,25 @@ public:  //////////////// Enumerations & Type Definitions //////////////////////
    typedef float t_weight;
 
 public:   //////////////////////// Constants ///////////////////////////////////
-   static const t_weight UNKNOWN_WEIGHT ;    ///< When #weight is not known, return this.
+   static const constexpr t_weight UNKNOWN_WEIGHT = -1;    ///< When #weight is not known, return this.  To set an #UNKNOWN_WEIGHT, send this.
 
-   static const t_weight KILOS_IN_A_POUND ;  ///< The number of kilos in a #POUND
-   static const t_weight SLUGS_IN_A_POUND ;  ///< The number of slugs in a #POUND
+   static const constexpr t_weight KILOS_IN_A_POUND = 0.453592;   ///< The number of kilos in a #POUND.  @see https://en.wikipedia.org/wiki/Kilogram
+   static const constexpr t_weight SLUGS_IN_A_POUND = 0.031081 ;  ///< The number of slugs in a #POUND.  @see https://en.wikipedia.org/wiki/Slug_(unit)
 
-   static const std::string POUND_LABEL ;       ///< Unit of measure for the #POUND
-   static const std::string KILO_LABEL ;        ///< Unit of measure for the #KILO
-   static const std::string SLUG_LABEL ;        ///< Unit of measure for the #SLUG
+   static const constexpr std::string_view POUND_LABEL { "Pound"sv };  ///< Unit of measure for the #POUND.  @see https://en.wikipedia.org/wiki/Pound_(mass)
+   static const constexpr std::string_view KILO_LABEL  { "Kilo"sv };   ///< Unit of measure for the #KILO.  @see https://en.wikipedia.org/wiki/Kilogram
+   static const constexpr std::string_view SLUG_LABEL  { "Slug"sv };   ///< Unit of measure for the #SLUG.  @see https://en.wikipedia.org/wiki/Slug_(unit)
 
 private:  ////////////////////// Member Variables //////////////////////////////
-   bool bIsKnown = false ;  ///< `true` if #weight is known.  Defaults to `false`.
-   bool bHasMax = false ;   ///< `true` if Weight has a maximum weight defined.  Defaults to `false`.
+   // The order the member variables is important because it determines the order they are constructed (and known)
    enum UnitOfWeight unitOfWeight = POUND ;  ///< How the #weight is held and displayed.  Defaults to #POUND.
                                              ///< #UnitOfWeight can only be set when Weight is constructed.
 
-   t_weight weight{} ;      ///< The weight.  It must always be `> 0`.  If #maxWeight is set then it must also be `<=` #maxWeight
    t_weight maxWeight{} ;   ///< The maximum weight.  The maximum weight can only be set when Weight is constructed.
+   bool bHasMax = false ;   ///< `true` if Weight has a maximum weight defined.  Defaults to `false`.
+
+   t_weight weight{} ;      ///< The weight.  It must always be `> 0`.  If #maxWeight is set then it must also be `<=` #maxWeight
+   bool bIsKnown = false ;  ///< `true` if #weight is known.  Defaults to `false`.
 
 public:   //////////////////////// Constructors ////////////////////////////////
    Weight() noexcept;  ///< A default Weight (the #weight is #UNKNOWN_WEIGHT)
@@ -92,17 +96,19 @@ public:   /////////////////////////// Setters  /////////////////////////////////
    void setWeight( t_weight newWeight, UnitOfWeight weightUnits );  ///< Set the #weight in the specified unit
 
 private:   ///////////////////// Private Methods ///////////////////////////////
-   void setMaxWeight( t_weight newMaxWeight );  ///< Set #maxWeight
+   void setInitialWeight( t_weight newWeight );  ///< Set the #weight in the constructor
+   void setInitialMaxWeight( t_weight newMaxWeight );  ///< Set #maxWeight in the constructor
 
 public:   /////////////////////// Static Methods ///////////////////////////////
    // Static methods are `const` by default
-   static float fromKilogramToPound( t_weight kilogram ) noexcept;  ///< Convert #KILO to #POUND
-   static float fromPoundToKilogram( t_weight pound ) noexcept;     ///< Convert #POUND to #KILO
-   static float fromSlugToPound( t_weight slug ) noexcept;          ///< Convert #SLUG to #POUND
-   static float fromPoundToSlug( t_weight pound ) noexcept;         ///< Convert #POUND to #SLUG
+   static constexpr t_weight fromGramToPound( t_weight gram )         noexcept { return fromKilogramToPound( gram / 1000.0 ); }  ///< Convert a Gram (1/1000 of a #KILO) to #POUND.  This is good for Bird weights.
+   static constexpr t_weight fromKilogramToPound( t_weight kilogram ) noexcept { return kilogram / KILOS_IN_A_POUND ; }          ///< Convert #KILO to #POUND
+   static constexpr t_weight fromPoundToKilogram( t_weight pound )    noexcept { return pound * KILOS_IN_A_POUND ; }             ///< Convert #POUND to #KILO
+   static constexpr t_weight fromSlugToPound( t_weight slug )         noexcept { return slug / SLUGS_IN_A_POUND ; }              ///< Convert #SLUG to #POUND
+   static constexpr t_weight fromPoundToSlug( t_weight pound )        noexcept { return pound * SLUGS_IN_A_POUND ; }             ///< Convert #POUND to #SLUG
 
    /// Convert fromWeight in fromUnit to a weight in toUnit
-   static float convertWeight( t_weight fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit ) noexcept;
+   static t_weight convertWeight( t_weight fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit ) noexcept;
 
 public:   /////////////////////// Public Methods ///////////////////////////////
    bool isWeightValid( t_weight checkWeight ) const noexcept;  ///< Check the Weight

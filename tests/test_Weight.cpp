@@ -118,7 +118,7 @@ BOOST_AUTO_TEST_SUITE( test_Weight )
 
    BOOST_AUTO_TEST_CASE( test_Illegal_Constructors ) {
       BOOST_CHECK_THROW( Weight( 0 ), out_of_range );
-      BOOST_CHECK_THROW( Weight( -1 ), out_of_range );
+      BOOST_CHECK_THROW( Weight( -1.5 ), out_of_range );
 
       BOOST_CHECK_THROW( Weight( 0, Weight::KILO), out_of_range );
 

@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Every Animal has a Weight.
+/// Every Animal has a Weight in the world.
 ///
 /// @file Weight.cpp
 /// @version 1.0
@@ -21,33 +21,23 @@
 
 using namespace std;
 
-const Weight::t_weight Weight::UNKNOWN_WEIGHT = -1 ;
-
-const Weight::t_weight Weight::KILOS_IN_A_POUND = 0.453592 ;
-const Weight::t_weight Weight::SLUGS_IN_A_POUND = 0.031081 ;  ///< @see https://en.wikipedia.org/wiki/Slug_(unit)
-
-const string Weight::POUND_LABEL = "Pound" ; ///< @see https://en.wikipedia.org/wiki/Pound_(mass)
-const string Weight::KILO_LABEL  = "Kilo" ;  ///< @see https://en.wikipedia.org/wiki/Kilogram
-const string Weight::SLUG_LABEL  = "Slug" ;  ///< @see https://en.wikipedia.org/wiki/Slug_(unit)
-
 
 // Constructor 1 -- No parameters
 Weight::Weight() noexcept :
-         bIsKnown { false }              // Member initializer list
-        ,bHasMax { false }
-        ,unitOfWeight { POUND }
-        ,weight { UNKNOWN_WEIGHT }
-        ,maxWeight { UNKNOWN_WEIGHT } {
+         unitOfWeight { POUND }            // Member initializer list
+{
+   setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
+   setInitialWeight( UNKNOWN_WEIGHT );     // Sets weight and bIsKnown
    assert( validate() );
 }
 
 
 // Constructor 2
 Weight::Weight( const Weight::t_weight newWeight ) :
-         bHasMax { false }              // Member initializer list
-        ,unitOfWeight { POUND }
-        ,maxWeight { UNKNOWN_WEIGHT } {
-   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
+        unitOfWeight { POUND }             // Member initializer list
+{
+   setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
+   setInitialWeight( newWeight );          // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
@@ -55,11 +45,10 @@ Weight::Weight( const Weight::t_weight newWeight ) :
 // Constructor 3
 /// Once #UnitOfWeight is set, it can't be changed
 Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept :
-         bIsKnown { false }              // Member initializer list
-        ,bHasMax { false }
-        ,unitOfWeight { newUnitOfWeight }
-        ,weight { UNKNOWN_WEIGHT }
-        ,maxWeight { UNKNOWN_WEIGHT } {
+        unitOfWeight { newUnitOfWeight }   // Member initializer list
+{
+   setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
+   setInitialWeight( UNKNOWN_WEIGHT );     // Sets weight and bIsKnown
    assert( validate() );
 }
 
@@ -67,8 +56,11 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept :
 // Constructor 4
 /// Once #UnitOfWeight is set, it can't be changed
 Weight::Weight( const Weight::t_weight     newWeight
-               ,const Weight::UnitOfWeight newUnitOfWeight ) : Weight( newUnitOfWeight ) {
-   setWeight( newWeight, newUnitOfWeight );  // Sets weight and bIsKnown (if newWeight is valid)
+               ,const Weight::UnitOfWeight newUnitOfWeight ) :
+        unitOfWeight { newUnitOfWeight }   // Member initializer list
+{
+   setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
+   setInitialWeight( newWeight );          // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
@@ -77,9 +69,10 @@ Weight::Weight( const Weight::t_weight     newWeight
 /// Once #maxWeight is set, it can't be changed
 Weight::Weight( const Weight::t_weight newWeight
                ,const Weight::t_weight newMaxWeight ) :
-         unitOfWeight { POUND } { // Member initializer list
-   setMaxWeight( newMaxWeight );  // Sets maxWeight and bHasMax (if newMaxWeight is valid)
-   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
+         unitOfWeight { POUND }          // Member initializer list
+{
+   setInitialMaxWeight( newMaxWeight );  // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+   setInitialWeight( newWeight );        // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
@@ -88,8 +81,11 @@ Weight::Weight( const Weight::t_weight newWeight
 /// Once #UnitOfWeight is set, it can't be changed.
 /// Once #maxWeight is set, it can't be changed.
 Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight
-               ,const Weight::t_weight     newMaxWeight ) : Weight( newUnitOfWeight ) {
-   setMaxWeight( newMaxWeight );  // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+               ,const Weight::t_weight     newMaxWeight ) :
+        unitOfWeight { newUnitOfWeight }  // Member initializer list
+{
+   setInitialMaxWeight( newMaxWeight );   // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+   setInitialWeight( UNKNOWN_WEIGHT );    // Sets weight and bIsKnown
    assert( validate() );
 }
 
@@ -99,8 +95,11 @@ Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight
 /// Once #maxWeight is set, it can't be changed.
 Weight::Weight( const Weight::t_weight     newWeight
                ,const Weight::UnitOfWeight newUnitOfWeight
-               ,const Weight::t_weight     newMaxWeight ) : Weight( newUnitOfWeight, newMaxWeight ) {
-   setWeight( newWeight );  // Sets weight and bIsKnown (if newWeight is valid)
+               ,const Weight::t_weight     newMaxWeight ) :
+        unitOfWeight { newUnitOfWeight }  // Member initializer list
+{
+   setInitialMaxWeight( newMaxWeight );   // Sets maxWeight and bHasMax (if newMaxWeight is valid)
+   setInitialWeight( newWeight );         // Sets weight and bIsKnown (if newWeight is valid)
    assert( validate() );
 }
 
@@ -169,9 +168,26 @@ void Weight::setWeight( const Weight::t_weight newWeight, const Weight::UnitOfWe
 }
 
 
-void Weight::setMaxWeight( const Weight::t_weight newMaxWeight ) {
-   /// #bHasMax should not be set when setMaxWeight() is called
+void Weight::setInitialWeight( const Weight::t_weight newWeight ) {
+   if( newWeight == UNKNOWN_WEIGHT ) {
+      weight = UNKNOWN_WEIGHT;
+      bIsKnown = false;
+      return;
+   }
+
+   setWeight( newWeight );
+}
+
+
+void Weight::setInitialMaxWeight( t_weight newMaxWeight ) {
+   /// #bHasMax should not be set when setInitialMaxWeight() is called
    assert( !bHasMax );
+
+   if( newMaxWeight == UNKNOWN_WEIGHT ) {
+      maxWeight = UNKNOWN_WEIGHT;
+      bHasMax = false ;
+      return;
+   }
 
    if( !isWeightValid( newMaxWeight) ) {
       /// @throws out_of_range When #maxWeight is `<= 0`
@@ -208,7 +224,7 @@ bool Weight::isWeightValid( const Weight::t_weight checkWeight ) const noexcept 
 bool Weight::validate() const noexcept {
    /// If #bHasMax then ensure #maxWeight is valid
    if( bHasMax ) {
-      if( !isWeightValid(( maxWeight))) {
+      if( !isWeightValid(( maxWeight ))) {
          cout << PROGRAM_NAME ": Max weight is <= 0" << endl;
          return false;
       }
@@ -222,7 +238,7 @@ bool Weight::validate() const noexcept {
          return false;
       }
 
-      assert( weight > 0);
+      assert( weight > 0 || ( !bIsKnown && weight == UNKNOWN_WEIGHT ) );
 
       /// If #bIsKnown and #bHasMax, then ensure #weight `<=` #maxWeight
       if( bHasMax ) {
@@ -231,26 +247,6 @@ bool Weight::validate() const noexcept {
    }
 
    return true;
-}
-
-
-Weight::t_weight Weight::fromKilogramToPound( const Weight::t_weight kilogram ) noexcept {
-   return kilogram / KILOS_IN_A_POUND ;
-}
-
-
-Weight::t_weight Weight::fromPoundToKilogram( const Weight::t_weight pound ) noexcept {
-   return pound * KILOS_IN_A_POUND ;
-}
-
-
-Weight::t_weight Weight::fromSlugToPound( const Weight::t_weight slug ) noexcept {
-   return slug / SLUGS_IN_A_POUND ;
-}
-
-
-Weight::t_weight Weight::fromPoundToSlug( const Weight::t_weight pound ) noexcept {
-   return pound * SLUGS_IN_A_POUND ;
 }
 
 
