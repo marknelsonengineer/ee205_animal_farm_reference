@@ -144,10 +144,11 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    ///
    /// @return True if the Node is healthy
    virtual bool validate() const noexcept {
-      /// @internal Iterate along the next (and prev) pointers and verify that
-      ///           they do not refer back to themselves.  This also has the
-      ///           benefit of dereferencing all of the downstream next/prev
-      ///           pointers and ensuring they point to valid addresses.
+      /// #### Internal
+      /// Iterate along the next (and prev) pointers and verify that they do not
+      /// refer back to themselves.  This also has the benefit of dereferencing
+      /// all of the downstream next/prev pointers and ensuring they point to
+      /// valid addresses.
       if( next != nullptr ) {
          Node* currentPointer = next->next;
          while( currentPointer != nullptr ) {

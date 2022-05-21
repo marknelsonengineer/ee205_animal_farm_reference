@@ -20,8 +20,9 @@
 ///
 /// This is a header-only class.
 ///
-/// @internal This is implemented by inheriting a DoublyLinkedList and
-///           then exposing only the methods that are appropriate for a Queue.
+/// #### Internal
+/// This is implemented by inheriting a DoublyLinkedList and then exposing only
+/// the methods that are appropriate for a Queue.
 class Queue : private DoublyLinkedList {
 public:  /////////////////////////// Public Methods ////////////////////////////
    // From Container

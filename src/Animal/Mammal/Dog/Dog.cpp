@@ -85,8 +85,9 @@ bool Dog::validate() const noexcept {
 }
 
 
-/// @internal This function will use `new` to create a Dog on the heap
-///           Be sure to `delete` the Dog when it's no longer needed
+/// #### Internal
+/// This function will use `new` to create a Dog on the heap.  Be sure to
+/// `delete` the Dog when it's no longer needed
 Dog& Dog::generateDog() {
    uniform_real_distribution<> weightRNG( 0.1, Dog::MAX_WEIGHT );
    uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );

@@ -133,8 +133,8 @@ bool Cat::validate() const noexcept {
 }
 
 
-/// @internal This function will use `new` to create a Cat on the heap
-///           Be sure to `delete` the Cat when it's no longer needed
+/// #### Internal This function will use `new` to create a Cat on the heap.  Be
+/// sure to `delete` the Cat when it's no longer needed
 Cat& Cat::generateCat() {
    uniform_real_distribution<> weightRNG ( 0.1, Cat::MAX_WEIGHT );
    bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered

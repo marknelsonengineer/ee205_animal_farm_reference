@@ -230,11 +230,11 @@ bool Tree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept
 
 /// Removes nodeToRemove from the Tree, but does not `delete` the node from memory.
 ///
-/// @internal This algorithm differs significantly from standard BST delete
-///           algorithms as they typically "swap" two nodes.  Because Animal
-///           Farm can have many different kinds of Animals, you can't swap two
-///           nodes (in-place)... instead, you actually need to remove one node
-///           and move another node into its place.
+/// #### Internal
+/// This algorithm differs significantly from standard BST delete algorithms as
+/// they typically "swap" two nodes.  Because Animal Farm can have many different
+/// kinds of Animals, you can't swap two nodes (in-place)... instead, you
+/// actually need to remove one node and move another node into its place.
 ///
 /// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
 ///      by Larry Nyhoff page 684.  I inlined the `search2` function

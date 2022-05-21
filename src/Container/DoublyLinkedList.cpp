@@ -339,7 +339,8 @@ void DoublyLinkedList::swap( Node* node1, Node* node2 ) {
    /// @todo In the List, we need to make sure that node1 is to the left of node2.
    ///       If they aren't, we may be in for some unpredictable behavior.
 
-   /// @internal We will divide this into 4 separate operations... each with a general & special case.
+   /// #### Internal
+   /// We will divide this into 4 separate operations... each with a general & special case.
    Node* node1_left  = node1->prev;
    Node* node1_right = node1->next;
    Node* node2_left  = node2->prev;
