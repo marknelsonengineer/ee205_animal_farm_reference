@@ -23,8 +23,9 @@
 
 using namespace std;
 
-/// @internal This function uses `new` to create an Animal on the heap
-///           Be sure to `delete` it when it's no longer needed
+/// #### Internal
+/// This function uses `new` to create an Animal on the heap.  Be sure to
+/// `delete` it when it's no longer needed
 Animal& AnimalFactory::generateAnimal() {
    uniform_int_distribution<> animalRNG( 0, 3 );
 
