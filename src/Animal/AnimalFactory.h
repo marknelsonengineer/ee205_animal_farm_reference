@@ -28,6 +28,12 @@
 /// A better way is to have a dedicated AnimalFactory class and only link all
 /// of the other Animals when they are needed.
 class AnimalFactory {
+   /// This class should not be instantiated.
+   ///
+   /// @pattern Singleton
+   /// AnimalFactory is used as a static class only
+   AnimalFactory() = delete;
+
 public:  /////////////////////// Static Public Methods /////////////////////////
    static Animal& generateAnimal() ;  ///< Generate a new, random Animal
 };
