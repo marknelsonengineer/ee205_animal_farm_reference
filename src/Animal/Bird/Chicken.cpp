@@ -40,6 +40,8 @@ Chicken::Chicken( const std::string_view newName
 {} // Nothing else to do
 
 
+/// I'm deliberately not using a Factory Method pattern here, just to demonstrate
+/// that there's other ways to do this.
 Chicken::Chicken( const Bird::ConstructorType newBirdType )
          : Bird ( SPECIES_NAME, MAX_WEIGHT, names.getNextName(), (Gender) genderRNG( ANIMAL_FARM_RNG ), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) )
 {

@@ -52,7 +52,8 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
-   static Dog& generateDog() ;   ///< Generate a new, random Dog
+   static Animal& newRandomAnimal() ;   ///< Generate a new, random Animal (Dog)
+   static Dog& newRandomDog() ;   ///< Generate a new, random Dog
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Dog& rhs_dog ) const;  ///< Compare two Dogs with `<`

@@ -20,7 +20,7 @@
 #include <iostream>
 
 #include "config.h"
-#include "Animal/Mammal/Cat/Cat.h"
+#include "Animal/AnimalFactory.h"
 #include "Container/DoublyLinkedList.h"
 
 using namespace std ;
@@ -32,20 +32,21 @@ int main() {
 
    DoublyLinkedList catDB ;
 
-   Cat newCat = Cat::generateCat();
+   Animal& newAnimal { AnimalFactory::generateAnimal() };
 
-   newCat.dump();
+   newAnimal.dump();
    cout << "========" << endl;
 
-   // Put 16 cats in my list
+   // Put 16 Animals in the list
    for( int i = 0 ; i < 8 ; i++ ) {
-      catDB.push_front( &Cat::generateCat() );
-      catDB.push_back( &Cat::generateCat() );
+      catDB.push_front( &AnimalFactory::generateAnimal() );
+      catDB.push_back( &AnimalFactory::generateAnimal() );
    }
 
    for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {
       cout << pAnimal->speak() << endl;
    }
+   cout << "========" << endl;
 
    catDB.validate() ;
    catDB.dump() ;

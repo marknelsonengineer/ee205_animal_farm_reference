@@ -18,7 +18,7 @@
 ///
 /// @pattern Abstract Factory
 /// Abstract Factories encapsulate a group of individual factories
-/// (like Cat::generateCat()) that have a common theme without specifying
+/// (like Cat::newRandomAnimal()) that have a common theme without specifying
 /// their concrete class.  Users of this class don't care which concrete object
 /// it gets, because the users only use the generic interface (Animal).
 ///
@@ -28,6 +28,7 @@
 /// A better way is to have a dedicated AnimalFactory class and only link all
 /// of the other Animals when they are needed.
 class AnimalFactory {
+public:  //////////////////////////// Constructors /////////////////////////////
    /// This class should not be instantiated.
    ///
    /// @pattern Singleton

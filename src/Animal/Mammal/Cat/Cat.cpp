@@ -26,6 +26,10 @@ using namespace std ;
 
 
 /// This is static, so the list will be available for any and all Cats to use (but nobody else).
+///
+/// #### Internal
+/// The scope of this **member** variable is `public:`.  This is to facilitate
+/// testing.  It's very difficult to friend some of the Boost test fixtures.
 Name Cat::names( CAT_NAMES_FILE );
 
 
@@ -133,9 +137,22 @@ bool Cat::validate() const noexcept {
 }
 
 
-/// #### Internal This function will use `new` to create a Cat on the heap.  Be
-/// sure to `delete` the Cat when it's no longer needed
-Cat& Cat::generateCat() {
+/// @pattern Factory Method
+///
+/// #### Internal
+/// This function will use `new` to create a random Cat (Animal) on the heap.
+/// Be sure to `delete` the Animal when it's no longer needed
+Animal& Cat::newRandomAnimal() {
+   return (Animal&) newRandomCat();
+}
+
+
+/// @pattern Factory Method
+///
+/// #### Internal
+/// This function will use `new` to create a random Cat on the heap.
+/// Be sure to `delete` the Cat when it's no longer needed
+Cat& Cat::newRandomCat() {
    uniform_real_distribution<> weightRNG ( 0.1, Cat::MAX_WEIGHT );
    bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered
    uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );

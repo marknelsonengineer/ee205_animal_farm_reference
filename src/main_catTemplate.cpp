@@ -35,7 +35,7 @@ int main() {
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
-      catDB.push_back( Cat::generateCat() );
+      catDB.push_back( Cat::newRandomCat() );
    }
 
    for( const Cat& aCat : catDB ) {

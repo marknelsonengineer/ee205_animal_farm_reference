@@ -62,7 +62,8 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
-   static Cat& generateCat() ;   ///< Generate a new, random Cat
+   static Animal& newRandomAnimal() ;   ///< Generate a new, random Animal (Cat)
+   static Cat& newRandomCat() ;   ///< Generate a new, random Cat
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Cat& rhs_cat ) const;  ///< Compare two Cats with `<`

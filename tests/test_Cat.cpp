@@ -92,7 +92,8 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
 
    BOOST_AUTO_TEST_CASE( test_Cat_generator ) {
       for( int i = 0 ; i < 50 ; i++ ) {
-         Cat::generateCat();
+         BOOST_CHECK_NO_THROW( Cat::newRandomAnimal() );
+         BOOST_CHECK_NO_THROW( Cat::newRandomCat() );
       }
       BOOST_CHECK( true );
 
@@ -107,7 +108,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       BOOST_CHECK_NO_THROW( Cat a( "Alice" );
                             Cat b( "Bob" );
                             b = a;             );  /// Yet another copy constructor
-      BOOST_CHECK_NO_THROW( Cat a = Cat::generateCat() );  /// Cat is set as a return value
+      BOOST_CHECK_NO_THROW( Cat a = Cat::newRandomCat() );  /// Cat is set as a return value
    }
 
 
@@ -191,7 +192,8 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          list<Cat> catList;
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catList.size(), i );
-            BOOST_CHECK_NO_THROW( catList.insert( catList.end(), Cat::generateCat()));
+            BOOST_CHECK_NO_THROW( catList.insert( catList.end(),
+                                  Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catList.erase( catList.begin()));
@@ -206,7 +208,8 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          vector<Cat> catVector;
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catVector.size(), i );
-            BOOST_CHECK_NO_THROW( catVector.insert( catVector.end(), Cat::generateCat()));
+            BOOST_CHECK_NO_THROW( catVector.insert( catVector.end(),
+                                                    Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catVector.erase( catVector.begin() ));
@@ -219,7 +222,8 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          deque<Cat> catDeque;
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catDeque.size(), i );
-            BOOST_CHECK_NO_THROW( catDeque.insert( catDeque.end(), Cat::generateCat()));
+            BOOST_CHECK_NO_THROW( catDeque.insert( catDeque.end(),
+                                                   Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catDeque.erase( catDeque.begin() ));
@@ -233,7 +237,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          Cat::names.reset();
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catSet.size(), i );
-            BOOST_CHECK_NO_THROW( catSet.insert( catSet.end(), Cat::generateCat()));
+            BOOST_CHECK_NO_THROW( catSet.insert( catSet.end(), Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catSet.erase( catSet.begin() ));
@@ -247,7 +251,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          Cat::names.reset();
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
 //          BOOST_CHECK_EQUAL( catMap.size(), i );  /// @todo Not sure why this isn't working
-            Cat newCat = Cat::generateCat();
+            Cat newCat = Cat::newRandomCat();
             BOOST_CHECK_NO_THROW( catMap.insert( { string{ newCat.getName() }, newCat } ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
@@ -264,7 +268,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          stack<Cat> catStack;
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catStack.size(), i );
-            BOOST_CHECK_NO_THROW( catStack.push( Cat::generateCat()));
+            BOOST_CHECK_NO_THROW( catStack.push( Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catStack.pop());
@@ -277,7 +281,7 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
          queue<Cat> catQueue;
          for( int i = 0 ; i < NUM_CATS ; i++ ) {
             BOOST_CHECK_EQUAL( catQueue.size(), i );
-            BOOST_CHECK_NO_THROW( catQueue.push( Cat::generateCat() ));
+            BOOST_CHECK_NO_THROW( catQueue.push( Cat::newRandomCat() ));
          }
          for( int i = NUM_CATS - 1 ; i >= 0 ; i-- ) {
             BOOST_CHECK_NO_THROW( catQueue.pop() );

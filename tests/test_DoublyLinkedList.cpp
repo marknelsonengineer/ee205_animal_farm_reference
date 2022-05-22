@@ -20,6 +20,8 @@
 #include "../src/Container/DoublyLinkedList.h"
 #include "../src/Animal/Animal.h"
 #include "../src/Animal/Mammal/Cat/Cat.h"
+#include "../src/Animal/Mammal/Dog/Dog.h"
+#include "../src/Animal/AnimalFactory.h"
 
 
 using namespace std;
@@ -34,12 +36,14 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
    struct DoublyLinkedListTestFixture {
       DoublyLinkedListTestFixture()   {
          test_list.deleteAllNodes();
-         Cat::names.reset();
+         Cat::names.reset();  // We don't want to have duplicate Cat & Dog names
+         Dog::names.reset();
          BOOST_TEST_MESSAGE( "setup fixture" );
       }
       ~DoublyLinkedListTestFixture()  {
          test_list.deleteAllNodes();
          Cat::names.reset();
+         Dog::names.reset();
          BOOST_TEST_MESSAGE( "teardown fixture" );
       }
    } ;
@@ -386,8 +390,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       for( int i = 0 ; i < 10 ; i++ ) {  // Outer loop
          DoublyLinkedList dll;
          for( int j = 0 ; j < 100 ; j++ ) {
-            dll.push_front( &Cat::generateCat() );
-            // BOOST_CHECK_NO_THROW( dll.push_front( &Cat::generateCat() ));
+            dll.push_front( &AnimalFactory::generateAnimal() );
+            // BOOST_CHECK_NO_THROW( dll.push_front( &Cat::newRandomAnimal() ));
          }
          BOOST_CHECK( dll.validate() );
          BOOST_CHECK_EQUAL( dll.size(), 100 );
@@ -397,8 +401,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          BOOST_CHECK( dll.isSorted() );
 
          for( int j = 0 ; j < 50 ; j++ ) {
-            delete (Cat*) dll.pop_front();
-            delete (Cat*) dll.pop_back();
+            delete dll.pop_front();
+            delete dll.pop_back();
          }
 
          // cout << ".";

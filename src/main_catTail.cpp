@@ -30,7 +30,7 @@ int main() {
    CatEmpire catTail;
 
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
-      Cat& newCat = Cat::generateCat();
+      Cat& newCat = Cat::newRandomCat();
 
       catEmpire.insert( &newCat );
    }

@@ -24,6 +24,10 @@ using namespace std ;
 #define DOG_NAMES_FILE "./data/dogNames.txt"sv
 
 /// This is static, so the list will be available for any and all Dogs to use (but nobody else).
+///
+/// #### Internal
+/// The scope of this **member** variable is `public:`.  This is to facilitate
+/// testing.  It's very difficult to friend some of the Boost test fixtures.
 Name Dog::names( DOG_NAMES_FILE );
 
 
@@ -85,10 +89,22 @@ bool Dog::validate() const noexcept {
 }
 
 
+/// @pattern Factory Method
+///
+/// #### Internal
+/// This function will use `new` to create a random Dog (Animal) on the heap.
+/// Be sure to `delete` the Animal when it's no longer needed
+Animal& Dog::newRandomAnimal() {
+   return (Animal&) newRandomDog();
+}
+
+
+/// @pattern Factory Method
+///
 /// #### Internal
 /// This function will use `new` to create a Dog on the heap.  Be sure to
 /// `delete` the Dog when it's no longer needed
-Dog& Dog::generateDog() {
+Dog& Dog::newRandomDog() {
    uniform_real_distribution<> weightRNG( 0.1, Dog::MAX_WEIGHT );
    uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );
    uniform_int_distribution<>  genderRNG( (int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE );

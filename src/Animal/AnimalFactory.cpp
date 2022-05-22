@@ -32,8 +32,8 @@ Animal& AnimalFactory::generateAnimal() {
    Animal* newAnimal = nullptr;
 
    switch( animalRNG( ANIMAL_FARM_RNG ) ) {
-      case 0: newAnimal = &(Cat::generateCat()) ; break;
-      case 1: newAnimal = &(Dog::generateDog()) ; break;
+      case 0: newAnimal = &( Cat::newRandomAnimal()) ; break;
+      case 1: newAnimal = &( Dog::newRandomAnimal()) ; break;
       case 2: newAnimal = new Finch( Bird::ConstructorType::RANDOM ) ; break;
       case 3: newAnimal = new Chicken( Bird::ConstructorType::RANDOM ) ; break;
       default: assert ( false );  // We should never get here
