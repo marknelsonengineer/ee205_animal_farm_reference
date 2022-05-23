@@ -21,13 +21,12 @@
 /// Nodes.
 class BinarySearchTree : public Tree {
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void add( Node* newNode );                 ///< Add a Node to the Tree
-   bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
-   void remove( Node* nodeToRemove );         ///< Remove a Node from the Tree
-   void dump() const noexcept override;       ///< Output the member variables in this object
-   bool validate() const noexcept override;   ///< Ensure the object is valid
-   Node* getRandomNode() const noexcept;      ///< Get a random Node from this Container
-   virtual void removeAll() noexcept;         ///< Remove all of the Nodes from this Container
+   void  add( Node* newNode ) override;              ///< Add a Node to the Tree
+   bool  isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
+   Node* remove( Node* nodeToRemove ) override;      ///< Remove a Node from the Tree
+   void  dump() const noexcept override;             ///< Output the member variables in this object
+   bool  validate() const noexcept override;         ///< Ensure the object is valid
+   Node* getRandomNode() const noexcept;             ///< Get a random Node from this Container
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void add( Node* atNode, Node* newNode );   ///< Add a Node starting at atNode

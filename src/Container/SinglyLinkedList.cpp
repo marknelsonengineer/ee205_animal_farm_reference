@@ -112,7 +112,7 @@ Node *SinglyLinkedList::removeFront() noexcept {
 ///                    Must be in the List.
 /// @param newNode The Node to add to the List.  Must not be `nullptr`.
 ///                Must not be in the List.
-void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
+void SinglyLinkedList::addAfter( Node *currentNode, Node *newNode) {
    TRACE_START
 
    /// @throws logic_error If the List is empty

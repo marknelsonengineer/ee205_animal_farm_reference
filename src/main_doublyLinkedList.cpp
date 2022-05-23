@@ -32,15 +32,15 @@ int main() {
 
    DoublyLinkedList catDB ;
 
-   Animal& newAnimal { AnimalFactory::generateAnimal() };
+   Animal& newAnimal { AnimalFactory::newRandomAnimal() };
 
    newAnimal.dump();
    cout << "========" << endl;
 
    // Put 16 Animals in the list
    for( int i = 0 ; i < 8 ; i++ ) {
-      catDB.addFront( &AnimalFactory::generateAnimal());
-      catDB.addBack( &AnimalFactory::generateAnimal());
+      catDB.addFront( &AnimalFactory::newRandomAnimal());
+      catDB.addBack( &AnimalFactory::newRandomAnimal());
    }
 
    for( Animal* pAnimal = (Animal*) catDB.getFirst() ; pAnimal != nullptr ; pAnimal = (Animal*) List::getNext(

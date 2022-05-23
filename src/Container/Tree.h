@@ -20,6 +20,8 @@ protected:  ////////////////////// Protected Members ///////////////////////////
    Node* root = nullptr;  ///< The root for the tree
 
 public:  /////////////////////////// Public Methods ////////////////////////////
+   void removeAll() noexcept override;        ///< Remove all of the Nodes from this Tree
+
    void dump() const noexcept override;
    bool validate() const noexcept override;   ///< Ensure the object is valid
 };

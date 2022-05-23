@@ -88,7 +88,7 @@ BOOST_AUTO_TEST_SUITE( test_Animal )
    // This test exercises the non-Cat animal classes like Dog, et. al.
    BOOST_AUTO_TEST_CASE( test_Animal_Factory ) {
       for( int i = 0 ; i < 500 ; i++ ) {
-         Animal& anAnimal = AnimalFactory::generateAnimal();
+         Animal& anAnimal = AnimalFactory::newRandomAnimal();
          BOOST_CHECK_EQUAL( anAnimal.validate(), true );
          BOOST_CHECK_EQUAL( anAnimal.speak().empty(), false );
          BOOST_CHECK_EQUAL( anAnimal.info().empty(), false );

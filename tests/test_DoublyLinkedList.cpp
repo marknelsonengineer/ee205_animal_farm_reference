@@ -412,7 +412,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       for( int i = 0 ; i < 10 ; i++ ) {  // Outer loop
          DoublyLinkedList dll;
          for( int j = 0 ; j < 100 ; j++ ) {
-            dll.addFront( &AnimalFactory::generateAnimal());
+            dll.addFront( &AnimalFactory::newRandomAnimal());
             // BOOST_CHECK_NO_THROW( dll.addFront( &Cat::newRandomAnimal() ));
          }
          BOOST_CHECK( dll.validate() );

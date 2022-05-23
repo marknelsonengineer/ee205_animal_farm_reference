@@ -26,7 +26,7 @@ using namespace std;
 /// #### Internal
 /// This function uses `new` to create an Animal on the heap.  Be sure to
 /// `delete` it when it's no longer needed
-Animal& AnimalFactory::generateAnimal() {
+Animal& AnimalFactory::newRandomAnimal() {
    uniform_int_distribution<> animalRNG( 0, 3 );
 
    Animal* newAnimal = nullptr;

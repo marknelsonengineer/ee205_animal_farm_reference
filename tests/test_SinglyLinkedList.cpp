@@ -137,9 +137,9 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
             insertAt = test_list.getNext( insertAt );
          }
 
-         BOOST_CHECK_NO_THROW( test_list.insert_after( insertAt, node ) );
-         BOOST_CHECK_THROW( test_list.insert_after( insertAt, node ), logic_error );  // Can't add a node that's already in the test_list
-         BOOST_CHECK_THROW( test_list.insert_after( node, node ), logic_error );  // Can't add a node that's already in the test_list
+         BOOST_CHECK_NO_THROW( test_list.addAfter( insertAt, node ) );
+         BOOST_CHECK_THROW( test_list.addAfter( insertAt, node ), logic_error );  // Can't add a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.addAfter( node, node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.size(), i + 2 );
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );

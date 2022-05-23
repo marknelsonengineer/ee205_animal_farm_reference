@@ -235,7 +235,9 @@ bool BinarySearchTree::validate( Node* atNode, Container::t_size& treeCount ) co
 /// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
 ///      by Larry Nyhoff page 684.  I inlined the `search2` function
 ///      and replaced the swap functionality with moving two Nodes.
-void BinarySearchTree::remove( Node* nodeToRemove ) {
+///
+/// @return Returns nodeToRemove.
+Node* BinarySearchTree::remove( Node* nodeToRemove ) {
    TRACE_START
 
    /// @throws invalid_argument If `nodeToRemove` is `nullptr`.
@@ -256,7 +258,7 @@ void BinarySearchTree::remove( Node* nodeToRemove ) {
    assert( validate() );
    // Do the deed
 
-   Node* parent = nullptr;            // The parent of the Node to be deleted.  If the root Rode is deleted, parent == nullptr
+   Node* parent = nullptr;        // The parent of the Node to be deleted.  If the root Rode is deleted, parent == nullptr
    Node* currentLocation = root;  // Search for the Node to be deleted.
 
    while( true ) {
@@ -348,6 +350,8 @@ void BinarySearchTree::remove( Node* nodeToRemove ) {
    #endif
 
    TRACE_END
+
+   return nodeToRemove;
 }
 
 
@@ -391,20 +395,4 @@ Node* BinarySearchTree::getRandomNode( Node* aNode, int* nodesLeft ) const noexc
       returnNode = getRandomNode( aNode->right, nodesLeft );
 
    return returnNode;
-}
-
-
-void BinarySearchTree::removeAll() noexcept {
-   TRACE_START
-
-   assert( validate() );
-
-   while( root != nullptr ) {
-      remove( root );
-   }
-
-   assert( validate() );
-   assert( isEmpty() );
-
-   TRACE_END
 }

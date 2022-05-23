@@ -36,5 +36,5 @@ public:  //////////////////////////// Constructors /////////////////////////////
    AnimalFactory() = delete;
 
 public:  /////////////////////// Static Public Methods /////////////////////////
-   static Animal& generateAnimal() ;  ///< Generate a new, random Animal
+   static Animal& newRandomAnimal() ;  ///< Generate a new, random Animal
 };

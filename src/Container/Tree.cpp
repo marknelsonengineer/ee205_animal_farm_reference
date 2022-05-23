@@ -63,3 +63,19 @@ bool Tree::validate() const noexcept {
 
    return true;
 }
+
+
+void Tree::removeAll() noexcept {
+   TRACE_START
+
+   assert( validate() );
+
+   while( root != nullptr ) {
+      remove( root );
+   }
+
+   assert( validate() );
+   assert( isEmpty() );
+
+   TRACE_END
+}

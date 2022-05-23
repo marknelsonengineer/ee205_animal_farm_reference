@@ -33,7 +33,7 @@ int main() {
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_ANIMALS ; i++ ) {
-      animalDB.addFront( &AnimalFactory::generateAnimal());
+      animalDB.addFront( &AnimalFactory::newRandomAnimal());
    }
 
    for( Animal* animal = (Animal*) animalDB.getFirst() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::getNext(

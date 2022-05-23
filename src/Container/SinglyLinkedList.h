@@ -22,10 +22,15 @@ public:  ///////////////////////// Public Constructors /////////////////////////
    SinglyLinkedList();        ///< Make a new SinglyLinkedList
 
 public:  /////////////////////////// Public Methods ////////////////////////////
+   // Use the most efficient add/remove methods to override pure methods declared in Container
+   // These will be used for performance measurement
+   inline void add( Node* newNode ) override { addFront( newNode ); }  ///< Implemented by addFront()
+   inline Node* remove( Node* nodeToRemove ) override { return removeFront(); }  ///< Implemented by removeFront()
+
    void  addFront( Node* newNode ) override ;  ///< Insert `newNode` to the beginning of the List
-   Node* removeFront() noexcept override; ///< Remove and return the first Node in the List
+   Node* removeFront() noexcept override;      ///< Remove and return the first Node in the List
 
-   void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
+   void addAfter( Node* currentNode, Node* newNode ) ;  ///< Add `newNode` after `currentNode`
 
-   void dump() const noexcept override;      ///< Output the member variables in this object
+   void dump() const noexcept override;  ///< Output the member variables in this object
 }; // class SinglyLinkedList
