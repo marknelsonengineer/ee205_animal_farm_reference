@@ -57,7 +57,7 @@ bool List::isSorted() const noexcept {
 
 
 /// @return The first Node in the List.  If the List is empty, return `nullptr`.
-Node* List::get_first() const noexcept {
+Node* List::getFirst() const noexcept {
    return head;
 }
 

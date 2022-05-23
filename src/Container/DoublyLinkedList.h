@@ -37,7 +37,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
    void insertionSort() noexcept ;  ///< Runs the insertion sort algorithm on the List
 
-   Node* get_last() const noexcept ;                   ///< Get the last Node in the List
+   Node* getLast() const noexcept ;                    ///< Get the last Node in the List
    static Node* get_prev( const Node* currentNode ) ;  ///< Get the previous Node in the List
 
    void dump() const noexcept override ;      ///< Output the member variables in this object

@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -67,7 +67,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), true );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), &node1 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), &node1 );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -78,7 +78,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( node2 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -93,8 +93,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-      BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getLast(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -105,8 +105,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), true );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), &node1 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), &node1 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), &node1 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), &node1 );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -117,8 +117,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( node2 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-      BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getLast(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -140,14 +140,14 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
-         BOOST_CHECK_EQUAL( test_list.get_first(), node );
+         BOOST_CHECK_EQUAL( test_list.getFirst(), node );
          BOOST_CHECK( test_list.validate());
       }
 
       for( int i = 19 ; i >= 0 ; i-- ) {  // Test pop_front() 20 times
          BOOST_CHECK_EQUAL( test_list.size(), i + 1 );
 
-         Node* nodeBefore = test_list.get_first();
+         Node* nodeBefore = test_list.getFirst();
          Node* nodeAfter;
          BOOST_CHECK_EQUAL( test_list.isIn( nodeBefore ), true );
          BOOST_CHECK_NO_THROW( nodeAfter = test_list.pop_front() );
@@ -169,14 +169,14 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
-         BOOST_CHECK_EQUAL( test_list.get_last(), node );
+         BOOST_CHECK_EQUAL( test_list.getLast(), node );
          BOOST_CHECK( test_list.validate());
       }
 
       for( int i = 19 ; i >= 0 ; i-- ) {  // Test pop_back() 20 times
          BOOST_CHECK_EQUAL( test_list.size(), i + 1 );
 
-         Node* nodeBefore = test_list.get_last();
+         Node* nodeBefore = test_list.getLast();
          Node* nodeAfter;
          BOOST_CHECK_EQUAL( test_list.isIn( nodeBefore ), true );
          BOOST_CHECK_NO_THROW( nodeAfter = test_list.pop_back() );
@@ -192,8 +192,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
-      BOOST_CHECK_EQUAL( test_list.get_last(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getLast(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump());
       BOOST_CHECK( test_list.validate());
 
@@ -212,7 +212,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          Node* node = new Node();  // This is the node we are going to add
 
          int position = rand() % test_list.size();
-         Node* insertAt = test_list.get_first();
+         Node* insertAt = test_list.getFirst();
          for( int j = 0 ; j < position ; j++ ) {
             insertAt = test_list.get_next( insertAt );
          }
@@ -230,7 +230,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       {
          Node* node = new Node();  // This is the node we are going to add
 
-         BOOST_CHECK_NO_THROW( test_list.insert_after( test_list.get_last(), node ));  // Try an insert_after at the end of the test_list
+         BOOST_CHECK_NO_THROW( test_list.insert_after( test_list.getLast(), node ));  // Try an insert_after at the end of the test_list
       }
 
       BOOST_CHECK( test_list.validate() );
@@ -239,7 +239,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          Node* node = new Node();  // This is the node we are going to add
 
          int position = rand() % test_list.size();
-         Node* insertAt = test_list.get_last();
+         Node* insertAt = test_list.getLast();
          for( int j = 0 ; j < position ; j++ ) {
             insertAt = test_list.get_prev( insertAt );
          }
@@ -257,7 +257,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       {
          Node* node = new Node();  // This is the node we are going to add
 
-         BOOST_CHECK_NO_THROW( test_list.insert_before( test_list.get_first(), node ));  // Try an insert_before at the beginning of the test_list
+         BOOST_CHECK_NO_THROW( test_list.insert_before( test_list.getFirst(), node ));  // Try an insert_before at the beginning of the test_list
       }
 
       BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is the primary / big test for removeAll()
@@ -265,7 +265,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
-      BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
@@ -288,62 +288,79 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
       // Two items in test_list
       BOOST_CHECK_NO_THROW( test_list.push_back( cat2 ) );
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat1 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat2 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat1 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat2 );
       // test_list.dump();
       BOOST_CHECK_NO_THROW( test_list.swap( cat1, cat2 ) );
       // test_list.dump();
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat2 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat1 );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_last() ));
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat1 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat2 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat2 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat1 );
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(),
+                                            test_list.getLast() ));
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat1 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat2 );
 
       // Three items in test_list
       BOOST_CHECK_NO_THROW( test_list.push_back( cat3 ) );   // 1 2 3
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_next( test_list.get_first() ))) ;  // 2 1 3
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(), test_list.get_next(
+              test_list.getFirst() ))) ;  // 2 1 3
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_last() ));  // 3 1 2
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(),
+                                            test_list.getLast() ));  // 3 1 2
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next( test_list.get_first() ), test_list.get_last() ));  // 3 2 1
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next(
+              test_list.getFirst() ), test_list.getLast() ));  // 3 2 1
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_last() ));  // 1 2 3
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(),
+                                            test_list.getLast() ));  // 1 2 3
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat1 );
-      BOOST_CHECK_EQUAL( test_list.get_next( test_list.get_first()), cat2 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat3 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat1 );
+      BOOST_CHECK_EQUAL( test_list.get_next( test_list.getFirst()), cat2 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat3 );
 
       // Four items in test_list
       BOOST_CHECK_NO_THROW( test_list.push_back( cat4 ) );  // 1 2 3 4
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_next( test_list.get_first() ))) ;  // 2 1 3 4
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(), test_list.get_next(
+              test_list.getFirst() ))) ;  // 2 1 3 4
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_prev( test_list.get_last() ), test_list.get_last() ));    // 2 1 4 3
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_prev(
+                                                    test_list.getLast() ),
+                                            test_list.getLast() ));    // 2 1 4 3
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_last() ));                    // 3 1 4 2
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(),
+                                            test_list.getLast() ));                    // 3 1 4 2
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next( test_list.get_first() ), test_list.get_prev( test_list.get_last() ))); // 3 4 1 2
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next(
+              test_list.getFirst() ), test_list.get_prev( test_list.getLast() ))); // 3 4 1 2
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat3 );
-      BOOST_CHECK_EQUAL( test_list.get_next( test_list.get_first()), cat4 );
-      BOOST_CHECK_EQUAL( test_list.get_prev( test_list.get_last()), cat1 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat2 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat3 );
+      BOOST_CHECK_EQUAL( test_list.get_next( test_list.getFirst()), cat4 );
+      BOOST_CHECK_EQUAL( test_list.get_prev( test_list.getLast()), cat1 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat2 );
 
       // Five items in test_list
       BOOST_CHECK_NO_THROW( test_list.push_back( cat5 ) );  // 3 4 1 2 5
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_first(), test_list.get_next( test_list.get_first() ))) ;  // 4 3 1 2 5
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.getFirst(), test_list.get_next(
+              test_list.getFirst() ))) ;  // 4 3 1 2 5
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next( test_list.get_first() ), test_list.get_next( test_list.get_next( test_list.get_first() )) )); // 4 1 3 2 5
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next(
+              test_list.getFirst() ), test_list.get_next( test_list.get_next(
+              test_list.getFirst() )) )); // 4 1 3 2 5
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next( test_list.get_next( test_list.get_first() )), test_list.get_prev( test_list.get_last() ) ));  // 4 1 2 3 5
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_next( test_list.get_next(
+              test_list.getFirst() )), test_list.get_prev( test_list.getLast() ) ));  // 4 1 2 3 5
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_prev( test_list.get_last() ), test_list.get_last() ));    // 4 1 2 5 3
+      BOOST_CHECK_NO_THROW( test_list.swap( test_list.get_prev(
+                                                    test_list.getLast() ),
+                                            test_list.getLast() ));    // 4 1 2 5 3
       BOOST_CHECK( test_list.validate() );
-      BOOST_CHECK_EQUAL( test_list.get_first(), cat4 );
-      BOOST_CHECK_EQUAL( test_list.get_next( test_list.get_first()), cat1 );
-      BOOST_CHECK_EQUAL( test_list.get_next( test_list.get_next( test_list.get_first() )), cat2 );
-      BOOST_CHECK_EQUAL( test_list.get_prev( test_list.get_last()), cat5 );
-      BOOST_CHECK_EQUAL( test_list.get_last(), cat3 );
+      BOOST_CHECK_EQUAL( test_list.getFirst(), cat4 );
+      BOOST_CHECK_EQUAL( test_list.get_next( test_list.getFirst()), cat1 );
+      BOOST_CHECK_EQUAL( test_list.get_next( test_list.get_next(
+              test_list.getFirst() )), cat2 );
+      BOOST_CHECK_EQUAL( test_list.get_prev( test_list.getLast()), cat5 );
+      BOOST_CHECK_EQUAL( test_list.getLast(), cat3 );
 
       BOOST_CHECK_NO_THROW( test_list.removeAll());  // Doesn't break on an empty test_list
       BOOST_CHECK( test_list.validate() );

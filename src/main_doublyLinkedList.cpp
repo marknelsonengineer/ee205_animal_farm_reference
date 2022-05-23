@@ -43,7 +43,7 @@ int main() {
       catDB.push_back( &AnimalFactory::generateAnimal() );
    }
 
-   for( Animal* pAnimal = (Animal*)catDB.get_first() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next( (Node*)pAnimal ) ) {
+   for( Animal* pAnimal = (Animal*) catDB.getFirst() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next((Node*)pAnimal ) ) {
       cout << pAnimal->speak() << endl;
    }
    cout << "========" << endl;

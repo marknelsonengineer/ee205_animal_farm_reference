@@ -25,7 +25,7 @@
 #include "Container.h"
 
 /// A generic list-based collection class.  This is a type of container that
-/// has a `head` Node and `get_first()` and `get_next()` methods -- which
+/// has a `head` Node and `getFirst()` and `get_next()` methods -- which
 /// can be used to traverse a list.
 ///
 class List : public Container {
@@ -39,7 +39,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
    virtual bool isSorted() const noexcept ;   ///< `true` if the List is sorted
 
-   virtual Node* get_first() const noexcept ; ///< Get the first Node in the List
+   virtual Node* getFirst() const noexcept ;  ///< Get the first Node in the List
 
    virtual void removeAll() noexcept ;  ///< Remove all of the Nodes in the List
 
