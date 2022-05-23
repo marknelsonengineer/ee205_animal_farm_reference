@@ -422,7 +422,7 @@ void DoublyLinkedList::insertionSort() noexcept {
 
 
 /// @return The last Node in the List.  If the List is empty, return `nullptr`.
-Node *DoublyLinkedList::get_last() const noexcept {
+Node *DoublyLinkedList::getLast() const noexcept {
    return tail;
 }
 
