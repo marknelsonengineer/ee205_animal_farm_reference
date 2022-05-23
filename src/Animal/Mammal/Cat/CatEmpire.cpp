@@ -384,7 +384,7 @@ void CatEmpire::catTail( Cat* atCat, CatEmpire* tailList ) const {
 
    Cat* newCat = new Cat( *atCat );
 
-   tailList->insert( newCat );
+   tailList->add( newCat );
 
    if( atCat->left != nullptr )
       catTail( (Cat*) atCat->left, tailList );

@@ -29,7 +29,7 @@ int main() {
       Finch* myFinch = new Finch ( Bird::ConstructorType::RANDOM );
       cout << myFinch->info() << endl;
       // myFinch.dump();
-      bst.insert( myFinch );
+      bst.add( myFinch );
    }
 
    bst.dump();

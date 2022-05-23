@@ -30,7 +30,7 @@ int main() {
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
       Cat& newCat = Cat::newRandomCat();
 
-      catEmpire.insert( &newCat );
+      catEmpire.add( &newCat );
    }
 
    cout << "Print a family tree of " << NUMBER_OF_CATS << " cats" << endl;

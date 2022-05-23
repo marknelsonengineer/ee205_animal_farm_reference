@@ -56,12 +56,12 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
 
    BOOST_FIXTURE_TEST_CASE( test_insert_Tree, TreeTestFixture ) {
-   	BOOST_CHECK_THROW( testTree.insert( nullptr ), invalid_argument );
+   	BOOST_CHECK_THROW( testTree.add( nullptr ), invalid_argument );
 
    	for( int i = 0 ; i < 100 ; i++ ) {
          Animal& anAnimal = AnimalFactory::generateAnimal();
-   		BOOST_REQUIRE_NO_THROW( testTree.insert( &anAnimal ));
-   		BOOST_REQUIRE_THROW( testTree.insert( &anAnimal ), logic_error );
+   		BOOST_REQUIRE_NO_THROW( testTree.add( &anAnimal ));
+   		BOOST_REQUIRE_THROW( testTree.add( &anAnimal ), logic_error );
    		BOOST_REQUIRE_EQUAL( testTree.isEmpty(), false );
    		BOOST_REQUIRE_EQUAL( testTree.size(), i+1 );
    		BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
       // Insert and remove the root node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {
-         BOOST_REQUIRE_NO_THROW( testTree.insert( &anAnimal ));
+         BOOST_REQUIRE_NO_THROW( testTree.add( &anAnimal ));
          BOOST_REQUIRE_EQUAL( testTree.isEmpty(), false );
          BOOST_REQUIRE_EQUAL( testTree.size(), 1 );
          BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
    BOOST_FIXTURE_TEST_CASE( test_getRandomNode, TreeTestFixture ) {
       for( int j = 0 ; j < 10 ; j++ ) {
-         testTree.insert( &AnimalFactory::generateAnimal() );
+         testTree.add( &AnimalFactory::generateAnimal());
          Node* aNode = testTree.getRandomNode();
          // aNode->dump();
          BOOST_REQUIRE_EQUAL( testTree.isIn( aNode ), true );
@@ -127,7 +127,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
             } else { // Insert a Node
                Animal& anAnimal = AnimalFactory::generateAnimal();
-               BOOST_REQUIRE_NO_THROW( testTree.insert( &anAnimal ) );
+               BOOST_REQUIRE_NO_THROW( testTree.add( &anAnimal ) );
                count += 1;
                BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
 

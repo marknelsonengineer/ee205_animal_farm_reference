@@ -32,7 +32,7 @@ int main() {
    for( int i = 0 ; i < NUMBER_OF_CATS ; i++ ) {
       Cat& newCat = Cat::newRandomCat();
 
-      catEmpire.insert( &newCat );
+      catEmpire.add( &newCat );
    }
 
    cout << "Print a reverse alphabetized list of " << NUMBER_OF_CATS << " cats in a binary search tree" << endl;

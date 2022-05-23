@@ -61,7 +61,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK( test_list.validate() );
 
       BOOST_CHECK_NO_THROW( test_list.push_front( &node1 ) );
-      BOOST_CHECK_THROW( test_list.push_front( &node1 ), logic_error );  // Can't insert a node that's already in the test_list
+      BOOST_CHECK_THROW( test_list.push_front( &node1 ), logic_error );  // Can't add a node that's already in the test_list
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
@@ -99,7 +99,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK( test_list.validate() );
 
       BOOST_CHECK_NO_THROW( test_list.push_back( &node1 ) );
-      BOOST_CHECK_THROW( test_list.push_back( &node1 ), logic_error );  // Can't insert a node that's already in the test_list
+      BOOST_CHECK_THROW( test_list.push_back( &node1 ), logic_error );  // Can't add a node that's already in the test_list
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
@@ -136,7 +136,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          BOOST_CHECK_EQUAL( test_list.isIn( node ), false );
 
          BOOST_CHECK_NO_THROW( test_list.push_front( node ));
-         BOOST_CHECK_THROW( test_list.push_front( node ), logic_error );  // Can't insert a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.push_front( node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
@@ -165,7 +165,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          BOOST_CHECK_EQUAL( test_list.isIn( node ), false );
 
          BOOST_CHECK_NO_THROW( test_list.push_back( node ));
-         BOOST_CHECK_THROW( test_list.push_back( node ), logic_error );  // Can't insert a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.push_back( node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
@@ -209,7 +209,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK( test_list.validate() );
 
       for( int i = 0 ; i < 20 ; i++ ) {  // Test insert_after() 20 times
-         Node* node = new Node();  // This is the node we are going to insert
+         Node* node = new Node();  // This is the node we are going to add
 
          int position = rand() % test_list.size();
          Node* insertAt = test_list.get_first();
@@ -218,8 +218,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          }
 
          BOOST_CHECK_NO_THROW( test_list.insert_after( insertAt, node ) );
-         BOOST_CHECK_THROW( test_list.insert_after( insertAt, node ), logic_error );  // Can't insert a node that's already in the test_list
-         BOOST_CHECK_THROW( test_list.insert_after( node, node ), logic_error );  // Can't insert a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.insert_after( insertAt, node ), logic_error );  // Can't add a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.insert_after( node, node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.size(), i + 2 );
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
@@ -228,7 +228,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       }
 
       {
-         Node* node = new Node();  // This is the node we are going to insert
+         Node* node = new Node();  // This is the node we are going to add
 
          BOOST_CHECK_NO_THROW( test_list.insert_after( test_list.get_last(), node ));  // Try an insert_after at the end of the test_list
       }
@@ -236,7 +236,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK( test_list.validate() );
 
       for( int i = 0 ; i < 20 ; i++ ) {  // Test insert_before() 20 times
-         Node* node = new Node();  // This is the node we are going to insert
+         Node* node = new Node();  // This is the node we are going to add
 
          int position = rand() % test_list.size();
          Node* insertAt = test_list.get_last();
@@ -245,8 +245,8 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          }
 
          BOOST_CHECK_NO_THROW( test_list.insert_before( insertAt, node ) );
-         BOOST_CHECK_THROW( test_list.insert_before( insertAt, node ), logic_error );  // Can't insert a node that's already in the test_list
-         BOOST_CHECK_THROW( test_list.insert_before( node, node ), logic_error );  // Can't insert a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.insert_before( insertAt, node ), logic_error );  // Can't add a node that's already in the test_list
+         BOOST_CHECK_THROW( test_list.insert_before( node, node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.size(), i + 23 );  // Initial node + 20 new nodes + 1 node at the end + this node
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
@@ -255,7 +255,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       }
 
       {
-         Node* node = new Node();  // This is the node we are going to insert
+         Node* node = new Node();  // This is the node we are going to add
 
          BOOST_CHECK_NO_THROW( test_list.insert_before( test_list.get_first(), node ));  // Try an insert_before at the beginning of the test_list
       }

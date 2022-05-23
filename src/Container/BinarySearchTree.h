@@ -21,20 +21,20 @@
 /// Nodes.
 class BinarySearchTree : public Tree {
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void insert( Node* newNode );              ///< Add a Node to the Tree
+   void add( Node* newNode );                 ///< Add a Node to the Tree
    bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
-   void remove( Node* nodeToRemove );          ///< Remove a Node from the Tree
+   void remove( Node* nodeToRemove );         ///< Remove a Node from the Tree
    void dump() const noexcept override;       ///< Output the member variables in this object
    bool validate() const noexcept override;   ///< Ensure the object is valid
-   Node* getRandomNode() const noexcept;      ///< Get a random Node from the Tree
-   virtual void removeAll() noexcept;         ///< Remove all of the Nodes in the Tree
+   Node* getRandomNode() const noexcept;      ///< Get a random Node from this Container
+   virtual void removeAll() noexcept;         ///< Remove all of the Nodes from this Container
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
-   void insert( Node* atNode, Node* newNode );  ///< Add a Node starting at atNode
+   void add( Node* atNode, Node* newNode );   ///< Add a Node starting at atNode
    bool isIn( const Node* atNode, const Node* aNode ) const;  ///< `true` if `aNode` is in the Tree
-   void dump( Node* atNode ) const noexcept;    ///< Output the member variables in this object
+   void dump( Node* atNode ) const noexcept;  ///< Output the member variables in this object
    bool validate( Node* atNode, Container::t_size& treeCount ) const noexcept;  ///< Ensure the object is valid
-   Node* getRandomNode( Node* aNode, int* nodesLeft ) const noexcept;      ///< Get a random node from the Tree
+   Node* getRandomNode( Node* aNode, int* nodesLeft ) const noexcept;  ///< Get a random node from the Tree
 
    // To do these... we really need iterators
    // void dfsInorder( Node* atNode ) const;         ///< Depth First Search - Inorder search

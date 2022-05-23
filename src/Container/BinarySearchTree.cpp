@@ -27,7 +27,7 @@
 using namespace std;
 
 
-void BinarySearchTree::insert( Node* newNode ) {
+void BinarySearchTree::add( Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -53,7 +53,7 @@ void BinarySearchTree::insert( Node* newNode ) {
    if( root == nullptr ) {  // If the BST is empty, then...
       root = newNode;
    } else {
-      insert( root, newNode );
+      add( root, newNode );
    }
 
    // Done
@@ -69,9 +69,9 @@ void BinarySearchTree::insert( Node* newNode ) {
 }
 
 
-/// This method assumes that it is called by `insert( Node* newNode )` and its
+/// This method assumes that it is called by `add( Node* newNode )` and its
 /// validations will run on it.
-void BinarySearchTree::insert( Node* atNode, Node* newNode ) {
+void BinarySearchTree::add( Node* atNode, Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `atNode` is `nullptr`.
@@ -88,17 +88,17 @@ void BinarySearchTree::insert( Node* atNode, Node* newNode ) {
 
    if( *newNode < *atNode ) {             // If newNode < atNode...
       if( atNode->left == nullptr ) {
-         atNode->left = newNode;          // Hang it on the left side
+         atNode->left = newNode;        // Hang it on the left side
       } else {
-         insert( atNode->left, newNode ); // Or descend to the left
+         add( atNode->left, newNode );  // Or descend to the left
       }
    }
 
-   if( *newNode > *atNode ) {            // If newNode > atNode...
+   if( *newNode > *atNode ) {           // If newNode > atNode...
       if( atNode->right == nullptr ) {
-         atNode->right = newNode;        // Hang it on the right side
+         atNode->right = newNode;       // Hang it on the right side
       } else {
-         insert( atNode->right, newNode ); // Or descend to the right
+         add( atNode->right, newNode ); // Or descend to the right
       }
    }
    #ifdef DEBUG
