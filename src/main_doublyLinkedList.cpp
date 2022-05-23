@@ -39,11 +39,12 @@ int main() {
 
    // Put 16 Animals in the list
    for( int i = 0 ; i < 8 ; i++ ) {
-      catDB.push_front( &AnimalFactory::generateAnimal() );
-      catDB.push_back( &AnimalFactory::generateAnimal() );
+      catDB.addFront( &AnimalFactory::generateAnimal());
+      catDB.addBack( &AnimalFactory::generateAnimal());
    }
 
-   for( Animal* pAnimal = (Animal*) catDB.getFirst() ; pAnimal != nullptr ; pAnimal = (Animal*)List::get_next((Node*)pAnimal ) ) {
+   for( Animal* pAnimal = (Animal*) catDB.getFirst() ; pAnimal != nullptr ; pAnimal = (Animal*) List::getNext(
+           (Node*) pAnimal ) ) {
       cout << pAnimal->speak() << endl;
    }
    cout << "========" << endl;

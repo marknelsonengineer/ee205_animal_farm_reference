@@ -77,7 +77,7 @@ void QueueSimulator::runQueueSimulator( bool isInteractive ) noexcept {
          if( isInteractive ) {
             cout << ((Alpha*) current )->memberChar;
          }
-         current = Queue::get_next( current );
+         current = Queue::getNext( current );
       }
 
       if( isInteractive ) {

@@ -34,7 +34,7 @@ DoublyLinkedList::DoublyLinkedList() {
 
 /// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
-void DoublyLinkedList::push_front( Node* newNode ) {
+void DoublyLinkedList::addFront( Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -76,12 +76,12 @@ void DoublyLinkedList::push_front( Node* newNode ) {
    #endif
 
    TRACE_END
-} // push_front
+} // addFront
 
 
 /// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
-void DoublyLinkedList::push_back( Node* newNode) {
+void DoublyLinkedList::addBack( Node* newNode) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -123,11 +123,11 @@ void DoublyLinkedList::push_back( Node* newNode) {
    #endif
 
    TRACE_END
-} // push_back
+} // addBack
 
 
 /// @return The first Node in the List or `nullptr` if the List is empty
-Node* DoublyLinkedList::pop_front() noexcept {
+Node* DoublyLinkedList::removeFront() noexcept {
    TRACE_START
 
    if( head == nullptr )  // SPECIAL CASE:  The List is empty
@@ -155,11 +155,11 @@ Node* DoublyLinkedList::pop_front() noexcept {
    TRACE_END
 
    return returnValue;
-} // pop_front
+} // removeFront
 
 
 /// @return The last Node in the List or `nullptr` if the List is empty
-Node* DoublyLinkedList::pop_back() noexcept {
+Node* DoublyLinkedList::removeBack() noexcept {
    TRACE_START
 
    if( tail == nullptr )  // SPECIAL CASE:  The List is empty
@@ -187,21 +187,21 @@ Node* DoublyLinkedList::pop_back() noexcept {
    TRACE_END
 
    return returnValue;
-} // pop_back
+} // removeBack
 
 
-/// Use push_front() to add to an empty List.
+/// Use addFront() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` after this Node.  Must not be `nullptr`.
 ///                    Must be in the List.
 /// @param newNode The Node to add to the List.  Must not be `nullptr`.
 ///                Must not be in the List.
-void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
+void DoublyLinkedList::addAfter( Node* currentNode, Node* newNode) {
    TRACE_START
 
    /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty List." );
+      throw logic_error( PROGRAM_NAME ": Can't addAfter() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -239,7 +239,7 @@ void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
       newNode->next->prev = newNode;
       count++;
    } else {	 // SPECIAL CASE:  Insert at the end of the List... we already know how to do that!
-      push_back( newNode );
+      addBack( newNode );
    }
 
    assert( validate() );
@@ -250,21 +250,21 @@ void DoublyLinkedList::insert_after( Node* currentNode, Node* newNode) {
    #endif
 
    TRACE_END
-} // insert_after
+} // addAfter
 
 
-/// Use push_front() to add to an empty List.
+/// Use addFront() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` before this Node.  Must not be `nullptr`.
 ///                    Must be in the List.
 /// @param newNode The Node to add to the List.  Must not be `nullptr`.
 ///                Must not be in the List.
-void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
+void DoublyLinkedList::addBefore( Node* currentNode, Node* newNode) {
    TRACE_START
 
    /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_before() with an empty List." );
+      throw logic_error( PROGRAM_NAME ": Can't addBefore() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -302,7 +302,7 @@ void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
       newNode->prev->next = newNode;
       count++;
    } else {	 // SPECIAL CASE:  Insert at the beginning of the List... we already know how to do that!
-      push_front( newNode );
+      addFront( newNode );
    }
    assert( validate() );
 
@@ -312,7 +312,7 @@ void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
    #endif
 
    TRACE_END
-} // insert_before
+} // addBefore
 
 
 /// @param node1 Must not be `nullptr` and must be in the List
@@ -430,7 +430,7 @@ Node *DoublyLinkedList::getLast() const noexcept {
 /// @param currentNode Start here
 ///
 /// @return Return the Node that's before `currentNode` in the DoublyLinkedList
-Node* DoublyLinkedList::get_prev( const Node* currentNode) {
+Node* DoublyLinkedList::getPrev( const Node* currentNode) {
    /// @throws invalid_argument If `currentNode` is `nullptr`
    if( currentNode == nullptr ) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );

@@ -32,7 +32,7 @@
 /// If TRACE is defined, print a message that `functionName` is doing `operation`.
 ///
 /// #### Sample Output
-/// `animalfarm3: Start push_front`
+/// `animalfarm3: Start addFront`
 ///
 /// @param operation "Start", "End", "Throws", etc.
 /// @param functionName The name of the function

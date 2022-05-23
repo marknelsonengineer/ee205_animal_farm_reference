@@ -50,8 +50,8 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.push_front( &node1 ) );
-      BOOST_CHECK_THROW( test_list.push_front( &node1 ), logic_error );  // Can't add a node that's already in the test_list
+      BOOST_CHECK_NO_THROW( test_list.addFront( &node1 ) );
+      BOOST_CHECK_THROW( test_list.addFront( &node1 ), logic_error );  // Can't add a node that's already in the test_list
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       BOOST_CHECK( test_list.validate() );
 
       Node* node2;
-      BOOST_CHECK_NO_THROW( node2 = test_list.pop_front() );
+      BOOST_CHECK_NO_THROW( node2 = test_list.removeFront() );
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
@@ -86,8 +86,8 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
          BOOST_CHECK_EQUAL( test_list.size(), i );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), false );
 
-         BOOST_CHECK_NO_THROW( test_list.push_front( node ) );
-         BOOST_CHECK_THROW( test_list.push_front( node ), logic_error );  // Can't add a node that's already in the test_list
+         BOOST_CHECK_NO_THROW( test_list.addFront( node ) );
+         BOOST_CHECK_THROW( test_list.addFront( node ), logic_error );  // Can't add a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
@@ -101,11 +101,11 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
          Node* nodeBefore = test_list.getFirst();
          Node* nodeAfter;
          BOOST_CHECK_EQUAL( test_list.isIn( nodeBefore ), true );
-         BOOST_CHECK_NO_THROW( nodeAfter = test_list.pop_front() );
+         BOOST_CHECK_NO_THROW( nodeAfter = test_list.removeFront() );
          BOOST_CHECK_EQUAL( nodeBefore, nodeAfter );
          BOOST_CHECK_EQUAL( test_list.isIn( nodeBefore), false );
          BOOST_CHECK_EQUAL( test_list.size(), i );
-         BOOST_CHECK_EQUAL( test_list.get_next( nodeAfter ), nullptr );
+         BOOST_CHECK_EQUAL( test_list.getNext( nodeAfter ), nullptr );
       }
 
       // BOOST_CHECK_NO_THROW( test_list.dump() );
@@ -124,17 +124,17 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
 
    BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_insert_after, SinglyLinkedListTestFixture ) {
       Node nodeFirst;         // Instantiate a node
-      test_list.push_front( &nodeFirst ) ;
+      test_list.addFront( &nodeFirst ) ;
 
       BOOST_CHECK( test_list.validate() );
 
-      for( int i = 0 ; i < 100 ; i++ ) {  // Test insert_after() 100 times
+      for( int i = 0 ; i < 100 ; i++ ) {  // Test addAfter() 100 times
          Node* node = new Node();  // This is the node we are going to add
 
          int position = rand() % test_list.size();
          Node* insertAt = test_list.getFirst();
          for( int j = 0 ; j < position ; j++ ) {
-            insertAt = test_list.get_next( insertAt );
+            insertAt = test_list.getNext( insertAt );
          }
 
          BOOST_CHECK_NO_THROW( test_list.insert_after( insertAt, node ) );

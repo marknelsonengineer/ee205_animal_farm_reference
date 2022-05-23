@@ -25,20 +25,20 @@ public:  ///////////////////////// Public Constructors /////////////////////////
    DoublyLinkedList();        ///< Make a new DoublyLinkedList
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void push_front( Node* newNode ) override;  ///< Insert `newNode` to the beginning of the List
-   virtual void  push_back( Node* newNode )  ; ///< Append `newNode` to the end of the List
-   Node* pop_front() noexcept override ;       ///< Remove and return the first Node in the List
-   virtual Node* pop_back() noexcept ;         ///< Remove and return the last Node in the List
+   void          addFront( Node* newNode ) override;  ///< Insert `newNode` to the beginning of the List
+   virtual void  addBack( Node* newNode )  ;          ///< Append `newNode` to the end of the List
+   Node*         removeFront() noexcept override ;    ///< Remove and return the first Node in the List
+   virtual Node* removeBack() noexcept ;              ///< Remove and return the last Node in the List
 
-   void insert_after( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
-   void insert_before( Node* currentNode, Node* newNode ) ; ///< Insert `newNode` before `currentNode`
+   void addAfter( Node* currentNode, Node* newNode ) ;  ///< Insert `newNode` after `currentNode`
+   void addBefore( Node* currentNode, Node* newNode ) ; ///< Insert `newNode` before `currentNode`
 
    void swap( Node* node1, Node* node2 ) ;  ///< Swap `node1` and `node2`
 
    void insertionSort() noexcept ;  ///< Runs the insertion sort algorithm on the List
 
-   Node* getLast() const noexcept ;                    ///< Get the last Node in the List
-   static Node* get_prev( const Node* currentNode ) ;  ///< Get the previous Node in the List
+   Node* getLast() const noexcept ;                   ///< Get the last Node in the List
+   static Node* getPrev( const Node* currentNode ) ;  ///< Get the previous Node in the List
 
    void dump() const noexcept override ;      ///< Output the member variables in this object
    bool validate() const noexcept override ;  ///< Ensure the object is valid

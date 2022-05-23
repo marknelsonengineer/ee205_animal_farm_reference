@@ -65,7 +65,7 @@ Node* List::getFirst() const noexcept {
 /// @param currentNode Start here
 ///
 /// @return Return the Node that follows `currentNode` in the List
-Node* List::get_next(const Node *currentNode) {
+Node* List::getNext( const Node *currentNode) {
    /// @throws invalid_argument If `currentNode` is `nullptr`
    if( currentNode == nullptr ) {
       throw invalid_argument( PROGRAM_NAME ": currentNode must have a value." );
@@ -79,7 +79,7 @@ void List::removeAll() noexcept {
    assert( validate() );
 
    while( head != nullptr ) {
-      pop_front();
+      removeFront();
    }
 
    #ifdef DEBUG

@@ -34,7 +34,7 @@ SinglyLinkedList::SinglyLinkedList() {
 
 /// @param newNode The Node to add to the List.  It must be a valid Node.
 ///                `newNode` can not be `nullptr`.
-void SinglyLinkedList::push_front(Node *newNode) {
+void SinglyLinkedList::addFront( Node *newNode) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -73,11 +73,11 @@ void SinglyLinkedList::push_front(Node *newNode) {
    #endif
 
    TRACE_END
-} // push_front
+} // addFront
 
 
 /// @return The first Node in the List or `nullptr` if the List is empty
-Node *SinglyLinkedList::pop_front() noexcept {
+Node *SinglyLinkedList::removeFront() noexcept {
    TRACE_START
 
    if( head == nullptr )  // SPECIAL CASE:  The List is empty
@@ -103,10 +103,10 @@ Node *SinglyLinkedList::pop_front() noexcept {
    TRACE_END
 
    return returnValue;
-} // pop_front
+} // removeFront
 
 
-/// Use push_front() to add to an empty List.
+/// Use addFront() to add to an empty List.
 ///
 /// @param currentNode Insert `newNode` after this Node.  Must not be `nullptr`.
 ///                    Must be in the List.
@@ -117,7 +117,7 @@ void SinglyLinkedList::insert_after(Node *currentNode, Node *newNode) {
 
    /// @throws logic_error If the List is empty
    if( head == nullptr) {
-      throw logic_error( PROGRAM_NAME ": Can't insert_after() with an empty List." );
+      throw logic_error( PROGRAM_NAME ": Can't addAfter() with an empty List." );
    }
 
    /// @throws invalid_argument If `currentNode` is `nullptr`
@@ -174,4 +174,4 @@ void SinglyLinkedList::dump() const noexcept {
       currentNode->dump();
    }
 }
-// insert_after
+// addAfter

@@ -155,30 +155,30 @@ BOOST_AUTO_TEST_SUITE( test_Cat )
       Cat b( "Bob" );
       Cat c( "Chili" );
 
-      list.push_back( &a );
-      list.push_back( &b );
-      list.push_back( &c );
+      list.addBack( &a );
+      list.addBack( &b );
+      list.addBack( &c );
 
-      BOOST_CHECK_NE( DoublyLinkedList::get_next( &b ), nullptr );
-      BOOST_CHECK_NE( DoublyLinkedList::get_prev( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getNext( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getPrev( &b ), nullptr );
       BOOST_CHECK_EQUAL( b.getName(), "Bob" );
 
       Cat x = b;
-      BOOST_CHECK_NE( DoublyLinkedList::get_next( &b ), nullptr );
-      BOOST_CHECK_NE( DoublyLinkedList::get_prev( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getNext( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getPrev( &b ), nullptr );
       BOOST_CHECK_EQUAL( b.getName(), "Bob" );
-      BOOST_CHECK_EQUAL( DoublyLinkedList::get_next( &x ), nullptr );
-      BOOST_CHECK_EQUAL( DoublyLinkedList::get_prev( &x ), nullptr );
+      BOOST_CHECK_EQUAL( DoublyLinkedList::getNext( &x ), nullptr );
+      BOOST_CHECK_EQUAL( DoublyLinkedList::getPrev( &x ), nullptr );
       BOOST_CHECK_EQUAL( x.getName(), "Bob" );
 
       b.setName( "Bucky" );
       Cat y( "Yankee" );
       y = b;
-      BOOST_CHECK_NE( DoublyLinkedList::get_next( &b ), nullptr );
-      BOOST_CHECK_NE( DoublyLinkedList::get_prev( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getNext( &b ), nullptr );
+      BOOST_CHECK_NE( DoublyLinkedList::getPrev( &b ), nullptr );
       BOOST_CHECK_EQUAL( b.getName(), "Bucky" );
-      BOOST_CHECK_EQUAL( DoublyLinkedList::get_next( &y ), nullptr );
-      BOOST_CHECK_EQUAL( DoublyLinkedList::get_prev( &y ), nullptr );
+      BOOST_CHECK_EQUAL( DoublyLinkedList::getNext( &y ), nullptr );
+      BOOST_CHECK_EQUAL( DoublyLinkedList::getPrev( &y ), nullptr );
       BOOST_CHECK_EQUAL( y.getName(), "Bucky" );
    }
 

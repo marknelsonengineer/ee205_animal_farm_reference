@@ -33,10 +33,11 @@ int main() {
 
    // Put some Animals in the list
    for( int i = 0 ; i < NUMBER_OF_ANIMALS ; i++ ) {
-      animalDB.push_front( &AnimalFactory::generateAnimal() );
+      animalDB.addFront( &AnimalFactory::generateAnimal());
    }
 
-   for( Animal* animal = (Animal*) animalDB.getFirst() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::get_next( animal ) ) {
+   for( Animal* animal = (Animal*) animalDB.getFirst() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::getNext(
+           animal ) ) {
       cout << animal->info() << endl;  /// @todo Replace speak() with info() when we have it available
    }
 

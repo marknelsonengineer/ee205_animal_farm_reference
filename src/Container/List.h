@@ -9,9 +9,9 @@
 /// @todo Implement find( criteria ) // Find a thing (or NULL)
 /// @todo Implement Cat* findCatByName( const char* name ) ;
 /// @todo Implement iterator getIterator() // Loop over a bunch of things
-/// @todo Implement void delete ( index )  // Delete an index…
-/// @todo Implement void delete ( key )    // by key
-/// @todo Implement void delete ( thing )  // Delete the thing
+/// @todo Implement void remove( index )  // Delete an index…
+/// @todo Implement void remove( key )    // by key
+/// @todo Implement void remove( thing )  // Delete the thing
 ///
 /// @file List.h
 /// @version 1.0
@@ -25,15 +25,15 @@
 #include "Container.h"
 
 /// A generic list-based collection class.  This is a type of container that
-/// has a `head` Node and `getFirst()` and `get_next()` methods -- which
+/// has a `head` Node and `getFirst()` and `getNext()` methods -- which
 /// can be used to traverse a list.
 ///
 class List : public Container {
 protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* head = nullptr ;     ///< The head pointer for the collection
+   Node* head = nullptr ;  ///< The head pointer for the collection
 
 public:  /////////////////////////// Static Methods ////////////////////////////
-   static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the List
+   static Node* getNext( const Node* currentNode ) ;  ///< Get the next Node in the List
 
 public:  /////////////////////////// Public Methods ////////////////////////////
    bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
@@ -41,12 +41,12 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
    virtual Node* getFirst() const noexcept ;  ///< Get the first Node in the List
 
-   virtual void removeAll() noexcept ;  ///< Remove all of the Nodes in the List
+   virtual void removeAll() noexcept ;        ///< Remove all of the Nodes in the List
 
-   void dump() const noexcept override;      ///< Output the member variables in this object
-   bool validate() const noexcept override;  ///< Ensure the object is valid
+   void dump() const noexcept override;       ///< Output the member variables in this object
+   bool validate() const noexcept override;   ///< Ensure the object is valid
 
 public:  ////////////////////////// Abstract Methods ///////////////////////////
-   virtual void push_front( Node* newNode ) = 0 ;  ///< Insert `newNode` at the beginning of the List
-   virtual Node* pop_front() noexcept = 0 ;        ///< Remove and return the first Node in the List
+   virtual void addFront( Node* newNode ) = 0 ;  ///< Insert `newNode` at the beginning of the List
+   virtual Node* removeFront() noexcept = 0 ;    ///< Remove and return the first Node in the List
 };
