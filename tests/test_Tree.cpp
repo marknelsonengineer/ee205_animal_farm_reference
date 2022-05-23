@@ -33,13 +33,13 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
    /// Delete all nodes before and after each of the test cases in this module.
    struct TreeTestFixture {
       TreeTestFixture()   {
-         testTree.deleteAllNodes();
+         testTree.removeAll();
          Cat::names.reset();  // We don't want to have duplicate Cat & Dog names
          Dog::names.reset();
          BOOST_TEST_MESSAGE( "setup fixture" );
       }
       ~TreeTestFixture()  {
-         testTree.deleteAllNodes();
+         testTree.removeAll();
          Cat::names.reset();
          Dog::names.reset();
          BOOST_TEST_MESSAGE( "teardown fixture" );
@@ -108,7 +108,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       int count = 0;
 
       for( int i = 0 ; i < 7 ; i++ ) {
-         BOOST_REQUIRE_NO_THROW( testTree.deleteAllNodes() );
+         BOOST_REQUIRE_NO_THROW( testTree.removeAll() );
          count = 0;
 
          double idealSizeOfList = pow( 2, i );
@@ -136,7 +136,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
             BOOST_REQUIRE_EQUAL( testTree.validate(), true );
          }
       }
-      BOOST_REQUIRE_NO_THROW( testTree.deleteAllNodes() );
+      BOOST_REQUIRE_NO_THROW( testTree.removeAll() );
       count = 0;
    }
 

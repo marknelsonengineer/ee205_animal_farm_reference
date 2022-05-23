@@ -35,13 +35,13 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
     /// Delete all nodes before and after each of the test cases in this module.
    struct DoublyLinkedListTestFixture {
       DoublyLinkedListTestFixture()   {
-         test_list.deleteAllNodes();
+         test_list.removeAll();
          Cat::names.reset();  // We don't want to have duplicate Cat & Dog names
          Dog::names.reset();
          BOOST_TEST_MESSAGE( "setup fixture" );
       }
       ~DoublyLinkedListTestFixture()  {
-         test_list.deleteAllNodes();
+         test_list.removeAll();
          Cat::names.reset();
          Dog::names.reset();
          BOOST_TEST_MESSAGE( "teardown fixture" );
@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
+      BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is OK even if the test_list is empty
    }
 
 
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
+      BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is OK even if the test_list is empty
    }
 
 
@@ -197,7 +197,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump());
       BOOST_CHECK( test_list.validate());
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes());
+      BOOST_CHECK_NO_THROW( test_list.removeAll());
       BOOST_CHECK( test_list.validate());
    }
 
@@ -260,7 +260,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
          BOOST_CHECK_NO_THROW( test_list.insert_before( test_list.get_first(), node ));  // Try an insert_before at the beginning of the test_list
       }
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is the primary / big test for deleteAllNodes()
+      BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is the primary / big test for removeAll()
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes());  // Doesn't break on an empty test_list
+      BOOST_CHECK_NO_THROW( test_list.removeAll());  // Doesn't break on an empty test_list
       BOOST_CHECK( test_list.validate() );
    }
 
@@ -345,7 +345,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.get_prev( test_list.get_last()), cat5 );
       BOOST_CHECK_EQUAL( test_list.get_last(), cat3 );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes());  // Doesn't break on an empty test_list
+      BOOST_CHECK_NO_THROW( test_list.removeAll());  // Doesn't break on an empty test_list
       BOOST_CHECK( test_list.validate() );
    }
 

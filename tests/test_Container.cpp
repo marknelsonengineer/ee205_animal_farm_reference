@@ -23,6 +23,13 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_Container )
 
+   // To instantiate a Container, we need a class that defines the pure virtual removeAll() method
+   class TestContainer : public Container {
+   public:
+      void removeAll() noexcept override { }
+   };
+
+
    BOOST_AUTO_TEST_CASE( test_Node ) {
       Node aNode;
       BOOST_CHECK_EQUAL( aNode.next, nullptr );
@@ -49,7 +56,7 @@ BOOST_AUTO_TEST_SUITE( test_Container )
    }
 
    BOOST_AUTO_TEST_CASE( test_Container ) {
-      Container testContainer;
+      TestContainer testContainer;
       Node aNode;
 
       BOOST_CHECK_EQUAL( testContainer.isEmpty(), true );

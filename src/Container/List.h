@@ -36,12 +36,12 @@ public:  /////////////////////////// Static Methods ////////////////////////////
    static Node* get_next( const Node* currentNode ) ;  ///< Get the next Node in the List
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   bool isIn( Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
+   bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the List
    virtual bool isSorted() const noexcept ;   ///< `true` if the List is sorted
 
    virtual Node* get_first() const noexcept ; ///< Get the first Node in the List
 
-   virtual void deleteAllNodes() noexcept ;  ///< Delete all of the nodes in the List
+   virtual void removeAll() noexcept ;  ///< Remove all of the Nodes in the List
 
    void dump() const noexcept override;      ///< Output the member variables in this object
    bool validate() const noexcept override;  ///< Ensure the object is valid

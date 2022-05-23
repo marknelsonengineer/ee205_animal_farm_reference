@@ -113,7 +113,7 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 /// @param aNode Check aNode to see if it's in the Tree
 ///
 /// @return `true` if `aNode` is in the Tree.  `false` if it's not.
-bool Tree::isIn( Node* aNode ) const {
+bool Tree::isIn( const Node* aNode ) const {
    TRACE_START
    Container::isIn( aNode );  // Container::isIn does basic checks, but doesn't know about the storage engine
 
@@ -127,7 +127,7 @@ bool Tree::isIn( Node* aNode ) const {
 /// @param aNode  The Node to look for
 ///
 /// @return `true` if `aNode` is in the Tree.  `false` if it's not.
-bool Tree::isIn( Node* atNode, Node* aNode ) const {
+bool Tree::isIn( const Node* atNode, const Node* aNode ) const {
    TRACE_START
 
    if( atNode == nullptr )
@@ -398,12 +398,17 @@ Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
 }
 
 
-void Tree::deleteAllNodes() {
+void Tree::removeAll() noexcept {
    TRACE_START
+
+   assert( validate() );
 
    while( root != nullptr ) {
       erase( root );
    }
+
+   assert( validate() );
+   assert( isEmpty() );
 
    TRACE_END
 }

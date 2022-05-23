@@ -29,11 +29,11 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
     /// Delete all nodes before and after each of the test cases in this module.
    struct SinglyLinkedListTestFixture {
       SinglyLinkedListTestFixture()   {
-         test_list.deleteAllNodes();
+         test_list.removeAll();
          BOOST_TEST_MESSAGE( "setup fixture" );
       }
       ~SinglyLinkedListTestFixture()  {
-         test_list.deleteAllNodes();
+         test_list.removeAll();
          BOOST_TEST_MESSAGE( "teardown fixture" );
       }
    } ;
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This is OK even if the test_list is empty
+      BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is OK even if the test_list is empty
       BOOST_CHECK( test_list.validate() );
    }
 
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() );  // Make sure you can delete an empty test_list
+      BOOST_CHECK_NO_THROW( test_list.removeAll() );  // Make sure you can delete an empty test_list
       BOOST_CHECK( test_list.validate() );
    }
 
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
          BOOST_CHECK( test_list.validate() );
       }
 
-      BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This does a lot of work
+      BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This does a lot of work
 
       BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );

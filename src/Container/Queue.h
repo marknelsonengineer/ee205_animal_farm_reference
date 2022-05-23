@@ -30,8 +30,8 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    Container::t_size size()  const noexcept override { return DoublyLinkedList::size(); };  ///< Return the number of Nodes in the Queue
 
    // From List
-   bool isIn( Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); };  ///< `true` if `aNode` is in the Queue
-   void deleteAllNodes() noexcept override { DoublyLinkedList::deleteAllNodes(); };      ///< Delete all of the Nodes in the Queue
+   bool isIn( const Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); };  ///< `true` if `aNode` is in the Queue
+   void removeAll() noexcept override { DoublyLinkedList::removeAll(); };  ///< Remove all of the Nodes in the Queue
    static Node* get_next( const Node* currentNode ) { return DoublyLinkedList::get_next( currentNode ); };  ///< Get the next Node in the Queue
 
    // From DoublyLinkedList

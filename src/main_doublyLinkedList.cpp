@@ -50,7 +50,7 @@ int main() {
 
    catDB.validate() ;
    catDB.dump() ;
-   catDB.deleteAllNodes() ;
+   catDB.removeAll() ;
    catDB.dump() ;
 
    cout << "Done with " << PROGRAM_TITLE ;

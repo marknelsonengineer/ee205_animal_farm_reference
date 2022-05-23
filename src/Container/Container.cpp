@@ -34,7 +34,7 @@ Container::t_size Container::size() const noexcept {
 /// @param aNode Check this Node to see if it's in the List
 ///
 /// @return `true` if `aNode` is in the List.  `false` if it's not.
-bool Container::isIn( Node* aNode ) const {
+bool Container::isIn( const Node* aNode ) const {
    /// @throws invalid_argument If `aNode` is `nullptr`
    if( aNode == nullptr ) {
       throw invalid_argument( PROGRAM_NAME ": aNode must have a value." );

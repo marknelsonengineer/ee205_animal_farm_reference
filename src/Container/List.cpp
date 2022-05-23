@@ -22,7 +22,7 @@ using namespace std;
 /// @param aNode Check this Node to see if it's in the List
 ///
 /// @return `true` if `aNode` is in the List.  `false` if it's not.
-bool List::isIn(Node *aNode) const {
+bool List::isIn(const Node *aNode) const {
 
    Container::isIn( aNode );
 
@@ -75,7 +75,7 @@ Node* List::get_next(const Node *currentNode) {
 }
 
 
-void List::deleteAllNodes() noexcept {
+void List::removeAll() noexcept {
    assert( validate() );
 
    while( head != nullptr ) {
@@ -87,7 +87,9 @@ void List::deleteAllNodes() noexcept {
    #endif
 
    assert( validate() );
+   assert( isEmpty() );
 }
+
 
 /// @todo Add better documentation
 void List::dump() const noexcept {
