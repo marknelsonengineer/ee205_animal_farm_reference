@@ -109,10 +109,10 @@ bool List::validate() const noexcept {
    /// If `head` is `nullptr`, then `count == 0`.
    if( head == nullptr ) {
       assert( count == 0 );
-      assert( empty() );
+      assert( isEmpty() );
    } else {
       assert( count != 0 );
-      assert( !empty() );
+      assert( !isEmpty() );
    }
 
    /// If the list only has 1 Node, ensure the count == 1.

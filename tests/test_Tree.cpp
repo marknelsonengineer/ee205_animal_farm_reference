@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
 
    BOOST_FIXTURE_TEST_CASE( test_empty_Tree, TreeTestFixture ) {
-      BOOST_CHECK_EQUAL( testTree.empty(), true );
+      BOOST_CHECK_EQUAL( testTree.isEmpty(), true );
    	BOOST_CHECK_EQUAL( testTree.size(), 0 );
    	BOOST_CHECK_EQUAL( testTree.validate(), true );
    	// BOOST_CHECK_NO_THROW( testTree.dump());
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
          Animal& anAnimal = AnimalFactory::generateAnimal();
    		BOOST_REQUIRE_NO_THROW( testTree.insert( &anAnimal ));
    		BOOST_REQUIRE_THROW( testTree.insert( &anAnimal ), logic_error );
-   		BOOST_REQUIRE_EQUAL( testTree.empty(), false );
+   		BOOST_REQUIRE_EQUAL( testTree.isEmpty(), false );
    		BOOST_REQUIRE_EQUAL( testTree.size(), i+1 );
    		BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
    		BOOST_REQUIRE_EQUAL( testTree.validate(), true );
@@ -82,13 +82,13 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
       // Insert and remove the root node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {
          BOOST_REQUIRE_NO_THROW( testTree.insert( &anAnimal ));
-         BOOST_REQUIRE_EQUAL( testTree.empty(), false );
+         BOOST_REQUIRE_EQUAL( testTree.isEmpty(), false );
          BOOST_REQUIRE_EQUAL( testTree.size(), 1 );
          BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
          BOOST_REQUIRE_EQUAL( testTree.validate(), true );
 
          BOOST_REQUIRE_NO_THROW( testTree.erase( &anAnimal ));
-         BOOST_REQUIRE_EQUAL( testTree.empty(), true );
+         BOOST_REQUIRE_EQUAL( testTree.isEmpty(), true );
          BOOST_REQUIRE_EQUAL( testTree.size(), 0 );
          BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), false );
          BOOST_REQUIRE_EQUAL( testTree.validate(), true );

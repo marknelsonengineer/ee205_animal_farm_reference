@@ -20,7 +20,7 @@ using namespace std;
 
 
 /// @return `true` if the Container is empty.  `false` if the Container has one or more Nodes in it.
-bool Container::empty() const noexcept {
+bool Container::isEmpty() const noexcept {
    return (count == 0);
 }
 
@@ -58,9 +58,9 @@ void Container::dump() const noexcept {
 /// @return `true` if the Container is healthy.  `false` if otherwise.
 bool Container::validate() const noexcept {
    if( count == 0 ) {
-      assert( empty() );
+      assert( isEmpty() );
    } else {
-      assert( !empty() );
+      assert( !isEmpty() );
    }
 
    return true ;  // All is well

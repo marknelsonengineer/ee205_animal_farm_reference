@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
    BOOST_FIXTURE_TEST_CASE( test_SinglyLinkedList_simple_insert_and_delete, SinglyLinkedListTestFixture ) {
       Node node1;             // Instantiate a node
 
-      BOOST_CHECK_EQUAL( test_list.empty(), true );
+      BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       BOOST_CHECK_NO_THROW( test_list.push_front( &node1 ) );
       BOOST_CHECK_THROW( test_list.push_front( &node1 ), logic_error );  // Can't insert a node that's already in the test_list
 
-      BOOST_CHECK_EQUAL( test_list.empty(), false );
+      BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
       BOOST_CHECK_EQUAL( test_list.size(), 1 );
       BOOST_CHECK_EQUAL( test_list.isIn( &node1 ), true );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // A test_list with only one thing should be sorted
@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
       Node* node2;
       BOOST_CHECK_NO_THROW( node2 = test_list.pop_front() );
 
-      BOOST_CHECK_EQUAL( test_list.empty(), true );
+      BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isIn( node2 ), false );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
          BOOST_CHECK_NO_THROW( test_list.push_front( node ) );
          BOOST_CHECK_THROW( test_list.push_front( node ), logic_error );  // Can't insert a node that's already in the test_list
 
-         BOOST_CHECK_EQUAL( test_list.empty(), false );
+         BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
          BOOST_CHECK_EQUAL( test_list.get_first(), node );
          BOOST_CHECK( test_list.validate() );
@@ -110,7 +110,7 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
 
       // BOOST_CHECK_NO_THROW( test_list.dump() );
 
-      BOOST_CHECK_EQUAL( test_list.empty(), true );
+      BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
       BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );
@@ -142,14 +142,14 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
          BOOST_CHECK_THROW( test_list.insert_after( node, node ), logic_error );  // Can't insert a node that's already in the test_list
 
          BOOST_CHECK_EQUAL( test_list.size(), i + 2 );
-         BOOST_CHECK_EQUAL( test_list.empty(), false );
+         BOOST_CHECK_EQUAL( test_list.isEmpty(), false );
          BOOST_CHECK_EQUAL( test_list.isIn( node ), true );
          BOOST_CHECK( test_list.validate() );
       }
 
       BOOST_CHECK_NO_THROW( test_list.deleteAllNodes() ); // This does a lot of work
 
-      BOOST_CHECK_EQUAL( test_list.empty(), true );
+      BOOST_CHECK_EQUAL( test_list.isEmpty(), true );
       BOOST_CHECK_EQUAL( test_list.size(), 0 );
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
       BOOST_CHECK_EQUAL( test_list.get_first(), nullptr );

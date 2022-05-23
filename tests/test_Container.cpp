@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_SUITE( test_Container )
       Container testContainer;
       Node aNode;
 
-      BOOST_CHECK_EQUAL( testContainer.empty(), true );
+      BOOST_CHECK_EQUAL( testContainer.isEmpty(), true );
       BOOST_CHECK_EQUAL( testContainer.size(), 0 );
       BOOST_CHECK_EQUAL( testContainer.isIn( &aNode ), false );
       BOOST_CHECK_THROW( testContainer.isIn( nullptr ), invalid_argument );

@@ -318,7 +318,7 @@ void DoublyLinkedList::insert_before( Node* currentNode, Node* newNode) {
 /// @param node1 Must not be `nullptr` and must be in the List
 /// @param node2 Must not be `nullptr` and must be in the List
 void DoublyLinkedList::swap( Node* node1, Node* node2 ) {
-   assert( !empty() );
+   assert( !isEmpty() );
 
    /// @throws invalid_argument If either `node1` or `node2` is `nullptr`
    if( node1 == nullptr || node2 == nullptr ) {
@@ -466,21 +466,21 @@ bool DoublyLinkedList::validate() const noexcept {
    if( head == nullptr ) {
       assert( tail == nullptr );
       assert( count == 0 );
-      assert( empty() );
+      assert( isEmpty() );
    } else {
       assert( tail != nullptr );
       assert( count != 0 );
-      assert( !empty() );
+      assert( !isEmpty() );
    }
 
    if( tail == nullptr ) {
       assert( head == nullptr );
       assert( count == 0 );
-      assert( empty() );
+      assert( isEmpty() );
    } else {
       assert( head != nullptr );
       assert( count != 0 );
-      assert( !empty() );
+      assert( !isEmpty() );
    }
 
    if( head != nullptr && tail == head ) {

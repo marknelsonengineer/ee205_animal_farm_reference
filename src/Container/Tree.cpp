@@ -177,10 +177,10 @@ bool Tree::validate() const noexcept {
    /// If `root` is `nullptr, then `count == 0`.
    if( root == nullptr ) {
       assert( count == 0 );
-      assert( empty() );
+      assert( isEmpty() );
    } else {
       assert( count != 0 );
-      assert( !empty() );
+      assert( !isEmpty() );
    }
 
    /// If the Tree only has 1 Node, ensure the count == 1.
@@ -357,7 +357,7 @@ void Tree::erase( Node* nodeToRemove ) {
 
 /// @return A random Node from the Tree.
 Node* Tree::getRandomNode() const noexcept {
-   if( empty() ) {
+   if( isEmpty() ) {
       return nullptr;  /// If the Tree is empty return `nullptr`.
    }
 

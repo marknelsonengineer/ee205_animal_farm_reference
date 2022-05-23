@@ -228,7 +228,7 @@ void CatEmpire::catGenerations() const {
    catQueue.push( new Cat( "END OF " + generation ) );  // This is the marker for the end of the generation
    // catQueue.push( nullptr );
 
-   while( !catQueue.empty() ) {
+   while( !catQueue.isEmpty() ) {
       Cat* aCat = (Cat*) catQueue.front();   // Peek at the front of the queue...
       Cat* aCatLeft = (Cat*) aCat->left;     // Get the left subtree
       Cat* aCatRight = (Cat*) aCat->right;   // Get the right subtree
@@ -362,7 +362,7 @@ Yummy\
  */
 ///
 void CatEmpire::catTail( CatEmpire* tailList ) const noexcept {
-   assert( tailList->empty() );
+   assert( tailList->isEmpty() );
 
    if( topCat == nullptr ) {
       cout << "No cats!" << endl;

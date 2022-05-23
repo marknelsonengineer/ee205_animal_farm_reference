@@ -26,8 +26,8 @@
 class Queue : private DoublyLinkedList {
 public:  /////////////////////////// Public Methods ////////////////////////////
    // From Container
-   bool         empty() const noexcept override { return DoublyLinkedList::empty(); };  ///< `true` if the Queue is empty
-   Container::t_size size()  const noexcept override { return DoublyLinkedList::size(); };   ///< Return the number of Nodes in the Queue
+   bool              isEmpty() const noexcept override { return DoublyLinkedList::isEmpty(); };  ///< `true` if the Queue is empty
+   Container::t_size size()  const noexcept override { return DoublyLinkedList::size(); };  ///< Return the number of Nodes in the Queue
 
    // From List
    bool isIn( Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); };  ///< `true` if `aNode` is in the Queue
