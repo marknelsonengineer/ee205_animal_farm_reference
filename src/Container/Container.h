@@ -15,10 +15,26 @@
 #include "Node.h"
 
 
-/// A generic collection class.  We know some things about this Container,
-/// like the number of Nodes it contains, but we don't have any implementation.
+/// The root of the collection hierarchy.
 ///
-/// Container will be used as a base class for a number of data structures.
+/// Java calls these *Collections*.  The C++ STL calls them *Containers*.  Both
+/// hold a group of Objects (that inherit from Node).  Some Containers have keys
+/// like Cat.name and some require unique keys.
+///
+/// Our collection framework takes inspiration from both
+/// [Java](https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html)
+/// and the
+/// [C++ STL](https://en.cppreference.com/w/cpp/container), but
+/// implements a reduced set of methods, mostly because Animal Farm meant for teaching.
+///
+/// The Containers library is a generic collection of class templates and
+/// algorithms that allow us to implement common data structures like
+/// DoublyLinkedList and Tree on the Node class.  Because Animal Farm will demonstrate
+/// the utility of Generic/Template programming, we will implement a Cat specific
+/// version of these data structures using classes like CatEmpire and CatWrangler.
+///
+/// We know some things about this Container, like the number of Nodes it has,
+/// but this class does not provide any implementation.
 ///
 /// According to the Rule of Three, this class has a:
 ///   - Copy constructor
@@ -35,6 +51,7 @@
 ///
 class Container {
 public:  //////////////// Enumerations & Type Definitions //////////////////////
+
    /// The native datatype of the Container's count/size
    typedef unsigned int t_size;
 
