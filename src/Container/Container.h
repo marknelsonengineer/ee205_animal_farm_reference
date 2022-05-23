@@ -48,6 +48,7 @@
 /// we've disabled the copy constructor and assignment overload.
 ///
 /// @see https://en.wikipedia.org/wiki/Rule_of_three_(C%2B%2B_programming)
+/// @see https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html
 ///
 class Container {
 public:  //////////////// Enumerations & Type Definitions //////////////////////
