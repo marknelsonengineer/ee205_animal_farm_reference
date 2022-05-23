@@ -224,18 +224,18 @@ bool BinarySearchTree::validate( Node* atNode, Container::t_size& treeCount ) co
 }
 
 
-/// Removes nodeToRemove from the BinarySearchTree, but does not `delete` the node from memory.
+/// Removes nodeToRemove from the BinarySearchTree, but does not `delete` the Node from memory.
 ///
 /// #### Internal
 /// This algorithm differs significantly from standard BST delete algorithms as
 /// they typically "swap" two nodes.  Because Animal Farm can have many different
-/// kinds of Animals, you can't swap two nodes (in-place)... instead, you
+/// kinds of Animals (Classes), you can't swap two nodes (in-place)... instead, you
 /// actually need to remove one node and move another node into its place.
 ///
 /// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
 ///      by Larry Nyhoff page 684.  I inlined the `search2` function
 ///      and replaced the swap functionality with moving two Nodes.
-void BinarySearchTree::erase( Node* nodeToRemove ) {
+void BinarySearchTree::remove( Node* nodeToRemove ) {
    TRACE_START
 
    /// @throws invalid_argument If `nodeToRemove` is `nullptr`.
@@ -400,7 +400,7 @@ void BinarySearchTree::removeAll() noexcept {
    assert( validate() );
 
    while( root != nullptr ) {
-      erase( root );
+      remove( root );
    }
 
    assert( validate() );

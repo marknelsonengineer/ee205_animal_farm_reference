@@ -75,9 +75,9 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
    BOOST_FIXTURE_TEST_CASE( test_simple_erase_from_Tree, TreeTestFixture ) {
       Animal& anAnimal = AnimalFactory::generateAnimal();
 
-      BOOST_CHECK_THROW( testTree.erase( nullptr ), invalid_argument );
-      BOOST_CHECK_THROW( testTree.erase( &anAnimal ),
-                         logic_error );  // Try to erase an Animal that's not in the BinarySearchTree
+      BOOST_CHECK_THROW( testTree.remove( nullptr ), invalid_argument );
+      BOOST_CHECK_THROW( testTree.remove( &anAnimal ),
+                         logic_error );  // Try to remove an Animal that's not in the BinarySearchTree
 
       // Insert and remove the root node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {
@@ -87,7 +87,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
          BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), true );
          BOOST_REQUIRE_EQUAL( testTree.validate(), true );
 
-         BOOST_REQUIRE_NO_THROW( testTree.erase( &anAnimal ));
+         BOOST_REQUIRE_NO_THROW( testTree.remove( &anAnimal ));
          BOOST_REQUIRE_EQUAL( testTree.isEmpty(), true );
          BOOST_REQUIRE_EQUAL( testTree.size(), 0 );
          BOOST_REQUIRE_EQUAL( testTree.isIn( &anAnimal ), false );
@@ -121,7 +121,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
             if( deleteNode ) {
                Node* nodeToDelete = testTree.getRandomNode();
-               BOOST_REQUIRE_NO_THROW( testTree.erase( nodeToDelete ) );
+               BOOST_REQUIRE_NO_THROW( testTree.remove( nodeToDelete ) );
                count -= 1;
                BOOST_REQUIRE_EQUAL( testTree.isIn( nodeToDelete ), false );
 

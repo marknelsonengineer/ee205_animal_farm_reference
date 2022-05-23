@@ -23,7 +23,7 @@ class BinarySearchTree : public Tree {
 public:  /////////////////////////// Public Methods ////////////////////////////
    void insert( Node* newNode );              ///< Add a Node to the Tree
    bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
-   void erase( Node* nodeToRemove );          ///< Remove a Node from the Tree
+   void remove( Node* nodeToRemove );          ///< Remove a Node from the Tree
    void dump() const noexcept override;       ///< Output the member variables in this object
    bool validate() const noexcept override;   ///< Ensure the object is valid
    Node* getRandomNode() const noexcept;      ///< Get a random Node from the Tree
