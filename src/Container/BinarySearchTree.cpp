@@ -7,7 +7,7 @@
 /// Trees do not preach learning and precepts.  They preach, undeterred by
 /// particulars, the ancient law of life.
 ///
-/// @file Tree.cpp
+/// @file BinarySearchTree.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
@@ -21,13 +21,13 @@
 #include <random> // For test_bulk_erase_from_Tree
 
 #include "../config.h"
-#include "Tree.h"
+#include "BinarySearchTree.h"
 
 
 using namespace std;
 
 
-void Tree::insert( Node* newNode ) {
+void BinarySearchTree::insert( Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `newNode` is `nullptr`.
@@ -71,7 +71,7 @@ void Tree::insert( Node* newNode ) {
 
 /// This method assumes that it is called by `insert( Node* newNode )` and its
 /// validations will run on it.
-void Tree::insert( Node* atNode, Node* newNode ) {
+void BinarySearchTree::insert( Node* atNode, Node* newNode ) {
    TRACE_START
 
    /// @throws invalid_argument If `atNode` is `nullptr`.
@@ -110,10 +110,10 @@ void Tree::insert( Node* atNode, Node* newNode ) {
 }
 
 
-/// @param aNode Check aNode to see if it's in the Tree
+/// @param aNode Check aNode to see if it's in the BinarySearchTree
 ///
-/// @return `true` if `aNode` is in the Tree.  `false` if it's not.
-bool Tree::isIn( const Node* aNode ) const {
+/// @return `true` if `aNode` is in the BinarySearchTree.  `false` if it's not.
+bool BinarySearchTree::isIn( const Node* aNode ) const {
    TRACE_START
    Container::isIn( aNode );  // Container::isIn does basic checks, but doesn't know about the storage engine
 
@@ -126,8 +126,8 @@ bool Tree::isIn( const Node* aNode ) const {
 /// @param atNode The Node to start searching...
 /// @param aNode  The Node to look for
 ///
-/// @return `true` if `aNode` is in the Tree.  `false` if it's not.
-bool Tree::isIn( const Node* atNode, const Node* aNode ) const {
+/// @return `true` if `aNode` is in the BinarySearchTree.  `false` if it's not.
+bool BinarySearchTree::isIn( const Node* atNode, const Node* aNode ) const {
    TRACE_START
 
    if( atNode == nullptr )
@@ -144,17 +144,17 @@ bool Tree::isIn( const Node* atNode, const Node* aNode ) const {
 
 
 /// @todo Add better documentation
-void Tree::dump() const noexcept {
+void BinarySearchTree::dump() const noexcept {
    Container::dump();
 
-   FORMAT_LINE_FOR_DUMP( "Tree", "root" ) << root << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "root" ) << root << std::endl ;
 
    dump( root );
 }
 
 
-/// Do an in-order traversal and dump every object in the Tree
-void Tree::dump( Node* atNode ) const noexcept {
+/// Do an in-order traversal and dump every object in the BinarySearchTree
+void BinarySearchTree::dump( Node* atNode ) const noexcept {
    if( atNode == nullptr )
       return;  // Done
 
@@ -170,8 +170,8 @@ void Tree::dump( Node* atNode ) const noexcept {
 ///
 /// @note This method calls `validate()` on each Node.
 ///
-/// @return `true` if the Tree is healthy.  `false` if otherwise.
-bool Tree::validate() const noexcept {
+/// @return `true` if the BinarySearchTree is healthy.  `false` if otherwise.
+bool BinarySearchTree::validate() const noexcept {
    assert( Container::validate() );
 
    /// If `root` is `nullptr, then `count == 0`.
@@ -199,7 +199,7 @@ bool Tree::validate() const noexcept {
    assert( size() == treeCount );
 
    #ifdef DEBUG
-   // cout << PROGRAM_NAME ": Tree is valid" << endl;
+   // cout << PROGRAM_NAME ": BinarySearchTree is valid" << endl;
    #endif
 
    return true;
@@ -207,7 +207,7 @@ bool Tree::validate() const noexcept {
 
 
 /// This method assumes that it is called by `validate()`
-bool Tree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept {
+bool BinarySearchTree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept {
    if( atNode == nullptr )
       return true;  // Looks good so far
 
@@ -228,7 +228,7 @@ bool Tree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept
 }
 
 
-/// Removes nodeToRemove from the Tree, but does not `delete` the node from memory.
+/// Removes nodeToRemove from the BinarySearchTree, but does not `delete` the node from memory.
 ///
 /// #### Internal
 /// This algorithm differs significantly from standard BST delete algorithms as
@@ -239,7 +239,7 @@ bool Tree::validate( Node* atNode, Container::t_size& treeCount ) const noexcept
 /// @see *ADTs, Data Structures and Problem Solving with CPP, Second Edition*
 ///      by Larry Nyhoff page 684.  I inlined the `search2` function
 ///      and replaced the swap functionality with moving two Nodes.
-void Tree::erase( Node* nodeToRemove ) {
+void BinarySearchTree::erase( Node* nodeToRemove ) {
    TRACE_START
 
    /// @throws invalid_argument If `nodeToRemove` is `nullptr`.
@@ -252,9 +252,9 @@ void Tree::erase( Node* nodeToRemove ) {
       throw domain_error( PROGRAM_NAME ": nodeToRemove is not valid" );
    }
 
-   /// @throws logic_error If `nodeToRemove` is not in the Tree.
+   /// @throws logic_error If `nodeToRemove` is not in the BinarySearchTree.
    if( !isIn( nodeToRemove )) {
-      throw logic_error( PROGRAM_NAME ": nodeToRemove is not in the Tree!" );
+      throw logic_error( PROGRAM_NAME ": nodeToRemove is not in the BinarySearchTree!" );
    }
 
    assert( validate() );
@@ -355,10 +355,10 @@ void Tree::erase( Node* nodeToRemove ) {
 }
 
 
-/// @return A random Node from the Tree.
-Node* Tree::getRandomNode() const noexcept {
+/// @return A random Node from the BinarySearchTree.
+Node* BinarySearchTree::getRandomNode() const noexcept {
    if( isEmpty() ) {
-      return nullptr;  /// If the Tree is empty return `nullptr`.
+      return nullptr;  /// If the BinarySearchTree is empty return `nullptr`.
    }
 
    if( size() == 1 ) {
@@ -367,13 +367,13 @@ Node* Tree::getRandomNode() const noexcept {
 
    uniform_int_distribution<> randomIndexGenerator( 0, size()-1 );
    int randomIndex = randomIndexGenerator( ANIMAL_FARM_RNG );
-   // FORMAT_LINE_FOR_DUMP( "Tree", "randomIndex" )  << randomIndex  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "randomIndex" )  << randomIndex  << std::endl ;
 
    return getRandomNode( root, &randomIndex );
 }
 
 
-Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
+Node* BinarySearchTree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
    assert( aNode != nullptr );
    Node* returnNode = aNode;
 
@@ -386,10 +386,10 @@ Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
    }
    *nodesLeft -= 1;
 
-   // FORMAT_LINE_FOR_DUMP( "Tree", "count" )  << count  << std::endl ;
-   // FORMAT_LINE_FOR_DUMP( "Tree", "nodesLeft" )  << *nodesLeft  << std::endl ;
-   // FORMAT_LINE_FOR_DUMP( "Tree", "aNode" )  << aNode  << std::endl ;
-   // FORMAT_LINE_FOR_DUMP( "Tree", "returnNode" )  << returnNode  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "count" )  << count  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "nodesLeft" )  << *nodesLeft  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "aNode" )  << aNode  << std::endl ;
+   // FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "returnNode" )  << returnNode  << std::endl ;
 
    if( aNode->right != nullptr && *nodesLeft >= 0 )
       returnNode = getRandomNode( aNode->right, nodesLeft );
@@ -398,7 +398,7 @@ Node* Tree::getRandomNode( Node* aNode, int* nodesLeft ) const noexcept {
 }
 
 
-void Tree::removeAll() noexcept {
+void BinarySearchTree::removeAll() noexcept {
    TRACE_START
 
    assert( validate() );

@@ -42,7 +42,7 @@ class Node {
    friend class List;
    friend class SinglyLinkedList;
    friend class DoublyLinkedList;
-   friend class Tree;
+   friend class BinarySearchTree;
    friend class CatEmpire;
    friend struct test_Container::test_Node;  // This is a test case
 

@@ -144,7 +144,7 @@ set(SOURCE_FILES_LISTS ${SOURCE_FILES_GENERAL} src/Container/Node.h src/Containe
 set(SOURCE_FILES_SINGLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp)
 set(SOURCE_FILES_DOUBLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp)
 set(SOURCE_FILES_QUEUES ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Container/Queue.h)
-set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/Tree.h src/Container/Tree.cpp)
+set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/BinarySearchTree.h src/Container/BinarySearchTree.cpp)
 
 set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatEmpire.cpp src/Animal/Mammal/Cat/CatEmpire.h)
 

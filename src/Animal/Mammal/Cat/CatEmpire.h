@@ -13,10 +13,10 @@
 #pragma once
 
 #include "Cat.h"
-#include "../../../Container/Tree.h"
+#include "../../../Container/BinarySearchTree.h"
 
 /// A Binary Search Tree that's customized to store Cats
-class CatEmpire : public Tree {
+class CatEmpire : public BinarySearchTree {
 protected:
    /// The root for the binary search tree is the topCat of our little Empire
    Cat*& topCat = reinterpret_cast<Cat*&>(root);

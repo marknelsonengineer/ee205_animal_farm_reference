@@ -2,9 +2,9 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// Comprehensive test of the Tree class
+/// Comprehensive test of the BinarySearchTree class
 ///
-/// @file test_Tree.cpp
+/// @file test_BinarySearchTree.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
@@ -18,7 +18,7 @@
 #include <cmath>                     // For pow()
 #include <random>                    // For test_bulk_erase_from_Tree
 
-#include "../src/Container/Tree.h"
+#include "../src/Container/BinarySearchTree.h"
 #include "../src/Animal/Mammal/Cat/Cat.h"
 #include "../src/Animal/Mammal/Dog/Dog.h"
 #include "../src/Animal/AnimalFactory.h"
@@ -28,7 +28,7 @@ using namespace std;
 BOOST_AUTO_TEST_SUITE( test_Tree )
 
    /// All of the tests will use this one testTree, which must always remain valid.
-   static Tree testTree;
+   static BinarySearchTree testTree;
 
    /// Delete all nodes before and after each of the test cases in this module.
    struct TreeTestFixture {
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_SUITE( test_Tree )
 
       BOOST_CHECK_THROW( testTree.erase( nullptr ), invalid_argument );
       BOOST_CHECK_THROW( testTree.erase( &anAnimal ),
-                         logic_error );  // Try to erase an Animal that's not in the Tree
+                         logic_error );  // Try to erase an Animal that's not in the BinarySearchTree
 
       // Insert and remove the root node 10 times
       for( int i = 0 ; i < 10 ; i++ ) {

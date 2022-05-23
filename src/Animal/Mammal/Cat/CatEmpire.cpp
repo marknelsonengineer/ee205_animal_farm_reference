@@ -190,7 +190,7 @@ void CatEmpire::catList() const noexcept {
 /// CatEmpire::catGenerations will use a breadth first search (BFS) to iterate
 /// over the Tree and print Cats by their generation.
 ///
-/// This is implemented by using **both** Tree and Queue (DoublyLinkedList) in
+/// This is implemented by using **both** BinarySearchTree and Queue (DoublyLinkedList) in
 /// combination.  Remember that Node has `left`, `right`, `prev` and `next`
 /// pointers.  We will use them all.
 ///
@@ -332,9 +332,9 @@ void CatEmpire::dfsInorderReverse( Cat* atCat, unsigned long depth ) const noexc
 
 /// Populate tailList from Cats in `this` class in reverse order
 ///
-/// @param tailList A new CatEmpire Tree (but it's effectively a linked list)
+/// @param tailList A new CatEmpire BinarySearchTree (but it's effectively a linked list)
 ///
-/// It will create a new Tree that looks like this:
+/// It will create a new BinarySearchTree that looks like this:
 ///
 /**
 @verbatim

@@ -29,7 +29,7 @@
 ///
 /// The Containers library is a generic collection of class templates and
 /// algorithms that allow us to implement common data structures like
-/// DoublyLinkedList and Tree on the Node class.  Because Animal Farm will demonstrate
+/// DoublyLinkedList and BinarySearchTree on the Node class.  Because Animal Farm will demonstrate
 /// the utility of Generic/Template programming, we will implement a Cat specific
 /// version of these data structures using classes like CatEmpire and CatWrangler.
 ///

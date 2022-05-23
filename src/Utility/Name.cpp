@@ -70,7 +70,7 @@ std::string Name::getNextName() noexcept {
 
 
 /// This method should be used with care... several Animal Farm
-/// data structures (like Tree) can't handle Nodes with the same name.
+/// data structures (like BinarySearchTree) can't handle Nodes with the same name.
 ///
 /// This has been added to facilitate unit testing.
 void Name::reset() {
