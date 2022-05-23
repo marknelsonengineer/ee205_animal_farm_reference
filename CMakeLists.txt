@@ -144,7 +144,7 @@ set(SOURCE_FILES_LISTS ${SOURCE_FILES_GENERAL} src/Container/Node.h src/Containe
 set(SOURCE_FILES_SINGLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp)
 set(SOURCE_FILES_DOUBLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp)
 set(SOURCE_FILES_QUEUES ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Container/Queue.h)
-set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/BinarySearchTree.h src/Container/BinarySearchTree.cpp)
+set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/BinarySearchTree.h src/Container/BinarySearchTree.cpp src/Container/Tree.cpp src/Container/Tree.h)
 
 set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatEmpire.cpp src/Animal/Mammal/Cat/CatEmpire.h)
 
@@ -157,6 +157,6 @@ add_executable(catTail        src/main_catTail.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(animalFarm       src/main_animalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
 add_executable(catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
 add_executable(doublyLinkedList src/main_doublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_ANIMAL_FACTORY})
-add_executable(scratch          src/main_scratch.cpp          ${SOURCE_FILES_BIRDS})
+add_executable(scratch          src/main_scratch.cpp          ${SOURCE_FILES_BIRDS} ${SOURCE_FILES_TREES})
 
 add_executable(queueSimulator src/main_queueSimulator.cpp ${SOURCE_FILES_QUEUES} src/Utility/QueueSimulator.h src/Utility/QueueSimulator.cpp)

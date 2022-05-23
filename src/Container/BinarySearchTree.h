@@ -13,16 +13,13 @@
 #pragma once
 
 #include "Node.h"
-#include "List.h"
+#include "Tree.h"
 
 /// Holds Node classes in a Binary Search Tree.
 ///
 /// This is implemented as a recursive data structure with `left` and `right`
 /// Nodes.
-class BinarySearchTree : public Container {
-protected:  ////////////////////// Protected Members ///////////////////////////
-   Node* root = nullptr;  ///< The root for the binary search tree
-
+class BinarySearchTree : public Tree {
 public:  /////////////////////////// Public Methods ////////////////////////////
    void insert( Node* newNode );              ///< Add a Node to the Tree
    bool isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
@@ -39,8 +36,11 @@ protected:  ////////////////////// Protected Methods ///////////////////////////
    bool validate( Node* atNode, Container::t_size& treeCount ) const noexcept;  ///< Ensure the object is valid
    Node* getRandomNode( Node* aNode, int* nodesLeft ) const noexcept;      ///< Get a random node from the Tree
 
-// void dfsInorderReverse( Node* atCat, int depth ) const;  ///< Depth First Search - Inorder reverse search
-// void dfsInorder( Node* atCat ) const;                    ///< Depth First Search - Inorder search
-// void catTail( Node* atCat, BinarySearchTree* tailList ) const;
-// void dfsPreorder( Node* atCat ) const;
+   // To do these... we really need iterators
+   // void dfsInorder( Node* atNode ) const;         ///< Depth First Search - Inorder search
+   // void dfsInorderReverse( Node* atNode ) const;  ///< Depth First Search - Inorder reverse search
+   // void dfsPreorder( Node* atNode ) const;
+   // void dfsPreorderReverse( Node* atNode ) const;
+   // void dfsPostorder( Node* atNode ) const;
+   // void dfsPostorderReverse( Node* atNode ) const;
 };

@@ -143,17 +143,29 @@ bool BinarySearchTree::isIn( const Node* atNode, const Node* aNode ) const {
 }
 
 
-/// @todo Add better documentation
+/// Do a pre-order traversal and dump every object in the BinarySearchTree
+///
+/// #### Sample Output
+/**@verbatim
+Container           this                0x7ffee8101870
+Container           count               10
+BinarySearchTree    root                0x1847eb0
+================================================================================
+Object              class               Finch
+Object              this                0x1847eb0
+Node                next                0
+Node                prev                0
+Node                left                0
+Node                right               0x1848550
+@endverbatim */
 void BinarySearchTree::dump() const noexcept {
-   Container::dump();
-
-   FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "root" ) << root << std::endl ;
+   Tree::dump();
 
    dump( root );
 }
 
 
-/// Do an in-order traversal and dump every object in the BinarySearchTree
+/// Do a pre-order traversal and dump every object in the BinarySearchTree
 void BinarySearchTree::dump( Node* atNode ) const noexcept {
    if( atNode == nullptr )
       return;  // Done
@@ -172,23 +184,7 @@ void BinarySearchTree::dump( Node* atNode ) const noexcept {
 ///
 /// @return `true` if the BinarySearchTree is healthy.  `false` if otherwise.
 bool BinarySearchTree::validate() const noexcept {
-   assert( Container::validate() );
-
-   /// If `root` is `nullptr, then `count == 0`.
-   if( root == nullptr ) {
-      assert( count == 0 );
-      assert( isEmpty() );
-   } else {
-      assert( count != 0 );
-      assert( !isEmpty() );
-   }
-
-   /// If the Tree only has 1 Node, ensure the count == 1.
-   if( root != nullptr ) {
-      if( root->left == nullptr && root->right == nullptr ) {
-         assert( count == 1 );
-      }
-   }
+   assert( Tree::validate() );
 
    #ifdef DEBUG
    Container::t_size treeCount = 0;

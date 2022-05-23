@@ -16,20 +16,22 @@
 #include <iostream>
 
 #include "Animal/Bird/Finch.h"
+#include "Container/BinarySearchTree.h"
 
 using namespace std;
 
 /// Entry point for the program
 int main() {
-//   Weight myWeight { Weight::UNKNOWN_WEIGHT, Weight::UNKNOWN_WEIGHT };
-//   myWeight.dump();
 
-   // Finch myFinch("Boo", Gender::UNKNOWN_GENDER, 0.00001 );
+   BinarySearchTree bst;
+
    for( int i = 0 ; i < 10 ; i++ ) {
-      Finch myFinch { Bird::ConstructorType::RANDOM };
-      // cout << myFinch.speak() << endl;
-      cout << myFinch.info() << endl;
-      myFinch.dump();
+      Finch* myFinch = new Finch ( Bird::ConstructorType::RANDOM );
+      cout << myFinch->info() << endl;
+      // myFinch.dump();
+      bst.insert( myFinch );
    }
+
+   bst.dump();
    return 0;
 }
