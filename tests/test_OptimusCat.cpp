@@ -24,7 +24,6 @@ using namespace std;
 BOOST_AUTO_TEST_SUITE( test_OptimusCat )
 
    BOOST_AUTO_TEST_CASE( test_Basic_add_and_remove ) {
-      Animal& anAnimal { AnimalFactory::newRandomAnimal() };
       SinglyLinkedList singlyLinkedList;
       DoublyLinkedList doublyLinkedList;
       BinarySearchTree binarySearchTree;
@@ -38,6 +37,13 @@ BOOST_AUTO_TEST_SUITE( test_OptimusCat )
       BOOST_CHECK_EQUAL( singlyLinkedList.size(), 255 );
       BOOST_CHECK_EQUAL( doublyLinkedList.size(), 255 );
       BOOST_CHECK_EQUAL( binarySearchTree.size(), 255 );
+
+      for( int i = 0 ; i < 200 ; i++ ) {
+         /// @todo Add getRandomAnimal()
+         BOOST_CHECK_NO_THROW( singlyLinkedList.remove( singlyLinkedList.getRandomNode() ));
+         BOOST_CHECK_NO_THROW( doublyLinkedList.remove( doublyLinkedList.getRandomNode() ));
+         BOOST_CHECK_NO_THROW( binarySearchTree.remove( binarySearchTree.getRandomNode() ));
+      }
 
       BOOST_CHECK_NO_THROW( singlyLinkedList.removeAll() );
       BOOST_CHECK_NO_THROW( doublyLinkedList.removeAll() );

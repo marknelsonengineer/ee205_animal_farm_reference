@@ -66,9 +66,11 @@ BOOST_AUTO_TEST_SUITE( test_Name )
 
    }
 
+
    BOOST_AUTO_TEST_CASE( test_NameFromBadFile ) {
       BOOST_CHECK_THROW( Name testName1( "Not_a_file" ), runtime_error );
    }
+
 
    BOOST_AUTO_TEST_CASE( test_Serial_no_text ) {
       Name testSerial( "", "" );
@@ -140,6 +142,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       std::streambuf * old;
    };
 
+
    BOOST_AUTO_TEST_CASE( test_validate_empty_name ) {
       /// Testing output
       boost::test_tools::output_test_stream output;
@@ -153,6 +156,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       BOOST_CHECK_EQUAL( Name::validateNotEmpty( " " ), true );
    }
 
+
    BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_front ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
@@ -164,6 +168,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       BOOST_CHECK_EQUAL( Name::validateTrimmed( "Sam" ), true );
    }
 
+
    BOOST_AUTO_TEST_CASE( test_validate_untrimmed_name_back ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
@@ -172,6 +177,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       }
       BOOST_CHECK_NE( output.str().find( "The name should be trimmed for whitespace" ), string::npos );
    }
+
 
    BOOST_AUTO_TEST_CASE( test_validate_name_with_special_chars ) {
       boost::test_tools::output_test_stream output;
@@ -188,6 +194,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
          BOOST_CHECK_EQUAL( Name::validateNoSpecialChars( s ), false );
       }
    }
+
 
    BOOST_AUTO_TEST_CASE( test_validate_name_does_not_start_with_number ) {
       boost::test_tools::output_test_stream output;
@@ -210,6 +217,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
       }
    }
 
+
    BOOST_AUTO_TEST_CASE( test_validate_name_with_interior_whitespace ) {
       boost::test_tools::output_test_stream output;
       {  cout_redirect guard( output.rdbuf() );
@@ -220,6 +228,7 @@ BOOST_AUTO_TEST_SUITE( test_Name )
 
       BOOST_CHECK_EQUAL( Name::validateInteriorWhitespaceTrimmed( "   Sam Sam Sam\tSam\nSam\rSam\fSam\vSam Sam   " ), true );
    }
+
 
    // General test (without checking error messages) of names
    BOOST_AUTO_TEST_CASE( test_validate_names ) {

@@ -29,6 +29,7 @@ BOOST_AUTO_TEST_SUITE( test_Container )
       void  add( Node* newNode ) override {}
       Node* remove( Node* nodeToRemove ) override { return nullptr; }
       void  removeAll() noexcept override {}
+      Node* getRandomNode() const noexcept override { return nullptr; }
    };
 
 

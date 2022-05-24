@@ -41,7 +41,8 @@ public:  /////////////////////////// Public Methods ////////////////////////////
 
    virtual Node* getFirst() const noexcept ;  ///< Get the first Node in the List
 
-   virtual void removeAll() noexcept ;        ///< Remove all of the Nodes in the List
+   void  removeAll() noexcept override;        ///< Remove all of the Nodes in the List
+   Node* getRandomNode() const noexcept override;  ///< Get a random Node from the List
 
    void dump() const noexcept override;       ///< Output the member variables in this object
    bool validate() const noexcept override;   ///< Ensure the object is valid

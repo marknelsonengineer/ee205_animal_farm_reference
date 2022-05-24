@@ -21,6 +21,11 @@
 #include "../config.h"
 
 namespace test_Container { struct test_Node; } // Forward declaration for friending & testing
+namespace test_Tree { // Forward declaration for friending & testing
+   class test_simple_remove_from_Tree;
+   class test_getRandomNode_and_remove;
+}
+
 
 /// A generic Node class.
 ///
@@ -46,6 +51,8 @@ class Node {
    friend class BinarySearchTree;
    friend class CatEmpire;
    friend struct test_Container::test_Node;  // This is a test case
+   friend class test_Tree::test_simple_remove_from_Tree;  // This is a test case
+   friend class test_Tree::test_getRandomNode_and_remove; // This is a test case
 
 public:   ///////////////////// Constructors & Destructors /////////////////////
    Node() = default;   ///< Default constructor

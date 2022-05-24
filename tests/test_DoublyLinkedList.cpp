@@ -70,6 +70,10 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.getFirst(), &node1 );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
+      Node* shouldBeNode1;
+      BOOST_CHECK_NO_THROW( shouldBeNode1 = test_list.getRandomNode() );
+      BOOST_CHECK_EQUAL( &node1, shouldBeNode1 );
+      BOOST_CHECK_EQUAL( test_list.isIn( shouldBeNode1 ), true );
 
       Node* node2;
       BOOST_CHECK_NO_THROW( node2 = test_list.removeFront() );
@@ -80,6 +84,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.isSorted(), true );  // An empty test_list should be sorted
       BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
+      BOOST_CHECK_EQUAL( test_list.getRandomNode(), nullptr );
       BOOST_CHECK( test_list.validate() );
 
       BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is OK even if the test_list is empty
@@ -109,6 +114,10 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.getLast(), &node1 );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
       BOOST_CHECK( test_list.validate() );
+      Node* shouldBeNode1;
+      BOOST_CHECK_NO_THROW( shouldBeNode1 = test_list.getRandomNode() );
+      BOOST_CHECK_EQUAL( &node1, shouldBeNode1 );
+      BOOST_CHECK_EQUAL( test_list.isIn( shouldBeNode1 ), true );
 
       Node* node2;
       BOOST_CHECK_NO_THROW( node2 = test_list.removeBack() );
@@ -120,6 +129,7 @@ BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
       BOOST_CHECK_EQUAL( test_list.getFirst(), nullptr );
       BOOST_CHECK_EQUAL( test_list.getLast(), nullptr );
       // BOOST_CHECK_NO_THROW( test_list.dump() );
+      BOOST_CHECK_EQUAL( test_list.getRandomNode(), nullptr );
       BOOST_CHECK( test_list.validate() );
 
       BOOST_CHECK_NO_THROW( test_list.removeAll() ); // This is OK even if the test_list is empty

@@ -71,10 +71,10 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    virtual bool   isEmpty()                 const noexcept ;  ///< `true` if the Container is empty
    virtual t_size size()                    const noexcept;   ///< Return the number of Nodes in the Container
    virtual bool   isIn( const Node* aNode ) const;            ///< `true` if `aNode` is in the Container
-   virtual void   add( Node* newNode )         = 0;           ///< Add a Node to the Container
-   virtual Node*  remove( Node* nodeToRemove ) = 0;           ///< Remove a Node from the Container
-   virtual void   removeAll() noexcept         = 0;           ///< Remove all of the Nodes from the Container
-
-   virtual void   dump()     const noexcept ;  ///< Output the member variables in this object
-   virtual bool   validate() const noexcept ;  ///< Ensure the object is valid
+   virtual void   add( Node* newNode )           = 0;         ///< Add a Node to the Container
+   virtual Node*  remove( Node* nodeToRemove )   = 0;         ///< Remove a Node from the Container
+   virtual void   removeAll() noexcept           = 0;         ///< Remove all of the Nodes from the Container
+   virtual Node*  getRandomNode() const noexcept = 0;         ///< Get a random Node from the Container
+   virtual void   dump()          const noexcept ;            ///< Output the member variables in this object
+   virtual bool   validate()      const noexcept ;            ///< Ensure the object is valid
 };

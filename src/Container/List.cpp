@@ -141,3 +141,29 @@ bool List::validate() const noexcept {
 
    return true;
 } // validate()
+
+
+Node* List::getRandomNode() const noexcept {
+   assert( validate() );
+
+   Node* currentNode = head;  // head is nullptr if the list is empty
+   int randomIndex = 0;  // The default value if the list is empty
+
+   if( !isEmpty() ) {
+      uniform_int_distribution<>randomIndexGenerator( 0, size() - 1 );
+      randomIndex = randomIndexGenerator( ANIMAL_FARM_RNG );
+   }
+
+   // cout << "Size = " << size() << "   randomIndex = " << randomIndex << endl;
+
+   while( randomIndex > 0 ) {
+      assert( currentNode != nullptr );
+      currentNode = currentNode->next;
+      randomIndex--;
+   }
+
+   if( isEmpty() ) assert( currentNode == nullptr );
+   if( !isEmpty() ) assert( currentNode != nullptr );
+
+   return currentNode;
+}
