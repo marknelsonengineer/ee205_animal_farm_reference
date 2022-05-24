@@ -4,7 +4,7 @@
 //
 /// Demonstrate virtual binding and exercise a SinglyLinkedList
 ///
-/// @file main_animalFarm.cpp
+/// @file main_singlyLinkedList.cpp
 /// @version 1.0
 ///
 /// @author Mark Nelson <marknels@hawaii.edu>
@@ -31,14 +31,13 @@ int main() {
 
    SinglyLinkedList animalDB ;
 
-   // Put some Animals in the list
+   // Put some Animals in the List
    for( int i = 0 ; i < NUMBER_OF_ANIMALS ; i++ ) {
-      animalDB.addFront( &AnimalFactory::newRandomAnimal());
+      animalDB.addFront( &AnimalFactory::newRandomAnimal() );
    }
 
-   for( Animal* animal = (Animal*) animalDB.getFirst() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::getNext(
-           animal ) ) {
-      cout << animal->info() << endl;  /// @todo Replace speak() with info() when we have it available
+   for( Animal* animal = (Animal*) animalDB.getFirst() ; animal != nullptr ; animal = (Animal*) SinglyLinkedList::getNext( animal ) ) {
+      cout << animal->info() << endl;
    }
 
    cout << "Done with " << PROGRAM_TITLE ;

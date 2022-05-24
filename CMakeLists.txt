@@ -154,8 +154,8 @@ add_executable(catGenerations src/main_catGenerations.cpp ${SOURCE_FILES_CAT_EMP
 add_executable(catList        src/main_catList.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catTail        src/main_catTail.cpp ${SOURCE_FILES_CAT_EMPIRE})
 
-add_executable(animalFarm       src/main_animalFarm.cpp       ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
 add_executable(catTemplate      src/main_catTemplate.cpp      ${SOURCE_FILES_CATS})
+add_executable(singlyLinkedList src/main_singlyLinkedList.cpp ${SOURCE_FILES_ANIMAL_FACTORY} ${SOURCE_FILES_SINGLY_LINKED_LISTS})
 add_executable(doublyLinkedList src/main_doublyLinkedList.cpp ${SOURCE_FILES_DOUBLY_LINKED_LISTS} ${SOURCE_FILES_ANIMAL_FACTORY})
 add_executable(scratch          src/main_scratch.cpp          ${SOURCE_FILES_BIRDS} ${SOURCE_FILES_TREES})
 
