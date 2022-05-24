@@ -26,8 +26,8 @@ BOOST_AUTO_TEST_SUITE( test_Container )
    // To instantiate a Container, we need a class that defines the pure virtual removeAll() method
    class TestContainer : public Container {
    public:
-      void  add( Node* newNode ) override {}
-      Node* remove( Node* nodeToRemove ) override { return nullptr; }
+      void  add( [[maybe_unused]] Node* newNode ) override {}
+      Node* remove( [[maybe_unused]] Node* nodeToRemove ) override { return nullptr; }
       void  removeAll() noexcept override {}
       Node* getRandomNode() const noexcept override { return nullptr; }
    };

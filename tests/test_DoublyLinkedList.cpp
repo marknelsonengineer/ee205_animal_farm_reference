@@ -28,7 +28,6 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE( test_DoublyLinkedList )
 
-
     /// All of the tests will use this one test_list, which must always remain valid.
    static DoublyLinkedList test_list;
 

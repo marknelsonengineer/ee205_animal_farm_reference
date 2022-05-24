@@ -28,7 +28,7 @@ public:  /////////////////////////// Public Methods ////////////////////////////
    // Use the most efficient add/remove methods to override pure methods declared in Container
    // These will be used for performance measurement
    inline void add( Node* newNode ) override { addBack( newNode ); }            ///< Implemented by addBack()
-   inline Node* remove( Node* nodeToRemove ) override { return removeBack(); }  ///< Implemented by removeBack()
+   inline Node* remove( [[maybe_unused]] Node* nodeToRemove ) override { return removeBack(); }  ///< Implemented by removeBack()
 
    void          addFront( Node* newNode ) override;  ///< Insert `newNode` to the beginning of the List
    virtual void  addBack( Node* newNode )  ;          ///< Append `newNode` to the end of the List
