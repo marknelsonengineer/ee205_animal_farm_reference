@@ -23,15 +23,15 @@ using namespace std;
 /// Entry point for the program
 int main() {
 
-   BinarySearchTree bst;
+   BinarySearchTree theCollection;
 
    for( int i = 0 ; i < 10 ; i++ ) {
       Finch* myFinch = new Finch ( Bird::ConstructorType::RANDOM );
-      cout << myFinch->info() << endl;
+      // cout << myFinch->info() << endl;
       // myFinch.dump();
-      bst.add( myFinch );
+      theCollection.add( myFinch );
    }
 
-   bst.dump();
+   theCollection.dump();
    return 0;
 }

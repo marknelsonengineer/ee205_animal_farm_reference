@@ -91,7 +91,29 @@ void List::removeAll() noexcept {
 }
 
 
-/// @todo Add better documentation
+/// Print the List and then each Node in it
+///
+/// #### Sample Output
+/**@verbatim
+Container           this                0x7ffe0bd54ce0
+Container           count               10
+List                head                0x7ffe0bd54ce0
+================================================================================
+================================================================================
+Object              class               Finch
+Object              this                0x973980
+Node                next                0x973850
+Node                prev                0
+Node                left                0
+Node                right               0
+Animal              kingdom             Animalia
+Animal              classification      Aves
+Animal              species             Vestiaria coccinea
+Animal              gender              Male
+Animal              weight              0.00422841 out of 0.0595249 Pound
+Bird                name                Finch 9
+...
+@endverbatim */
 void List::dump() const noexcept {
    Container::dump();
 

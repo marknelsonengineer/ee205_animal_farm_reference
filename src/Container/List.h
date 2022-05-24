@@ -2,16 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A general-purpose list-based collection class.
-///
-/// @todo Implement get( index ) // Get via index
-/// @todo Implement get( key )   // Get via key
-/// @todo Implement find( criteria ) // Find a thing (or NULL)
-/// @todo Implement Cat* findCatByName( const char* name ) ;
-/// @todo Implement iterator getIterator() // Loop over a bunch of things
-/// @todo Implement void remove( index )  // Delete an index…
-/// @todo Implement void remove( key )    // by key
-/// @todo Implement void remove( thing )  // Delete the thing
+/// A general-purpose List based collection class.
 ///
 /// @file List.h
 /// @version 1.0
@@ -24,7 +15,7 @@
 #include "Node.h"
 #include "Container.h"
 
-/// A generic list-based collection class.  This is a type of container that
+/// A generic List based collection class.  This is a type of container that
 /// has a `head` Node and `getFirst()` and `getNext()` methods -- which
 /// can be used to traverse a list.
 ///

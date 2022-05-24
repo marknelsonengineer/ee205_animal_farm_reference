@@ -23,22 +23,31 @@ using namespace std;
 ///
 /// #### Sample Output
 /**@verbatim
-Container           this                0x7ffee8101870
+Container           this                0x7ffd447c4610
 Container           count               10
-BinarySearchTree    root                0x1847eb0
+Tree                root                0x72ceb0
+================================================================================
 ================================================================================
 Object              class               Finch
-Object              this                0x1847eb0
+Object              this                0x72ceb0
 Node                next                0
 Node                prev                0
 Node                left                0
-Node                right               0x1848550
+Node                right               0x72d000
+Animal              kingdom             Animalia
+Animal              classification      Aves
+Animal              species             Vestiaria coccinea
+Animal              gender              Female
+Animal              weight              0.035289 out of 0.0595249 Pound
+Bird                name                Finch 0
 ...
 @endverbatim */
 void Tree::dump() const noexcept {
    Container::dump();
 
-   FORMAT_LINE_FOR_DUMP( "BinarySearchTree", "root" ) << root << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "Tree", "root" ) << root << std::endl ;
+
+   PRINT_HEADING_FOR_DUMP ;
 }
 
 

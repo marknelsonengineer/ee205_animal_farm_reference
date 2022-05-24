@@ -488,7 +488,30 @@ Node* DoublyLinkedList::getPrev( const Node* currentNode) {
 }
 
 
-/// @todo add better documentation
+/// Print the List and then each Node in it
+///
+/// #### Sample Output
+/**@verbatim
+Container           this                0x7ffc17360d70
+Container           count               10
+List                head                0x7ffc17360d70
+DoublyLinkedList    tail                0x1de6980
+================================================================================
+================================================================================
+Object              class               Finch
+Object              this                0x1de5eb0
+Node                next                0x1de6000
+Node                prev                0
+Node                left                0
+Node                right               0
+Animal              kingdom             Animalia
+Animal              classification      Aves
+Animal              species             Vestiaria coccinea
+Animal              gender              Female
+Animal              weight              0.035289 out of 0.0595249 Pound
+Bird                name                Finch 0
+...
+@endverbatim */
 void DoublyLinkedList::dump() const noexcept {
    List::dump();
 
