@@ -22,7 +22,7 @@ protected:
    Cat*& topCat = reinterpret_cast<Cat*&>(root);
 
 public:  ///////////// Inherited Methods from BinarySearchTree /////////////////
-   inline void add( Cat* newNode ) { BinarySearchTree::add( newNode ); }  ///< Add a Cat to the Empire
+   inline void add( Cat* newCat ) { BinarySearchTree::add( newCat ); }  ///< Add a Cat to the Empire
    inline bool isIn( const Cat* aCat ) const { return BinarySearchTree::isIn( aCat ); }  ///< `true` if `aCat` is in the Empire
    inline Cat* remove( Cat* catToRemove ) { return (Cat*) BinarySearchTree::remove( catToRemove); }  ///< Remove a Cat from the Empire
    inline void dump() const noexcept { BinarySearchTree::dump(); }  ///< Output the member variables in this object
