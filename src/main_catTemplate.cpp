@@ -39,7 +39,8 @@ int main() {
    }
 
    for( const Cat& aCat : catDB ) {
-      cout << aCat.speak() << endl;   /// @todo Replace speak() with info()
+      cout << aCat.info() << endl;
+
    }
 
    cout << "Done with " << PROGRAM_TITLE ;
