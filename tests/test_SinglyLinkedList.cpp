@@ -18,6 +18,8 @@
 #include <stdexcept> // For logic_error
 
 #include "../src/Container/SinglyLinkedList.h"
+#include "../src/Animal/AnimalFactory.h"
+
 
 using namespace std;
 
@@ -119,6 +121,31 @@ BOOST_AUTO_TEST_SUITE( test_SinglyLinkedList )
 
       BOOST_CHECK_NO_THROW( test_list.removeAll() );  // Make sure you can delete an empty test_list
       BOOST_CHECK( test_list.validate() );
+   }
+
+
+   BOOST_FIXTURE_TEST_CASE( test_getRandomNode_and_remove, SinglyLinkedListTestFixture ) {
+      for( int i = 0 ; i < 8 ; i++ ) {
+         for( int j = 0 ; j < 128 ; j++ ) {
+            test_list.add( &AnimalFactory::newRandomAnimal() );
+         }
+
+         for( int j = 0 ; j < 128 ; j++ ) {
+            Node* nodeToRemove = test_list.getRandomNode();
+            Node* removedNode;
+            // nodeToRemove->dump();
+            BOOST_REQUIRE_EQUAL( test_list.isIn( nodeToRemove ), true );
+            BOOST_REQUIRE_NO_THROW( removedNode = test_list.remove( nodeToRemove ) );
+            BOOST_REQUIRE_EQUAL( test_list.isIn( nodeToRemove ), false );
+
+            BOOST_REQUIRE_EQUAL( removedNode->left, nullptr );
+            BOOST_REQUIRE_EQUAL( removedNode->right, nullptr );
+            BOOST_REQUIRE_EQUAL( removedNode->prev, nullptr );
+            BOOST_REQUIRE_EQUAL( removedNode->next, nullptr );
+
+            BOOST_REQUIRE_NO_THROW( delete removedNode; );
+         }
+      }
    }
 
 

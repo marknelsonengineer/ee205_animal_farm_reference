@@ -25,6 +25,8 @@ namespace test_Tree { // Forward declaration for friending & testing
    class test_simple_remove_from_Tree;
    class test_getRandomNode_and_remove;
 }
+namespace test_SinglyLinkedList { class test_getRandomNode_and_remove; } // Forward declaration for friending & testing
+namespace test_DoublyLinkedList { class test_getRandomNode_and_remove; } // Forward declaration for friending & testing
 
 
 /// A generic Node class.
@@ -53,6 +55,8 @@ class Node {
    friend struct test_Container::test_Node;  // This is a test case
    friend class test_Tree::test_simple_remove_from_Tree;  // This is a test case
    friend class test_Tree::test_getRandomNode_and_remove; // This is a test case
+   friend class test_SinglyLinkedList::test_getRandomNode_and_remove; // This is a test case
+   friend class test_DoublyLinkedList::test_getRandomNode_and_remove; // This is a test case
 
 public:   ///////////////////// Constructors & Destructors /////////////////////
    Node() = default;   ///< Default constructor

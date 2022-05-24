@@ -47,9 +47,9 @@ void DoublyLinkedList::addFront( Node* newNode ) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the container.
+   /// @throws logic_error If `newNode` is already in the List.
    if( isIn( newNode ) ) {
-      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+      throw logic_error( PROGRAM_NAME ": Node is already in list!" );
    }
 
    assert( validate() );
@@ -94,9 +94,9 @@ void DoublyLinkedList::addBack( Node* newNode) {
       throw domain_error( PROGRAM_NAME ": newNode is not valid" );
    }
 
-   /// @throws logic_error If `newNode` is already in the container.
+   /// @throws logic_error If `newNode` is already in the List.
    if( isIn( newNode ) ) {
-      throw logic_error( PROGRAM_NAME ": Node is already in container!" );
+      throw logic_error( PROGRAM_NAME ": Node is already in list!" );
    }
 
    assert( validate() );
@@ -130,10 +130,10 @@ void DoublyLinkedList::addBack( Node* newNode) {
 Node* DoublyLinkedList::removeFront() noexcept {
    TRACE_START
 
+   assert( validate() );
+
    if( head == nullptr )  // SPECIAL CASE:  The List is empty
       return nullptr;
-
-   assert( validate() );
 
    Node* returnValue = head;
 
@@ -162,10 +162,10 @@ Node* DoublyLinkedList::removeFront() noexcept {
 Node* DoublyLinkedList::removeBack() noexcept {
    TRACE_START
 
+   assert( validate() );
+
    if( tail == nullptr )  // SPECIAL CASE:  The List is empty
       return nullptr;
-
-   assert( validate() );
 
    Node* returnValue = tail;
 
@@ -188,6 +188,54 @@ Node* DoublyLinkedList::removeBack() noexcept {
 
    return returnValue;
 } // removeBack
+
+
+Node* DoublyLinkedList::remove( Node* nodeToRemove ) {
+   TRACE_START
+
+   /// @throws invalid_argument If `nodeToRemove` is `nullptr`.
+   if( nodeToRemove == nullptr ) {
+      throw invalid_argument( PROGRAM_NAME ": nodeToRemove can't be nullptr" );
+   }
+
+   /// @throws domain_error If `nodeToRemove` is not valid.
+   if( !nodeToRemove->validate() ) {
+      throw domain_error( PROGRAM_NAME ": nodeToRemove is not valid" );
+   }
+
+   /// @throws logic_error If `nodeToRemove` is not in the List.
+   if( !isIn( nodeToRemove ) ) {
+      throw logic_error( PROGRAM_NAME ": Node is not in the list!" );
+   }
+
+   assert( validate() );
+
+   if( head == nullptr )  // SPECIAL CASE:  The List is empty
+      return nullptr;
+
+   if( head == nodeToRemove )  // SPECIAL CASE:  Remove the head node
+      return removeFront();
+
+   if( tail == nodeToRemove )  // SPECIAL CASE:  Remove the tail node
+      return removeBack();
+
+   // It's an interior node
+   assert( nodeToRemove->prev != nullptr );
+   assert( nodeToRemove->next != nullptr );
+
+   nodeToRemove->prev->next = nodeToRemove->next;  // Unlink the node (forward)
+   nodeToRemove->next->prev = nodeToRemove->prev;  // Unlink the node (reverse)
+
+   nodeToRemove->reset();  // Unlink the pointers in Node
+
+   count--;
+   assert( validate() );
+   assert( nodeToRemove->validate() );
+
+   TRACE_END
+
+   return nodeToRemove;
+} // remove
 
 
 /// Use addFront() to add to an empty List.
