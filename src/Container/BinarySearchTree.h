@@ -20,13 +20,13 @@
 /// This is implemented as a recursive data structure with `left` and `right`
 /// Nodes.
 class BinarySearchTree : public Tree {
-public:  /////////////////////////// Public Methods ////////////////////////////
+public:   /////////////////////////// Public Methods ///////////////////////////
    void  add( Node* newNode ) override;              ///< Add a Node to the Tree
    bool  isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
    Node* remove( Node* nodeToRemove ) override;      ///< Remove a Node from the Tree
    void  dump() const noexcept override;             ///< Output the member variables in this object
    bool  validate() const noexcept override;         ///< Ensure the object is valid
-   Node* getRandomNode() const noexcept;             ///< Get a random Node from this Container
+   Node* getRandomNode() const noexcept override;    ///< Get a random Node from this Container
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void add( Node* atNode, Node* newNode );   ///< Add a Node starting at atNode

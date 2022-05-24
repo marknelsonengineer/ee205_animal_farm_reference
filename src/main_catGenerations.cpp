@@ -12,6 +12,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
+#include <cassert>  // For assert
 
 #include "config.h"
 #include "Animal/Mammal/Cat/CatEmpire.h"
@@ -32,6 +33,8 @@ int main() {
 
       catEmpire.add( &newCat );
    }
+
+   assert( catEmpire.validate() );
 
    cout << "List of " << NUMBER_OF_CATS << " cats by generation" << endl;
 
