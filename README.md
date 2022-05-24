@@ -44,9 +44,9 @@ The source code documentation (hosted by UH) is [here](https://www2.hawaii.edu/~
 | Cat Wrangler 4                 | Port n<sup>2</sup> sorts                                                                             |
 | Cat Wrangler 5                 | n ln(n) sorts                                                                                        |
 | Animal Farm 16                 | Trees                                                                                                |
-| Cat Empire! 1                  | Cats                                                                                                 |
-| Cat Empire! 2                  | Traversals                                                                                           |
-| Cat Empire! 3                  | Delete                                                                                               |
+| Cat Empire! 1                  | Make a Cat-specific Binary Search Tree                                                               |
+| Cat Empire! 2                  | Do several traversals of CatEmpire!                                                                  |
+| Cat Empire! 3                  | Implement a delete() method on a Binary Search Tree                                                  |
 | Optimus Cat                    | Performance analysis of add, remove, n<sup>2</sup> sorts and n ln(n) sorts on Arrays, Lists & Trees. |
 
 #### Toolchain
