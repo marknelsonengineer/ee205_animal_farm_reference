@@ -63,12 +63,12 @@ void QueueSimulator::runQueueSimulator( bool isInteractive ) noexcept {
          if( isInteractive ) {
             cout << newAlpha->memberChar << " >> ";
          }
-         queue.push( newAlpha );
+         queue.enqueue( newAlpha );
       } else {
          if( isInteractive ) {
             cout << "     ";
          }
-         oldAlpha = (Alpha*) queue.pop();
+         oldAlpha = (Alpha*) queue.dequeue();
       }
 
       // Print the queue

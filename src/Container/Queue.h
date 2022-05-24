@@ -26,23 +26,20 @@
 class Queue : private DoublyLinkedList {
 public:  /////////////////////////// Public Methods ////////////////////////////
    // From Container
-   bool              isEmpty() const noexcept override { return DoublyLinkedList::isEmpty(); };  ///< `true` if the Queue is empty
-   Container::t_size size()  const noexcept override { return DoublyLinkedList::size(); };  ///< Return the number of Nodes in the Queue
+   bool              isEmpty() const noexcept override { return DoublyLinkedList::isEmpty(); }  ///< DoublyLinkedList::isEmpty()
+   Container::t_size size()  const noexcept override { return DoublyLinkedList::size(); }       ///< DoublyLinkedList::size()
 
    // From List
-   bool isIn( const Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); };  ///< `true` if `aNode` is in the Queue
-   void removeAll() noexcept override { DoublyLinkedList::removeAll(); };  ///< Remove all of the Nodes in the Queue
-   static Node* getNext( const Node* currentNode ) { return DoublyLinkedList::getNext(
-              currentNode ); };  ///< Get the next Node in the Queue
+   bool isIn( const Node* aNode ) const override { return DoublyLinkedList::isIn( aNode ); }  ///< DoublyLinkedList::isIn( aNode )
+   void removeAll() noexcept override { DoublyLinkedList::removeAll(); }  ///< DoublyLinkedList::removeAll()
+   static Node* getNext( const Node* currentNode ) { return DoublyLinkedList::getNext( currentNode ); }  ///< DoublyLinkedList::getNext()
 
    // From DoublyLinkedList
-   void push( Node* newNode ) { DoublyLinkedList::addFront( newNode ); };  ///< Insert `newNode` to the beginning of the Queue
-   Node* pop() noexcept { return DoublyLinkedList::removeBack(); };            ///< Remove and return a Node from the Queue
-   Node* front() const noexcept { return DoublyLinkedList::getLast(); };    ///< Peek at the next Node in the Queue
-   Node* last() const noexcept { return DoublyLinkedList::getFirst(); };    ///< Peek at the last Node in the Queue
-   static Node* getPrev( const Node* currentNode ) { return DoublyLinkedList::getPrev(
-              currentNode ); };  ///< Get the previous Node in the Queue
+   void  enqueue( Node* newNode ) { DoublyLinkedList::addFront( newNode ); } ///< Insert `newNode` to the beginning of the Queue
+   Node* dequeue() noexcept { return DoublyLinkedList::removeBack(); }       ///< Remove and return a Node from the Queue
+   Node* peek() const noexcept { return DoublyLinkedList::getLast(); }       ///< Peek at the next Node in the Queue
+   Node* last() const noexcept { return DoublyLinkedList::getFirst(); }      ///< Peek at the last Node in the Queue
 
-   void dump() const noexcept override { DoublyLinkedList::dump(); };  ///< Output the member variables in this object
-   bool validate() const noexcept override { return DoublyLinkedList::validate(); };  ///< Ensure the object is valid
+   void dump() const noexcept override { DoublyLinkedList::dump(); }  ///< Output the member variables in this object
+   bool validate() const noexcept override { return DoublyLinkedList::validate(); }  ///< Ensure the object is valid
 };

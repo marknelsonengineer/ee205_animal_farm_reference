@@ -224,25 +224,25 @@ void CatEmpire::catGenerations() const {
 
    string generation = "1st Generation";
    cout << generation << endl;
-   catQueue.push( topCat );
-   catQueue.push( new Cat( "END OF " + generation ) );  // This is the marker for the end of the generation
-   // catQueue.push( nullptr );
+   catQueue.enqueue( topCat );
+   catQueue.enqueue( new Cat( "END OF " + generation ));  // This is the marker for the end of the generation
+   // catQueue.enqueue( nullptr );
 
    while( !catQueue.isEmpty() ) {
-      Cat* aCat = (Cat*) catQueue.front();   // Peek at the front of the queue...
+      Cat* aCat = (Cat*) catQueue.peek();   // Peek at the peek of the queue...
       Cat* aCatLeft = (Cat*) aCat->left;     // Get the left subtree
       Cat* aCatRight = (Cat*) aCat->right;   // Get the right subtree
-      catQueue.pop();                        // Remove the Cat from the Queue (this resets the Node's pointers, which is why we have to get them first)
+      catQueue.dequeue();                        // Remove the Cat from the Queue (this resets the Node's pointers, which is why we have to get them first)
 
       if( aCat->getName().find( "END OF " ) != string::npos ) {
          level++;
          generation = to_string(level) + getEnglishSuffix( level ) + " Generation";
-         catQueue.push( new Cat( "END OF " + generation ) );  // This is the marker for the end of the generation
-         // catQueue.push( nullptr );
+         catQueue.enqueue( new Cat( "END OF " + generation ));  // This is the marker for the end of the generation
+         // catQueue.enqueue( nullptr );
 
          cout << endl;
 
-         if( ((Cat*) catQueue.front())->getName().find("END OF ") != string::npos )
+         if(((Cat*) catQueue.peek())->getName().find( "END OF ") != string::npos )
             break;
 
          cout << generation << endl;
@@ -255,10 +255,10 @@ void CatEmpire::catGenerations() const {
       //aCat->dump();
 
       if( aCatLeft != nullptr ) {
-         catQueue.push( aCatLeft );
+         catQueue.enqueue( aCatLeft );
       }
       if( aCatRight != nullptr ) {
-         catQueue.push( aCatRight );
+         catQueue.enqueue( aCatRight );
       }
    }
 }
