@@ -14,9 +14,12 @@
 #define BOOST_TEST_DYN_LINK
 
 #include <boost/test/unit_test.hpp>
+#include <string> // For stoi
 
 #include "../src/Animal/Mammal/Cat/CatEmpire.h"
 #include "../src/Animal/Mammal/Cat/CatWrangler.h"
+#include "../src/Animal/Mammal/Cat/CatQueue.h"
+#include "../src/Animal/Mammal/Cat/CatStack.h"
 
 using namespace std;
 
@@ -186,6 +189,118 @@ BOOST_AUTO_TEST_SUITE( test_DomainSpecificContainers )
       BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), true );
       BOOST_REQUIRE_EQUAL( testContainer.size(), 0 );
       count = 0;
+   }
+
+   BOOST_AUTO_TEST_CASE( test_CatQueue ) {
+      CatQueue testContainer;
+
+      int count = 0;
+      int monotonicCounter = -1;
+
+      for( int i = 0 ; i < 9 ; i++ ) {
+         Cat::names.reset();
+         BOOST_REQUIRE_NO_THROW( testContainer.removeAll() );
+         BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), true );
+         BOOST_REQUIRE_EQUAL( testContainer.size(), 0 );
+         count = 0;
+         monotonicCounter = -1;
+
+         double idealSizeOfContainer = pow( 2, i );
+
+         BOOST_TEST_MESSAGE( "ideal size of container = [" << idealSizeOfContainer << "]   remaining Cat names = [" << Cat::names.remainingNames() << "]" ) ;
+
+         for( int j = 0 ; j < 1024 ; j++ ) {
+            // Print a histogram of the current size of testContainer
+            // std::cout << std::setw( testContainer.size() ) << std::setfill( '=' ) << "" << std::endl;
+
+            bernoulli_distribution isFixedRNG( testContainer.size() / ( idealSizeOfContainer * 2) );  // If ideal size is 4, then 4/8 = 0.5
+            bool deleteCat = isFixedRNG( ANIMAL_FARM_RNG );
+
+            if( deleteCat ) {
+               Cat* catToDelete;
+               BOOST_REQUIRE_NO_THROW( catToDelete = testContainer.dequeue() );
+               int catNumber = stoi( string( catToDelete->getName().substr(4,16) ));
+               // cout << "catNumber " << catNumber << "     monotonicCounter " << monotonicCounter << endl;
+               BOOST_REQUIRE_GT( catNumber, monotonicCounter );  // This satisfies a FIFO Queue post condition
+               monotonicCounter = catNumber;
+               count -= 1;
+               BOOST_REQUIRE_EQUAL( testContainer.isIn( catToDelete ), false );
+            } else {
+               Cat& aCat = Cat::newRandomCat();
+               aCat.setName( "Cat-"+to_string(j) );
+               BOOST_REQUIRE_NO_THROW( testContainer.enqueue( &aCat ) );
+               count += 1;
+               BOOST_REQUIRE_EQUAL( testContainer.isIn( &aCat ), true );
+               BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), false );
+            }
+            BOOST_REQUIRE_EQUAL( testContainer.size(), count );
+            BOOST_REQUIRE_EQUAL( testContainer.validate(), true );
+         }
+      }
+      BOOST_REQUIRE_NO_THROW( testContainer.removeAll() );
+      BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), true );
+      BOOST_REQUIRE_EQUAL( testContainer.size(), 0 );
+      count = 0;
+      monotonicCounter = -1;
+   }
+
+
+   BOOST_AUTO_TEST_CASE( test_CatStack ) {
+      CatStack testContainer;
+
+      int count = 0;
+      int lastCatNumber = 0;
+
+      for( int i = 0 ; i < 9 ; i++ ) {
+         Cat::names.reset();
+         BOOST_REQUIRE_NO_THROW( testContainer.removeAll() );
+         BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), true );
+         BOOST_REQUIRE_EQUAL( testContainer.size(), 0 );
+         count = 0;
+         lastCatNumber = 0;
+
+         double idealSizeOfContainer = pow( 2, i );
+
+         BOOST_TEST_MESSAGE( "ideal size of container = [" << idealSizeOfContainer << "]   remaining Cat names = [" << Cat::names.remainingNames() << "]" ) ;
+
+         for( int j = 0 ; j < 1024 ; j++ ) {
+            // Print a histogram of the current size of testContainer
+            // std::cout << std::setw( testContainer.size() ) << std::setfill( '=' ) << "" << std::endl;
+
+            bernoulli_distribution isFixedRNG( testContainer.size() / ( idealSizeOfContainer * 2) );  // If ideal size is 4, then 4/8 = 0.5
+            bool deleteCat = isFixedRNG( ANIMAL_FARM_RNG );
+
+            if( deleteCat ) {
+               Cat* catToDelete;
+               BOOST_REQUIRE_NO_THROW( catToDelete = testContainer.pop() );
+               if( catToDelete != nullptr ) {
+                  int catNumber = stoi( string( catToDelete->getName().substr( 4, 16 )));
+                  // cout << "catNumber " << catNumber << "     lastCatNumber " << lastCatNumber << endl;
+                  BOOST_REQUIRE_EQUAL( catNumber, lastCatNumber );  // This satisfies a LIFO Stack post condition
+                  if( !testContainer.isEmpty() ) {
+                     lastCatNumber = stoi(string( testContainer.peek()->getName().substr( 4, 16 )));
+                  }
+                  count -= 1;
+                  BOOST_REQUIRE_EQUAL( testContainer.isIn( catToDelete ), false );
+               }
+            } else {
+               Cat& aCat = Cat::newRandomCat();
+               aCat.setName( "Cat-"+to_string( j ) );
+               BOOST_REQUIRE_NO_THROW( testContainer.push( &aCat ) );
+               lastCatNumber = j;
+               count += 1;
+               BOOST_REQUIRE_EQUAL( testContainer.isIn( &aCat ), true );
+               BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), false );
+            }
+            BOOST_REQUIRE_EQUAL( testContainer.size(), count );
+            BOOST_REQUIRE_EQUAL( testContainer.validate(), true );
+         }
+      }
+      BOOST_REQUIRE_NO_THROW( testContainer.removeAll() );
+      BOOST_REQUIRE_EQUAL( testContainer.isEmpty(), true );
+      BOOST_REQUIRE_EQUAL( testContainer.size(), 0 );
+      count = 0;
+      lastCatNumber = -1;
    }
 
 BOOST_AUTO_TEST_SUITE_END()

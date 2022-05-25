@@ -24,6 +24,11 @@
 /// This is implemented by inheriting a DoublyLinkedList and then exposing only
 /// the methods that are appropriate for a Queue.
 class Queue : private DoublyLinkedList {
+public:  //////////////// Enumerations & Type Definitions //////////////////////
+
+   /// The native datatype of the Container's count/size
+   typedef unsigned int t_size;
+
 public:  /////////////////////////// Public Methods ////////////////////////////
    // From Container
    bool              isEmpty() const noexcept override { return DoublyLinkedList::isEmpty(); }  ///< DoublyLinkedList::isEmpty()

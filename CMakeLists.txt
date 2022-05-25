@@ -144,9 +144,13 @@ set(SOURCE_FILES_LISTS ${SOURCE_FILES_GENERAL} src/Container/Node.h src/Containe
 set(SOURCE_FILES_SINGLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/SinglyLinkedList.h src/Container/SinglyLinkedList.cpp)
 set(SOURCE_FILES_DOUBLY_LINKED_LISTS ${SOURCE_FILES_LISTS} src/Container/DoublyLinkedList.h src/Container/DoublyLinkedList.cpp)
 set(SOURCE_FILES_QUEUES ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Container/Queue.h)
+set(SOURCE_FILES_STACKS ${SOURCE_FILES_SINGLY_LINKED_LISTS} src/Container/Stack.h)
 set(SOURCE_FILES_TREES ${SOURCE_FILES_LISTS} src/Container/BinarySearchTree.h src/Container/BinarySearchTree.cpp src/Container/Tree.cpp src/Container/Tree.h)
 
-set(SOURCE_FILES_CAT_EMPIRE ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatEmpire.cpp src/Animal/Mammal/Cat/CatEmpire.h)
+set(SOURCE_FILES_CAT_EMPIRE   ${SOURCE_FILES_CATS} ${SOURCE_FILES_TREES} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatEmpire.cpp src/Animal/Mammal/Cat/CatEmpire.h)
+set(SOURCE_FILES_CAT_WRANGLER ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_LISTS} src/Animal/Mammal/Cat/CatWrangler.h)
+set(SOURCE_FILES_CAT_QUEUE    ${SOURCE_FILES_CATS} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatQueue.h)
+set(SOURCE_FILES_CAT_STACK    ${SOURCE_FILES_CATS} ${SOURCE_FILES_STACKS} src/Animal/Mammal/Cat/CatStack.h)
 
 add_executable(catBegat       src/main_catBegat.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catFamilyTree  src/main_catFamilyTree.cpp ${SOURCE_FILES_CAT_EMPIRE})
