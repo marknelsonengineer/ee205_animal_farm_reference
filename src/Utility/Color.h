@@ -2,7 +2,7 @@
 //          University of Hawaii, College of Engineering
 //          ee205_animal_farm - EE 205 - Spr 2022
 //
-/// A color class
+/// Color class enumeration
 ///
 /// @file Color.h
 /// @version 1.0
@@ -31,6 +31,10 @@ enum class Color {
   ,CINNAMON
   ,CALICO
 } ;
+
+
+/// Get a random Color
+extern Color newRandomColor();
 
 
 /// Output Color as a formatted string

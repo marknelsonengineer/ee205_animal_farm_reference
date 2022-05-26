@@ -133,8 +133,8 @@ add_subdirectory(tests)
 
 # Group related source files together... This is the module-level dependency map for Animal Farm
 set(SOURCE_FILES_GENERAL                                 src/config.h src/Utility/Random.h src/Utility/Random.cpp)
-set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Weight.h src/Utility/Weight.cpp src/Utility/Trim.h src/Utility/Trim.cpp src/Utility/Name.h src/Utility/Name.cpp)
-set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal/Mammal.h src/Animal/Mammal/Mammal.cpp src/Utility/Color.h)
+set(SOURCE_FILES_ANIMALS         ${SOURCE_FILES_GENERAL} src/Animal/Animal.h src/Animal/Animal.cpp src/Container/Node.h src/Utility/Gender.h src/Utility/Gender.cpp src/Utility/Weight.h src/Utility/Weight.cpp src/Utility/Trim.h src/Utility/Trim.cpp src/Utility/Name.h src/Utility/Name.cpp)
+set(SOURCE_FILES_MAMMALS         ${SOURCE_FILES_ANIMALS} src/Animal/Mammal/Mammal.h src/Animal/Mammal/Mammal.cpp src/Utility/Color.h src/Utility/Color.cpp)
 set(SOURCE_FILES_CATS            ${SOURCE_FILES_MAMMALS} src/Animal/Mammal/Cat/Cat.h src/Animal/Mammal/Cat/Cat.cpp)
 set(SOURCE_FILES_DOGS            ${SOURCE_FILES_MAMMALS} src/Animal/Mammal/Dog/Dog.cpp src/Animal/Mammal/Dog/Dog.h)
 set(SOURCE_FILES_BIRDS           ${SOURCE_FILES_ANIMALS} src/Animal/Bird/Bird.h src/Animal/Bird/Bird.cpp src/Animal/Bird/Finch.h src/Animal/Bird/Finch.cpp src/Animal/Bird/Chicken.cpp src/Animal/Bird/Chicken.h)

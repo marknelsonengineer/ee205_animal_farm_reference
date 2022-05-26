@@ -106,10 +106,8 @@ Animal& Dog::newRandomAnimal() {
 /// `delete` the Dog when it's no longer needed
 Dog& Dog::newRandomDog() {
    uniform_real_distribution<> weightRNG( 0.1, Dog::MAX_WEIGHT );
-   uniform_int_distribution<>  colorRNG( (int) Color::UNKNOWN_COLOR, (int) Color::CALICO );
-   uniform_int_distribution<>  genderRNG( (int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE );
 
-   Dog* aDog = new Dog( names.getNextName(), (Color) colorRNG( ANIMAL_FARM_RNG ), (Gender) genderRNG( ANIMAL_FARM_RNG ), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) );
+   Dog* aDog = new Dog( names.getNextName(), newRandomColor(), newRandomGender(), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) );
 
    // aDog->dump();
 

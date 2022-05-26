@@ -27,10 +27,6 @@ Name Chicken::names( "Chicken ", "" );
 /// Generate a random weight from `FLT_TRUE_MIN` to `Chicken::MAX_WEIGHT`
 static uniform_real_distribution<> weightRNG( FLT_TRUE_MIN, Chicken::MAX_WEIGHT );
 
-/// Generate a random Gender
-/// @todo Make this a global service... put this in Gender.h (We may need to make a Gender.cpp)
-static uniform_int_distribution<>  genderRNG( (int) Gender::UNKNOWN_GENDER, (int) Gender::FEMALE );
-
 
 Chicken::Chicken( const std::string_view newName
         ,const Gender                    newGender
@@ -43,7 +39,7 @@ Chicken::Chicken( const std::string_view newName
 /// I'm deliberately not using a Factory Method pattern here, just to demonstrate
 /// that there's other ways to do this.
 Chicken::Chicken( [[maybe_unused]] const Bird::ConstructorType newBirdType )
-         : Bird ( SPECIES_NAME, MAX_WEIGHT, names.getNextName(), (Gender) genderRNG( ANIMAL_FARM_RNG ), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) )
+         : Bird ( SPECIES_NAME, MAX_WEIGHT, names.getNextName(), newRandomGender(), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) )
 {
    assert( newBirdType == Bird::ConstructorType::RANDOM );  // This may generate a warning in Release mode, but it's OK
 }

@@ -21,10 +21,14 @@
 /// A gender... for educational use only.  This is not intended to be
 /// inclusive of all possible genders
 enum class Gender {
-    UNKNOWN_GENDER=0
-   ,MALE
-   ,FEMALE
+    UNKNOWN_GENDER=0   ///< Used when the gender is unknown
+   ,MALE               ///< Mammals with an XY chromosome
+   ,FEMALE             ///< Mammals with 2 X chromosomes
 };
+
+
+/// Get a random Gender
+extern Gender newRandomGender();
 
 
 /// Output Gender as a formatted string
