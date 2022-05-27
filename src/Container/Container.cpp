@@ -57,6 +57,8 @@ void Container::dump() const noexcept {
 ///
 /// @return `true` if the Container is healthy.  `false` if otherwise.
 bool Container::validate() const noexcept {
+   // assert( count >= 0 );
+
    if( count == 0 ) {
       assert( isEmpty() );
    } else {
