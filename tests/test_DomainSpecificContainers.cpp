@@ -221,7 +221,7 @@ BOOST_AUTO_TEST_SUITE( test_DomainSpecificContainers )
                BOOST_REQUIRE_NO_THROW( catToDelete = testContainer.dequeue() );
                int catNumber = stoi( string( catToDelete->getName().substr(4,16) ));
                // cout << "catNumber " << catNumber << "     monotonicCounter " << monotonicCounter << endl;
-               BOOST_REQUIRE_GT( catNumber, monotonicCounter );  // This satisfies a FIFO Queue post condition
+               BOOST_REQUIRE_GT( catNumber, monotonicCounter );  // This satisfies a FIFO Queue invariant
                monotonicCounter = catNumber;
                count -= 1;
                BOOST_REQUIRE_EQUAL( testContainer.isIn( catToDelete ), false );
@@ -276,7 +276,7 @@ BOOST_AUTO_TEST_SUITE( test_DomainSpecificContainers )
                if( catToDelete != nullptr ) {
                   int catNumber = stoi( string( catToDelete->getName().substr( 4, 16 )));
                   // cout << "catNumber " << catNumber << "     lastCatNumber " << lastCatNumber << endl;
-                  BOOST_REQUIRE_EQUAL( catNumber, lastCatNumber );  // This satisfies a LIFO Stack post condition
+                  BOOST_REQUIRE_EQUAL( catNumber, lastCatNumber );  // This satisfies a LIFO Stack invariant
                   if( !testContainer.isEmpty() ) {
                      lastCatNumber = stoi(string( testContainer.peek()->getName().substr( 4, 16 )));
                   }
