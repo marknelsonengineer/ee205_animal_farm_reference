@@ -26,11 +26,13 @@
 /// There are ways to do it, but it's beyond the scope of this class.  Two
 /// ways to do it that are in the scope of the class is:
 ///
-///   - A specialized array of Cats (CatPride)
-///   - An array of Animal pointers (AnimalArray)
+///   - A specialized static Array of Cats (CatPride)
+///   - A dynamic Array of Node pointers (DynamicArray)
 ///
 /// The counter for Array (the number of valid elements in the Array) is
 /// Container::count.
+///
+/// The maximum size of the Array is in Array::maxSize.
 class Array : public Container {
 public:   ///////////////////// Constructors & Destructors /////////////////////
    explicit Array() = delete;   ///< Default constructor (allowed)
