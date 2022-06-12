@@ -14,9 +14,10 @@
 
 #include "Cat.h"
 #include "../../../Container/DoublyLinkedList.h"
+#include "CatContainer.h"
 
 /// A Doubly Linked List that's been specialized to store Cats
-class CatWrangler : private DoublyLinkedList {
+class CatWrangler : private DoublyLinkedList, public CatContainer {
 public:  ///////////// Inherited Methods from DoublyLinkedList /////////////////
    inline void add( Cat* newCat ) { DoublyLinkedList::add( newCat ); }  ///< Add a Cat to CatWrangler
    inline Cat* remove( Cat* catToRemove ) { return (Cat*) DoublyLinkedList::remove( catToRemove ); }  ///< Remove `catToRemove` from CatWrangler
@@ -41,7 +42,7 @@ public:  /////////////////// Inherited Methods from List ///////////////////////
    inline Cat* getRandomNode() const noexcept { return (Cat*) DoublyLinkedList::getRandomNode(); }  ///< Get a random Cat from CatWrangler
    inline static Cat* getNext( const Cat* currentCat ) { return (Cat*) DoublyLinkedList::getNext( currentCat ); }  ///< Get the next Cat
 
-public:  /////////////////// Public Methods from Container /////////////////////
+public:  ///////////////// Inherited Methods from Container ////////////////////
    inline bool isEmpty() const noexcept { return DoublyLinkedList::isEmpty(); }  ///< `true` if CatWrangler is empty
    inline t_size size() const noexcept { return DoublyLinkedList::size(); }   ///< Return the number of Cats in CatWrangler
 };

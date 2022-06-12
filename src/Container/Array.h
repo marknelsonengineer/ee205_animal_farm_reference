@@ -35,23 +35,25 @@
 /// The maximum size of the Array is in Array::maxSize.
 class Array : public Container {
 public:   ///////////////////// Constructors & Destructors /////////////////////
-   explicit Array() = delete;   ///< Default constructor (allowed)
-   explicit Array( size_t newMaxSize );  ///< Partially construct an Array of up to newMaxSize elements
+   explicit Array( const Container::t_size newMaxSize );  ///< Partially construct an Array of up to `newMaxSize` Nodes
 
 protected:  ////////////////////// Protected Members ///////////////////////////
-   size_t maxSize = 0;   ///< The maximum size of the Array
+   Container::t_size maxSize = 0;   ///< The maximum size of the Array.  This is set in the constructor and never changes.
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   void removeAll() noexcept override;  ///< Remove all of the Nodes from the Container
-   void dump() const noexcept override;  ///< Output the member variables in this object
+   Container::t_size getMaxSize() const noexcept;  ///< Return the maximum size of the Array
+   bool isFull() const noexcept;  ///< Return `true` if the Array is full
+
+public:  ///////////////// Inherited Methods from Container ////////////////////
+   void removeAll() noexcept override;       ///< Remove all of the Nodes from the Container
+   void dump() const noexcept override;      ///< Output the member variables in this object
    bool validate() const noexcept override;  ///< Ensure the object is valid
 
 public:  ////////////////////////// Abstract Methods ///////////////////////////
-   virtual void add( Node* newNode, size_t index ) = 0;  ///< Replace the Node at index with newNode
-   virtual Node* remove( size_t index ) = 0;             ///< Remove a Node from the Container
-   void swap( size_t index1, size_t index2 );  ///< Swap `node1` and `node2`
+   virtual void add( Node* newNode, const Container::t_size index ) = 0;  ///< Replace the Node at `index` with `newNode`
+   virtual Node* remove( const Container::t_size index ) = 0;             ///< Remove a Node from the Container
+   virtual void swap( const Container::t_size index1, const Container::t_size index2 ) = 0;  ///< Swap `node1` and `node2`
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
-
-   virtual Node& operator[](size_t index) = 0;  ///< An Array requires a [] operator
+   virtual Node& operator[](Container::t_size index) = 0;  ///< An Array requires a [] operator
 };

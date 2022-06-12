@@ -20,7 +20,7 @@ class CatStack : private Stack {
 
 public:  /////////////////// Inherited Methods from Stack //////////////////////
 
-   inline void  push( Node* newCat ) { Stack::push( newCat ); }        ///< Push a new Cat onto CatStack
+   inline void push( Node* newCat ) { Stack::push( newCat ); }         ///< Push a new Cat onto CatStack
    inline Cat* pop() noexcept { return (Cat*) Stack::pop(); }          ///< Pop a Cat off of CatStack
    inline Cat* peek() const noexcept { return (Cat*) Stack::peek(); }  ///< Take a peek at the top of CatStack
 

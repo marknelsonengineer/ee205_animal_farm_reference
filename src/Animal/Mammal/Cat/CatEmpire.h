@@ -14,9 +14,10 @@
 
 #include "Cat.h"
 #include "../../../Container/BinarySearchTree.h"
+#include "CatContainer.h"
 
 /// A Binary Search Tree that's customized to store Cats
-class CatEmpire : private BinarySearchTree {
+class CatEmpire : private BinarySearchTree, public CatContainer {
 protected:
    /// The root for the binary search tree is the topCat of our little Empire
    Cat*& topCat = reinterpret_cast<Cat*&>(root);

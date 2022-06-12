@@ -47,7 +47,8 @@ bool Container::isIn( const Node* aNode ) const {
 
 
 void Container::dump() const noexcept {
-   FORMAT_LINE_FOR_DUMP( "Container", "this" )  << this  << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "Object", "class" )  << boost::core::demangled_name( BOOST_CORE_TYPEID( *this )) << std::endl ;
+   FORMAT_LINE_FOR_DUMP( "Object", "this" )  << this  << std::endl ;
    FORMAT_LINE_FOR_DUMP( "Container", "count" ) << count << std::endl ;
 }
 

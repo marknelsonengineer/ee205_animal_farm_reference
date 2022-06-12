@@ -18,11 +18,11 @@
 
 using namespace std;
 
-/// This is a partial implementation.  It checks newMaxSize is >= 1 and
-/// sets maxSize.  It does not actually allocate the Array.
-Array::Array( size_t newMaxSize ) {
+/// This is a partial implementation.  It checks `newMaxSize >= 1` and
+/// sets `maxSize`.  It does not actually allocate the Array.
+Array::Array( const Container::t_size newMaxSize ) {
    if( !(newMaxSize >= 1) ) {
-      /// @throws out_of_range The maximum size of the Array must be >= 1
+      /// @throws out_of_range The maximum size of the Array must be `>= 1`
       throw out_of_range( "The maximum size of the Array must be >= 1" );
    }
 
@@ -30,11 +30,34 @@ Array::Array( size_t newMaxSize ) {
 }
 
 
+Container::t_size Array::getMaxSize() const noexcept {
+   return maxSize;
+}
+
+
+bool Array::isFull() const noexcept {
+   assert( !(count > maxSize) );  // Count is never > max size
+
+   if( count == maxSize )
+      return true;
+
+   assert( count < maxSize );  // Kinda paranoid, but the post-condition is clear
+
+   return false;
+}
+
+
 /// Remove all of the elements (from the highest index to 0)
 void Array::removeAll() noexcept {
-   for( Container::t_size i = size() ; i > 0 ; i-- ) {
-      remove( i );
+   assert( validate() );
+
+   if( isEmpty() ) return;
+
+   for( Container::t_size i = size() ; i > 0 ; ) {
+      remove( --i );
    }
+
+   assert( validate() );
 }
 
 
@@ -42,8 +65,11 @@ void Array::removeAll() noexcept {
 ///
 /// #### Sample Output
 /**@verbatim
-/// @todo Replace this when we have a concrete Array
-...
+Object              class               CatPride
+Object              this                0x7ffcda17af40
+Container           count               4
+Array               maxSize             4
+================================================================================
 @endverbatim */
 void Array::dump() const noexcept {
    Container::dump();
@@ -62,27 +88,7 @@ void Array::dump() const noexcept {
 bool Array::validate() const noexcept {
    return Container::validate();
 
-   assert( maxSize > 0 );      /// `maxSize` must be `>= 1`
+   assert( maxSize > 0 );      /// `maxSize` must be `> 0`
    // assert( count >= 0 );    /// `count` must be `>= 0`
-   assert( count < maxSize );  /// `count` must be `< maxSize`.  For example, if maxSize is 10, then count must be 9 or less.
-}
-
-
-/// This method only validates the parameters.  It *may* be able to do the actual swap
-/// @todo Check on the swap
-void Array::swap( size_t index1, size_t index2 ) {
-   // if( index1 < 0 || index2 < 0) {
-   //    /// @throws out_of_range Indexes into the Array must be >= 0
-   //    throw out_of_range( "Indexes into the Array must be >= 0" );
-   // }
-
-   if( index1 > count || index2 > count ) {
-      /// @throws out_of_range Indexes into the Array must be <= count
-      throw out_of_range( "Indexes into the Array must be <= count" );
-   }
-
-   this->operator[](1);
-
-   std::swap( (*this)[index1], (*this)[index2] );
-   // std::swap( this->operator[](1), this->operator[](1) );
+   assert( count <= maxSize );  /// `count` must be `<= maxSize`.  For example, if `maxSize == 10`, then `count <= 10`.
 }
