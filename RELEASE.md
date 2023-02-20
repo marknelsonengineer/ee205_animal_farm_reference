@@ -1,6 +1,8 @@
 Pre-Release Checklist
 =====================
 
+This is for a CLion-based C++ Linux console program
+
 - For each source file:
     - Cleanup `#include` files
     - Ensure all parameters are validated
