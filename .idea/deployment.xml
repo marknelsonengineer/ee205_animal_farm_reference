@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)" confirmBeforeUploading="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="EE205 (751b971c-d93d-4173-9bad-1dd1e33ec66d)" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
+      <paths name="EE205 (751b971c-d93d-4173-9bad-1dd1e33ec66d)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/marknels/src/src-student/ee205_animal_farm_reference" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="Ghidra (28f72644-e02d-4d46-95ca-829617f90f97)">
         <serverdata>
           <mappings>
