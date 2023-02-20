@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
 ###############################################################################
-###         University of Hawaii, College of Engineering
-###         ee205_animal_farm - EE 205 - Spr 2023
-###
+##                University of Hawaii, College of Engineering
+##                ee205_animal_farm - EE 205 - Spring 2023
+##
 ### Generate project statistics
 ###
 ### @file   stats.py

@@ -1,17 +1,14 @@
 ###############################################################################
-###         University of Hawaii, College of Engineering
-### @brief  ee205_animal_farm - EE 205 - Spr 2022
-###
+##                University of Hawaii, College of Engineering
+##                ee205_animal_farm - EE 205 - Spring 2023
+##
 ### CMake manages the building of source code.
-###
-### @file CMakeLists.txt
-### @version 1.0
 ###
 ### @see https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html
 ### @see https://www.jetbrains.com/help/clion/boost-test-support.html#add-boost-tests
 ###
+### @file   CMakeLists.txt
 ### @author Mark Nelson <marknels@hawaii.edu>
-### @date   05_May_2022
 ###############################################################################
 
 set (Boost_USE_STATIC_LIBS OFF)
