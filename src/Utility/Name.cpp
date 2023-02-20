@@ -32,7 +32,7 @@ Name::Name( string_view newFilename )
    : nameType { FROM_FILE }    // Member initializer list
    , fileName { newFilename }  // Member initializer list
    {
-   reset();
+      reset();
 }
 
 
@@ -41,7 +41,7 @@ Name::Name( string_view newSerialPrefix, string_view newSerialSuffix )
    , serialPrefix { newSerialPrefix } // Member initializer list
    , serialSuffix { newSerialSuffix } // Member initializer list
    {
-   reset();
+      reset();
 }
 
 
