@@ -113,7 +113,7 @@ if (DOXYGEN_FOUND)
 
    add_custom_command(TARGET Doxygen
            PRE_BUILD
-           COMMAND ../bin/stats.sh > ../Statistics.md
+           COMMAND ../bin/stats.py
            COMMENT "Updating statistics"
            )
 
