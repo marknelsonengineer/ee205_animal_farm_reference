@@ -11,8 +11,8 @@
 /// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <string>
 #include <cassert>
+#include <string>
 
 #include "../../config.h"
 #include "Mammal.h"
