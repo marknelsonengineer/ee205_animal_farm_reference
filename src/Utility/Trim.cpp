@@ -45,10 +45,11 @@ static size_t get_left_start_char( const string_view inString ) noexcept {
 static size_t get_right_start_char( const string_view inString ) noexcept {
    size_t i = inString.size();
    while( i > 0 ) {
-      if( isspace( inString[i-1] ))
+      if( isspace( inString[i-1] )) {
          i--;
-      else
+      } else {
          break;
+      }
    }
 
    return i;
@@ -73,8 +74,8 @@ std::string_view trim_right( const std::string_view inString ) noexcept {
 /// @see https://en.cppreference.com/w/cpp/string/byte/isspace
 /// @see https://en.cppreference.com/w/cpp/string/basic_string/substr
 std::string_view trim( const std::string_view inString ) noexcept {
-   size_t left_start_char = get_left_start_char( inString );
-   size_t right_start_char = get_right_start_char( inString );
+   const size_t left_start_char = get_left_start_char( inString );
+   const size_t right_start_char = get_right_start_char( inString );
 
    return( inString.substr( left_start_char, right_start_char - left_start_char ) );
 }
@@ -87,13 +88,14 @@ std::string_view trim( const std::string_view inString ) noexcept {
 ///    - Replace consecutive whitespace characters inside the string with
 ///      a single `" "`
 std::string trim_in( const std::string_view inString ) noexcept {
-   if( inString.empty() )
+   if( inString.empty() ) {
       return ""s;
+   }
 
    char* buffer = (char*) malloc( inString.size()+1 );
 
    size_t inStringIndex = 0;
-   size_t bufferIndex = 0;
+   size_t bufferIndex   = 0;
 
    // Find the first non-whitespace character in inString...
    while( isspace( inString[inStringIndex] ) && inStringIndex < inString.size() ) {
@@ -127,8 +129,9 @@ std::string trim_in( const std::string_view inString ) noexcept {
    }
 
    // Trim the space off the end of the buffer
-   if( buffer[bufferIndex-1] == ' ' )
-      buffer[bufferIndex-1] = '\0';
+   if( buffer[bufferIndex-1] == ' ' ) {
+      buffer[bufferIndex - 1] = '\0';
+   }
 
    // Don't forget to null-terminate
    buffer[bufferIndex++] = '\0';
