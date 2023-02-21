@@ -26,7 +26,7 @@ set(CMAKE_CXX_FLAGS       "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
 
 set(CMAKE_CXX_CLANG_TIDY
-      clang-tidy;
+      clang-tidy -extra-arg=-std=c++17;
       )
 
 set(DOC_BUILD_DIR "${PROJECT_BINARY_DIR}/generated_docs")
