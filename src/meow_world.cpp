@@ -4,7 +4,7 @@
 //
 /// Generic Hello World application
 ///
-/// @file    hello.cpp
+/// @file    meow_world.cpp
 /// @author  Mark Nelson <marknels@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -16,6 +16,6 @@
 ///
 /// @return The exit value for the program
 int main() {
-   std::cout << "Hello, World!" << std::endl;
-   return 0;
+   std::cout << "Meow, World!" << std::endl;
+   return EXIT_SUCCESS;
 }
