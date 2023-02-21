@@ -4,11 +4,15 @@
 //
 /// Generic Hello World application
 ///
-/// @file    meow_world.cpp
+/// @file    main_meowWorld.cpp
 /// @author  Mark Nelson <marknels@hawaii.edu>
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
+#include "config.h"  // For PROGRAM_NAME
+
+#include <cstdlib>   // For EXIT_SUCCESS
+#include <iostream>  // For cout & endl
+
 
 /// A Hello World program
 ///
@@ -16,6 +20,6 @@
 ///
 /// @return The exit value for the program
 int main() {
-   std::cout << "Meow, World!" << std::endl;
+   std::cout << PROGRAM_NAME << ":  Meow, World!" << std::endl;
    return EXIT_SUCCESS;
 }
