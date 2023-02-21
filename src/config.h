@@ -14,7 +14,7 @@
 #include <iostream>   // For cout & endl
 #include <random>     // For random_device & mt19937
 
-//#include "Utility/Random.h"
+#include "Utility/Random.h"
 
 /// A grammatically correct title for the program
 #define PROGRAM_TITLE "Animal Farm"
