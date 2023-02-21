@@ -1,22 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// A gender class... for educational use only.
 /// This is not intended to be inclusive of all possible genders
 ///
-/// @file Gender.h
-/// @version 1.0
-///
+/// @file   Gender.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "../config.h"  // For PROGRAM_NAME
 
-#include "../config.h"
+#include <iostream>  // For ostream
+
 
 /// A gender... for educational use only.  This is not intended to be
 /// inclusive of all possible genders
