@@ -11,10 +11,10 @@
 /// @date   17_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdexcept>
-#include <iostream>
 #include <cassert>
+#include <iostream>
 #include <random>
+#include <stdexcept>
 
 #include "Cat.h"
 #include "../../../Utility/Trim.h"
