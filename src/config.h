@@ -1,28 +1,26 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Global configuration definitions for Animal Farm
 ///
-/// @file config.h
-/// @version 2.0
-///
+/// @file   config.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   14_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <iostream>
 #include <iomanip>    // For setw() & setfill()
+#include <ios>        // For left & boolalpha
+#include <iostream>   // For cout & endl
 #include <random>     // For random_device & mt19937
 
-#include "Utility/Random.h"
+//#include "Utility/Random.h"
 
 /// A grammatically correct title for the program
-#define PROGRAM_TITLE "Animal Farm 4"
+#define PROGRAM_TITLE "Animal Farm"
 
 /// A short-title for the program (used for console messages)
-#define PROGRAM_NAME  "animalfarm4"
+#define PROGRAM_NAME  "animalFarm"
 
 // Set to trace the flow of execution through this code
 // #define TRACE
