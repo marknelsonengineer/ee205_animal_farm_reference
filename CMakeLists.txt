@@ -186,6 +186,7 @@ set(SOURCE_FILES_CAT_WRANGLER ${SOURCE_FILES_CATS} ${SOURCE_FILES_DOUBLY_LINKED_
 set(SOURCE_FILES_CAT_QUEUE    ${SOURCE_FILES_CATS} ${SOURCE_FILES_QUEUES} src/Animal/Mammal/Cat/CatQueue.h)
 set(SOURCE_FILES_CAT_STACK    ${SOURCE_FILES_CATS} ${SOURCE_FILES_STACKS} src/Animal/Mammal/Cat/CatStack.h)
 
+add_executable(hello src/hello.cpp)
 add_executable(catBegat       src/main_catBegat.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catFamilyTree  src/main_catFamilyTree.cpp ${SOURCE_FILES_CAT_EMPIRE})
 add_executable(catGenerations src/main_catGenerations.cpp ${SOURCE_FILES_CAT_EMPIRE})
