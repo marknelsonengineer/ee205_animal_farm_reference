@@ -379,13 +379,15 @@ void CatEmpire::catTail( Cat* atCat, CatEmpire* tailList ) const {
    assert( atCat != nullptr );
    assert( tailList != nullptr );
 
-   if( atCat->right != nullptr )
-      catTail( (Cat*) atCat->right, tailList );
+   if( atCat->right != nullptr ) {
+      catTail((Cat*) atCat->right, tailList );
+   }
 
    Cat* newCat = new Cat( *atCat );
 
    tailList->add( newCat );
 
-   if( atCat->left != nullptr )
-      catTail( (Cat*) atCat->left, tailList );
+   if( atCat->left != nullptr ) {
+      catTail((Cat*) atCat->left, tailList );
+   }
 }
