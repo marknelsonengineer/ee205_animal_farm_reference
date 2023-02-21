@@ -4,11 +4,8 @@
 //
 /// A generic Stack collection class.
 ///
-/// @file Stack.h
-/// @version 1.0
-///
+/// @file   Stack.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   24_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
