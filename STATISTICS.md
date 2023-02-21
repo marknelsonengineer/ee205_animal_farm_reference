@@ -3,14 +3,14 @@ Project Statistics
 
 | Type | Files | Lines | Bytes | Working Lines | Working Bytes |
 |------|------:|------:|------:|--------------:|--------------:|
-|.h Source|33|1,935|87,962|923|30,277|
-|.cpp Source|35|4,673|142,285|2,320|61,757|
-|Unit Tests|17|3,174|126,418|2,283|90,841|
-|Python|1|295|8,461|193|6,976|
+|.h Source|33|1935|87962|923|30277|
+|.cpp Source|35|4673|142291|2320|61757|
+|Unit Tests|17|3174|126418|2283|90841|
+|Python|1|295|8475|193|6976|
 |HTML|1|35|721|n/a|n/a|
-|Markdown|7|207|13,101|n/a|n/a|
-|Images|12|n/a|2,401,096|n/a|n/a|
-|Other	Files|21|n/a|63,830|n/a|n/a|
+|Markdown|7|207|13101|n/a|n/a|
+|Images|12|n/a|2401096|n/a|n/a|
+|Other	Files|20|n/a|61940|n/a|n/a|
 
 ## Tags
 | Tag | Date	| Author	|
@@ -27,7 +27,7 @@ Project Statistics
 
 ## Software Engineering Metrics
 
-Number of commits:  320
+Number of commits:  323
 
 Number of unit tests:  96
 
@@ -38,4 +38,4 @@ Number of test points:  1133
 |-------------------------------------|---------------------------|-------------------------|---------------------------|
 | ![GitHub code size	in	bytes](https://img.shields.io/github/languages/code-size/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub repo size](https://img.shields.io/github/repo-size/marknelsonengineer/ee205_animal_farm_reference?style=social)	<br/>	![GitHub contributors](https://img.shields.io/github/contributors/marknelsonengineer/ee205_animal_farm_reference?style=social) | ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub last	commit](https://img.shields.io/github/last-commit/marknelsonengineer/ee205_animal_farm_reference?style=social)	| ![GitHub	issues](https://img.shields.io/github/issues-raw/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub	closed issues](https://img.shields.io/github/issues-closed-raw/marknelsonengineer/ee205_animal_farm_reference?style=social) | ![GitHub forks](https://img.shields.io/github/forks/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub Repo	stars](https://img.shields.io/github/stars/marknelsonengineer/ee205_animal_farm_reference?style=social)	|
 
-Automatically generated on Mon 20 Feb 2023 11:02:11 AM 
+Automatically generated on Mon Feb 20 20:30:02 2023
