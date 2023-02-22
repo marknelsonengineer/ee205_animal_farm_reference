@@ -1,21 +1,17 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Color class enumeration
 ///
-/// @file Color.h
-/// @version 1.0
-///
+/// @file   Color.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   11_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <iostream>
-#include <string>
+#include <ostream>    // For ostream
+#include <stdexcept>  // For out_of_range
 
-#include "../config.h"
 
 /// Color class enumeration
 enum class Color {
