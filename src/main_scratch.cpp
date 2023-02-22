@@ -11,7 +11,7 @@
 #include <cstdlib>   // For EXIT_SUCCESS
 #include <iostream>  // For cout
 
-#include "Utility/Gender.h"
+#include "Utility/Name.h"
 
 
 using namespace std;
@@ -20,7 +20,8 @@ using namespace std;
 ///
 /// NOLINTNEXTLINE(bugprone-exception-escape): Suppress `An exception may be thrown in main warning`
 int main() {
-   cout << newRandomGender();
+
+   Name aName = Name( "A", "B" );
 
    return EXIT_SUCCESS;
 }
