@@ -127,16 +127,17 @@ if (DOXYGEN_FOUND)
    message(STATUS "DOXYGEN_OUTPUT_DIRECTORY = [${DOXYGEN_OUTPUT_DIRECTORY}]")
 
    doxygen_add_docs(Doxygen
-           ${CMAKE_SOURCE_DIR}/src
-           ${CMAKE_SOURCE_DIR}/README.md
-           ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
-           ${CMAKE_SOURCE_DIR}/DOXYGEN.md
-           ${CMAKE_SOURCE_DIR}/RELEASE.md
-           ${CMAKE_SOURCE_DIR}/tests/INSTALLING_BOOST_TESTS.md
-           ${CMAKE_SOURCE_DIR}/Statistics.md
-           ALL
-           COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
-           )
+         ${CMAKE_SOURCE_DIR}/src
+         ${CMAKE_SOURCE_DIR}/README.md
+         ${CMAKE_SOURCE_DIR}/CONTRIBUTE.md
+         ${CMAKE_SOURCE_DIR}/DOXYGEN.md
+         ${CMAKE_SOURCE_DIR}/RELEASE.md
+         ${CMAKE_SOURCE_DIR}/tests/INSTALLING_BOOST_TESTS.md
+         ${CMAKE_SOURCE_DIR}/STATISTICS.md
+         ${CMAKE_SOURCE_DIR}/WEEKLY_PROGRESS.md
+         ALL
+         COMMENT "Generating doxygen documentation for ${PROJECT_NAME} to ${DOXYGEN_OUTPUT_DIRECTORY}"
+         )
 
    add_custom_command(TARGET Doxygen
            PRE_BUILD
