@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// General string-trimming functions
 ///
@@ -12,11 +12,8 @@
 ///
 /// This implementation is designed to try to balance all three.
 ///
-/// @file Trim.cpp
-/// @version 1.0
-///
+/// @file   Trim.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   10_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <string>
@@ -129,12 +126,14 @@ std::string trim_in( const std::string_view inString ) noexcept {
    }
 
    // Trim the space off the end of the buffer
-   if( buffer[bufferIndex-1] == ' ' ) {
+   /// NOLINTNEXTLINE(clang-analyzer-core.UndefinedBinaryOperatorResult): Suppress warning about looking back 1 character.
+   if( buffer[bufferIndex - 1] == ' ' ) {
       buffer[bufferIndex - 1] = '\0';
    }
 
    // Don't forget to null-terminate
    buffer[bufferIndex++] = '\0';
 
+   /// NOLINTNEXTLINE(clang-analyzer-unix.Malloc): Suppress warning about returning data that's been `malloc`ed.
    return std::string{ buffer };
 }
