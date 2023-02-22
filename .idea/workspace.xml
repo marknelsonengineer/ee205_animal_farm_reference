@@ -16,6 +16,7 @@
       <config projectName="ee205_animal_farm" targetName="Doxygen" />
       <config projectName="ee205_animal_farm" targetName="scratch" />
       <config projectName="ee205_animal_farm" targetName="catGenerations" />
+      <config projectName="ee205_animal_farm" targetName="meowWorld" />
       <config projectName="ee205_animal_farm" targetName="catTemplate" />
       <config projectName="ee205_animal_farm" targetName="catBegat" />
       <config projectName="ee205_animal_farm" targetName="catTail" />
@@ -32,7 +33,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3486ae-ddf2-472d-a05c-c633417462cb" name="Changes" comment="Fixup header" />
+    <list default="true" id="6b3486ae-ddf2-472d-a05c-c633417462cb" name="Changes" comment="Add WEEKLY_PROGRESS.md">
+      <change afterPath="$PROJECT_DIR$/WEEKLY_PROGRESS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STATISTICS.md" beforeDir="false" afterPath="$PROJECT_DIR$/STATISTICS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/Color.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/Color.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/Color.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/Color.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main_scratch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_scratch.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +82,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="CMake Application.catTail">
+  <component name="RunManager" selected="CMake Application.scratch">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All_Boost_Tests" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" PROGRAM_PARAMS="--log_level=test_suite" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="All_Boost_Tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="All_Boost_Tests" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -85,57 +99,57 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="catBegat" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catBegat" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catBegat">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catBegat" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catBegat" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catBegat">
+    <configuration name="catFamilyTree" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catFamilyTree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catFamilyTree">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catFamilyTree" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catFamilyTree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catFamilyTree">
+    <configuration name="catGenerations" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catGenerations" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catGenerations">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catGenerations" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catGenerations" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catGenerations">
+    <configuration name="catList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catList">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catList">
+    <configuration name="catTail" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catTail" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catTail">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catTail" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catTail" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catTail">
+    <configuration name="catTemplate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catTemplate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catTemplate">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="catTemplate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="catTemplate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="catTemplate">
+    <configuration name="doublyLinkedList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="doublyLinkedList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="doublyLinkedList">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="doublyLinkedList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="doublyLinkedList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="doublyLinkedList">
+    <configuration name="meowWorld" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="meowWorld" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="meowWorld">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="queueSimulator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="queueSimulator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="queueSimulator">
+    <configuration name="queueSimulator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="queueSimulator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="queueSimulator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="scratch" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="scratch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="scratch">
+    <configuration name="scratch" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="scratch" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="scratch">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="singlyLinkedList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="singlyLinkedList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="singlyLinkedList">
+    <configuration name="singlyLinkedList" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="singlyLinkedList" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="singlyLinkedList">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -150,6 +164,7 @@
       <item itemvalue="CMake Application.catTemplate" />
       <item itemvalue="CMake Application.doublyLinkedList" />
       <item itemvalue="CMake Application.Doxygen" />
+      <item itemvalue="CMake Application.meowWorld" />
       <item itemvalue="CMake Application.queueSimulator" />
       <item itemvalue="CMake Application.scratch" />
       <item itemvalue="CMake Application.singlyLinkedList" />
@@ -167,6 +182,9 @@
       <workItem from="1676925984181" duration="1255000" />
       <workItem from="1676927270628" duration="5608000" />
       <workItem from="1676960099437" duration="1232000" />
+      <workItem from="1676961366479" duration="6889000" />
+      <workItem from="1677023098348" duration="6000" />
+      <workItem from="1677023174822" duration="749000" />
     </task>
     <task id="LOCAL-00001" summary="Small language update to RELEASE.md">
       <created>1676926043279</created>
@@ -245,7 +263,105 @@
       <option name="project" value="LOCAL" />
       <updated>1676961230584</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add a basic Hello World executable to the Farm">
+      <created>1676961474258</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1676961474258</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Refactor Hello World into Meow World">
+      <created>1676961602238</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1676961602238</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add .idea/workspace.xml to Git">
+      <created>1676962542209</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1676962542209</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Tamp down clang warnings.">
+      <created>1676963414098</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1676963414098</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Sort #includes">
+      <created>1676963465598</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1676963465598</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Sort #includes">
+      <created>1676963473612</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1676963473612</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Sort #includes">
+      <created>1676963510776</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1676963510776</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update config.h&#10;  - Fixup header&#10;  - Rename app &amp; description&#10;  - Knock down warnings">
+      <created>1676964936536</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1676964936536</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Update config.h&#10;  - re-add #include">
+      <created>1676965155117</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1676965155117</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Refactor meow_world to meowWorld&#10;Get it conforming with filenaming standards&#10;Knock down warnings&#10;Return EXIT_SUCCESS">
+      <created>1676965435334</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1676965435334</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Knock down warnings">
+      <created>1676965462956</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1676965462956</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fix clang-tidy's inability to correctly interpret C++17">
+      <created>1676965522405</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1676965522405</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fixup Gender class&#10;  - Fix headers&#10;  - Fix #includes&#10;  - Knock down warnings&#10;&#10;Update scratch and get it to exercise Gender">
+      <created>1676966681634</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1676966681634</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Updated STATISTICS.md">
+      <created>1676967424938</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1676967424938</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +378,19 @@
     <MESSAGE value="Refactor CMakeLists.txt to new standard based on Meow World&#10;Fixup spacing in the file&#10;Get stats.py to run" />
     <MESSAGE value="Add .clang-tidy to the Farm" />
     <MESSAGE value="Fixup header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixup header" />
+    <MESSAGE value="Add a basic Hello World executable to the Farm" />
+    <MESSAGE value="Refactor Hello World into Meow World" />
+    <MESSAGE value="Add .idea/workspace.xml to Git" />
+    <MESSAGE value="Tamp down clang warnings." />
+    <MESSAGE value="Sort #includes" />
+    <MESSAGE value="Update config.h&#10;  - Fixup header&#10;  - Rename app &amp; description&#10;  - Knock down warnings" />
+    <MESSAGE value="Update config.h&#10;  - re-add #include" />
+    <MESSAGE value="Refactor meow_world to meowWorld&#10;Get it conforming with filenaming standards&#10;Knock down warnings&#10;Return EXIT_SUCCESS" />
+    <MESSAGE value="Knock down warnings" />
+    <MESSAGE value="Fix clang-tidy's inability to correctly interpret C++17" />
+    <MESSAGE value="Fixup Gender class&#10;  - Fix headers&#10;  - Fix #includes&#10;  - Knock down warnings&#10;&#10;Update scratch and get it to exercise Gender" />
+    <MESSAGE value="Updated STATISTICS.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated STATISTICS.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
