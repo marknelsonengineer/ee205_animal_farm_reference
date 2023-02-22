@@ -1,19 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// A utility class for managing Animal names
 ///
-/// @file Name.h
-/// @version 1.0
-///
+/// @file   Name.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   10_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <string>
-#include <vector>
+#include <string>  // For string & string_view
+#include <vector>  // For vector<>
 
 /// A utility class for managing Animal names
 ///
@@ -27,7 +24,7 @@
 class Name {
 public:  ////////////////////////// Type Definitions ///////////////////////////
 
-    /// What type of name will this class serve?
+   /// What type of name will this class serve?
    enum NameType { FROM_FILE    ///< The names are randomly selected from a list of names in a file
                   ,FROM_SERIAL  ///< The names are monotonically generated from a serial number
                  } ;
@@ -52,17 +49,16 @@ public:  //////////////////////////// Constructors /////////////////////////////
    Name( std::string_view newSerialPrefix, std::string_view newSerialSuffix );  ///< Construct a #FROM_SERIAL Name class
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   std::string getNextName() noexcept;  ///< Get the next name
+   std::string getNextName();  ///< Get the next name
 
    void reset();  ///< Erase and then re-load the names database or set the serial number to 0
    serial_t remainingNames() noexcept;  ///< Return the number of unique names left
 
 public:  //////////////////////// Static Public Methods ////////////////////////
-   static bool validateName( const std::string_view newName ) ;  ///< Check if `newName` is valid
-   static bool validateNotEmpty( const std::string_view newName ) ;  ///< Return `true` if `newName` is not empty
-   static bool validateTrimmed( const std::string_view newName ) ;  ///< Return `true` if `newName` is left and right trimmed for whitespace
-   static bool validateStartsWithAlpha( const std::string_view newName ) ;  ///< Return `true` if `newName` starts with an alphabetic character (`A` - `Z` or `a` - `z`)
-   static bool validateNoSpecialChars( const std::string_view newName ) ;  ///< Return `true` if `newName` only contains `A` - `Z`, `a` - `z`, `0`-`9`, space and `-`
-   static bool validateInteriorWhitespaceTrimmed( const std::string_view newName ) ;  ///< Return `true` if `newName`'s interior whitespace is trimmed
-
+   static bool validateName( std::string_view newName ) ;  ///< Check if `newName` is valid
+   static bool validateNotEmpty( std::string_view newName ) ;  ///< Return `true` if `newName` is not empty
+   static bool validateTrimmed( std::string_view newName ) ;  ///< Return `true` if `newName` is left and right trimmed for whitespace
+   static bool validateStartsWithAlpha( std::string_view newName ) ;  ///< Return `true` if `newName` starts with an alphabetic character (`A` - `Z` or `a` - `z`)
+   static bool validateNoSpecialChars( std::string_view newName ) ;  ///< Return `true` if `newName` only contains `A` - `Z`, `a` - `z`, `0`-`9`, space and `-`
+   static bool validateInteriorWhitespaceTrimmed( std::string_view newName ) ;  ///< Return `true` if `newName`'s interior whitespace is trimmed
 };
