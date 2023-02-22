@@ -1,21 +1,18 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Every Animal has a Weight in the world.
 ///
-/// @file Weight.h
-/// @version 1.0
-///
+/// @file   Weight.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   06_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
+#include <ostream>  // For ostream
 #include <string>
-#include <ostream>
 
-using namespace std::string_view_literals;
+using namespace std::string_view_literals;   /// @todo:  I think it's bad form to have a using namespace in a .h file
 
 /// Every Animal has a Weight in the world.
 ///
@@ -75,21 +72,21 @@ private:  ////////////////////// Member Variables //////////////////////////////
    bool bIsKnown = false ;  ///< `true` if #weight is known.  Defaults to `false`.
 
 public:   //////////////////////// Constructors ////////////////////////////////
-   Weight() noexcept;  ///< A default Weight (the #weight is #UNKNOWN_WEIGHT)
-   Weight( t_weight newWeight );  ///< A Weight with a #weight
-   Weight( UnitOfWeight newUnitOfWeight ) noexcept;  ///< A Weight with a #UnitOfWeight (the #weight is #UNKNOWN_WEIGHT)
+   Weight();  ///< A default Weight (the #weight is #UNKNOWN_WEIGHT)
+   explicit Weight( t_weight newWeight );  ///< A Weight with a #weight
+   explicit Weight( UnitOfWeight newUnitOfWeight );  ///< A Weight with a #UnitOfWeight (the #weight is #UNKNOWN_WEIGHT)
    Weight( t_weight newWeight, UnitOfWeight newUnitOfWeight );  ///< A Weight with a #weight and #UnitOfWeight
    Weight( t_weight newWeight, t_weight newMaxWeight );  ///< A Weight with a #weight and a #maxWeight
    Weight( UnitOfWeight newUnitOfWeight, t_weight newMaxWeight );  ///< A Weight with a #UnitOfWeight and a #maxWeight (the #weight is #UNKNOWN_WEIGHT)
    Weight( t_weight newWeight, UnitOfWeight newUnitOfWeight, t_weight newMaxWeight );  ///< A fully-specified Weight with a #weight, #UnitOfWeight and #maxWeight
 
 public:   /////////////////////////// Getters  /////////////////////////////////
-   bool  isWeightKnown() const noexcept;   ///< `true` if #weight is known
-   bool  hasMaxWeight() const noexcept;    ///< `true` if #maxWeight is set
-   t_weight getWeight() const noexcept;    ///< Get the #weight in the Weight's units
-   t_weight getWeight( UnitOfWeight weightUnits ) const noexcept;  ///< Get the #weight in the specified unit
-   t_weight getMaxWeight() const noexcept; ///< Get #maxWeight
-   UnitOfWeight getWeightUnit() const noexcept;  ///< Get the #UnitOfWeight for this Weight
+   [[nodiscard]] bool  isWeightKnown() const noexcept;   ///< `true` if #weight is known
+   [[nodiscard]] bool  hasMaxWeight() const noexcept;    ///< `true` if #maxWeight is set
+   [[nodiscard]] t_weight getWeight() const noexcept;    ///< Get the #weight in the Weight's units
+   [[nodiscard]] t_weight getWeight( UnitOfWeight weightUnits ) const noexcept;  ///< Get the #weight in the specified unit
+   [[nodiscard]] t_weight getMaxWeight() const noexcept; ///< Get #maxWeight
+   [[nodiscard]] UnitOfWeight getWeightUnit() const noexcept;  ///< Get the #UnitOfWeight for this Weight
 
 public:   /////////////////////////// Setters  /////////////////////////////////
    void setWeight( t_weight newWeight );  ///< Set the #weight
@@ -111,8 +108,8 @@ public:   /////////////////////// Static Methods ///////////////////////////////
    static t_weight convertWeight( t_weight fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit ) noexcept;
 
 public:   /////////////////////// Public Methods ///////////////////////////////
-   bool isWeightValid( t_weight checkWeight ) const noexcept;  ///< Check the Weight
-   bool validate() const noexcept;   ///< Check Weight to ensure it's healthy
+   [[nodiscard]] bool isWeightValid( t_weight checkWeight ) const noexcept;  ///< Check the Weight
+   [[nodiscard]] bool validate() const noexcept;   ///< Check Weight to ensure it's healthy
    void dump() const noexcept;       ///< Print the Weight class
 
 public:   ////////////////////// Public Overrides //////////////////////////////

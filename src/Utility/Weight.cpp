@@ -1,20 +1,17 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Every Animal has a Weight in the world.
 ///
-/// @file Weight.cpp
-/// @version 1.0
-///
+/// @file   Weight.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   06_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <cassert>    // For assert()
+#include <iomanip>    // For setw() & setfill()
 #include <iostream>   // For cout
 #include <stdexcept>  // For out_of_range
-#include <iomanip>    // For setw() & setfill()
 
 #include "../config.h"
 #include "Weight.h"
@@ -23,7 +20,7 @@ using namespace std;
 
 
 // Constructor 1 -- No parameters
-Weight::Weight() noexcept :
+Weight::Weight() :
          unitOfWeight { POUND }            // Member initializer list
 {
    setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
@@ -44,7 +41,7 @@ Weight::Weight( const Weight::t_weight newWeight ) :
 
 // Constructor 3
 /// Once #UnitOfWeight is set, it can't be changed
-Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) noexcept :
+Weight::Weight( const Weight::UnitOfWeight newUnitOfWeight ) :
         unitOfWeight { newUnitOfWeight }   // Member initializer list
 {
    setInitialMaxWeight( UNKNOWN_WEIGHT );  // Sets maxWeight and bHasMax
@@ -67,6 +64,7 @@ Weight::Weight( const Weight::t_weight     newWeight
 
 // Constructor 5
 /// Once #maxWeight is set, it can't be changed
+/// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters are of similar type and easily swapped` warning.
 Weight::Weight( const Weight::t_weight newWeight
                ,const Weight::t_weight newMaxWeight ) :
          unitOfWeight { POUND }          // Member initializer list
@@ -251,6 +249,7 @@ bool Weight::validate() const noexcept {
 
 
 Weight::t_weight Weight::convertWeight( const Weight::t_weight fromWeight
+         /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters are of similar type and easily swapped` warning.
         ,const UnitOfWeight fromUnit
         ,const UnitOfWeight toUnit ) noexcept {
    Weight::t_weight commonWeight = UNKNOWN_WEIGHT;
@@ -345,7 +344,7 @@ std::ostream& operator<<( std::ostream& lhs_stream, const Weight& rhs_Weight ) {
       lhs_stream << "Unknown" ;
       return lhs_stream;
    }
-   else if( rhs_Weight.isWeightKnown() ) {
+   if( rhs_Weight.isWeightKnown() ) {
       stringBuffer << rhs_Weight.getWeight();
    } else {
       stringBuffer << "Unknown";
@@ -382,8 +381,8 @@ bool Weight::operator==( const Weight& rhs_Weight ) const {
    /// Convert the two Weight's units into a common unit before comparing them
    ///
    /// Treat unknown weights as 0 (so we can sort them without throwing an exception)
-   Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
-   Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
+   const Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+   const Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
 
    return lhs_weight == rhs_weight;
 }
@@ -393,8 +392,8 @@ bool Weight::operator<( const Weight& rhs_Weight ) const {
    /// Convert the two Weight's units into a common unit before comparing them
    ///
    /// Treat unknown weights as 0 (so we can sort them without throwing an exception)
-   Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
-   Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
+   const Weight::t_weight lhs_weight = (bIsKnown) ? getWeight(Weight::POUND) : 0;
+   const Weight::t_weight rhs_weight = (rhs_Weight.bIsKnown) ? rhs_Weight.getWeight(Weight::POUND) : 0;
 
    return lhs_weight < rhs_weight;
 }
