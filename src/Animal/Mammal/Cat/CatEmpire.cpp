@@ -298,13 +298,15 @@ void CatEmpire::dfsPreorder( Cat* atCat ) const noexcept {
 void CatEmpire::dfsInorder( Cat* atCat ) const noexcept {
    assert( atCat != nullptr );
 
-   if( atCat->left != nullptr )
+   if( atCat->left != nullptr ) {
       dfsInorder( (Cat*) atCat->left );
+   }
 
    cout << atCat->getName() << endl;
 
-   if( atCat->right != nullptr )
+   if( atCat->right != nullptr ) {
       dfsInorder( (Cat*) atCat->right );
+   }
 }
 
 
@@ -314,22 +316,28 @@ void CatEmpire::dfsInorderReverse( Cat* atCat, unsigned long depth ) const noexc
    assert( atCat != nullptr );
    const int nameLen = 6;
 
-   if( atCat->right != nullptr )
-      dfsInorderReverse( (Cat*)atCat->right, depth + 1 );
+   if( atCat->right != nullptr ) {
+      dfsInorderReverse((Cat*) atCat->right, depth + 1 );
+   }
 
    cout << string( (depth-1) * nameLen, ' ' ) << atCat->getName();
 
-   if( atCat->left == nullptr && atCat->right == nullptr )
+   if( atCat->left == nullptr && atCat->right == nullptr ) {
       cout << endl;
-   if( atCat->left != nullptr && atCat->right != nullptr )
+   }
+   if( atCat->left != nullptr && atCat->right != nullptr ) {
       cout << '<' << endl;
-   if( atCat->left != nullptr && atCat->right == nullptr )
+   }
+   if( atCat->left != nullptr && atCat->right == nullptr ) {
       cout << '\\' << endl;
-   if( atCat->left == nullptr && atCat->right != nullptr )
+   }
+   if( atCat->left == nullptr && atCat->right != nullptr ) {
       cout << '/' << endl;
+   }
 
-   if( atCat->left != nullptr )
-      dfsInorderReverse( (Cat*)atCat->left, depth + 1 );
+   if( atCat->left != nullptr ) {
+      dfsInorderReverse((Cat*) atCat->left, depth + 1 );
+   }
 }
 
 
