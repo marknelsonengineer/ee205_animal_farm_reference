@@ -41,12 +41,12 @@ public:  //////////////////////////// Constructors /////////////////////////////
    virtual ~Dog();
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   std::string_view getName() const noexcept override;  ///< Get the Dog's name
+   [[nodiscard]] std::string_view getName() const noexcept override;  ///< Get the Dog's name
 
 public:  /////////////////////////// Public Methods ////////////////////////////
-   std::string_view speak() const noexcept override;  ///< Say `Woof`.
+   [[nodiscard]] std::string_view speak() const noexcept override;  ///< Say `Woof`.
    void dump() const noexcept override;      ///< Output the contents of this object (and its parents)
-   bool validate() const noexcept override;  ///< Check to see if the Dog object is valid
+   [[nodiscard]] bool validate() const noexcept override;  ///< Check to see if the Dog object is valid
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
