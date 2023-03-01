@@ -130,14 +130,17 @@ bool BinarySearchTree::isIn( const Node* aNode ) const {
 bool BinarySearchTree::isIn( const Node* atNode, const Node* aNode ) const {
    TRACE_START
 
-   if( atNode == nullptr )
-      return false ;  // We've reached the end of the Tree and haven't found our node
+   if( atNode == nullptr ) {
+      return false;  // We've reached the end of the Tree and haven't found our node
+   }
 
-   if( atNode == aNode )
+   if( atNode == aNode ) {
       return true;  // We've found the node we are looking for!
+   }
 
-   if( *aNode < *atNode )  // If aNode is < atNode, go left
+   if( *aNode < *atNode ) {  // If aNode is < atNode, go left
       return isIn( atNode->left, aNode );
+   }
 
    return isIn( atNode->right, aNode );  // Otherwise, go right
 }
@@ -333,15 +336,17 @@ Node* BinarySearchTree::remove( Node* nodeToRemove ) {
 
       // subtree has the 0 or 1 children
       Node* subtree = currentLocation->left;
-      if( subtree == nullptr )
+      if( subtree == nullptr ) {
          subtree = currentLocation->right;
+      }
 
-      if( parent == nullptr )
+      if( parent == nullptr ) {
          root = subtree;
-      else if( parent->left == currentLocation )
+      } else if( parent->left == currentLocation ) {
          parent->left = subtree;
-      else
+      } else {
          parent->right = subtree;
+      }
    }
 
    nodeToRemove->reset();
