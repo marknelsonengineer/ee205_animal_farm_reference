@@ -1,37 +1,32 @@
 ///////////////////////////////////////////////////////////////////////////////
 //         University of Hawaii, College of Engineering
-//         ee205_animal_farm - EE 205 - Spr 2022
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Where the Wild Things Are
 ///
-/// @file Animal.cpp
-/// @version 1.0
-///
+/// @file   Animal.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <cassert>    // For assert()
-#include <iostream>   // For cout
-#include <stdexcept>  // For out_of_range
-#include <iomanip>    // For setw() & setfill()
-#include <boost/core/typeinfo.hpp>  // for typeinfo()
+#include <boost/core/typeinfo.hpp>  // For typeinfo()
+#include <cassert>                  // For assert()
+#include <iomanip>                  // For setw() & setfill()
+#include <iostream>                 // For cout
+#include <stdexcept>                // For out_of_range
 
+#include "../Utility/Name.h"
+#include "../Utility/Trim.h"
 #include "../config.h"
 #include "Animal.h"
-#include "../Utility/Trim.h"
-#include "../Utility/Name.h"
 
 using namespace std;
 
 
-/// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
-/// @param newClassification Must be a valid name per Name::validateName
-/// @param newSpecies Must be a valid name per Name::validateName
 Animal::Animal( const Weight::t_weight newMaxWeight
+                /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters of similar type are easily swapped by mistake`
               , const std::string_view newClassification
               , const std::string_view newSpecies )
-              : Node()                                           // Delegating constructor
+              : Node()                                           // Delegating constructor  // NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
               , species { trim_in( newSpecies ) }                // Member initializer list
               , classification { trim_in( newClassification ) }  // Member initializer list
               , weight( Weight::POUND, newMaxWeight )            // Delegating constructor
@@ -50,17 +45,13 @@ Animal::Animal( const Weight::t_weight newMaxWeight
 }
 
 
-/// @param newGender The Gender of the Animal
-/// @param newWeight Must be a valid weight per Weight::isWeightValid
-/// @param newMaxWeight Must be a valid weight per Weight::isWeightValid
-/// @param newClassification Must be a valid name per Name::validateName
-/// @param newSpecies Must be a valid name per Name::validateName
-Animal::Animal( const Gender newGender
+Animal::Animal( const Gender           newGender
               , const Weight::t_weight newWeight
               , const Weight::t_weight newMaxWeight
-              , const string_view newClassification
-              , const string_view newSpecies )
-        : Node()                                           // Delegating constructor
+                /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters of similar type are easily swapped by mistake`
+              , const string_view      newClassification
+              , const string_view      newSpecies )
+        : Node()                                           // Delegating constructor  // NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
         , species { trim_in( newSpecies ) }                // Member initializer list
         , classification { trim_in( newClassification ) }
         , gender { newGender }
@@ -74,6 +65,7 @@ Animal::Animal( const Gender newGender
 /// leaving it in the class
 ///
 /// @return #KINGDOM_NAME
+/// NOLINTNEXTLINE(readability-convert-member-functions-to-static): Suppress `method can be made static` warning
 std::string_view Animal::getKingdom() const noexcept {
    return KINGDOM_NAME;
 }
@@ -199,10 +191,12 @@ bool Animal::validate() const noexcept {
 /// @param rhs_animal `rhs` stands for Right Hand Side and is the right side of the operator.
 /// @return `true` if `this` < `rhs_animal`
 bool Animal::operator<( const Animal& rhs_animal ) const {
-   if( classification < rhs_animal.classification )
+   if( classification < rhs_animal.classification ) {
       return true;
-   if( rhs_animal.classification < classification )
+   }
+   if( rhs_animal.classification < classification ) {
       return false;
+   }
    // If the two `classifications` are equal, compare `species`
    return species < rhs_animal.species;
 }

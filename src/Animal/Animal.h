@@ -4,11 +4,8 @@
 //
 /// Where the Wild Things Are
 ///
-/// @file Animal.h
-/// @version 1.0
-///
+/// @file   Animal.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   30_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -40,22 +37,23 @@ private:  ///////////////////// Member Variables //////////////////////////////
    Gender gender = Gender::UNKNOWN_GENDER;  ///< The Animal's gender.  Scientifically, not all Animals have a gender, but all Animals on Animal Farm have a gender.
    Weight weight;                           ///< The weight of the Animal
 
-public:   /////////////////////// Constructors ////////////////////////////////
+public:   // //////////////////// Constructors ////////////////////////////////
+
    /// Create an Animal with the *minimum* required fields
-   Animal( const Weight::t_weight newMaxWeight
-          ,const std::string_view newClassification
-          ,const std::string_view newSpecies
+   Animal( Weight::t_weight newMaxWeight       ///< Must be a valid weight per Weight::isWeightValid
+          ,std::string_view newClassification  ///< Must be a valid name per Name::validateName
+          ,std::string_view newSpecies         ///< Must be a valid name per Name::validateName
           );
 
-   /// Create an Animal, populating *all* of the member variables
-   Animal( const Gender           newGender
-          ,const Weight::t_weight newWeight
-          ,const Weight::t_weight newMaxWeight
-          ,const std::string_view newClassification
-          ,const std::string_view newSpecies
+    /// Create an Animal, populating *all* of the member variables
+   Animal( Gender           newGender           ///< The Gender of the Animal
+          ,Weight::t_weight newWeight           ///< Must be a valid weight per Weight::isWeightValid
+          ,Weight::t_weight newMaxWeight        ///< Must be a valid weight per Weight::isWeightValid
+          ,std::string_view newClassification   ///< Must be a valid name per Name::validateName
+          ,std::string_view newSpecies          ///< Must be a valid name per Name::validateName
           );
 
-public:   ///////////////////// Getters & Setters /////////////////////////////
+public:   // ////////////////// Getters & Setters /////////////////////////////
    std::string_view getKingdom()        const noexcept;  ///< Get the kingdom, which is `Animalia`
    std::string_view getClassification() const noexcept;  ///< Get the classification
    std::string_view getSpecies()        const noexcept;  ///< Get the species
