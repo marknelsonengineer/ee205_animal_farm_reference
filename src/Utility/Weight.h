@@ -73,8 +73,8 @@ private:  ////////////////////// Member Variables //////////////////////////////
 
 public:   //////////////////////// Constructors ////////////////////////////////
    Weight();  ///< A default Weight (the #weight is #UNKNOWN_WEIGHT)
-   explicit Weight( t_weight newWeight );  ///< A Weight with a #weight
-   explicit Weight( UnitOfWeight newUnitOfWeight );  ///< A Weight with a #UnitOfWeight (the #weight is #UNKNOWN_WEIGHT)
+   Weight( t_weight newWeight );  ///< A Weight with a #weight
+   Weight( UnitOfWeight newUnitOfWeight );  ///< A Weight with a #UnitOfWeight (the #weight is #UNKNOWN_WEIGHT)
    Weight( t_weight newWeight, UnitOfWeight newUnitOfWeight );  ///< A Weight with a #weight and #UnitOfWeight
    Weight( t_weight newWeight, t_weight newMaxWeight );  ///< A Weight with a #weight and a #maxWeight
    Weight( UnitOfWeight newUnitOfWeight, t_weight newMaxWeight );  ///< A Weight with a #UnitOfWeight and a #maxWeight (the #weight is #UNKNOWN_WEIGHT)
@@ -104,8 +104,15 @@ public:   /////////////////////// Static Methods ///////////////////////////////
    static constexpr t_weight fromSlugToPound( t_weight slug )         noexcept { return slug / SLUGS_IN_A_POUND ; }              ///< Convert #SLUG to #POUND
    static constexpr t_weight fromPoundToSlug( t_weight pound )        noexcept { return pound * SLUGS_IN_A_POUND ; }             ///< Convert #POUND to #SLUG
 
+
    /// Convert fromWeight in fromUnit to a weight in toUnit
-   static t_weight convertWeight( t_weight fromWeight, UnitOfWeight fromUnit, UnitOfWeight toUnit ) noexcept;
+   /// @return A #Weight in the toUnit units
+   static t_weight convertWeight(
+      t_weight     fromWeight  ///< The original #Weight
+     ,UnitOfWeight fromUnit    ///< The original unit
+     ,UnitOfWeight toUnit      ///< The unit to convert into
+     ) noexcept;
+
 
 public:   /////////////////////// Public Methods ///////////////////////////////
    [[nodiscard]] bool isWeightValid( t_weight checkWeight ) const noexcept;  ///< Check the Weight

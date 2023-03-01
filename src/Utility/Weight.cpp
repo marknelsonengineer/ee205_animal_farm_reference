@@ -248,7 +248,8 @@ bool Weight::validate() const noexcept {
 }
 
 
-Weight::t_weight Weight::convertWeight( const Weight::t_weight fromWeight
+Weight::t_weight Weight::convertWeight(
+         const Weight::t_weight fromWeight
          /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters are of similar type and easily swapped` warning.
         ,const UnitOfWeight fromUnit
         ,const UnitOfWeight toUnit ) noexcept {
