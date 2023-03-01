@@ -32,7 +32,7 @@
 /// The maximum size of the Array is in Array::maxSize.
 class Array : public Container {
 public:   ///////////////////// Constructors & Destructors /////////////////////
-   explicit Array( const Container::t_size newMaxSize );  ///< Partially construct an Array of up to `newMaxSize` Nodes
+   explicit Array( Container::t_size newMaxSize );  ///< Partially construct an Array of up to `newMaxSize` Nodes
 
 protected:  ////////////////////// Protected Members ///////////////////////////
    Container::t_size maxSize = 0;   ///< The maximum size of the Array.  This is set in the constructor and never changes.
@@ -47,9 +47,9 @@ public:  ///////////////// Inherited Methods from Container ////////////////////
    bool validate() const noexcept override;  ///< Ensure the object is valid
 
 public:  ////////////////////////// Abstract Methods ///////////////////////////
-   virtual void add( Node* newNode, const Container::t_size index ) = 0;  ///< Replace the Node at `index` with `newNode`
-   virtual Node* remove( const Container::t_size index ) = 0;             ///< Remove a Node from the Container
-   virtual void swap( const Container::t_size index1, const Container::t_size index2 ) = 0;  ///< Swap `node1` and `node2`
+   virtual void add( Node* newNode, Container::t_size index ) = 0;  ///< Replace the Node at `index` with `newNode`
+   virtual Node* remove( Container::t_size index ) = 0;             ///< Remove a Node from the Container
+   virtual void swap( Container::t_size index1, const Container::t_size index2 ) = 0;  ///< Swap `node1` and `node2`
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    virtual Node& operator[](Container::t_size index) = 0;  ///< An Array requires a [] operator
