@@ -29,8 +29,9 @@ bool List::isIn(const Node *aNode) const {
    Node* currentNode = head;
 
    while( currentNode != nullptr ) {
-      if( aNode == currentNode )
+      if( aNode == currentNode ) {
          return true;
+      }
       currentNode = currentNode->next;
    }
 
@@ -44,12 +45,14 @@ bool List::isIn(const Node *aNode) const {
 bool List::isSorted() const noexcept {
    assert( validate() );
 
-   if( count <= 1 ) // SPECIAL CASE:  The List is empty or only has one item...
+   if( count <= 1 ) { // SPECIAL CASE:  The List is empty or only has one item...
       return true;
+   }
 
    for( Node* i = head ; i->next != nullptr ; i = i->next ) {
-      if( *i > *i->next )  // If the previous is greater than the next
-         return false;     // ...then the List is *not* sorted
+      if( *i > *i->next ) {  // If the previous is greater than the next
+         return false;       // ...then the List is *not* sorted
+      }
    }
 
    return true;  // Everything looks kosher
@@ -184,8 +187,8 @@ Node* List::getRandomNode() const noexcept {
       randomIndex--;
    }
 
-   if( isEmpty() ) assert( currentNode == nullptr );
-   if( !isEmpty() ) assert( currentNode != nullptr );
+   if( isEmpty() ) { assert( currentNode == nullptr ); }
+   if( !isEmpty() ) { assert( currentNode != nullptr ); }
 
    return currentNode;
 }
