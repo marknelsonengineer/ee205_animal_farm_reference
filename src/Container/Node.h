@@ -21,7 +21,7 @@ namespace test_Container { struct test_Node; } // Forward declaration for friend
 namespace test_Tree { // Forward declaration for friending & testing
    class test_simple_remove_from_Tree;
    class test_getRandomNode_and_remove;
-}
+} // namespace test_Tree
 namespace test_SinglyLinkedList { class test_getRandomNode_and_remove; } // Forward declaration for friending & testing
 namespace test_DoublyLinkedList { class test_getRandomNode_and_remove; } // Forward declaration for friending & testing
 
@@ -57,7 +57,7 @@ class Node {
 
 public:   ///////////////////// Constructors & Destructors /////////////////////
    Node() = default;   ///< Default constructor
-   constexpr Node(const Node&) : next(nullptr), prev(nullptr),left( nullptr), right(nullptr) {}   ///< Copy constructor zeros out pointers
+   constexpr Node(const Node&) : next(nullptr), prev(nullptr),left(nullptr), right(nullptr) {}   ///< Copy constructor zeros out pointers
    constexpr Node& operator=( const Node& copyFrom ) {  /// Assignment constructor zeros out pointers
       if( this != &copyFrom ) { // Protects from self-assignment
          next = nullptr;
@@ -106,8 +106,9 @@ protected:  //////////////////////// Static Methods ////////////////////////////
    ///
    /// @return true if `node1 > node2`
    static bool compareByAddress ( const Node* node1, const Node* node2 ) {
-      if( node1 > node2 )
+      if( node1 > node2 ) {
          return true;
+      }
       return false;
    }
 
