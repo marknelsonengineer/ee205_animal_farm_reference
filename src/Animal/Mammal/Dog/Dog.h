@@ -4,24 +4,22 @@
 //
 /// Some of my favorite cats are dogs
 ///
-/// @file Dog.h
-/// @version 1.0
-///
+/// @file   Dog.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   18_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 #include <string>
 
 #include "../../../config.h"
-#include "../Mammal.h"
 #include "../../../Utility/Name.h"
+#include "../Mammal.h"
 
 /// Canis Familiaris
 ///
 class Dog : public Mammal {
 public:   //////////////////////// Constants ///////////////////////////////////
    static const constexpr std::string_view SPECIES_NAME { "Canis Familiaris" };  ///< The scientific name for a Dog
+   static const constexpr Weight::t_weight MIN_WEIGHT { 0.1 };  ///< The minimum weight for a Dog
    static const constexpr Weight::t_weight MAX_WEIGHT { 315 };  ///< The maximum weight for a Dog (an English Mastiff)
 
 public:  ////////////////////////// Static Members /////////////////////////////
@@ -33,10 +31,10 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 public:  //////////////////////////// Constructors /////////////////////////////
 
    /// Create a Dog
-   Dog( const std::string_view newName
-       ,const Color            newColor  = Color::UNKNOWN_COLOR
-       ,const Gender           newGender = Gender::UNKNOWN_GENDER
-       ,const Weight::t_weight newWeight = Weight::UNKNOWN_WEIGHT
+   Dog( std::string_view newName
+       ,Color            newColor  = Color::UNKNOWN_COLOR
+       ,Gender           newGender = Gender::UNKNOWN_GENDER
+       ,Weight::t_weight newWeight = Weight::UNKNOWN_WEIGHT
    );
 
    /// Delete a Dog

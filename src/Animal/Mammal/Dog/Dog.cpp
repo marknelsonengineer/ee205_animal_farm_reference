@@ -4,19 +4,17 @@
 //
 /// Some of my favorite cats are dogs
 ///
-/// @file Dog.cpp
-/// @version 1.0
-///
+/// @file   Dog.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   18_May_2022
 ///////////////////////////////////////////////////////////////////////////////
-#include <stdexcept>
-#include <iostream>
-#include <cassert>
-#include <random>
 
-#include "Dog.h"
+#include <cassert>
+#include <iostream>
+#include <random>
+#include <stdexcept>
+
 #include "../../../Utility/Trim.h"
+#include "Dog.h"
 
 using namespace std ;
 
@@ -105,7 +103,7 @@ Animal& Dog::newRandomAnimal() {
 /// This function will use `new` to create a Dog on the heap.  Be sure to
 /// `delete` the Dog when it's no longer needed
 Dog& Dog::newRandomDog() {
-   uniform_real_distribution<> weightRNG( 0.1, Dog::MAX_WEIGHT );
+   uniform_real_distribution<> weightRNG( Dog::MIN_WEIGHT, Dog::MAX_WEIGHT );
 
    Dog* aDog = new Dog( names.getNextName(), newRandomColor(), newRandomGender(), (Weight::t_weight) weightRNG( ANIMAL_FARM_RNG ) );
 
