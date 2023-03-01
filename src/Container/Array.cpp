@@ -38,8 +38,9 @@ Container::t_size Array::getMaxSize() const noexcept {
 bool Array::isFull() const noexcept {
    assert( !(count > maxSize) );  // Count is never > max size
 
-   if( count == maxSize )
+   if( count == maxSize ) {
       return true;
+   }
 
    assert( count < maxSize );  // Kinda paranoid, but the post-condition is clear
 
@@ -51,7 +52,7 @@ bool Array::isFull() const noexcept {
 void Array::removeAll() noexcept {
    assert( validate() );
 
-   if( isEmpty() ) return;
+   if( isEmpty() ) { return; }
 
    for( Container::t_size i = size() ; i > 0 ; ) {
       remove( --i );
