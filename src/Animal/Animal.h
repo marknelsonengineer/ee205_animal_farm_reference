@@ -11,10 +11,10 @@
 
 #include <string>
 
-#include "../config.h"
 #include "../Container/Node.h"
 #include "../Utility/Gender.h"
 #include "../Utility/Weight.h"
+#include "../config.h"
 
 
 /// A class that encompasses all Animals on the farm.
@@ -54,26 +54,26 @@ public:   // //////////////////// Constructors ////////////////////////////////
           );
 
 public:   // ////////////////// Getters & Setters /////////////////////////////
-   std::string_view getKingdom()        const noexcept;  ///< Get the kingdom, which is `Animalia`
-   std::string_view getClassification() const noexcept;  ///< Get the classification
-   std::string_view getSpecies()        const noexcept;  ///< Get the species
+   [[nodiscard]] std::string_view getKingdom()        const noexcept;  ///< Get the kingdom, which is `Animalia`
+   [[nodiscard]] std::string_view getClassification() const noexcept;  ///< Get the classification
+   [[nodiscard]] std::string_view getSpecies()        const noexcept;  ///< Get the species
 
-   Gender           getGender()         const noexcept;  ///< Get the Animal's Gender
+   [[nodiscard]] Gender           getGender()         const noexcept;  ///< Get the Animal's Gender
 
-   Weight::t_weight getWeight() const noexcept;  ///< Get the Animal's Weight
-   void             setWeight( const Weight::t_weight newWeight );  ///< Set the Animal's Weight
+   [[nodiscard]] Weight::t_weight getWeight() const noexcept;  ///< Get the Animal's Weight
+   void             setWeight( Weight::t_weight newWeight );  ///< Set the Animal's Weight
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
-   void setGender( const Gender newGender );   ///< Set the Animal's Gender
+   void setGender( Gender newGender );   ///< Set the Animal's Gender
 
 public:   ////////////////////////// Abstract Methods //////////////////////////
-   virtual std::string_view speak() const noexcept = 0;    ///< Ask the Animal to say something.  This method is virtual and abstract.
-   virtual std::string_view getName() const noexcept = 0;  ///< Get the Cat's name
+   [[nodiscard]] virtual std::string_view speak() const noexcept = 0;    ///< Ask the Animal to say something.  This method is virtual and abstract.
+   [[nodiscard]] virtual std::string_view getName() const noexcept = 0;  ///< Get the Cat's name
 
 public:   /////////////////////////// Public Methods ///////////////////////////
-   std::string info() const noexcept;         ///< Return one-line of information about this Animal
+   [[nodiscard]] std::string info() const noexcept;         ///< Return one-line of information about this Animal
    void dump()     const noexcept override;   ///< Output the contents of this object (and its parents).
-   bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
+   [[nodiscard]] bool validate() const noexcept override;   ///< Check to see if the Animal object is valid
 
 public:  ///////////////////////// Operator Overrides //////////////////////////
    bool operator< ( const Animal& rhs_animal ) const;  ///< Compare two Animals with `<`
