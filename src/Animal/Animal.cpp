@@ -26,7 +26,7 @@ Animal::Animal( const Weight::t_weight newMaxWeight
                 /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters of similar type are easily swapped by mistake`
               , const std::string_view newClassification
               , const std::string_view newSpecies )
-              : Node()                                           // Delegating constructor  // NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
+              : Node()                                           // Delegating constructor  @NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
               , species { trim_in( newSpecies ) }                // Member initializer list
               , classification { trim_in( newClassification ) }  // Member initializer list
               , weight( Weight::POUND, newMaxWeight )            // Delegating constructor
@@ -51,7 +51,7 @@ Animal::Animal( const Gender           newGender
                 /// NOLINTNEXTLINE(bugprone-easily-swappable-parameters): Suppress `2 adjacent parameters of similar type are easily swapped by mistake`
               , const string_view      newClassification
               , const string_view      newSpecies )
-        : Node()                                           // Delegating constructor  // NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
+        : Node()                                           // Delegating constructor  @NOLINT(readability-redundant-member-init): Suppress `Initializer for base class is redundant` warning
         , species { trim_in( newSpecies ) }                // Member initializer list
         , classification { trim_in( newClassification ) }
         , gender { newGender }

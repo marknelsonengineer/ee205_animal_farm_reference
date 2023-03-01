@@ -154,7 +154,7 @@ Animal& Cat::newRandomAnimal() {
 /// Be sure to `delete` the Cat when it's no longer needed
 Cat& Cat::newRandomCat() {
    uniform_real_distribution<> weightRNG ( MIN_WEIGHT, Cat::MAX_WEIGHT );
-   bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered   /// NOLINT(readability-magic-numbers): Allow a magic number here
+   bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered   @NOLINT(readability-magic-numbers): Allow a magic number here
 
    Cat* aCat = new Cat( names.getNextName(), newRandomColor(), isFixedRNG( ANIMAL_FARM_RNG ), newRandomGender(), (float) weightRNG( ANIMAL_FARM_RNG ) );
 

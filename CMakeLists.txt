@@ -46,7 +46,9 @@ if (DOXYGEN_FOUND)
    set(DOXYGEN_STRIP_FROM_PATH ${PROJECT_PARENT_DIR})
    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
    set(DOXYGEN_TAB_SIZE 3)
-   set(DOXYGEN_ALIASES "pattern=@par Design Pattern: ")  # Create a custom @pattern tag
+   set(DOXYGEN_ALIASES "pattern=@par Design Pattern: "       # Create a custom @pattern tag
+                       "NOLINT=@par Excluded Warnings: ^^"   # Create a custom @NOLINT tag
+         )
    set(DOXYGEN_OPTIMIZE_OUTPUT_FOR_C YES)
    set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
 
@@ -71,7 +73,7 @@ if (DOXYGEN_FOUND)
    # Source Browser
    set(DOXYGEN_SOURCE_BROWSER YES)           # @todo Turn this off for students
    set(DOXYGEN_STRIP_CODE_COMMENTS NO)
-   set(DOXYGEN_CLANG_ASSISTED_PARSING YES)
+   set(DOXYGEN_CLANG_ASSISTED_PARSING NO)
    set(DOXYGEN_CLANG_OPTIONS "-std=c++17 -I /usr/include/llvm -I /usr/lib/clang/14.0.6/include" )
 
    # Index
@@ -154,7 +156,7 @@ if (DOXYGEN_FOUND)
 
    add_custom_command(TARGET Doxygen
            POST_BUILD
-           COMMAND rsync --recursive --checksum --delete --compress --stats ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
+           COMMAND rsync --recursive --checksum --delete --compress --stats --chmod=o+r,Do+x ${DOXYGEN_OUTPUT_DIRECTORY}/html/ marknels@uhunix.hawaii.edu:~/public_html/ee205/${CMAKE_PROJECT_NAME}
            COMMENT "Pushing files to UHUnix"
            )
 
