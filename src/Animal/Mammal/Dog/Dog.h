@@ -46,7 +46,7 @@ public:  ////////////////////////// Getters & Setters //////////////////////////
 public:  /////////////////////////// Public Methods ////////////////////////////
    [[nodiscard]] std::string_view speak() const noexcept override;  ///< Say `Woof`.
    void dump() const noexcept override;      ///< Output the contents of this object (and its parents)
-   [[nodiscard]] bool validate() const noexcept override;  ///< Check to see if the Dog object is valid
+   bool validate() const noexcept override;  ///< Check to see if the Dog object is valid  @NOLINT(modernize-use-nodiscard)
 
 public:  /////////////////////// Static Public Methods /////////////////////////
    // Static methods are `const` by default
