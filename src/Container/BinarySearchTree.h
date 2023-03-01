@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// A general-purpose Binary Search Tree
 ///
