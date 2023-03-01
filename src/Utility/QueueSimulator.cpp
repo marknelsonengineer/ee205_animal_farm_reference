@@ -11,15 +11,15 @@
 /// @date   05_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
+#include <cassert>   // For assert
+#include <iomanip>   // For setfill
 #include <iostream>  // For cout
 #include <random>    // For random_device
 #include <thread>    // For sleep_for
-#include <iomanip>   // For setfill
-#include <cassert>   // For assert
 
-#include "../config.h"
 #include "../Container/Node.h"
 #include "../Container/Queue.h"
+#include "../config.h"
 
 #include "QueueSimulator.h"
 
