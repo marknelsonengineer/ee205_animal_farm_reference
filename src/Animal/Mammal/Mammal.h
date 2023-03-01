@@ -1,19 +1,16 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Mammals have more fun
 ///
-/// @file Mammal.h
-/// @version 1.0
-///
+/// @file   Mammal.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   09_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "../Animal.h"
 #include "../../Utility/Color.h"
+#include "../Animal.h"
 
 
 /// Mammals have more fun.
@@ -29,20 +26,20 @@ protected:  ///////////////////////// Member Variables /////////////////////////
 
 public:   /////////////////////// Constructors ////////////////////////////////
    /// Create a Mammal with the *minimum* required fields
-   Mammal( const Weight::t_weight newMaxWeight
-          ,const std::string_view newSpecies
+   Mammal( Weight::t_weight newMaxWeight
+          ,std::string_view newSpecies
    );
 
    /// Create a Mammal, populating *all* of the member variables
-   Mammal( const Color            newColor
-          ,const Gender           newGender
-          ,const Weight::t_weight newWeight
-          ,const Weight::t_weight newMaxWeight
-          ,const std::string_view newSpecies
+   Mammal( Color            newColor
+          ,Gender           newGender
+          ,Weight::t_weight newWeight
+          ,Weight::t_weight newMaxWeight
+          ,std::string_view newSpecies
    );
 
 public:  ////////////////////////// Getters & Setters //////////////////////////
-   Color getColor() const noexcept { return color; }  ///< Get the color
+   [[nodiscard]] Color getColor() const noexcept { return color; }  ///< Get the color
    void  setColor( const Color newColor ) noexcept { color = newColor; }  ///< Set the color
 
 public:  /////////////////////////// Public Methods ////////////////////////////
