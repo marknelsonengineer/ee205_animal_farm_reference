@@ -2,9 +2,13 @@
   <dictionary name="mark">
     <words>
       <w>animalfarm</w>
+      <w>autobrief</w>
       <w>catabase</w>
       <w>catus</w>
+      <w>cgen</w>
+      <w>colorstyle</w>
       <w>cout</w>
+      <w>ctors</w>
       <w>cybersecurity</w>
       <w>dereferencing</w>
       <w>domesticus</w>
@@ -12,12 +16,18 @@
       <w>felis</w>
       <w>ifixed</w>
       <w>machia</w>
+      <w>mainpage</w>
       <w>mammalia</w>
       <w>mammilian</w>
       <w>marknels</w>
+      <w>mdfile</w>
+      <w>mkpath</w>
       <w>nolintbegin</w>
       <w>nolintend</w>
+      <w>pearlmod</w>
       <w>postconditions</w>
+      <w>predef</w>
+      <w>priv</w>
       <w>setfill</w>
       <w>setw</w>
       <w>shorthair</w>
@@ -26,7 +36,9 @@
       <w>strncmp</w>
       <w>strncpy</w>
       <w>theropods</w>
+      <w>treeview</w>
       <w>trin</w>
+      <w>uhunix</w>
       <w>wtype</w>
     </words>
   </dictionary>
