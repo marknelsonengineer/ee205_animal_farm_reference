@@ -4,20 +4,17 @@
 //
 /// ʻIʻiwi (Drepanis coccinea)
 ///
-/// @file Finch.cpp
-/// @version 1.0
-///
+/// @file   Finch.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   18_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <random>
 #include <cassert>
 #include <cfloat>   // For FLT_TRUE_MIN
+#include <random>
 
-#include "Finch.h"
 #include "../../Utility/Trim.h"
 #include "Bird.h"
+#include "Finch.h"
 
 using namespace std;
 

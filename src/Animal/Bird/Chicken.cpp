@@ -4,20 +4,17 @@
 //
 /// Hawaiian Chicken
 ///
-/// @file Chicken.cpp
-/// @version 1.0
-///
+/// @file   Chicken.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   19_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <random>
 #include <cassert>
 #include <cfloat>   // For FLT_TRUE_MIN
+#include <random>
 
-#include "Chicken.h"
 #include "../../Utility/Trim.h"
 #include "Bird.h"
+#include "Chicken.h"
 
 using namespace std;
 

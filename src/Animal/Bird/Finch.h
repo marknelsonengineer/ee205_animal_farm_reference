@@ -4,11 +4,8 @@
 //
 /// ʻIʻiwi (Drepanis coccinea)
 ///
-/// @file Finch.h
-/// @version 1.0
-///
+/// @file   Finch.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   18_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -29,11 +26,11 @@ public:  //////////////////////////// Constructors /////////////////////////////
 
    /// Create a Finch, populating *all* of the member variables
    explicit
-   Finch( const std::string_view newName   = names.getNextName()
-         ,const Gender           newGender = Gender::UNKNOWN_GENDER
-         ,const Weight::t_weight newWeight = Weight::UNKNOWN_WEIGHT
+   Finch( std::string_view newName   = names.getNextName()
+         ,Gender           newGender = Gender::UNKNOWN_GENDER
+         ,Weight::t_weight newWeight = Weight::UNKNOWN_WEIGHT
    );
 
    /// Create a random Finch
-   explicit Finch( const ConstructorType  newBirdType );
+   explicit Finch( ConstructorType  newBirdType );
 };

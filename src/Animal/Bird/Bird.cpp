@@ -4,14 +4,12 @@
 //
 /// Birds are feathered theropods and constitute the only known living dinosaurs.
 ///
-/// @file Bird.cpp
-/// @version 1.0
-///
+/// @file   Bird.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   18_May_2022
 ///////////////////////////////////////////////////////////////////////////////
-#include <string>
+
 #include <cassert>
+#include <string>
 
 #include "../../config.h"
 #include "../../Utility/Trim.h"
