@@ -132,8 +132,9 @@ Node* DoublyLinkedList::removeFront() noexcept {
 
    assert( validate() );
 
-   if( head == nullptr )  // SPECIAL CASE:  The List is empty
+   if( head == nullptr ) {  // SPECIAL CASE:  The List is empty
       return nullptr;
+   }
 
    Node* returnValue = head;
 
@@ -164,8 +165,9 @@ Node* DoublyLinkedList::removeBack() noexcept {
 
    assert( validate() );
 
-   if( tail == nullptr )  // SPECIAL CASE:  The List is empty
+   if( tail == nullptr ) {  // SPECIAL CASE:  The List is empty
       return nullptr;
+   }
 
    Node* returnValue = tail;
 
@@ -210,14 +212,17 @@ Node* DoublyLinkedList::remove( Node* nodeToRemove ) {
 
    assert( validate() );
 
-   if( head == nullptr )  // SPECIAL CASE:  The List is empty
+   if( head == nullptr ) {  // SPECIAL CASE:  The List is empty
       return nullptr;
+   }
 
-   if( head == nodeToRemove )  // SPECIAL CASE:  Remove the head node
+   if( head == nodeToRemove ) {  // SPECIAL CASE:  Remove the head node
       return removeFront();
+   }
 
-   if( tail == nodeToRemove )  // SPECIAL CASE:  Remove the tail node
+   if( tail == nodeToRemove ) {  // SPECIAL CASE:  Remove the tail node
       return removeBack();
+   }
 
    // It's an interior node
    assert( nodeToRemove->prev != nullptr );
@@ -397,10 +402,11 @@ void DoublyLinkedList::swap( Node* node1, Node* node2 ) {
    bool isAdjoining = (node1_right == node2);
 
    // Fixup node1_left
-   if( !isAdjoining )  // GENERAL CASE: The nodes are not adjoining
+   if( !isAdjoining ) {  // GENERAL CASE: The nodes are not adjoining
       node1->prev = node2->prev;
-   else                // SPECIAL CASE: The two nodes are next to each other
+   } else {              // SPECIAL CASE: The two nodes are next to each other
       node1->prev = node2;
+   }
 
    if( node1 != head ) {  // GENERAL CASE: node1 is not the first in the List
       node1_left->next = node2;
@@ -411,10 +417,11 @@ void DoublyLinkedList::swap( Node* node1, Node* node2 ) {
    }
 
    // Fixup node2_right
-   if( !isAdjoining )  // GENERAL CASE:  The nodes are not adjoining
+   if( !isAdjoining ) {  // GENERAL CASE:  The nodes are not adjoining
       node2->next = node1_right;
-   else                // SPECIAL CASE:  The two nodes are next to each other
+   } else {              // SPECIAL CASE:  The two nodes are next to each other
       node2->next = node1;
+   }
 
    if( node2 != tail ) { // GENERAL CASE: node2 is not the last in the List
       node2_right->prev = node1;
