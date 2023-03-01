@@ -8,10 +8,7 @@
 /// particulars, the ancient law of life.
 ///
 /// @file BinarySearchTree.cpp
-/// @version 1.0
-///
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   25_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 
 // Set to trace the flow of execution through this code

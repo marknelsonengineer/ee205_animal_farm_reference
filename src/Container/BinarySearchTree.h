@@ -4,11 +4,8 @@
 //
 /// A general-purpose Binary Search Tree
 ///
-/// @file BinarySearchTree.h
-/// @version 1.0
-///
+/// @file   BinarySearchTree.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   25_Apr_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
@@ -25,8 +22,8 @@ public:   /////////////////////////// Public Methods ///////////////////////////
    bool  isIn( const Node* aNode ) const override ;  ///< `true` if `aNode` is in the Tree
    Node* remove( Node* nodeToRemove ) override;      ///< Remove a Node from the Tree
    void  dump() const noexcept override;             ///< Output the member variables in this object
-   bool  validate() const noexcept override;         ///< Ensure the object is valid
-   Node* getRandomNode() const noexcept override;    ///< Get a random Node from this Container
+   bool  validate() const noexcept override;         ///< Ensure the object is valid  @NOLINT(modernize-use-nodiscard)
+   [[nodiscard]] Node* getRandomNode() const noexcept override;    ///< Get a random Node from this Container
 
 protected:  ////////////////////// Protected Methods ///////////////////////////
    void add( Node* atNode, Node* newNode );   ///< Add a Node starting at atNode

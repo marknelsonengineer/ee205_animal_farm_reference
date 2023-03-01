@@ -4,15 +4,12 @@
 //
 /// A general-purpose Array based collection class.
 ///
-/// @file Array.cpp
-/// @version 1.0
-///
+/// @file   Array.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   26_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdexcept>  // For out_of_range
 #include <cassert>    // For assert
+#include <stdexcept>  // For out_of_range
 
 #include "Array.h"
 
