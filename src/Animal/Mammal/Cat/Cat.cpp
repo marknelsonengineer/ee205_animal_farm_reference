@@ -153,8 +153,8 @@ Animal& Cat::newRandomAnimal() {
 /// This function will use `new` to create a random Cat on the heap.
 /// Be sure to `delete` the Cat when it's no longer needed
 Cat& Cat::newRandomCat() {
-   uniform_real_distribution<> weightRNG ( 0.1, Cat::MAX_WEIGHT );
-   bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered
+   uniform_real_distribution<> weightRNG ( MIN_WEIGHT, Cat::MAX_WEIGHT );
+   bernoulli_distribution      isFixedRNG( 0.85 ); // 85% of cats are neutered   /// NOLINT(readability-magic-numbers): Allow a magic number here
 
    Cat* aCat = new Cat( names.getNextName(), newRandomColor(), isFixedRNG( ANIMAL_FARM_RNG ), newRandomGender(), (float) weightRNG( ANIMAL_FARM_RNG ) );
 
