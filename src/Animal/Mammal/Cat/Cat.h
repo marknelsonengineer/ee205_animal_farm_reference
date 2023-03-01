@@ -4,19 +4,16 @@
 //
 /// All things Cat
 ///
-/// @file Cat.h
-/// @version 1.0
-///
+/// @file   Cat.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   17_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include <string>
 
+#include "../../../Utility/Name.h"
 #include "../../../config.h"
 #include "../Mammal.h"
-#include "../../../Utility/Name.h"
 
 /// Felis Catus
 ///

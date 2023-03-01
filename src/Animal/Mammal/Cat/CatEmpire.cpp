@@ -28,11 +28,13 @@ using namespace std;
 ///
 /// @see https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/'
 /// @see https://en.wikipedia.org/wiki/English_numerals#Ordinal_numbers
+/// NOLINTBEGIN(readability-magic-numbers): Suppress `magic numbers` warning
 string getEnglishSuffix( int n ) {
    static thread_local string suffix;
 
-   if( n <= 0 )
+   if( n <= 0 ) {
       suffix = "";
+   }
 
    switch( n%10 ) {
       case 0:
@@ -51,7 +53,8 @@ string getEnglishSuffix( int n ) {
    }
 
    return suffix;
-}
+} // getEnglishSuffix
+// NOLINTEND( readability-magic-numbers )
 
 
 /// Print a pedigree of Cats

@@ -1,22 +1,19 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// A generic Node class.  May be used as a base class for a number of data
 /// structures.
 ///
 /// This class is defined as a header-only class.
 ///
-/// @file Node.h
-/// @version 1.0
-///
+/// @file   Node.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   27_Mar_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include <iostream>   // For cout
-#include <boost/core/typeinfo.hpp>  // for typeinfo()
+#include <boost/core/typeinfo.hpp>  // For typeinfo()
+#include <iostream>                 // For cout
 
 #include "../config.h"
 

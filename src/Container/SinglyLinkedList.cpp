@@ -80,8 +80,9 @@ void SinglyLinkedList::addFront( Node *newNode) {
 Node *SinglyLinkedList::removeFront() noexcept {
    TRACE_START
 
-   if( head == nullptr )  // SPECIAL CASE:  The List is empty
+   if( head == nullptr ) {  // SPECIAL CASE:  The List is empty
       return nullptr;
+   }
 
    assert( validate() );
 
@@ -121,11 +122,13 @@ Node* SinglyLinkedList::remove( Node* nodeToRemove ) {
 
    assert( validate() );
 
-   if( head == nullptr )  // SPECIAL CASE:  The List is empty
+   if( head == nullptr ) {  // SPECIAL CASE:  The List is empty
       return nullptr;
+   }
 
-   if( head == nodeToRemove )  // SPECIAL CASE:  Remove the head node
+   if( head == nodeToRemove ) {  // SPECIAL CASE:  Remove the head node
       return removeFront();
+   }
 
    // It's an interior node or the last node
 

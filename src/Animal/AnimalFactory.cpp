@@ -1,25 +1,22 @@
 ///////////////////////////////////////////////////////////////////////////////
-//          University of Hawaii, College of Engineering
-//          ee205_animal_farm - EE 205 - Spr 2022
+//         University of Hawaii, College of Engineering
+//         ee205_animal_farm - EE 205 - Spr 2023
 //
 /// Generate random Animal classes
 ///
-/// @file AnimalFactory.cpp
-/// @version 1.0
-///
+/// @file   AnimalFactory.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   06_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <random>  // For uniform_int_distribution
 #include <cassert> // For assert
+#include <random>  // For uniform_int_distribution
 
 #include "../config.h"
 #include "AnimalFactory.h"
+#include "Bird/Chicken.h"
+#include "Bird/Finch.h"
 #include "Mammal/Cat/Cat.h"
 #include "Mammal/Dog/Dog.h"
-#include "Bird/Finch.h"
-#include "Bird/Chicken.h"
 
 using namespace std;
 

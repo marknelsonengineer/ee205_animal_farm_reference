@@ -4,16 +4,13 @@
 //
 /// A specialized static Array that holds Cats
 ///
-/// @file CatPride.cpp
-/// @version 1.0
-///
+/// @file   CatPride.cpp
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   27_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdexcept>  // For logic_error, length_error and out_of_range
-#include <cassert>
+#include <cassert>    // For assert()
 #include <random>
+#include <stdexcept>  // For logic_error, length_error and out_of_range
 
 #include "CatPride.h"
 
@@ -75,9 +72,9 @@ void CatPride::add( Cat* newCat, const Container::t_size index ) {
 
 
 bool CatPride::isIn( const Cat* aCat ) const {
-   if( isEmpty() ) return false;
+   if( isEmpty() ) { return false; }
 
-   if( aCat == nullptr ) return false;
+   if( aCat == nullptr ) { return false; }
 
    assert( aCat->validate() );
 
@@ -85,7 +82,7 @@ bool CatPride::isIn( const Cat* aCat ) const {
       /// @todo Think about what constitutes `==` between two Cats.
       /// For now, `==` between two cats means they are the exact same object and
       /// they have the same address in memory
-      if( &catArray[i] == aCat ) return true;
+      if( &catArray[i] == aCat ) { return true; }
    }
 
    return false;  // Searched the array and never got a match
@@ -94,7 +91,7 @@ bool CatPride::isIn( const Cat* aCat ) const {
 
 /// @return A random Cat... or `nullptr` if the Array is empty
 Cat* CatPride::getRandomNode() const noexcept {
-   if( isEmpty() ) return nullptr;
+   if( isEmpty() ) { return nullptr; }
 
    uniform_int_distribution<> indexRNG( 0, (int) count-1 );
    Container::t_size index = indexRNG( ANIMAL_FARM_RNG );
@@ -146,7 +143,7 @@ void CatPride::dump() const noexcept {
 
    PRINT_HEADING_FOR_DUMP;
 
-   if( isEmpty() ) return;
+   if( isEmpty() ) { return; }
 
    for( Container::t_size i = 0 ; i < count ; i++ ) {
       catArray[i].dump();

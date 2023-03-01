@@ -18,10 +18,10 @@
 #include <cmath>                     // For pow()
 #include <random>                    // For test_bulk_erase_from_Tree
 
-#include "../src/Container/BinarySearchTree.h"
+#include "../src/Animal/AnimalFactory.h"
 #include "../src/Animal/Mammal/Cat/Cat.h"
 #include "../src/Animal/Mammal/Dog/Dog.h"
-#include "../src/Animal/AnimalFactory.h"
+#include "../src/Container/BinarySearchTree.h"
 
 using namespace std;
 

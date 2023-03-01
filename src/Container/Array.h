@@ -4,16 +4,13 @@
 //
 /// A general-purpose Array based collection class.
 ///
-/// @file Array.h
-/// @version 1.0
-///
+/// @file   Array.h
 /// @author Mark Nelson <marknels@hawaii.edu>
-/// @date   26_May_2022
 ///////////////////////////////////////////////////////////////////////////////
 #pragma once
 
-#include "Node.h"
 #include "Container.h"
+#include "Node.h"
 
 /// A generic Array based collection class without a concrete implementation.
 ///
