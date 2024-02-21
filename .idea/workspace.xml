@@ -33,8 +33,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b3486ae-ddf2-472d-a05c-c633417462cb" name="Changes" comment="Fixup Weight&#10;  - Modernize headers&#10;  - Sort #includes&#10;  - Add an @todo&#10;  - Add `explicit` and `[[nodiscard]]` to suppress warnings&#10;  - Suppress similar parameter warnings&#10;  - Made some locals const">
+    <list default="true" id="6b3486ae-ddf2-472d-a05c-c633417462cb" name="Changes" comment="Add @NOLINT to Doxygen params via ALIAS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STATISTICS.md" beforeDir="false" afterPath="$PROJECT_DIR$/STATISTICS.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="OCResolveContextSettings">
+    <option name="configuration" value="1-Release-All_Boost_Tests" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -70,16 +74,17 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mark/src/src-student/ee205_animal_farm_reference&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.spelling&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="CMake Application.scratch">
+  <component name="RunManager" selected="CMake Application.Doxygen">
     <configuration name="All_Boost_Tests" type="CMakeBoostTestRunConfigurationType" factoryName="Boost Test" PROGRAM_PARAMS="--log_level=test_suite" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ProjectFileDir$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ee205_animal_farm" TARGET_NAME="All_Boost_Tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ee205_animal_farm" RUN_TARGET_NAME="All_Boost_Tests" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -162,7 +167,7 @@
       <item itemvalue="CMake Application.singlyLinkedList" />
     </list>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6b3486ae-ddf2-472d-a05c-c633417462cb" name="Changes" comment="" />
@@ -188,97 +193,41 @@
       <workItem from="1677647486969" duration="912000" />
       <workItem from="1677652302491" duration="23000" />
       <workItem from="1677652533355" duration="12000" />
-    </task>
-    <task id="LOCAL-00001" summary="Small language update to RELEASE.md">
-      <created>1676926043279</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1676926043279</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Switch deployment.xml to Popoki">
-      <created>1676926082832</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1676926082832</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Introduce an older version of stats.py">
-      <created>1676926103974</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1676926103974</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Rename STATISTICS.md">
-      <created>1676926177712</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1676926177712</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Update to latest stats.py.  Remove old stats.sh.">
-      <created>1676927082289</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1676927082289</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Update to modern file headers">
-      <created>1676927409774</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1676927409774</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Fixup some indentation.">
-      <created>1676928188074</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1676928188074</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Refactor CMakeLists.txt to new standard based on Meow World&#10;Fixup spacing in the file&#10;Get stats.py to run">
-      <created>1676961178361</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961178361</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Refactor CMakeLists.txt to new standard based on Meow World&#10;Fixup spacing in the file&#10;Get stats.py to run">
-      <created>1676961189497</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961189497</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Add .clang-tidy to the Farm">
-      <created>1676961219516</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961219516</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Fixup header">
-      <created>1676961230584</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961230584</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Add a basic Hello World executable to the Farm">
-      <created>1676961474258</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961474258</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Refactor Hello World into Meow World">
-      <created>1676961602238</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1676961602238</updated>
+      <workItem from="1677659370523" duration="6079000" />
+      <workItem from="1677694125231" duration="4463000" />
+      <workItem from="1677706204475" duration="11000" />
+      <workItem from="1677706249663" duration="2590000" />
+      <workItem from="1677709600369" duration="125000" />
+      <workItem from="1677709729557" duration="3000" />
+      <workItem from="1677709750460" duration="109000" />
+      <workItem from="1678127297704" duration="9000" />
+      <workItem from="1678238485375" duration="1886000" />
+      <workItem from="1679448247478" duration="27000" />
+      <workItem from="1679449160197" duration="167000" />
+      <workItem from="1679453105875" duration="50000" />
+      <workItem from="1679453757325" duration="5000" />
+      <workItem from="1679454030708" duration="108000" />
+      <workItem from="1679887004151" duration="51000" />
+      <workItem from="1680044064240" duration="51000" />
+      <workItem from="1680044237344" duration="40000" />
+      <workItem from="1680046494674" duration="234000" />
+      <workItem from="1680046933069" duration="41000" />
+      <workItem from="1680205997610" duration="817000" />
+      <workItem from="1680490424191" duration="93000" />
+      <workItem from="1680558335016" duration="554000" />
+      <workItem from="1680660924890" duration="516000" />
+      <workItem from="1680666433496" duration="794000" />
+      <workItem from="1680669917606" duration="22000" />
+      <workItem from="1680680029119" duration="149000" />
+      <workItem from="1680680423756" duration="6000" />
+      <workItem from="1680684347971" duration="15000" />
+      <workItem from="1680685398850" duration="61000" />
+      <workItem from="1682023068380" duration="150000" />
+      <workItem from="1682026306138" duration="125000" />
+      <workItem from="1682095071295" duration="241000" />
+      <workItem from="1682464226022" duration="829000" />
+      <workItem from="1683237936495" duration="135000" />
+      <workItem from="1683320604301" duration="447000" />
     </task>
     <task id="LOCAL-00014" summary="Add .idea/workspace.xml to Git">
       <created>1676962542209</created>
@@ -434,39 +383,245 @@
       <option name="project" value="LOCAL" />
       <updated>1677094516481</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Maybe ignore workspace.xml from here on...">
+      <created>1677659536649</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1677659536649</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Turn off -readability-redundant-access-specifiers,-readability-identifier-length checks in tests">
+      <created>1677664886882</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1677664886882</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Fixup header&#10;Resolve Doxygen warnings&#10;Sort #include">
+      <created>1677664998249</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1677664998249</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fixup header&#10;Sort #include&#10;Add {}">
+      <created>1677665185712</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1677665185712</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Add MIN_WEIGHT constant for Cat">
+      <created>1677665257777</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1677665257777</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fixup formatting">
+      <created>1677665298142</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1677665298142</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Fixup Mammal&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Add [[nodiscard]]">
+      <created>1677695955151</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1677695955151</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Update dictionary">
+      <created>1677696745775</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1677696745775</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Update Bird, Chicken and Finch&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Add [[nodiscard]">
+      <created>1677697168307</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1677697168307</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Update Dog&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Remove magic number (by adding MIN_WEIGHT)">
+      <created>1677697292285</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1677697292285</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Update Cat&#10;  - Add [[nodiscard]]">
+      <created>1677697430594</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1677697430594</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Update Dog&#10;  - Add [[nodiscard]]">
+      <created>1677697504713</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1677697504713</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Update Animal&#10;  - Add [[nodiscard]]&#10;  - Sort #include&#10;  - Remove const in declarations">
+      <created>1677697617059</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1677697617059</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Add dictionary entries for CMakeLists.txt">
+      <created>1677706854626</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1677706854626</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Add a documented @NOLINT">
+      <created>1677708162527</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708162528</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Sort #include">
+      <created>1677708196576</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708196576</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Suppress warnings:&#10;  - fixup space&#10;  - Wrap if with {}&#10;  - suppress warnings when namespace ends">
+      <created>1677708256342</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708256342</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Suppress warnings:&#10;  - Wrap if with {}">
+      <created>1677708289992</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708289992</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Suppress warnings:&#10;  - Wrap if with {}">
+      <created>1677708330476</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708330476</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Wrap if with {}">
+      <created>1677708387875</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708387875</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Wrap if with {}">
+      <created>1677708418530</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708418530</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Wrap if with {}">
+      <created>1677708450313</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708450313</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Fixup header and sort #include">
+      <created>1677708536689</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708536689</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Remove const">
+      <created>1677708551977</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708551977</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Fixup header">
+      <created>1677708567678</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708567678</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Exclude more tests">
+      <created>1677708589478</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708589478</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Add @NOLINT to Doxygen params via ALIAS">
+      <created>1677708872375</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1677708872375</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactor CMakeLists.txt to new standard based on Meow World&#10;Fixup spacing in the file&#10;Get stats.py to run" />
-    <MESSAGE value="Add .clang-tidy to the Farm" />
-    <MESSAGE value="Fixup header" />
-    <MESSAGE value="Add a basic Hello World executable to the Farm" />
-    <MESSAGE value="Refactor Hello World into Meow World" />
-    <MESSAGE value="Add .idea/workspace.xml to Git" />
-    <MESSAGE value="Tamp down clang warnings." />
-    <MESSAGE value="Sort #includes" />
-    <MESSAGE value="Update config.h&#10;  - Fixup header&#10;  - Rename app &amp; description&#10;  - Knock down warnings" />
-    <MESSAGE value="Update config.h&#10;  - re-add #include" />
-    <MESSAGE value="Refactor meow_world to meowWorld&#10;Get it conforming with filenaming standards&#10;Knock down warnings&#10;Return EXIT_SUCCESS" />
-    <MESSAGE value="Knock down warnings" />
-    <MESSAGE value="Fix clang-tidy's inability to correctly interpret C++17" />
-    <MESSAGE value="Fixup Gender class&#10;  - Fix headers&#10;  - Fix #includes&#10;  - Knock down warnings&#10;&#10;Update scratch and get it to exercise Gender" />
-    <MESSAGE value="Updated STATISTICS.md" />
-    <MESSAGE value="Fixup Color&#10;  - Fixup headers&#10;  - Fixup #includes&#10;  - Stamp out warnings" />
-    <MESSAGE value="Add meowWorld to workspace.xml" />
-    <MESSAGE value="Add WEEKLY_PROGRESS.md" />
-    <MESSAGE value="Fixup Name&#10;  - Update header&#10;  - Update #include&#10;  - Remove problematic noexcept&#10;  - Remove unnecessary const declarations&#10;  - Suppress warnings" />
-    <MESSAGE value="Add DOT, ArchLinux &amp; VirtualBox logos to README.md.  Remove GitLab." />
-    <MESSAGE value="Fixup Random&#10;  - Modernize headers&#10;  - Fixup #includes&#10;  - Suppress warnings" />
-    <MESSAGE value="Improve comment" />
-    <MESSAGE value="Fixup Trim&#10;  - Modernize headers&#10;  - Remove const from declarations &#10;  - Suppress warnings" />
-    <MESSAGE value="Fool with scratch for testing" />
     <MESSAGE value="Fixup Weight&#10;  - Modernize headers&#10;  - Sort #includes&#10;  - Add an @todo&#10;  - Add `explicit` and `[[nodiscard]]` to suppress warnings&#10;  - Suppress similar parameter warnings&#10;  - Made some locals const" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixup Weight&#10;  - Modernize headers&#10;  - Sort #includes&#10;  - Add an @todo&#10;  - Add `explicit` and `[[nodiscard]]` to suppress warnings&#10;  - Suppress similar parameter warnings&#10;  - Made some locals const" />
+    <MESSAGE value="Maybe ignore workspace.xml from here on..." />
+    <MESSAGE value="Turn off -readability-redundant-access-specifiers,-readability-identifier-length checks in tests" />
+    <MESSAGE value="Fixup header&#10;Resolve Doxygen warnings&#10;Sort #include" />
+    <MESSAGE value="Fixup header&#10;Sort #include&#10;Add {}" />
+    <MESSAGE value="Add MIN_WEIGHT constant for Cat" />
+    <MESSAGE value="Fixup formatting" />
+    <MESSAGE value="Fixup Mammal&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Add [[nodiscard]]" />
+    <MESSAGE value="Update dictionary" />
+    <MESSAGE value="Update Bird, Chicken and Finch&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Add [[nodiscard]" />
+    <MESSAGE value="Update Dog&#10;  - Update headers&#10;  - Sort #include&#10;  - Remove const from declarations&#10;  - Remove magic number (by adding MIN_WEIGHT)" />
+    <MESSAGE value="Update Cat&#10;  - Add [[nodiscard]]" />
+    <MESSAGE value="Update Dog&#10;  - Add [[nodiscard]]" />
+    <MESSAGE value="Update Animal&#10;  - Add [[nodiscard]]&#10;  - Sort #include&#10;  - Remove const in declarations" />
+    <MESSAGE value="Add dictionary entries for CMakeLists.txt" />
+    <MESSAGE value="Add a documented @NOLINT" />
+    <MESSAGE value="Sort #include" />
+    <MESSAGE value="Suppress warnings:&#10;  - fixup space&#10;  - Wrap if with {}&#10;  - suppress warnings when namespace ends" />
+    <MESSAGE value="Suppress warnings:&#10;  - Wrap if with {}" />
+    <MESSAGE value="Wrap if with {}" />
+    <MESSAGE value="Fixup header and sort #include" />
+    <MESSAGE value="Remove const" />
+    <MESSAGE value="Fixup header" />
+    <MESSAGE value="Exclude more tests" />
+    <MESSAGE value="Add @NOLINT to Doxygen params via ALIAS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add @NOLINT to Doxygen params via ALIAS" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

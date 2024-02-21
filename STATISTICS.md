@@ -3,14 +3,14 @@ Project Statistics
 
 | Type | Files | Lines | Bytes | Working Lines | Working Bytes |
 |------|------:|------:|------:|--------------:|--------------:|
-|.h Source|33|1891|88356|929|30416|
-|.cpp Source|36|4692|144402|2364|61984|
+|.h Source|33|1891|88353|929|30416|
+|.cpp Source|36|4694|144409|2366|61990|
 |Unit Tests|17|3174|126418|2283|90841|
 |Python|1|295|8475|193|6976|
 |HTML|1|35|721|n/a|n/a|
 |Markdown|8|236|15029|n/a|n/a|
 |Images|14|n/a|2816530|n/a|n/a|
-|Other	Files|23|n/a|108691|n/a|n/a|
+|Other	Files|23|n/a|107925|n/a|n/a|
 
 ## Tags
 | Tag | Date	| Author	|
@@ -27,7 +27,7 @@ Project Statistics
 
 ## Software Engineering Metrics
 
-Number of commits:  365
+Number of commits:  378
 
 Number of unit tests:  96
 
@@ -38,4 +38,4 @@ Number of test points:  1133
 |-------------------------------------|---------------------------|-------------------------|---------------------------|
 | ![GitHub code size	in	bytes](https://img.shields.io/github/languages/code-size/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub repo size](https://img.shields.io/github/repo-size/marknelsonengineer/ee205_animal_farm_reference?style=social)	<br/>	![GitHub contributors](https://img.shields.io/github/contributors/marknelsonengineer/ee205_animal_farm_reference?style=social) | ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub last	commit](https://img.shields.io/github/last-commit/marknelsonengineer/ee205_animal_farm_reference?style=social)	| ![GitHub	issues](https://img.shields.io/github/issues-raw/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub	closed issues](https://img.shields.io/github/issues-closed-raw/marknelsonengineer/ee205_animal_farm_reference?style=social) | ![GitHub forks](https://img.shields.io/github/forks/marknelsonengineer/ee205_animal_farm_reference?style=social) <br/> ![GitHub Repo	stars](https://img.shields.io/github/stars/marknelsonengineer/ee205_animal_farm_reference?style=social)	|
 
-Automatically generated on Wed Mar  1 12:00:59 2023
+Automatically generated on Tue Apr 25 13:15:19 2023
